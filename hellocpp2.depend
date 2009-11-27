@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1259328871 source:c:\agar\hellocpp2\main.cpp
+	<iostream>
+	<core.h>
+	<gui.h>
+	"myButton.h"
+	"mywidget.h"
+	"dialog.cpp"
+
+1257366505 c:\agar\hellocpp2\dialog.cpp
+	"dialog.h"
+	<direct.h>
+
+1253876463 c:\agar\hellocpp2\dialog.h
+	<windows.h>
+	<iostream>
+	<fstream>
+	<locale>
+	<vector>
+	<list>
+	<map>
+	"rapidxml.hpp"
+	"rapidxml_print.hpp"
+
+1252409661 c:\agar\hellocpp2\cons.h
+
+1252694128 source:c:\agar\hellocpp2\dialog.cpp
+	<windows.h>
+	<iostream>
+	<fstream>
+	<locale>
+	<vector>
+	<list>
+	<map>
+	"rapidxml.hpp"
+	"rapidxml_print.hpp"
+	"dialog.h"
+
+1258920322 c:\agar\hellocpp2\mywidget.h
+
+1257510864 source:c:\agar\hellocpp2\mywidget.c
+	<core.h>
+	<gui.h>
+	"mywidget.h"
+
+1259353959 source:c:\agar\hellocpp2\mywidget.cpp
+	<core.h>
+	<gui.h>
+	"mywidget.h"
+
+1258735600 source:c:\agar\hellocpp2\mybutton.cpp
+	<core.h>
+	<gui.h>
+	<agar/gui/widget.h>
+	"myButton.h"
+	<string>
+
+1258749600 c:\agar\hellocpp2\mybutton.h
+	<agar/gui/widget.h>
+
