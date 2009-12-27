@@ -29,6 +29,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="myButton.cpp" />
 		<Unit filename="myButton.h" />
+		<Unit filename="mytextbox.cpp" />
+		<Unit filename="mytextbox.h" />
 		<Unit filename="mywidget.cpp" />
 		<Unit filename="mywidget.h" />
 		<Extensions>

@@ -1,13 +1,16 @@
 # depslib dependency file v1.0
-1259328871 source:c:\agar\hellocpp2\main.cpp
+1261846666 source:c:\agar\hellocpp2\main.cpp
 	<iostream>
+	<fstream>
 	<core.h>
 	<gui.h>
 	"myButton.h"
 	"mywidget.h"
+	"mytextbox.h"
 	"dialog.cpp"
+	"htmlite.h"
 
-1257366505 c:\agar\hellocpp2\dialog.cpp
+1260529798 c:\agar\hellocpp2\dialog.cpp
 	"dialog.h"
 	<direct.h>
 
@@ -48,7 +51,7 @@
 	<gui.h>
 	"mywidget.h"
 
-1258735600 source:c:\agar\hellocpp2\mybutton.cpp
+1259698282 source:c:\agar\hellocpp2\mybutton.cpp
 	<core.h>
 	<gui.h>
 	<agar/gui/widget.h>
@@ -57,4 +60,118 @@
 
 1258749600 c:\agar\hellocpp2\mybutton.h
 	<agar/gui/widget.h>
+
+1259956805 c:\agar\hellocpp2\mytextbox.h
+	<agar/core/types.h>
+	<agar/gui/widget.h>
+
+1260526620 source:c:\agar\hellocpp2\mytextbox.cpp
+	<core.h>
+	<gui.h>
+	<agar/gui/widget.h>
+	"mytextbox.h"
+	<agar/gui/opengl.h>
+
+1259956767 c:\agar\hellocpp2\myeditable.h
+
+1261667282 c:\agar\hellocpp2\htmlite.h
+	"htmlayout.h"
+	"htmlayout_behavior.hpp"
+
+1260131030 c:\agar\hellocpp2\include\htmlayout.h
+	<windows.h>
+	"value.h"
+	"htmlayout_dom.h"
+	"htmlayout_behavior.h"
+	"htmlayout_behavior.hpp"
+	"htmlayout_dom.hpp"
+	"htmlayout_dialog.hpp"
+	"behaviors/notifications.h"
+	"htmlayout_value.hpp"
+	"htmlayout_controls.hpp"
+
+1260560436 c:\agar\hellocpp2\include\value.h
+	<windows.h>
+	<string>
+	"aux-slice.h"
+	"aux-cvt.h"
+
+1249060578 c:\agar\hellocpp2\include\aux-slice.h
+	"aux-cvt.h"
+	"limits.h"
+
+1259416956 c:\agar\hellocpp2\include\aux-cvt.h
+	<assert.h>
+	<wchar.h>
+	<string.h>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+
+1259169016 c:\agar\hellocpp2\include\htmlayout_dom.h
+	"value.h"
+
+1249060578 c:\agar\hellocpp2\include\htmlayout_behavior.h
+	<windows.h>
+
+1249060578 c:\agar\hellocpp2\include\htmlayout_behavior.hpp
+	<windows.h>
+	<assert.h>
+	"htmlayout.h"
+	"htmlayout_behavior.h"
+	"behavior_impl.hpp"
+
+1259483826 c:\agar\hellocpp2\include\htmlayout_dom.hpp
+	"value.h"
+	"htmlayout_dom.h"
+	"htmlayout_aux.h"
+	"htmlayout_queue.h"
+	<assert.h>
+	<stdio.h>
+	<vector>
+
+1253543600 c:\agar\hellocpp2\include\htmlayout_aux.h
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"aux-cvt.h"
+	"aux-slice.h"
+	"htmlayout.h"
+
+1255011158 c:\agar\hellocpp2\include\htmlayout_queue.h
+	<windows.h>
+	<stdio.h>
+	<assert.h>
+
+1259416970 c:\agar\hellocpp2\include\htmlayout_dialog.hpp
+	"htmlayout_dom.hpp"
+	"htmlayout_behavior.hpp"
+	"htmlayout_controls.hpp"
+	"htmlayout_notifications.hpp"
+	"htmlayout_queue.h"
+	<shellapi.h>
+	<assert.h>
+
+1259169562 c:\agar\hellocpp2\include\htmlayout_controls.hpp
+	<stdio.h>
+	"value.h"
+	"htmlayout_dom.hpp"
+	"htmlayout_value.hpp"
+	"htmlayout_aux.h"
+
+1249060578 c:\agar\hellocpp2\include\htmlayout_value.hpp
+	<assert.h>
+	"value.h"
+	<map>
+	<string>
+	<vector>
+
+1254319918 c:\agar\hellocpp2\include\htmlayout_notifications.hpp
+	"htmlayout_dom.h"
+	"htmlayout_aux.h"
+	"htmlayout_behavior.hpp"
+	<assert.h>
+
+1249060576 c:\agar\hellocpp2\include\behaviors\notifications.h
+	<windows.h>
 

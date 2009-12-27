@@ -14,7 +14,7 @@
     //SetConsoleOutputCP(866);
     char cd[_MAX_PATH];
     getcwd(cd, _MAX_PATH);
-    cout << cd;
+    //cout << cd;
     strcat(cd,"\\dialog2.xml");
     cout << cd;
     //ifstream in(cd);

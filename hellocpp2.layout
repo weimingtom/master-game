@@ -2,18 +2,24 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="dialog.h" open="1" top="0" tabpos="1">
-		<Cursor position="312" topLine="8" />
+		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="3810" topLine="157" />
+	<File name="main.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="myButton.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="2650" topLine="92" />
+		<Cursor position="1551" topLine="53" />
 	</File>
 	<File name="myButton.h" open="1" top="0" tabpos="3">
-		<Cursor position="235" topLine="0" />
+		<Cursor position="262" topLine="0" />
 	</File>
-	<File name="mywidget.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="4444" topLine="180" />
+	<File name="mytextbox.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="4302" topLine="151" />
+	</File>
+	<File name="mywidget.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1656" topLine="50" />
+	</File>
+	<File name="mywidget.h" open="1" top="0" tabpos="6">
+		<Cursor position="14" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

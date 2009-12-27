@@ -49,11 +49,6 @@ static void
 Init(void *obj)
 {
 	MyButton *my = (MyButton*)obj;
-
-	/* Allow this widget to grab focus. */
-	AGWIDGET(my)->flags |= AG_WIDGET_FOCUSABLE;
-
-	/* Initialize instance variables. */
 }
 
 
