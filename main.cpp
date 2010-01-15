@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <sstream>
+
 #include <fstream>
 
 #include <core.h>
@@ -16,10 +18,13 @@
 
 #include "htmlite.h"
 
+#include "htmlayout_dom.hpp"
+
 #define TESTFONT "CONSOLA.ttf"
 
-
 using namespace std;
+
+using namespace htmlayout;
 
 map<int,dialogNode*> convGraph = dialog_fun();
 char *a;
@@ -44,6 +49,74 @@ AG_VBox *vbox2;
 
 AG_Surface *surf1;
 AG_Pixmap *pm1;
+
+HTMLite h1;
+BITMAPINFO bmpInfo;
+HBITMAP hbmp;
+unsigned int pixels2[300][800];
+
+void textResize(AG_Event *event)
+{
+
+  int ww = AG_INT(3);
+
+  int w1,he1;
+
+  w1=800;
+  he1=300;
+
+  HELEMENT phe;
+  phe=h1.getRootElement();
+  dom::element div = dom::element(phe).find_first("div#test");
+
+
+  string search;
+  stringstream s;
+  //s<<pm1->pre_w;
+  s<<min(ww-15,785);
+  s<<"px";
+  search=s.str();
+    const size_t newsize = 100;
+    size_t origsize = strlen(search.c_str()) + 1;
+    size_t convertedChars = 0;
+    wchar_t wcstring[newsize];
+    mbstowcs( wcstring, search.c_str(), newsize);
+    div.set_style_attribute("width",wcstring);
+
+  HTMLayoutUpdateElementEx(div, REDRAW_NOW);
+  POINT pt; pt.x = 0; pt.y = 0;
+
+  HTMLayoutSetScrollPos(phe,pt,FALSE);
+  h1.measure(w1,he1);
+
+  void* pixelbitmap=0;
+
+  hbmp =CreateDIBSection(NULL,(BITMAPINFO*)&bmpInfo,DIB_RGB_COLORS, &pixelbitmap,NULL,0);
+  h1.render(hbmp,0,0,w1,he1);
+
+  unsigned int pixels[he1][w1];
+  //unsigned int pixels2[he1][w1];
+  memcpy(pixels,pixelbitmap,sizeof(pixels));
+
+for (int j=0;j<=he1-1;j++)
+  for (int i=0;i<=w1-1;i++){
+      {
+          pixels2[j][i]=pixels[he1-1-j][i];
+      }
+   }
+
+
+  //surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,(w1)*4,0x00ff0000,0x0000ff00,0xff000000);
+  //AG_PixmapUpdateCurrentSurface(pm1);
+  delete [] pixels;
+  DeleteObject(hbmp);
+  delete [] pixelbitmap ;
+  delete &w1;
+  delete &he1;
+  delete [] &pt;
+
+}
+
 void
 SayHello(AG_Event *event)
 {
@@ -55,9 +128,9 @@ SayHello(AG_Event *event)
     curNode=convGraph[curNode]->children[cn];
     if (convGraph[curNode]->owner=="npc")
     {
-        strcat(a,"<");
+        strcat(a,"<npc>");
         strcat(a,convGraph[curNode]->text.c_str());
-        strcat(a,">");
+        strcat(a,"</npc>");
         strcat(a,"\n");
         curNode=convGraph[curNode]->children[0];
     }
@@ -138,14 +211,55 @@ MultiLineExample(const char *title, int wordwrap,char* a)
 
 int w1,he1;
 
-  w1=100;
-  he1=100;
+  w1=800;
+  he1=300;
 
-  HTMLITE h1=HTMLiteCreateInstance();
-  LPCWSTR htmlpath = L"C:\\cpp\\HTMLayout\\html_samples\\a1.html";
-  HLTRESULT hr=HTMLiteLoadHtmlFromFile(h1,htmlpath);
 
-  hr=HTMLiteMeasure(h1,w1,he1);
+
+  //HTMLITE h1=HTMLiteCreateInstance();
+
+  LPCWSTR htmlpath = L"C:\\Agar\\hellocpp2\\bin\\Debug\\a2.html";
+  //LPCWSTR htmlpath = L"a1.html";
+  //HLTRESULT hr=HTMLiteLoadHtmlFromFile(h1,htmlpath);
+  h1.load(htmlpath);
+  //HLTRESULT hr=HTMLiteLoadHtmlFromMemory()
+  //hr=HTMLiteMeasure(h1,w1,he1);
+  h1.measure(w1,he1);
+
+  //hr=HTMLiteGetDocumentMinWidth(h1,&w1);
+  //hr=HTMLiteGetDocumentMinHeight(h1,&he1);
+
+  HELEMENT phe;
+
+  //hr=HTMLiteGetRootElement(h1, phe);
+  phe=h1.getRootElement();
+
+
+  dom::element div = dom::element(phe).find_first("div#test");
+  //dom::element div = dom::element(body).find_first("div");
+  //div.set_attribute("style",L"background-color:#000000");
+  //const wchar_t* res1=div.get_style_attribute("width");
+  //div.set_style_attribute("width",0);
+  //
+  div.set_style_attribute("background-color",L"#000000");
+  //div.set_style_attribute("width",L"100px");
+  //div.update(true);
+
+  HTMLayoutUpdateElementEx(div, REDRAW_NOW);
+
+  POINT pt; pt.x = 0; pt.y = 0;
+
+  HTMLayoutSetScrollPos(phe,pt,FALSE);
+
+
+  //hr=HTMLiteMeasure(h1,w1,he1);
+  h1.measure(w1,he1);
+  //HTMLayoutGetStyleAttribute(HELEMENT he, LPCSTR name, LPCWSTR* p_value);
+  //HTMLayoutSetAttributeByName(*phe, , LPCWSTR value);
+  //he1=min(he1,300);
+
+  //he1=100;
+  //w1=100;
 
   BITMAPINFOHEADER bmpInfoHeader;
   memset(&bmpInfoHeader,0,sizeof(BITMAPINFOHEADER));
@@ -155,70 +269,78 @@ int w1,he1;
   bmpInfoHeader.biCompression = BI_RGB;
   bmpInfoHeader.biWidth=w1;
   bmpInfoHeader.biHeight=he1;
-      bmpInfoHeader.biSizeImage = 0;
-      bmpInfoHeader.biXPelsPerMeter = 0;
-      bmpInfoHeader.biYPelsPerMeter = 0;
-      bmpInfoHeader.biClrUsed = 0;
-      bmpInfoHeader.biClrImportant = 0;
+  bmpInfoHeader.biSizeImage = 0;
+  bmpInfoHeader.biXPelsPerMeter = 0;
+  bmpInfoHeader.biYPelsPerMeter = 0;
+  bmpInfoHeader.biClrUsed = 0;
+  bmpInfoHeader.biClrImportant = 0;
 
-  BITMAPINFO bmpInfo;
+  //BITMAPINFO bmpInfo;
   memset(&bmpInfo,0,sizeof(BITMAPINFO));
   bmpInfo.bmiHeader = bmpInfoHeader;
 
   void* pixelbitmap=0;
-
-  HBITMAP hbmp =CreateDIBSection(NULL,(BITMAPINFO*)&bmpInfo,DIB_RGB_COLORS, &pixelbitmap,NULL,0);
-
-/*      unsigned int * pixelbitmap2 = (unsigned int *)pixelbitmap;
+/*
+      unsigned int * pixelbitmap2 = (unsigned int *)pixelbitmap;
       for( int n = 0; n < w1*he1; ++n)
         *pixelbitmap2++ = 0xffffffff;
 */
 
-  hr=HTMLiteRenderOnBitmap(h1,hbmp,
+
+  hbmp =CreateDIBSection(NULL,(BITMAPINFO*)&bmpInfo,DIB_RGB_COLORS, &pixelbitmap,NULL,0);
+
+  h1.render(hbmp,0,0,w1,he1);
+
+  /*hr=HTMLiteRenderOnBitmap(h1,hbmp,
           0,    // x position of area to render
           0,    // y position of area to render
           w1,   // width of area to render
           he1);  // height of area to render
+*/
 /*
   BITMAP bitmap;
   int res=GetObject(hbmp,sizeof(BITMAP),(LPSTR)&bitmap);
 */
-
-  unsigned int pixels[w1][he1];
-  unsigned int pixels2[w1][he1];
+  unsigned int pixels[he1][w1];
+  //unsigned int pixels2[he1][w1];
 
   memcpy(pixels,pixelbitmap,sizeof(pixels));
 
+for (int j=0;j<=he1-1;j++)
   for (int i=0;i<=w1-1;i++){
-      for (int j=0;j<=he1-1;j++){
-          pixels2[i][j]=pixels[he1-i-1][j];
+      {
+          //pixels2[j][i]=pixels[w1-j-1][i];
+          //pixels2[i][j]=pixels[i][j];
+          pixels2[j][i]=pixels[he1-1-j][i];
+          //pixels2[i][j]=pixels[i][he1-1-j];
       }
    }
+
+
 
   ofstream myfile;
   myfile.open("pixelbitmap");
   myfile.write((char*)pixelbitmap,w1*he1*4);
   myfile.close();
 
-  //hr=HTMLiteRender(h1,CDC,0,0,w1,he1);
+  //surf1=AG_SurfaceFromPixelsRGBA(pixels2,w1,he1,32,w1*4,0x000000ff,0x00ff0000,0x0000ff00,0xff000000);
+  surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,(w1)*4,0x00ff0000,0x0000ff00,0xff000000);
 
-  //GetDIBits(CDC,hbmp,0,(WORD)bmpInfoHeader.biHeight,pixelbitmap,&bmpInfo,DIB_RGB_COLORS);
-  //GetBitmapBits(hbmp,(WORD)bmpInfoHeader.biHeight*bmpInfoHeader.biWidth*4,pixelbitmap);
-
-  surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,w1*4,0x00ff0000,0x0000ff00,0xff000000);
-  pm1=AG_PixmapFromSurface(win,0,surf1);
+  pm1=AG_PixmapFromSurface(vbox,0,surf1);
+  //AG_Expand(pm1);
 
   AG_RegisterClass(&agMyTextboxClass);
 
 
   tb = AG_TextboxNew(vbox, flags, NULL);
 
-  tb2 = AG_myTextboxNew(vbox, flags, NULL);
+  /*tb2 = AG_myTextboxNew(vbox, flags, NULL);
 
   AG_Expand(tb2);
 
   //AG_TextboxBindUTF8((*tb2)._inherit, a, sizeof(a));
   AG_EditableBindUTF8((tb2)->_inherit.ed,a,sizeof(a));
+  */
   strcat(a,"\n");
     //AG_TextboxSetString(textbox,a);
 
@@ -240,8 +362,7 @@ int w1,he1;
     button.push_back(MyButtonNew(vbox, ""));
   };
 
-    AG_WindowSetGeometryAligned(win, AG_WINDOW_MC, 540, 380);
-    AG_SchedEvent(NULL,win,100,"window-user-resize","%i,%i",600,600);
+    AG_WindowSetGeometryAligned(win, AG_WINDOW_MC, 640, 480);
 
     AG_WindowShow(win);
 
@@ -256,7 +377,7 @@ int main(int argc, char *argv[])
 	if (AG_InitCore("", 0) == -1) {
 		return (1);
 	}
-	if (AG_InitVideo(640, 480, 32, AG_VIDEO_RESIZABLE) == -1) {
+	if (AG_InitVideo(1024, 768, 32, AG_VIDEO_RESIZABLE) == -1) {
 		return (-1);
 	}
 
@@ -297,7 +418,7 @@ int main(int argc, char *argv[])
         AG_SetEvent(button[i], "button-pushed", SayHello,"%i",i);
 	}
 
-	//AG_SetEvent(MyButton, "button-pushed", SayHello,"%i",0);
+	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
 
     AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
 

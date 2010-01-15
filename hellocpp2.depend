@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1261846666 source:c:\agar\hellocpp2\main.cpp
+1263577914 source:c:\agar\hellocpp2\main.cpp
 	<iostream>
+	<sstream>
 	<fstream>
 	<core.h>
 	<gui.h>
@@ -9,8 +10,9 @@
 	"mytextbox.h"
 	"dialog.cpp"
 	"htmlite.h"
+	"htmlayout_dom.hpp"
 
-1260529798 c:\agar\hellocpp2\dialog.cpp
+1263047861 c:\agar\hellocpp2\dialog.cpp
 	"dialog.h"
 	<direct.h>
 
