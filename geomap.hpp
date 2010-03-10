@@ -6,8 +6,25 @@
 #include <agar/vg.h>
 
 #include "visilibity.hpp"
-#include <vector>
 
-void mapdraw(VG_Node *vgroot );
+#include <vector>
+#include <sstream>
+
+#include "rapidxml.hpp"
+#include "rapidxml_print.hpp"
+
+#include <direct.h>
+
+#include <agar/gui/opengl.h>
+
+#include <GL/glu.h>
+
+
+typedef std::vector < std::vector < VisiLibity::Point > > geoData;
+
+void mapdraw();
+geoData mapload(char* path);
+void MapDrawFunction(AG_Event *event);
+void MapScaleFunction(AG_Event *event);
 
 #endif

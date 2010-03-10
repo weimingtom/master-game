@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conversation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <subNodes>
+    <ContentNode idNum="1" orderNum="1" linkTo="0" nodeType="npc">
+      <conversationText>Здесь есть кто-нибудь?</conversationText>
+      <conversationComments />
+      <subNodes>
+        <ContentNode idNum="2" orderNum="1" linkTo="0" nodeType="pc">
+          <conversationText>Да.</conversationText>
+          <conversationComments />
+          <subNodes>
+            <ContentNode idNum="3" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Уже неплохо. И кто же?</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="9" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>Это будет не так просто объяснить.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="10" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>Не уверен, что у меня есть выбор, так что постараюсь разобраться. Человек, по крайней мере?</conversationText>
+                      <conversationComments />
+                      <subNodes>
+                        <ContentNode idNum="11" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>Да.</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="12" orderNum="1" linkTo="0" nodeType="npc">
+                              <conversationText>Слава богу! Ты где-то здесь, в подземелье? Я не уверен, что могу выбраться и не вполне понимаю, что происходит.</conversationText>
+                              <conversationComments />
+                              <subNodes>
+                                <ContentNode idNum="17" orderNum="1" linkTo="0" nodeType="pc">
+                                  <conversationText>Да, я здесь.</conversationText>
+                                  <conversationComments />
+                                  <subNodes>
+                                    <ContentNode idNum="18" orderNum="1" linkTo="0" nodeType="npc">
+                                      <conversationText>Где же? Мы можем встретиться? Я совсем не разбираюсь в этих машинах и мне кажется, что здесь опасно.</conversationText>
+                                      <conversationComments />
+                                      <subNodes>
+                                        <ContentNode idNum="22" orderNum="1" linkTo="0" nodeType="pc">
+                                          <conversationText>Здесь ты в безопасности. Мы не можем встретиться. Слушай внимательно, сейчас я все тебе объясню.</conversationText>
+                                          <conversationComments />
+                                          <subNodes />
+                                          <additionalData />
+                                          <infoObjects />
+                                        </ContentNode>
+                                        <ContentNode idNum="23" orderNum="2" linkTo="0" nodeType="pc">
+                                          
+                                          <conversationComments />
+                                          <subNodes />
+                                          <additionalData />
+                                          <infoObjects />
+                                        </ContentNode>
+                                      </subNodes>
+                                      <additionalData />
+                                      <infoObjects />
+                                    </ContentNode>
+                                  </subNodes>
+                                  <additionalData />
+                                  <infoObjects />
+                                </ContentNode>
+                                <ContentNode idNum="21" orderNum="2" linkTo="0" nodeType="pc">
+                                  <conversationText>Я здесь, </conversationText>
+                                  <conversationComments />
+                                  <subNodes />
+                                  <additionalData />
+                                  <infoObjects />
+                                </ContentNode>
+                                <ContentNode idNum="19" orderNum="3" linkTo="0" nodeType="pc">
+                                  <conversationText>Слушай внимательно, сейчас я все тебе объясню.</conversationText>
+                                  <conversationComments />
+                                  <subNodes>
+                                    <ContentNode idNum="24" orderNum="1" linkTo="0" nodeType="npc">
+                                      <conversationText>Слушаю.</conversationText>
+                                      <conversationComments />
+                                      <subNodes>
+                                        <ContentNode idNum="28" orderNum="1" linkTo="0" nodeType="pc">
+                                          <conversationText>Постой, сначала я должен знать, кто ты такой.</conversationText>
+                                          <conversationComments />
+                                          <subNodes>
+                                            <ContentNode idNum="29" orderNum="1" linkTo="0" nodeType="npc">
+                                              <conversationText>Взаимно. Так что сначала объясни мне хоть что-нибудь.</conversationText>
+                                              <conversationComments />
+                                              <subNodes>
+                                                <ContentNode idNum="30" orderNum="1" linkTo="0" nodeType="pc">
+                                                  <conversationText>Хорошо, я расскажу тебе о себе, а после ты о себе, пойдет?</conversationText>
+                                                  <conversationComments />
+                                                  <subNodes>
+                                                    <ContentNode idNum="34" orderNum="1" linkTo="0" nodeType="npc">
+                                                      <conversationText>Если ты где-то здесь, мы можем встретиться? Я ничего не понимаю в этой машине, и мне кажется, что оставаться здесь опасно.</conversationText>
+                                                      <conversationComments />
+                                                      <subNodes>
+                                                        <ContentNode idNum="35" orderNum="1" linkTo="0" nodeType="pc">
+                                                          <conversationText>Здесь ты в безопасности. Мы не можем встретиться, я все объясню позже. Итак, кто ты и что здесь делаешь?</conversationText>
+                                                          <conversationComments />
+                                                          <subNodes>
+                                                            <ContentNode idNum="36" orderNum="1" linkTo="0" nodeType="npc">
+                                                              <conversationText>Кажется, это ты собирался рассказать о себе. И вообще хоть что-нибудь объяснить мне. Если ты действительно живой человек, то помоги мне, иначе я ухожу.</conversationText>
+                                                              <conversationComments />
+                                                              <subNodes>
+                                                                <ContentNode idNum="38" orderNum="1" linkTo="0" nodeType="pc">
+                                                                  
+                                                                  <conversationComments />
+                                                                  <subNodes />
+                                                                  <additionalData />
+                                                                  <infoObjects />
+                                                                </ContentNode>
+                                                                <ContentNode idNum="39" orderNum="2" linkTo="0" nodeType="pc">
+                                                                  <conversationText>Куда ты уйдешь отсюда?</conversationText>
+                                                                  <conversationComments />
+                                                                  <subNodes>
+                                                                    <ContentNode idNum="40" orderNum="1" linkTo="0" nodeType="npc">
+                                                                      <conversationText>Туда, откуда пришел. Я хорошо помню дорогу назад.</conversationText>
+                                                                      <conversationComments />
+                                                                      <subNodes>
+                                                                        <ContentNode idNum="41" orderNum="1" linkTo="0" nodeType="pc">
+                                                                          <conversationText>Не лги, ты знаешь, что не доберешься до выхода. По крайней мере, без моей помощи. Так что советую прислушиваться к моим указаниям.</conversationText>
+                                                                          <conversationComments />
+                                                                          <subNodes />
+                                                                          <additionalData />
+                                                                          <infoObjects />
+                                                                        </ContentNode>
+                                                                        <ContentNode idNum="42" orderNum="2" linkTo="0" nodeType="pc">
+                                                                          <conversationText>Откуда ты пришел?</conversationText>
+                                                                          <conversationComments />
+                                                                          <subNodes>
+                                                                            <ContentNode idNum="44" orderNum="1" linkTo="0" nodeType="npc">
+                                                                              <conversationText>Ты пытаешься допрашивать меня? Кто ты вообще? Только что ты собирался говорить об этом. </conversationText>
+                                                                              <conversationComments />
+                                                                              <subNodes>
+                                                                                <ContentNode idNum="46" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                  <conversationText>Я передумал. Или ты говоришь мне, кто ты и что здесь делаешь, или разговор окончен. Но имей ввиду, что последнее означает, что ты не выберешься отсюда живым.</conversationText>
+                                                                                  <conversationComments />
+                                                                                  <subNodes />
+                                                                                  <additionalData />
+                                                                                  <infoObjects />
+                                                                                </ContentNode>
+                                                                                <ContentNode idNum="47" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                  <conversationText>Хорошо, но после этого ты расскажешь и о себе.</conversationText>
+                                                                                  <conversationComments />
+                                                                                  <subNodes>
+                                                                                    <ContentNode idNum="48" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                      <conversationText>Справедливо. Но прекрати терять время. Говори.</conversationText>
+                                                                                      <conversationComments />
+                                                                                      <subNodes>
+                                                                                        <ContentNode idNum="49" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                          <conversationText>Я простой человек, попавший сюда случайно совсем недавно - кажется, вчера вечером. Так же, как и ты, я спустился в подземелье. Но мне не повезло, никто не пытался уберечь меня. Компьютер, управляющий всей этой техникой, сначала разорвал меня в клочья, а потом насильно оживил и подключил к себе, намертво связав нас.</conversationText>
+                                                                                          <conversationComments />
+                                                                                          <subNodes />
+                                                                                          <additionalData />
+                                                                                          <infoObjects />
+                                                                                        </ContentNode>
+                                                                                        <ContentNode idNum="50" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                          <conversationText>Я здесь, чтобы вершить суд над людьми.</conversationText>
+                                                                                          <conversationComments />
+                                                                                          <subNodes>
+                                                                                            <ContentNode idNum="51" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                              <conversationText>Суд? Что ты имеешь ввиду?</conversationText>
+                                                                                              <conversationComments />
+                                                                                              <subNodes>
+                                                                                                <ContentNode idNum="52" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                                  <conversationText>Каждый человек, попадающий в это место, предстает перед моим судом. Выслушав подсудимого, я решаю, будет ли он отпущен на свободу или обречен на смерть, а будучи обреченным - сгинет ли в геенне огненной или искупит свои грехи жертвой.</conversationText>
+                                                                                                  <conversationComments />
+                                                                                                  <subNodes>
+                                                                                                    <ContentNode idNum="53" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                      <conversationText>Господи, что ещё за вздор? Ты хочешь сказать, что ты все-таки не человек? Это место на вид не очень подходит для страшного суда.</conversationText>
+                                                                                                      <conversationComments />
+                                                                                                      <subNodes>
+                                                                                                        <ContentNode idNum="54" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                                          <conversationText>Я не человек. Я представитель высших сил, недоступных твоему пониманию.</conversationText>
+                                                                                                          <conversationComments />
+                                                                                                          <subNodes>
+                                                                                                            <ContentNode idNum="56" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                              <conversationText>Моему понимаю прежде всего недоступно, зачем высшим силам по мелочи лгать и противоречить себе, переписываясь со мной через эту штуковину. Если ты не имеешь ничего больше, я пойду.</conversationText>
+                                                                                                              <conversationComments />
+                                                                                                              <subNodes>
+                                                                                                                <ContentNode idNum="58" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                                                  <conversationText>Стой. Если сейчас уйдешь, ты умрешь неизбежно. Если честно раскаешься передо мной, у тебя ещё будет надежда.</conversationText>
+                                                                                                                  <conversationComments />
+                                                                                                                  <subNodes>
+                                                                                                                    <ContentNode idNum="60" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                                      <conversationText>Я раскаиваюсь только в том, что влез в эту яму, но эту ошибку я уж постараюсь исправить без милости высших сил. Приятно было пообщаться.</conversationText>
+                                                                                                                      <conversationComments />
+                                                                                                                      <subNodes />
+                                                                                                                      <additionalData />
+                                                                                                                      <infoObjects />
+                                                                                                                    </ContentNode>
+                                                                                                                  </subNodes>
+                                                                                                                  <additionalData />
+                                                                                                                  <infoObjects />
+                                                                                                                </ContentNode>
+                                                                                                                <ContentNode idNum="59" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                                                  <conversationText>Тогда иди. Ты сам сделал выбор, даже не пожелав разобраться.</conversationText>
+                                                                                                                  <conversationComments />
+                                                                                                                  <subNodes>
+                                                                                                                    <ContentNode idNum="62" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                                      <conversationText>В чем разбираться? Я не знаю кто ты, но вижу, что ты лжешь и пытаешься запугать меня. Ещё одно слово о высших силах, и я ухожу.</conversationText>
+                                                                                                                      <conversationComments />
+                                                                                                                      <subNodes>
+                                                                                                                        <ContentNode idNum="63" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                                                          <conversationText>Глупец, этими словами ты уменьшаешь свои шансы на спасение. Говори, кто ты и что здесь делаешь, немедленно.</conversationText>
+                                                                                                                          <conversationComments />
+                                                                                                                          <subNodes>
+                                                                                                                            <ContentNode idNum="66" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                                              <conversationText>Я немедленно ухожу, вот что. То, чему молятся в святилищах войны вызывает больший трепет, чем твои буковки, кто бы ты ни был.</conversationText>
+                                                                                                                              <conversationComments />
+                                                                                                                              <subNodes />
+                                                                                                                              <additionalData />
+                                                                                                                              <infoObjects />
+                                                                                                                            </ContentNode>
+                                                                                                                          </subNodes>
+                                                                                                                          <additionalData />
+                                                                                                                          <infoObjects />
+                                                                                                                        </ContentNode>
+                                                                                                                        <ContentNode idNum="64" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                                                          <conversationText>Хорошо, я расскажу тебе кое-что. Приготовься слушать.</conversationText>
+                                                                                                                          <conversationComments>123</conversationComments>
+                                                                                                                          <subNodes>
+                                                                                                                            <ContentNode idNum="67" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                                              
+                                                                                                                              <conversationComments />
+                                                                                                                              <subNodes />
+                                                                                                                              <additionalData />
+                                                                                                                              <infoObjects />
+                                                                                                                            </ContentNode>
+                                                                                                                          </subNodes>
+                                                                                                                          <additionalData />
+                                                                                                                          <infoObjects />
+                                                                                                                        </ContentNode>
+                                                                                                                        <ContentNode idNum="65" orderNum="3" linkTo="0" nodeType="pc">
+                                                                                                                          <conversationText>Иди. Разговор окончен.</conversationText>
+                                                                                                                          <conversationComments />
+                                                                                                                          <subNodes />
+                                                                                                                          <additionalData />
+                                                                                                                          <infoObjects />
+                                                                                                                        </ContentNode>
+                                                                                                                      </subNodes>
+                                                                                                                      <additionalData />
+                                                                                                                      <infoObjects />
+                                                                                                                    </ContentNode>
+                                                                                                                  </subNodes>
+                                                                                                                  <additionalData />
+                                                                                                                  <infoObjects />
+                                                                                                                </ContentNode>
+                                                                                                                <ContentNode idNum="61" orderNum="3" linkTo="0" nodeType="pc">
+                                                                                                                  <conversationText>Иди, разговор окончен.</conversationText>
+                                                                                                                  <conversationComments />
+                                                                                                                  <subNodes />
+                                                                                                                  <additionalData />
+                                                                                                                  <infoObjects />
+                                                                                                                </ContentNode>
+                                                                                                              </subNodes>
+                                                                                                              <additionalData />
+                                                                                                              <infoObjects />
+                                                                                                            </ContentNode>
+                                                                                                          </subNodes>
+                                                                                                          <additionalData />
+                                                                                                          <infoObjects />
+                                                                                                        </ContentNode>
+                                                                                                        <ContentNode idNum="55" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                                          <conversationText>Страшный суд не при чем. Просто ты либо выйдешь отсюда живым, либо умрешь, и зависит это только от тебя самого.</conversationText>
+                                                                                                          <conversationComments />
+                                                                                                          <subNodes>
+                                                                                                            <ContentNode idNum="68" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                              <conversationText>Ничего, я привык к тому, что это зависит от меня. И не привык к тому, чтобы не пойми кто или что судило меня без всякого на то основания. Я в последний раз спрашиваю, что здесь происходит, и если ты не отвечаешь - ухожу разбираться самостоятельно.</conversationText>
+                                                                                                              <conversationComments />
+                                                                                                              <subNodes>
+                                                                                                                <ContentNode idNum="69" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                                                  <conversationText>Хорошо, я расскажу тебе кое-что. приготовься слушать.</conversationText>
+                                                                                                                  <conversationComments>ситация</conversationComments>
+                                                                                                                  <subNodes>
+                                                                                                                    <ContentNode idNum="73" orderNum="2" linkTo="0" nodeType="npc">
+                                                                                                                      
+                                                                                                                      <conversationComments />
+                                                                                                                      <subNodes />
+                                                                                                                      <additionalData />
+                                                                                                                      <infoObjects />
+                                                                                                                    </ContentNode>
+                                                                                                                  </subNodes>
+                                                                                                                  <additionalData />
+                                                                                                                  <infoObjects />
+                                                                                                                </ContentNode>
+                                                                                                                <ContentNode idNum="70" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                                                  <conversationText>Говори ты - или умри.</conversationText>
+                                                                                                                  <conversationComments />
+                                                                                                                  <subNodes>
+                                                                                                                    <ContentNode idNum="71" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                                      <conversationText>Насчет последнего мы ещё посмотрим. Приятно было поболтать.</conversationText>
+                                                                                                                      <conversationComments />
+                                                                                                                      <subNodes />
+                                                                                                                      <additionalData />
+                                                                                                                      <infoObjects />
+                                                                                                                    </ContentNode>
+                                                                                                                  </subNodes>
+                                                                                                                  <additionalData />
+                                                                                                                  <infoObjects />
+                                                                                                                </ContentNode>
+                                                                                                              </subNodes>
+                                                                                                              <additionalData />
+                                                                                                              <infoObjects />
+                                                                                                            </ContentNode>
+                                                                                                          </subNodes>
+                                                                                                          <additionalData />
+                                                                                                          <infoObjects />
+                                                                                                        </ContentNode>
+                                                                                                        <ContentNode idNum="57" orderNum="3" linkTo="0" nodeType="pc">
+                                                                                                          
+                                                                                                          <conversationComments />
+                                                                                                          <subNodes />
+                                                                                                          <additionalData />
+                                                                                                          <infoObjects />
+                                                                                                        </ContentNode>
+                                                                                                      </subNodes>
+                                                                                                      <additionalData />
+                                                                                                      <infoObjects />
+                                                                                                    </ContentNode>
+                                                                                                  </subNodes>
+                                                                                                  <additionalData />
+                                                                                                  <infoObjects />
+                                                                                                </ContentNode>
+                                                                                                <ContentNode idNum="74" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                                  <conversationText>Только то, что так уж получилось, что твоя жизнь сейчас зависит от моих решений, поэтому в твоих интересах постараться договориться со мной.</conversationText>
+                                                                                                  <conversationComments />
+                                                                                                  <subNodes>
+                                                                                                    <ContentNode idNum="75" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                      <conversationText>Пока что это представляется мне довольно сложным: ты то и дело пытаешься угрожать мне и отказываешься объяснить хоть что-то. И это начинает надоедать мне, как-тебя-там.</conversationText>
+                                                                                                      <conversationComments />
+                                                                                                      <subNodes>
+                                                                                                        <ContentNode idNum="76" orderNum="1" linkTo="0" nodeType="pc">
+                                                                                                          <conversationText>Хорошо. Слушай внимательно.</conversationText>
+                                                                                                          <conversationComments>ситуация</conversationComments>
+                                                                                                          <subNodes>
+                                                                                                            <ContentNode idNum="80" orderNum="2" linkTo="0" nodeType="npc">
+                                                                                                              
+                                                                                                              <conversationComments />
+                                                                                                              <subNodes />
+                                                                                                              <additionalData />
+                                                                                                              <infoObjects />
+                                                                                                            </ContentNode>
+                                                                                                          </subNodes>
+                                                                                                          <additionalData />
+                                                                                                          <infoObjects />
+                                                                                                        </ContentNode>
+                                                                                                        <ContentNode idNum="77" orderNum="2" linkTo="0" nodeType="pc">
+                                                                                                          <conversationText>Взаимно. Разговор окончен. Готовься к смерти.</conversationText>
+                                                                                                          <conversationComments />
+                                                                                                          <subNodes>
+                                                                                                            <ContentNode idNum="78" orderNum="1" linkTo="0" nodeType="npc">
+                                                                                                              <conversationText>Всегда готов, как раньше гооврили. Рад был пообщаться.</conversationText>
+                                                                                                              <conversationComments />
+                                                                                                              <subNodes />
+                                                                                                              <additionalData />
+                                                                                                              <infoObjects />
+                                                                                                            </ContentNode>
+                                                                                                          </subNodes>
+                                                                                                          <additionalData />
+                                                                                                          <infoObjects />
+                                                                                                        </ContentNode>
+                                                                                                      </subNodes>
+                                                                                                      <additionalData />
+                                                                                                      <infoObjects />
+                                                                                                    </ContentNode>
+                                                                                                  </subNodes>
+                                                                                                  <additionalData />
+                                                                                                  <infoObjects />
+                                                                                                </ContentNode>
+                                                                                              </subNodes>
+                                                                                              <additionalData />
+                                                                                              <infoObjects />
+                                                                                            </ContentNode>
+                                                                                          </subNodes>
+                                                                                          <additionalData />
+                                                                                          <infoObjects />
+                                                                                        </ContentNode>
+                                                                                      </subNodes>
+                                                                                      <additionalData />
+                                                                                      <infoObjects />
+                                                                                    </ContentNode>
+                                                                                  </subNodes>
+                                                                                  <additionalData />
+                                                                                  <infoObjects />
+                                                                                </ContentNode>
+                                                                              </subNodes>
+                                                                              <additionalData />
+                                                                              <infoObjects />
+                                                                            </ContentNode>
+                                                                          </subNodes>
+                                                                          <additionalData />
+                                                                          <infoObjects />
+                                                                        </ContentNode>
+                                                                        <ContentNode idNum="43" orderNum="3" linkTo="0" nodeType="pc">
+                                                                          <conversationText>Ну так иди, мне надоел этот разговор.</conversationText>
+                                                                          <conversationComments />
+                                                                          <subNodes>
+                                                                            <ContentNode idNum="45" orderNum="1" linkTo="0" nodeType="npc">
+                                                                              
+                                                                              <conversationComments />
+                                                                              <subNodes />
+                                                                              <additionalData />
+                                                                              <infoObjects />
+                                                                            </ContentNode>
+                                                                          </subNodes>
+                                                                          <additionalData />
+                                                                          <infoObjects />
+                                                                        </ContentNode>
+                                                                      </subNodes>
+                                                                      <additionalData />
+                                                                      <infoObjects />
+                                                                    </ContentNode>
+                                                                  </subNodes>
+                                                                  <additionalData />
+                                                                  <infoObjects />
+                                                                </ContentNode>
+                                                              </subNodes>
+                                                              <additionalData />
+                                                              <infoObjects />
+                                                            </ContentNode>
+                                                          </subNodes>
+                                                          <additionalData />
+                                                          <infoObjects />
+                                                        </ContentNode>
+                                                        <ContentNode idNum="37" orderNum="2" linkTo="0" nodeType="pc">
+                                                          <conversationText>Мы не моем встретиться, оставайся на месте и внимательно следи за тем, что я тебе пишу.</conversationText>
+                                                          <conversationComments />
+                                                          <subNodes />
+                                                          <additionalData />
+                                                          <infoObjects />
+                                                        </ContentNode>
+                                                      </subNodes>
+                                                      <additionalData />
+                                                      <infoObjects />
+                                                    </ContentNode>
+                                                  </subNodes>
+                                                  <additionalData />
+                                                  <infoObjects />
+                                                </ContentNode>
+                                                <ContentNode idNum="32" orderNum="2" linkTo="0" nodeType="pc">
+                                                  
+                                                  <conversationComments />
+                                                  <subNodes />
+                                                  <additionalData />
+                                                  <infoObjects />
+                                                </ContentNode>
+                                                <ContentNode idNum="33" orderNum="3" linkTo="0" nodeType="pc">
+                                                  
+                                                  <conversationComments />
+                                                  <subNodes />
+                                                  <additionalData />
+                                                  <infoObjects />
+                                                </ContentNode>
+                                                <ContentNode idNum="31" orderNum="4" linkTo="0" nodeType="pc">
+                                                  <conversationText>Я ничего не буду говорить, пока ты не скаешь, кто ты и зачем пришел сюда. Я в опасности, а не ты, и у тебя нет выбора.</conversationText>
+                                                  <conversationComments />
+                                                  <subNodes />
+                                                  <additionalData />
+                                                  <infoObjects />
+                                                </ContentNode>
+                                              </subNodes>
+                                              <additionalData />
+                                              <infoObjects />
+                                            </ContentNode>
+                                          </subNodes>
+                                          <additionalData />
+                                          <infoObjects />
+                                        </ContentNode>
+                                        <ContentNode idNum="25" orderNum="2" linkTo="0" nodeType="pc">
+                                          
+                                          <conversationComments />
+                                          <subNodes />
+                                          <additionalData />
+                                          <infoObjects />
+                                        </ContentNode>
+                                        <ContentNode idNum="27" orderNum="3" linkTo="0" nodeType="pc">
+                                          
+                                          <conversationComments />
+                                          <subNodes />
+                                          <additionalData />
+                                          <infoObjects />
+                                        </ContentNode>
+                                      </subNodes>
+                                      <additionalData />
+                                      <infoObjects />
+                                    </ContentNode>
+                                  </subNodes>
+                                  <additionalData />
+                                  <infoObjects />
+                                </ContentNode>
+                                <ContentNode idNum="20" orderNum="4" linkTo="0" nodeType="pc">
+                                  <conversationText>Это не важно, тебе уже поздно что-то понимать. Скоро ты умрешь, и от тебя зависит только способ и последствия твоей смерти.</conversationText>
+                                  <conversationComments />
+                                  <subNodes />
+                                  <additionalData />
+                                  <infoObjects />
+                                </ContentNode>
+                              </subNodes>
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                        <ContentNode idNum="15" orderNum="3" linkTo="0" nodeType="pc">
+                          <conversationText>Нет.</conversationText>
+                          <conversationComments />
+                          <subNodes />
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                        <ContentNode idNum="16" orderNum="4" linkTo="0" nodeType="pc">
+                          <conversationText>Компьютер.</conversationText>
+                          <conversationComments />
+                          <subNodes />
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="4" orderNum="2" linkTo="0" nodeType="pc">
+          <conversationText>Нет.</conversationText>
+          <conversationComments />
+          <subNodes>
+            <ContentNode idNum="5" orderNum="1" linkTo="0" nodeType="npc">
+              
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="6" orderNum="3" linkTo="0" nodeType="pc">
+          <conversationText>А как ты думаешь?</conversationText>
+          <conversationComments />
+          <subNodes>
+            <ContentNode idNum="7" orderNum="1" linkTo="0" nodeType="npc">
+              
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="8" orderNum="4" linkTo="0" nodeType="pc">
+          <conversationText>Ты здесь. Остальное не имеет значения.</conversationText>
+          <conversationComments />
+          <subNodes />
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+      </subNodes>
+      <additionalData />
+      <infoObjects />
+    </ContentNode>
+  </subNodes>
+  <additionalData />
+  <infoObjects />
+  <VersionNumber>2</VersionNumber>
+</Conversation>

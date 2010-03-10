@@ -6,6 +6,7 @@
 
 #include <core.h>
 #include <gui.h>
+#include <agar/vg.h>
 
 
 #include "myButton.h"
@@ -20,7 +21,15 @@
 
 #include "htmlayout_dom.hpp"
 
+#include "geomap.hpp"
+
 #define TESTFONT "CONSOLA.ttf"
+
+#include "events.hpp";
+
+#include "globals.hpp"
+
+#include "task.hpp"
 
 using namespace std;
 
@@ -28,8 +37,7 @@ using namespace htmlayout;
 
 map<int,dialogNode*> convGraph = dialog_fun();
 char *a;
-wchar_t b;
-std::string c;
+char *b;
 
 char *cmdPromptText;
 int curNode=0;
@@ -43,6 +51,7 @@ AG_Textbox *tb;
 
 AG_Window *win;
 AG_Window *win2;
+AG_Window *win3;
 
 AG_VBox *vbox;
 AG_VBox *vbox2;
@@ -54,6 +63,15 @@ HTMLite h1;
 BITMAPINFO bmpInfo;
 HBITMAP hbmp;
 unsigned int pixels2[300][800];
+
+template <typename PARAM>
+Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
+{
+    static Slot<PARAM> b1=*(Slot<PARAM>*)arg;
+    b1(ival);
+    return 1;
+};
+
 
 void textResize(AG_Event *event)
 {
@@ -84,10 +102,20 @@ void textResize(AG_Event *event)
     div.set_style_attribute("width",wcstring);
 
   HTMLayoutUpdateElementEx(div, REDRAW_NOW);
-  POINT pt; pt.x = 0; pt.y = 0;
+
+  POINT scrollPos;
+  RECT viewRect;
+  SIZE contentSize;
+  HTMLayoutGetScrollInfo(phe, &scrollPos, &viewRect,&contentSize );
+  POINT pt; pt.x = 0;
+  pt.y = max((long int)0,contentSize.cy-300);
+  //pt.y=38;
 
   HTMLayoutSetScrollPos(phe,pt,FALSE);
+
   h1.measure(w1,he1);
+
+  DeleteObject(hbmp);
 
   void* pixelbitmap=0;
 
@@ -107,13 +135,12 @@ for (int j=0;j<=he1-1;j++)
 
 
   //surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,(w1)*4,0x00ff0000,0x0000ff00,0xff000000);
-  //AG_PixmapUpdateCurrentSurface(pm1);
+  AG_PixmapUpdateCurrentSurface(pm1);
   delete [] pixels;
-  DeleteObject(hbmp);
   delete [] pixelbitmap ;
-  delete &w1;
-  delete &he1;
-  delete [] &pt;
+  //delete &w1;
+  //delete &he1;
+  //delete [] &pt;
 
 }
 
@@ -128,16 +155,30 @@ SayHello(AG_Event *event)
     curNode=convGraph[curNode]->children[cn];
     if (convGraph[curNode]->owner=="npc")
     {
-        strcat(a,"<npc>");
+        strcat(a,"<p#npc>");
         strcat(a,convGraph[curNode]->text.c_str());
-        strcat(a,"</npc>");
+        strcat(a,"</p#npc>");
         strcat(a,"\n");
         curNode=convGraph[curNode]->children[0];
     }
     //strcpy(a,"");
+    strcat(a,"<p>");
     strcat(a,convGraph[curNode]->text.c_str());
+    strcat(a,"</p>");
     strcat(a,"\n");
+  strcpy(b,"");
+  //memset(b1,' ',1000);
+  strcat(b,"<html><head><META http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><link rel=\"stylesheet\" type=\"text/css\" href=\"mysite.css\"></head><body><div#test>");
+  strcat(b,a);
+  strcat(b,"</div#test></body></html>");
+  h1.load(LPCBYTE(b),strlen(b));
 
+  AG_SizeReq alloc;
+  AG_WidgetSizeReq(win,&alloc);
+  //AG_PostEvent(win,win, "window-user-resize", "%i%i%i%i",alloc.w,alloc.h,alloc.w-15,alloc.h);
+  AG_Event ev;
+  AG_EventArgs(&ev,"%i%i%i%i",0,0,win->wid.w,win->wid.h);
+  textResize(&ev);
 	for (int i=0;i<button.size();i++)
 	{
         if (i<convGraph[curNode]->children.size())
@@ -158,13 +199,12 @@ SayHello(AG_Event *event)
         }
 
 	};
-
+   // h1.load((LPCBYTE)a,(DWORD)sizeof(a));
    //AG_LabelJustify(button[1]->lbl, AG_TEXT_CENTER);
    //AG_LabelValign(button[1]->lbl, button[1]->valign);
    //b=wchar_t(c.c_str());
-
-
 }
+
 static void
 MultiLineExample(const char *title, int wordwrap,char* a)
 {
@@ -178,6 +218,10 @@ MultiLineExample(const char *title, int wordwrap,char* a)
 
 	win = AG_WindowNew(0);
 	AG_WindowSetCaption(win, title);
+
+	win2 = AG_WindowNew(0);
+	AG_WindowSetCaption(win2, "Карта");
+
 
     vbox = AG_VBoxNew(win,0);
     AG_Expand(vbox);
@@ -218,10 +262,18 @@ int w1,he1;
 
   //HTMLITE h1=HTMLiteCreateInstance();
 
-  LPCWSTR htmlpath = L"C:\\Agar\\hellocpp2\\bin\\Debug\\a2.html";
+  //LPCWSTR htmlpath = L"C:\\Agar\\hellocpp2\\bin\\Debug\\a2.html";
   //LPCWSTR htmlpath = L"a1.html";
   //HLTRESULT hr=HTMLiteLoadHtmlFromFile(h1,htmlpath);
-  h1.load(htmlpath);
+  //h1.load(htmlpath);
+  b=new char[1000];
+  strcpy(b,"");
+  //memset(b1,' ',1000);
+  strcat(b,"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"mysite.css\"></head><body><div#test>");
+  strcat(b,a);
+  strcat(b,"</div#test></body></html>");
+  //std::cout << b1;
+  h1.load(LPCBYTE(b),strlen(b));
   //HLTRESULT hr=HTMLiteLoadHtmlFromMemory()
   //hr=HTMLiteMeasure(h1,w1,he1);
   h1.measure(w1,he1);
@@ -332,7 +384,7 @@ for (int j=0;j<=he1-1;j++)
   AG_RegisterClass(&agMyTextboxClass);
 
 
-  tb = AG_TextboxNew(vbox, flags, NULL);
+  //tb = AG_TextboxNew(vbox, flags, NULL);
 
   /*tb2 = AG_myTextboxNew(vbox, flags, NULL);
 
@@ -366,18 +418,47 @@ for (int j=0;j<=he1-1;j++)
 
     AG_WindowShow(win);
 
-//    AG_WindowShow(win2);
 
+
+    AG_WindowSetGeometryAligned(win2, AG_WINDOW_MC, 640, 480);
+
+
+    AG_WindowShow(win2);
+
+    mapdraw();
+
+
+	win3 = AG_WindowNew(0);
+
+    AG_WindowSetGeometryAligned(win3, AG_WINDOW_MC, 640, 480);
+
+	AG_WindowSetCaption(win3, "Карта");
+
+
+	AG_Box *hb = AG_BoxNewHoriz(win3, 0);
+	AG_Expand(hb);
+
+	AG_GLView *glv;
+	glv = AG_GLViewNew(hb, 0);
+    AG_Expand(glv);
+	AG_WidgetFocus(glv);
+
+    AG_GLViewDrawFn(glv, MapDrawFunction,NULL);
+
+    AG_GLViewScaleFn(glv, MapScaleFunction, NULL);
+
+    AG_WindowShow(win3);
 }
 
 
 
 int main(int argc, char *argv[])
 {
+
 	if (AG_InitCore("", 0) == -1) {
 		return (1);
 	}
-	if (AG_InitVideo(1024, 768, 32, AG_VIDEO_RESIZABLE) == -1) {
+	if (AG_InitVideo(1024, 768, 32, AG_VIDEO_OPENGL|AG_VIDEO_RESIZABLE) == -1) {
 		return (-1);
 	}
 
@@ -400,18 +481,11 @@ int main(int argc, char *argv[])
     strcpy(a,"");
     //strcpy(cmdPromptText,"1");
 
-	MultiLineExample("Лог", 1,a);
-
     strcat(a,"\n");
     strcat(a,convGraph[curNode]->text.c_str());
-    //AG_TextColorRGB (255, 0, 0);
-	/*for (int i=0;i<convGraph[curNode]->children.size();i++)
-	{
-        strcat(a,"\n");
-        strcat(a, convGraph[convGraph[curNode]->children[i]]->text.c_str());
-	};
-    */
-    //SingleLineExample();
+
+	MultiLineExample("Лог", 1,a);
+
 
 	for (int i=0;i<button.size();i++)
 	{
@@ -421,6 +495,18 @@ int main(int argc, char *argv[])
 	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
 
     AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
+
+    //UpdateTimerSlot.add(guest1);
+
+    goToPoint order1=goToPoint(400,400,&guest1);
+
+    UpdateTimerSlot.addTask<goToPoint>(order1);
+
+    AG_Timeout *TO = new AG_Timeout;
+
+    AG_SetTimeout(TO, timerFunc<int>, &UpdateTimerSlot, 0);
+
+    AG_ScheduleTimeout(NULL, TO, 100);
 
 	AG_EventLoop();
 	AG_Destroy();

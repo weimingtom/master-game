@@ -1,18 +1,23 @@
 # depslib dependency file v1.0
-1263577914 source:c:\agar\hellocpp2\main.cpp
+1268237591 source:c:\agar\hellocpp2\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
 	<core.h>
 	<gui.h>
+	<agar/vg.h>
 	"myButton.h"
 	"mywidget.h"
 	"mytextbox.h"
 	"dialog.cpp"
 	"htmlite.h"
 	"htmlayout_dom.hpp"
+	"geomap.hpp"
+	"events.hpp"
+	"globals.hpp"
+	"task.hpp"
 
-1263047861 c:\agar\hellocpp2\dialog.cpp
+1264610450 c:\agar\hellocpp2\dialog.cpp
 	"dialog.h"
 	<direct.h>
 
@@ -176,4 +181,106 @@
 
 1249060576 c:\agar\hellocpp2\include\behaviors\notifications.h
 	<windows.h>
+
+1265204523 c:\agar\hellocpp2\visilibity.hpp
+	<cmath>
+	<vector>
+	<queue>
+	<set>
+	<list>
+	<algorithm>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<cstring>
+	<string>
+	<cassert>
+
+1268034962 c:\agar\hellocpp2\geomap.hpp
+	<core.h>
+	<gui.h>
+	<agar/vg.h>
+	"visilibity.hpp"
+	<vector>
+	<sstream>
+	"rapidxml.hpp"
+	"rapidxml_print.hpp"
+	<direct.h>
+	<agar/gui/opengl.h>
+	<GL/glu.h>
+
+1268246572 source:c:\agar\hellocpp2\geomap.cpp
+	"geomap.hpp"
+	"globals.hpp"
+
+1146244000 c:\agar\hellocpp2\delaunay.h
+	<iostream>
+	<stdlib.h>
+	<cmath>
+	<time.h>
+
+1265488062 source:c:\agar\hellocpp2\delaunay.cpp
+	"Delaunay.h"
+
+1268066269 source:c:\agar\hellocpp2\events.cpp
+	"events.hpp"
+
+1120986148 c:\agar\hellocpp2\include\srutil\delegate\delegate.hpp
+	"detail/delegate_list.hpp"
+
+1120985996 c:\agar\hellocpp2\include\srutil\delegate\detail\delegate_list.hpp
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+	"delegate_template.hpp"
+
+1121289396 c:\agar\hellocpp2\include\srutil\delegate\detail\delegate_template.hpp
+
+1267621359 c:\agar\hellocpp2\events.cpp
+	"events.hpp"
+
+1268230413 c:\agar\hellocpp2\events.hpp
+	"entity.hpp"
+	"task.hpp"
+	<iostream>
+	<vector>
+	<srutil/delegate/delegate.hpp>
+
+1267346493 c:\agar\hellocpp2\include\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1267640361 c:\agar\hellocpp2\slots.hpp
+	"events.hpp"
+
+1268228342 source:c:\agar\hellocpp2\entity.cpp
+	"entity.hpp"
+	<agar/gui/opengl.h>
+
+1268228152 c:\agar\hellocpp2\entity.hpp
+	"visilibity.hpp"
+
+1268147656 c:\agar\hellocpp2\globals.hpp
+	"entity.hpp"
+	"events.hpp"
+
+1268147625 source:c:\agar\hellocpp2\globals.cpp
+	"globals.hpp"
+
+1268229279 c:\agar\hellocpp2\task.hpp
+	"entity.hpp"
+	"visilibity.hpp"
+
+1268229704 source:c:\agar\hellocpp2\task.cpp
+	"task.hpp"
 

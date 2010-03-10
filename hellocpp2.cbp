@@ -16,11 +16,6 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add option="-mwindows" />
-					<Add library="C:\Agar\libSDL.dll.a" />
-					<Add library="C:\Agar\libSDLmain.a" />
-					<Add library="C:\MinGW\lib\libmingw32.a" />
-					<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
 					<Add directory="C:\Agar\hellocpp2\bin\Debug" />
 				</Linker>
 			</Target>
@@ -29,7 +24,24 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Linker>
+			<Add option="-mwindows" />
+			<Add library="C:\MinGW\lib\libmingw32.a" />
+			<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
+			<Add library="C:\cpp\visilibity\source_code\visilibity.o" />
+			<Add library="C:\MinGW\lib\libglu32.a" />
+			<Add library="C:\Agar\Agar-source\core\.libs\libag_core.a" />
+			<Add library="C:\Agar\Agar-source\gui\.libs\libag_gui.a" />
+			<Add library="C:\Agar\freetype-2.1.10\objs\.libs\libfreetype.a" />
+			<Add library="C:\Agar\libSDLmain.a" />
+			<Add library="C:\Agar\libSDL.dll.a" />
+			<Add library="C:\Agar\libopengl32.a" />
+		</Linker>
 		<Unit filename="dialog.h" />
+		<Unit filename="entity.cpp" />
+		<Unit filename="events.cpp" />
+		<Unit filename="geomap.cpp" />
+		<Unit filename="globals.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="myButton.cpp" />
 		<Unit filename="myButton.h" />
@@ -37,6 +49,7 @@
 		<Unit filename="mytextbox.h" />
 		<Unit filename="mywidget.cpp" />
 		<Unit filename="mywidget.h" />
+		<Unit filename="task.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
