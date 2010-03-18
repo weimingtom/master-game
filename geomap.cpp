@@ -1,7 +1,6 @@
 #include "geomap.hpp"
 #include "globals.hpp"
-
-
+#include "pcre.h"
 geoData sceneVertices;
 VisiLibity::Visibility_Polygon visiPoly;
 GLUtesselator *tess;
@@ -25,6 +24,7 @@ GLvoid CALLBACK tcbEnd ()
 
 geoData mapload(char* path)
 {
+
 
     std::ifstream in(path);
     std::string s;
@@ -54,29 +54,10 @@ geoData mapload(char* path)
 
     int i=0;
 
-    while (n1) {
-        std::string coords;
-        coords = std::string(n1->first_attribute("d")->value());
-        std::istringstream coordstr(coords);
+    while (n1)
+    {
 
-
-        char controlSymb;
-        float pointx,pointy;
-        char separator;
-
-        //std::vector < std::vector < VisiLibity::Point > > a1;
-        //std::vector < VisiLibity::Point > poly1;
-        //vertices_temp.push_back(poly1);
-        std::vector < VisiLibity::Point > poly_temp;
-        vertices_temp.push_back(poly_temp);
-        //coordstr>>controlSymb>>pointx>>separator>>pointy;
-        coordstr>>controlSymb;
-        //char term[]="z";
-        while (controlSymb!='z'){
-            coordstr>>pointx>>separator>>pointy;
-            vertices_temp[i].push_back(VisiLibity::Point(pointx,pointy));
-            coordstr>>controlSymb;
-        };
+        vertices_temp.push_back(loadPath(n1->first_attribute("d")->value()));
         n1=n1->next_sibling("path");
         i++;
     }
@@ -136,8 +117,15 @@ void MapDrawFunction(AG_Event *event)
 
     mapdraw();
 
+
+
 	glLoadIdentity();
 	glPushAttrib(GL_POLYGON_BIT|GL_LIGHTING_BIT|GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);
+
+    glClearColor(0.0f,0.0f,0.0f,1.0f);
+
+
 
 //	glEnable(GL_LIGHTING);
 //	glEnable(GL_LIGHT0);
@@ -145,10 +133,6 @@ void MapDrawFunction(AG_Event *event)
 //	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
 //
 //	glShadeModel(shading == FLATSHADING ? GL_FLAT : GL_SMOOTH);
-
-    glEnable(GL_DEPTH_TEST);
-
-    glClearColor(0.0f,0.0f,0.0f,1.0f);
 
 //	glEnable(GL_LIGHT1);
 //	glEnable(GL_DEPTH_TEST);
@@ -219,6 +203,7 @@ void MapDrawFunction(AG_Event *event)
 
     glPopMatrix();
     glPopAttrib();
+
     };
 void
 MapScaleFunction(AG_Event *event)
@@ -240,5 +225,113 @@ MapScaleFunction(AG_Event *event)
 
 
 	glOrtho(xMin, xMax, yMin, yMax, 0.1, 100.0);
-}
+};
+
+std::vector<VisiLibity::Point> loadPath(char* str)
+{
+char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
+   char point[] = "[-\\d]*\\.*\\d*,[-\\d]*\\.*\\d*"; // шаблон (регулярное выражение)
+//   char str[] = "m 148.57143,503.79075 l 5.71428,348.57143 85.71429,0 -17.14286,-354.28571 -74.28571,5.71428 z";  // разбираемая строка
+   //char str[] = "eseses";  // разбираемая строка
+    std::vector<std::string> commands;
+    std::vector<std::vector<VisiLibity::Point> > sequences;
+
+    VisiLibity::Point curPos;
+
+
+   // компилирование регулярного выражения во внутреннее представление
+   pcre *re;
+   pcre *ptpattern;
+   int options = 0;
+   const char *error;
+   int erroffset;
+   re = pcre_compile ((char *) pattern, options, &error, &erroffset, NULL);
+   ptpattern = pcre_compile ((char *) point, options, &error, &erroffset, NULL);
+
+
+   if (!re){ // в случае ошибки компиляции
+        cout << "Failed\n";
+   }
+   else{
+      int count = 1;
+      int ovector[30];
+
+      const char* buff2;
+      ovector[1]=1;
+
+       int i=0;
+       while (count>0){
+            count = pcre_exec (re, NULL, (char *) str, strlen(str), ovector[1]-1, 0, ovector, 30);
+
+            for (int c = 0; c < 2 * count; c += 2){
+            if (ovector[c] < 0){ // или <unset> для несопоставившихся подвыражений
+               cout << "<unset>\n";
+            }
+            else{
+               pcre_get_substring(str,ovector,count,0,&buff2);
+               commands.push_back(buff2);
+               cout << commands[i] << "\n";
+               i++;
+            }
+         }
+      }
+   }
+
+   if (!ptpattern){ // в случае ошибки компиляции
+      cout << "Failed\n";
+   }
+   else{
+
+      for (int i=0; i<commands.size();i++)
+      {
+
+        int count = 1;
+        int ovector[30];
+
+        ovector[1]=1;
+
+        const char* temp=commands[i].c_str();
+
+         std::vector < VisiLibity::Point > poly_temp;
+         sequences.push_back(poly_temp);
+
+
+          while (count >0)
+          {
+
+            count = pcre_exec (ptpattern, NULL, (char *)temp ,strlen(temp) , ovector[1]+1, 0, ovector, 30);
+             //вывод пар {начало, конец} совпадения
+             for (int c = 0; c < 2 * count; c += 2)
+             {
+                const char* tempcoords;
+                float pointx,pointy;
+                char separator;
+
+                pcre_get_substring(temp,ovector,count,0,&tempcoords);
+                std::string coords;
+                coords = std::string(tempcoords);
+                std::istringstream coordstr(coords);
+                coordstr>>pointx>>separator>>pointy;
+
+                if ((temp[0]=='l')||((temp[0]=='m')&&(sequences[i].size()>0)))
+                {
+                    pointx=pointx+curPos.x();
+                    pointy=pointy+curPos.y();
+                }
+                sequences[i].push_back(VisiLibity::Point(pointx,pointy));
+                curPos=VisiLibity::Point(pointx,pointy);
+                cout<<sequences[i].back().x()<<","<<sequences[i].back().y()<<"\n";
+                //cout<<pointx<<separator<<pointy<<"\n";
+             }
+           }
+        }
+     }
+   std::vector < VisiLibity::Point > path;
+
+   for (vector<vector<VisiLibity::Point> >::iterator i1 = sequences.begin();i1 != sequences.end();i1++)
+    for (vector<VisiLibity::Point>::iterator i2 = i1->begin();i2!=i1->end();i2++)
+        path.push_back(*i2);
+
+   return path;
+};
 

@@ -36,6 +36,7 @@
 			<Add library="C:\Agar\libSDLmain.a" />
 			<Add library="C:\Agar\libSDL.dll.a" />
 			<Add library="C:\Agar\libopengl32.a" />
+			<Add library="C:\cpp\regex\lib\libpcre.dll.a" />
 		</Linker>
 		<Unit filename="dialog.h" />
 		<Unit filename="entity.cpp" />

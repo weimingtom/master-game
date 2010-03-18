@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1268237591 source:c:\agar\hellocpp2\main.cpp
+1268400863 source:c:\agar\hellocpp2\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
@@ -197,7 +197,7 @@
 	<string>
 	<cassert>
 
-1268034962 c:\agar\hellocpp2\geomap.hpp
+1268847515 c:\agar\hellocpp2\geomap.hpp
 	<core.h>
 	<gui.h>
 	<agar/vg.h>
@@ -210,9 +210,10 @@
 	<agar/gui/opengl.h>
 	<GL/glu.h>
 
-1268246572 source:c:\agar\hellocpp2\geomap.cpp
+1268897953 source:c:\agar\hellocpp2\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
+	"pcre.h"
 
 1146244000 c:\agar\hellocpp2\delaunay.h
 	<iostream>
@@ -263,7 +264,7 @@
 1267640361 c:\agar\hellocpp2\slots.hpp
 	"events.hpp"
 
-1268228342 source:c:\agar\hellocpp2\entity.cpp
+1268246614 source:c:\agar\hellocpp2\entity.cpp
 	"entity.hpp"
 	<agar/gui/opengl.h>
 
@@ -281,6 +282,24 @@
 	"entity.hpp"
 	"visilibity.hpp"
 
-1268229704 source:c:\agar\hellocpp2\task.cpp
+1268424526 source:c:\agar\hellocpp2\task.cpp
 	"task.hpp"
+
+1166520694 c:\agar\hellocpp2\include\pcre.h
+	<stdlib.h>
+
+1265204523 c:\agar\hellocpp2\include\visilibity.hpp
+	<cmath>
+	<vector>
+	<queue>
+	<set>
+	<list>
+	<algorithm>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<cstring>
+	<string>
+	<cassert>
 
