@@ -23,7 +23,8 @@
 typedef std::vector < std::vector < VisiLibity::Point > > geoData;
 
 void mapdraw();
-geoData mapload(char* path);
+VisiLibity::Point normal(VisiLibity::Point Vector);
+geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibility_Graph & visGraph,float clearDist);
 std::vector<VisiLibity::Point> loadPath(char* str);
 void MapDrawFunction(AG_Event *event);
 void MapScaleFunction(AG_Event *event);

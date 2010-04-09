@@ -13,8 +13,6 @@
 
 using namespace std;
 
-
-
 template <typename PARAM>
 class Slot         //слот для наблюдателей с одним параметром
 {

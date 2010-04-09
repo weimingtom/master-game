@@ -1,7 +1,6 @@
 #include "geomap.hpp"
 #include "globals.hpp"
 #include "pcre.h"
-geoData sceneVertices;
 VisiLibity::Visibility_Polygon visiPoly;
 GLUtesselator *tess;
 
@@ -22,7 +21,7 @@ GLvoid CALLBACK tcbEnd ()
 }
 
 
-geoData mapload(char* path)
+geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibility_Graph & visGraph,float clearDist )
 {
 
 
@@ -56,37 +55,57 @@ geoData mapload(char* path)
 
     while (n1)
     {
-
         vertices_temp.push_back(loadPath(n1->first_attribute("d")->value()));
         n1=n1->next_sibling("path");
         i++;
     }
 
+    float sf;
+
+    std::vector<VisiLibity::Polygon> envPolys;
+  //  std::vector<VisiLibity::Polygon> envPolysCollision;
+    for (int i=0;i<vertices_temp.size();i++){
+        envPolys.push_back(VisiLibity::Polygon(vertices_temp[i]));
+        envPolys[i].eliminate_redundant_vertices(0.0001);
+        VisiLibity::Point cm=envPolys[i].centroid();
+ //       envPolysCollision.push_back(VisiLibity::Polygon(vertices_temp[i]));
+            for (int j=0;j<envPolys[i].n();j++)
+            {
+                    if (j<envPolys[i].n()-1){
+                        VisiLibity::Point n1=-clearDist*normal(envPolys[i][j+1]-envPolys[i][j]);
+                        envPolys[i][j]=envPolys[i][j]+n1;
+                        envPolys[i][j+1]=envPolys[i][j+1]+n1;
+                    }
+//                if (i==0)
+//                    sf=1/scaleFactor;
+//                else
+//                    sf=scaleFactor;
+//                envPolys[i][j]=(envPolys[i][j]-cm)*sf+cm;
+            }
+            VisiLibity::Point n1=-clearDist*normal(envPolys[i][0]-envPolys[i][envPolys[i].n()-1]);
+            envPolys[i][0]=envPolys[i][0]+n1;
+            envPolys[i][envPolys[i].n()-1]=envPolys[i][envPolys[i].n()-1]+n1;
+
+
+    };
+
+    mapEnv = *(new VisiLibity::Environment(envPolys));
+    //mapEnvCollision = *(new VisiLibity::Environment(envPolysCollision));
+    //std::cout << mapEnv.h();
+    //int holes=mapEnv.h();
+    mapEnv.enforce_standard_form();
+    //mapEnvCollision.enforce_standard_form();
+
+    visGraph = *(new VisiLibity::Visibility_Graph(mapEnv));
+    //visGraphCollision = *(new VisiLibity::Visibility_Graph(mapEnvCollision));
     return vertices_temp;
 
 };
 
 void mapdraw()
 {
-        char cd[_MAX_PATH];
-    getcwd(cd, _MAX_PATH);
-    //cout << cd;
-    strcat(cd,"\\map.svg");
 
-    sceneVertices = mapload(cd);
-    std::vector<VisiLibity::Polygon> envPolys;
 
-    for (int i=0;i<sceneVertices.size();i++){
-        envPolys.push_back(VisiLibity::Polygon(sceneVertices[i]));
-        envPolys[i].eliminate_redundant_vertices(0.0001);
-        //VG_Polygon* vgpoly1=Visi2VG(VisiLibity::Polygon(sceneVertices[i]),vgroot);
-        //VG_PolygonSetOutline(vgpoly1,1);
-    };
-
-    VisiLibity::Environment mapEnv(envPolys);
-    //std::cout << mapEnv.h();
-    //int holes=mapEnv.h();
-    mapEnv.enforce_standard_form();
     VisiLibity::Point pt1;
     //pt1=VisiLibity::Point(160.0f,180.0f);
     pt1=guest1.pos;
@@ -175,6 +194,19 @@ void MapDrawFunction(AG_Event *event)
     };
 
 
+
+    glColor3f(0.9,0.9,0.0);
+    for (int i=0;i<mapEnvCollision.h()+1;i++){
+        glBegin(GL_LINE_LOOP);
+        for (int j=0;j<mapEnvCollision[i].n();j++){
+            glVertex3f( mapEnvCollision[i][j].x(), mapEnvCollision[i][j].y(), 0.0f);
+        };
+        //glVertex3f( sceneVertices[i][0].x(), sceneVertices[i][0].y(), 0.0f);
+        glEnd();
+    };
+
+
+
     gluTessBeginPolygon (tess, NULL);
     gluTessBeginContour (tess);
     GLdouble data[visiPoly.n()][3];
@@ -195,6 +227,14 @@ void MapDrawFunction(AG_Event *event)
         }
     glEnd();
 
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_LINE_STRIP);
+        for (int i=0;i<motionPath.size();i++){
+            glVertex3f(motionPath[i].x(),motionPath[i].y(),0.1f);
+        }
+    glEnd();
+
+
     //glPopMatrix();
     GLfloat marker[4]={1.0,0.0,0.0,1.0};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, marker);
@@ -208,7 +248,7 @@ void MapDrawFunction(AG_Event *event)
 void
 MapScaleFunction(AG_Event *event)
 {
-	GLdouble xMin, xMax, yMin, yMax;
+	//GLdouble xMin, xMax, yMin, yMax;
 
 	glLoadIdentity();
 
@@ -218,13 +258,9 @@ MapScaleFunction(AG_Event *event)
 	xMin = yMin;
 	xMax = yMax;
 	*/
-	yMin=0;
-	yMax=1000;
-	xMin=0;
-	xMax=1024;
 
 
-	glOrtho(xMin, xMax, yMin, yMax, 0.1, 100.0);
+	glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
 };
 
 std::vector<VisiLibity::Point> loadPath(char* str)
@@ -335,3 +371,8 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное
    return path;
 };
 
+VisiLibity::Point normal(VisiLibity::Point Vector)
+{
+        VisiLibity::Point result=*(new VisiLibity::Point(-1.0*Vector.y(),Vector.x()));
+        return 1/sqrt(result.x()*result.x() + result.y()*result.y())*result;
+}

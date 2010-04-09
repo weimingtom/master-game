@@ -38,11 +38,11 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="704"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
-     inkscape:window-maximized="1"
+     inkscape:window-width="554"
+     inkscape:window-height="486"
+     inkscape:window-x="-56"
+     inkscape:window-y="195"
+     inkscape:window-maximized="0"
      inkscape:snap-grids="true" />
   <metadata
      id="metadata2822">
@@ -66,7 +66,7 @@
        id="path2852" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="M 319.69237,316.81312 342.01252,133.51073 511.87492,172.9433 392.92614,374.80749 319.69237,316.81312 z"
+       d="M 291.12094,316.81312 313.44109,133.51073 483.30349,172.9433 364.35471,374.80749 291.12094,316.81312 z"
        id="path2858" />
   </g>
 </svg>

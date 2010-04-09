@@ -5,16 +5,19 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="entity.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="209" topLine="4" />
+		<Cursor position="2" topLine="0" />
 	</File>
 	<File name="events.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="23" topLine="0" />
+		<Cursor position="73" topLine="0" />
 	</File>
 	<File name="geomap.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="9744" topLine="330" />
+		<Cursor position="5194" topLine="179" />
+	</File>
+	<File name="globals.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="311" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="11624" topLine="481" />
+		<Cursor position="5881" topLine="250" />
 	</File>
 	<File name="myButton.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="1010" topLine="36" />
@@ -31,7 +34,7 @@
 	<File name="mywidget.h" open="0" top="0" tabpos="6">
 		<Cursor position="14" topLine="0" />
 	</File>
-	<File name="task.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="130" topLine="0" />
+	<File name="task.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="709" topLine="26" />
 	</File>
 </CodeBlocks_layout_file>

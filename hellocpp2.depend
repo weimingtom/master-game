@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1268400863 source:c:\agar\hellocpp2\main.cpp
+1270819818 source:c:\agar\hellocpp2\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
@@ -17,11 +17,11 @@
 	"globals.hpp"
 	"task.hpp"
 
-1264610450 c:\agar\hellocpp2\dialog.cpp
+1264614050 c:\agar\hellocpp2\dialog.cpp
 	"dialog.h"
 	<direct.h>
 
-1253876463 c:\agar\hellocpp2\dialog.h
+1253880063 c:\agar\hellocpp2\dialog.h
 	<windows.h>
 	<iostream>
 	<fstream>
@@ -46,33 +46,33 @@
 	"rapidxml_print.hpp"
 	"dialog.h"
 
-1258920322 c:\agar\hellocpp2\mywidget.h
+1258923922 c:\agar\hellocpp2\mywidget.h
 
 1257510864 source:c:\agar\hellocpp2\mywidget.c
 	<core.h>
 	<gui.h>
 	"mywidget.h"
 
-1259353959 source:c:\agar\hellocpp2\mywidget.cpp
+1259357559 source:c:\agar\hellocpp2\mywidget.cpp
 	<core.h>
 	<gui.h>
 	"mywidget.h"
 
-1259698282 source:c:\agar\hellocpp2\mybutton.cpp
+1259701882 source:c:\agar\hellocpp2\mybutton.cpp
 	<core.h>
 	<gui.h>
 	<agar/gui/widget.h>
 	"myButton.h"
 	<string>
 
-1258749600 c:\agar\hellocpp2\mybutton.h
+1258753200 c:\agar\hellocpp2\mybutton.h
 	<agar/gui/widget.h>
 
-1259956805 c:\agar\hellocpp2\mytextbox.h
+1259960405 c:\agar\hellocpp2\mytextbox.h
 	<agar/core/types.h>
 	<agar/gui/widget.h>
 
-1260526620 source:c:\agar\hellocpp2\mytextbox.cpp
+1260530220 source:c:\agar\hellocpp2\mytextbox.cpp
 	<core.h>
 	<gui.h>
 	<agar/gui/widget.h>
@@ -81,11 +81,11 @@
 
 1259956767 c:\agar\hellocpp2\myeditable.h
 
-1261667282 c:\agar\hellocpp2\htmlite.h
+1261670882 c:\agar\hellocpp2\htmlite.h
 	"htmlayout.h"
 	"htmlayout_behavior.hpp"
 
-1260131030 c:\agar\hellocpp2\include\htmlayout.h
+1260134630 c:\agar\hellocpp2\include\htmlayout.h
 	<windows.h>
 	"value.h"
 	"htmlayout_dom.h"
@@ -97,17 +97,17 @@
 	"htmlayout_value.hpp"
 	"htmlayout_controls.hpp"
 
-1260560436 c:\agar\hellocpp2\include\value.h
+1260564036 c:\agar\hellocpp2\include\value.h
 	<windows.h>
 	<string>
 	"aux-slice.h"
 	"aux-cvt.h"
 
-1249060578 c:\agar\hellocpp2\include\aux-slice.h
+1249064178 c:\agar\hellocpp2\include\aux-slice.h
 	"aux-cvt.h"
 	"limits.h"
 
-1259416956 c:\agar\hellocpp2\include\aux-cvt.h
+1259420556 c:\agar\hellocpp2\include\aux-cvt.h
 	<assert.h>
 	<wchar.h>
 	<string.h>
@@ -115,20 +115,20 @@
 	<stdlib.h>
 	<stdio.h>
 
-1259169016 c:\agar\hellocpp2\include\htmlayout_dom.h
+1259172616 c:\agar\hellocpp2\include\htmlayout_dom.h
 	"value.h"
 
-1249060578 c:\agar\hellocpp2\include\htmlayout_behavior.h
+1249064178 c:\agar\hellocpp2\include\htmlayout_behavior.h
 	<windows.h>
 
-1249060578 c:\agar\hellocpp2\include\htmlayout_behavior.hpp
+1249064178 c:\agar\hellocpp2\include\htmlayout_behavior.hpp
 	<windows.h>
 	<assert.h>
 	"htmlayout.h"
 	"htmlayout_behavior.h"
 	"behavior_impl.hpp"
 
-1259483826 c:\agar\hellocpp2\include\htmlayout_dom.hpp
+1259487426 c:\agar\hellocpp2\include\htmlayout_dom.hpp
 	"value.h"
 	"htmlayout_dom.h"
 	"htmlayout_aux.h"
@@ -137,7 +137,7 @@
 	<stdio.h>
 	<vector>
 
-1253543600 c:\agar\hellocpp2\include\htmlayout_aux.h
+1253547200 c:\agar\hellocpp2\include\htmlayout_aux.h
 	<stdio.h>
 	<stdlib.h>
 	<string>
@@ -145,12 +145,12 @@
 	"aux-slice.h"
 	"htmlayout.h"
 
-1255011158 c:\agar\hellocpp2\include\htmlayout_queue.h
+1255014758 c:\agar\hellocpp2\include\htmlayout_queue.h
 	<windows.h>
 	<stdio.h>
 	<assert.h>
 
-1259416970 c:\agar\hellocpp2\include\htmlayout_dialog.hpp
+1259420570 c:\agar\hellocpp2\include\htmlayout_dialog.hpp
 	"htmlayout_dom.hpp"
 	"htmlayout_behavior.hpp"
 	"htmlayout_controls.hpp"
@@ -159,27 +159,27 @@
 	<shellapi.h>
 	<assert.h>
 
-1259169562 c:\agar\hellocpp2\include\htmlayout_controls.hpp
+1259173162 c:\agar\hellocpp2\include\htmlayout_controls.hpp
 	<stdio.h>
 	"value.h"
 	"htmlayout_dom.hpp"
 	"htmlayout_value.hpp"
 	"htmlayout_aux.h"
 
-1249060578 c:\agar\hellocpp2\include\htmlayout_value.hpp
+1249064178 c:\agar\hellocpp2\include\htmlayout_value.hpp
 	<assert.h>
 	"value.h"
 	<map>
 	<string>
 	<vector>
 
-1254319918 c:\agar\hellocpp2\include\htmlayout_notifications.hpp
+1254323518 c:\agar\hellocpp2\include\htmlayout_notifications.hpp
 	"htmlayout_dom.h"
 	"htmlayout_aux.h"
 	"htmlayout_behavior.hpp"
 	<assert.h>
 
-1249060576 c:\agar\hellocpp2\include\behaviors\notifications.h
+1249064176 c:\agar\hellocpp2\include\behaviors\notifications.h
 	<windows.h>
 
 1265204523 c:\agar\hellocpp2\visilibity.hpp
@@ -197,7 +197,7 @@
 	<string>
 	<cassert>
 
-1268847515 c:\agar\hellocpp2\geomap.hpp
+1270818881 c:\agar\hellocpp2\geomap.hpp
 	<core.h>
 	<gui.h>
 	<agar/vg.h>
@@ -210,7 +210,7 @@
 	<agar/gui/opengl.h>
 	<GL/glu.h>
 
-1268897953 source:c:\agar\hellocpp2\geomap.cpp
+1270819478 source:c:\agar\hellocpp2\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre.h"
@@ -224,13 +224,13 @@
 1265488062 source:c:\agar\hellocpp2\delaunay.cpp
 	"Delaunay.h"
 
-1268066269 source:c:\agar\hellocpp2\events.cpp
+1268069869 source:c:\agar\hellocpp2\events.cpp
 	"events.hpp"
 
-1120986148 c:\agar\hellocpp2\include\srutil\delegate\delegate.hpp
+1120989748 c:\agar\hellocpp2\include\srutil\delegate\delegate.hpp
 	"detail/delegate_list.hpp"
 
-1120985996 c:\agar\hellocpp2\include\srutil\delegate\detail\delegate_list.hpp
+1120989596 c:\agar\hellocpp2\include\srutil\delegate\detail\delegate_list.hpp
 	"delegate_template.hpp"
 	"delegate_template.hpp"
 	"delegate_template.hpp"
@@ -243,12 +243,12 @@
 	"delegate_template.hpp"
 	"delegate_template.hpp"
 
-1121289396 c:\agar\hellocpp2\include\srutil\delegate\detail\delegate_template.hpp
+1121292996 c:\agar\hellocpp2\include\srutil\delegate\detail\delegate_template.hpp
 
 1267621359 c:\agar\hellocpp2\events.cpp
 	"events.hpp"
 
-1268230413 c:\agar\hellocpp2\events.hpp
+1269439322 c:\agar\hellocpp2\events.hpp
 	"entity.hpp"
 	"task.hpp"
 	<iostream>
@@ -264,31 +264,33 @@
 1267640361 c:\agar\hellocpp2\slots.hpp
 	"events.hpp"
 
-1268246614 source:c:\agar\hellocpp2\entity.cpp
+1268250214 source:c:\agar\hellocpp2\entity.cpp
 	"entity.hpp"
 	<agar/gui/opengl.h>
 
-1268228152 c:\agar\hellocpp2\entity.hpp
+1268231752 c:\agar\hellocpp2\entity.hpp
 	"visilibity.hpp"
 
-1268147656 c:\agar\hellocpp2\globals.hpp
+1270364641 c:\agar\hellocpp2\globals.hpp
 	"entity.hpp"
 	"events.hpp"
+	"geomap.hpp"
 
-1268147625 source:c:\agar\hellocpp2\globals.cpp
+1270364561 source:c:\agar\hellocpp2\globals.cpp
 	"globals.hpp"
 
-1268229279 c:\agar\hellocpp2\task.hpp
+1269458970 c:\agar\hellocpp2\task.hpp
 	"entity.hpp"
 	"visilibity.hpp"
+	<vector>
 
-1268424526 source:c:\agar\hellocpp2\task.cpp
+1269459717 source:c:\agar\hellocpp2\task.cpp
 	"task.hpp"
 
-1166520694 c:\agar\hellocpp2\include\pcre.h
+1166524294 c:\agar\hellocpp2\include\pcre.h
 	<stdlib.h>
 
-1265204523 c:\agar\hellocpp2\include\visilibity.hpp
+1265208123 c:\agar\hellocpp2\include\visilibity.hpp
 	<cmath>
 	<vector>
 	<queue>

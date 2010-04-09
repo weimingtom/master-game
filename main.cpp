@@ -253,6 +253,20 @@ MultiLineExample(const char *title, int wordwrap,char* a)
    //win2 = AG_WindowNew(0);
    //AG_WindowSetCaption(win2, "Варианты ответов");
 
+
+
+    char cd[_MAX_PATH];
+    getcwd(cd, _MAX_PATH);
+    //cout << cd;
+    strcat(cd,"\\map.svg");
+
+    sceneVertices = mapload(cd,mapEnv,visGraph,1.0);
+    sceneVerticesCollision = mapload(cd,mapEnvCollision,visGraphCollision,10);
+
+
+    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(500,700),visGraphCollision,5);
+
+
 int w1,he1;
 
   w1=800;
@@ -498,9 +512,24 @@ int main(int argc, char *argv[])
 
     //UpdateTimerSlot.add(guest1);
 
-    goToPoint order1=goToPoint(400,400,&guest1);
+    goToPoint order1=goToPoint(motionPath[0].x(),motionPath[0].y(),&guest1);
+    ComplexTask followPath=ComplexTask(order1);
+    for (int i =1;i<motionPath.size();i++)
+    {
+        //goToPoint order2= ;
+        motionPath[i].snap_to_boundary_of(mapEnv);
+        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
+    }
 
-    UpdateTimerSlot.addTask<goToPoint>(order1);
+
+//    goToPoint order2=goToPoint(200,100,&guest1);
+
+//    ComplexTask followPath=ComplexTask(order1);
+
+//    followPath.AddAction(order1);
+    //followPath.AddAction(order2);
+
+    UpdateTimerSlot.addTask<ComplexTask>(followPath);
 
     AG_Timeout *TO = new AG_Timeout;
 
