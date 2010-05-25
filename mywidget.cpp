@@ -2,16 +2,22 @@
 
 /*
  * Implementation of a typical Agar widget which uses surface mappings to
- * efficiently draw surfaces in either framebuffer or GL display mode.
+ * efficiently draw surfaces, regardless of the underlying graphics system.
  *
  * If you are not familiar with the way the Agar object system handles
  * inheritance, see demos/objsystem.
  */
 
-#include <core.h>
-#include <gui.h>
+#include <agar/core.h>
+#include <agar/gui.h>
 
 #include "mywidget.h"
+
+#include "htmlite.h"
+
+#include "htmlayout_dom.hpp"
+
+#include "globals.hpp"
 
 /*
  * This is a generic constructor function. It is completely optional, but
@@ -97,36 +103,19 @@ Draw(void *p)
 {
 	MyWidget *my = (MyWidget*)p;
 
-	/*
-	 * Draw a box spanning the widget area. In order to allow themeing,
-	 * you would generally use a STYLE() call here instead, see AG_Style(3)
-	 * for more information on styles.
-	 */
-	AG_DrawBox(my,
-	    AG_RECT(0, 0, AGWIDGET(my)->w, AGWIDGET(my)->h), 1,
-	    AG_COLOR(BUTTON_COLOR));
 
 	/*
 	 * Render some text into a new surface. In OpenGL mode, the
 	 * AG_WidgetMapSurface() call involves a texture upload.
-
+	 */
 	if (my->mySurface == -1) {
-		AG_TextFont(AG_FetchFont(NULL, 24, 0));
 		my->mySurface = AG_WidgetMapSurface(my,
-		    AG_TextRender("Custom widget!"));
-	}
-	*/
+		    surf1);
+	};
 
+
+  //AG_WidgetUpdateSurface(my,my->mySurface);
 	/* Blit the mapped surface at [0,0]. */
-	    AG_TextColorRGB(0,0,0);
-	my->mySurface = AG_WidgetMapSurface(my,
-		    AG_TextRender("Custom"));
-	AG_WidgetBlitSurface(my, my->mySurface, 0, 0);
-
-    AG_TextColorRGB(255,0,0);
-
-	my->mySurface = AG_WidgetMapSurface(my,
-		    AG_TextRender("widget"));
 	AG_WidgetBlitSurface(my, my->mySurface, 0, 0);
 }
 
@@ -150,7 +139,7 @@ MouseButtonDown(AG_Event *event)
 	int x = AG_INT(2);
 	int y = AG_INT(3);
 
-	if (button != SDL_BUTTON_LEFT) {
+	if (button != AG_MOUSE_LEFT) {
 		return;
 	}
 	printf("Click at %d,%d\n", x, y);
@@ -217,11 +206,11 @@ Init(void *obj)
 	 *
 	 * Here we register handlers for the common AG_Window(3) events.
 	 */
-	AG_SetEvent(my, "window-mousebuttonup", MouseButtonUp, NULL);
-	AG_SetEvent(my, "window-mousebuttondown", MouseButtonDown, NULL);
-	AG_SetEvent(my, "window-mousemotion", MouseMotion, NULL);
-	AG_SetEvent(my, "window-keyup", KeyUp, NULL);
-	AG_SetEvent(my, "window-keydown", KeyDown, NULL);
+	AG_SetEvent(my, "mouse-button-up", MouseButtonUp, NULL);
+	AG_SetEvent(my, "mouse-button-down", MouseButtonDown, NULL);
+	AG_SetEvent(my, "mouse-motion", MouseMotion, NULL);
+	AG_SetEvent(my, "key-up", KeyUp, NULL);
+	AG_SetEvent(my, "key-down", KeyDown, NULL);
 }
 
 /*

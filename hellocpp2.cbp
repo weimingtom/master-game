@@ -23,20 +23,24 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="C:\msys\1.0\local\include\agar" />
 		</Compiler>
 		<Linker>
 			<Add option="-mwindows" />
-			<Add library="C:\MinGW\lib\libmingw32.a" />
+			<Add option="-lwinmm" />
 			<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
 			<Add library="C:\cpp\visilibity\source_code\visilibity.o" />
 			<Add library="C:\MinGW\lib\libglu32.a" />
-			<Add library="C:\Agar\Agar-source\core\.libs\libag_core.a" />
-			<Add library="C:\Agar\Agar-source\gui\.libs\libag_gui.a" />
+			<Add library="C:\Agar\agar-trunk\core\.libs\libag_core.a" />
+			<Add library="C:\Agar\agar-trunk\gui\.libs\libag_gui.a" />
 			<Add library="C:\Agar\freetype-2.1.10\objs\.libs\libfreetype.a" />
 			<Add library="C:\Agar\libSDLmain.a" />
 			<Add library="C:\Agar\libSDL.dll.a" />
 			<Add library="C:\Agar\libopengl32.a" />
 			<Add library="C:\cpp\regex\lib\libpcre.dll.a" />
+			<Add library="C:\Agar\pthreads\prebuilt-dll-2-8-0-release\lib\libpthreadGC2.a" />
+			<Add library="C:\MinGW\lib\libmingw32.a" />
+			<Add library="C:\MinGW\lib\libwinmm.a" />
 		</Linker>
 		<Unit filename="dialog.h" />
 		<Unit filename="entity.cpp" />
@@ -46,7 +50,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="myButton.cpp" />
 		<Unit filename="myButton.h" />
-		<Unit filename="mytextbox.cpp" />
 		<Unit filename="mytextbox.h" />
 		<Unit filename="mywidget.cpp" />
 		<Unit filename="mywidget.h" />

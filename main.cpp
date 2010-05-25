@@ -4,22 +4,20 @@
 
 #include <fstream>
 
-#include <core.h>
-#include <gui.h>
-#include <agar/vg.h>
+#include <agar/core.h>
+#include <agar/gui.h>
 
-
-#include "myButton.h"
-
-#include "mywidget.h"
-
-#include "mytextbox.h"
-
-#include "dialog.cpp"
 
 #include "htmlite.h"
 
 #include "htmlayout_dom.hpp"
+
+
+#include "myButton.h"
+
+#include <agar/core/types.h>
+
+#include "dialog.cpp"
 
 #include "geomap.hpp"
 
@@ -30,6 +28,9 @@
 #include "globals.hpp"
 
 #include "task.hpp"
+
+#include "mywidget.h"
+
 
 using namespace std;
 
@@ -44,19 +45,18 @@ int curNode=0;
 
 std::vector <MyButton*> button;
 
-MyWidget* myWidget;
-
-AG_myTextbox* tb2;
 AG_Textbox *tb;
 
+MyWidget *outwin;
+
 AG_Window *win;
-AG_Window *win2;
+
 AG_Window *win3;
 
 AG_VBox *vbox;
 AG_VBox *vbox2;
 
-AG_Surface *surf1;
+//AG_Surface *surf1;
 AG_Pixmap *pm1;
 
 HTMLite h1;
@@ -115,6 +115,7 @@ void textResize(AG_Event *event)
 
   h1.measure(w1,he1);
 
+
   DeleteObject(hbmp);
 
   void* pixelbitmap=0;
@@ -134,8 +135,18 @@ for (int j=0;j<=he1-1;j++)
    }
 
 
-  //surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,(w1)*4,0x00ff0000,0x0000ff00,0xff000000);
-  AG_PixmapUpdateCurrentSurface(pm1);
+  //AG_SurfaceFree(surf1);
+  //AG_ObjectDelete(surf1);
+  surf1=AG_SurfaceFromPixelsRGBA(pixels2,w1,he1,32,0x00ff0000,0x0000ff00,0x000000ff,0xff000000);
+  if (outwin->mySurface!=-1)
+    AG_WidgetReplaceSurface(outwin,outwin->mySurface,surf1);
+  //AG_WidgetReplaceSurfaceNODUP(outwin,outwin->mySurface,surf1);
+
+  //outwin->mySurface=-1;
+
+  //pm1=AG_PixmapFromSurface(vbox,0,surf1);
+  //AG_PixmapUpdateCurrentSurface(pm1);
+
   delete [] pixels;
   delete [] pixelbitmap ;
   //delete &w1;
@@ -219,13 +230,10 @@ MultiLineExample(const char *title, int wordwrap,char* a)
 	win = AG_WindowNew(0);
 	AG_WindowSetCaption(win, title);
 
-	win2 = AG_WindowNew(0);
-	AG_WindowSetCaption(win2, "Карта");
 
 
     vbox = AG_VBoxNew(win,0);
     AG_Expand(vbox);
-
 	AG_Font *font;
 
     if ((font = AG_FetchFont(TESTFONT, 12, 0)) != NULL) {
@@ -283,9 +291,14 @@ int w1,he1;
   b=new char[1000];
   strcpy(b,"");
   //memset(b1,' ',1000);
-  strcat(b,"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"mysite.css\"></head><body><div#test>");
+  strcat(b,"<html><head><META http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><link rel=\"stylesheet\" type=\"text/css\" href=\"mysite.css\"></head><body><div#test>");
   strcat(b,a);
   strcat(b,"</div#test></body></html>");
+
+    strcpy(b,"");
+    strcat(b,"<html><head><META http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><link rel=\"stylesheet\" type=\"text/css\" href=\"mysite.css\"></head><body><div#test>");
+    strcat(b,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    strcat(b,"</div#test></body></html>");
   //std::cout << b1;
   h1.load(LPCBYTE(b),strlen(b));
   //HLTRESULT hr=HTMLiteLoadHtmlFromMemory()
@@ -389,13 +402,14 @@ for (int j=0;j<=he1-1;j++)
   myfile.write((char*)pixelbitmap,w1*he1*4);
   myfile.close();
 
-  //surf1=AG_SurfaceFromPixelsRGBA(pixels2,w1,he1,32,w1*4,0x000000ff,0x00ff0000,0x0000ff00,0xff000000);
-  surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,(w1)*4,0x00ff0000,0x0000ff00,0xff000000);
+  surf1=AG_SurfaceFromPixelsRGBA(pixels2,w1,he1,32,0x00ff0000,0x0000ff00,0x000000ff,0xff000000);
+  //surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,0x00ff0000,0x0000ff00,0xff000000);
 
-  pm1=AG_PixmapFromSurface(vbox,0,surf1);
+  AG_RegisterClass(&myWidgetClass);
+  outwin=MyWidgetNew(vbox,"s");
+  //pm1=AG_PixmapFromSurface(vbox,0,surf1);
   //AG_Expand(pm1);
 
-  AG_RegisterClass(&agMyTextboxClass);
 
 
   //tb = AG_TextboxNew(vbox, flags, NULL);
@@ -418,8 +432,6 @@ for (int j=0;j<=he1-1;j++)
 
   AG_RegisterClass(&MyButtonClass);
 
-  AG_RegisterClass(&myWidgetClass);
-
 
 
   //myWidget=MyWidgetNew(vbox,"");
@@ -434,10 +446,6 @@ for (int j=0;j<=he1-1;j++)
 
 
 
-    AG_WindowSetGeometryAligned(win2, AG_WINDOW_MC, 640, 480);
-
-
-    AG_WindowShow(win2);
 
     mapdraw();
 
@@ -454,7 +462,8 @@ for (int j=0;j<=he1-1;j++)
 
 	AG_GLView *glv;
 	glv = AG_GLViewNew(hb, 0);
-    AG_Expand(glv);
+    //AG_Expand(glv);
+    AG_GLViewSizeHint(glv,600,500);
 	AG_WidgetFocus(glv);
 
     AG_GLViewDrawFn(glv, MapDrawFunction,NULL);
@@ -472,7 +481,7 @@ int main(int argc, char *argv[])
 	if (AG_InitCore("", 0) == -1) {
 		return (1);
 	}
-	if (AG_InitVideo(1024, 768, 32, AG_VIDEO_OPENGL|AG_VIDEO_RESIZABLE) == -1) {
+	if (AG_InitGraphics("sdlgl") == -1) {
 		return (-1);
 	}
 
@@ -485,7 +494,6 @@ int main(int argc, char *argv[])
             TESTFONT, AG_GetError());
     }
     */
-	AG_BindGlobalKey(SDLK_ESCAPE, KMOD_NONE, AG_Quit);
 
     a=new char[1000];
 //    b=new Uint32[10];
@@ -512,7 +520,7 @@ int main(int argc, char *argv[])
 
     //UpdateTimerSlot.add(guest1);
 
-    goToPoint order1=goToPoint(motionPath[0].x(),motionPath[0].y(),&guest1);
+    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
     ComplexTask followPath=ComplexTask(order1);
     for (int i =1;i<motionPath.size();i++)
     {

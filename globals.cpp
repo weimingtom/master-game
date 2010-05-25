@@ -18,5 +18,6 @@ VisiLibity::Visibility_Graph visGraph;
 VisiLibity::Environment mapEnvCollision;
 VisiLibity::Visibility_Graph visGraphCollision;
 
-
 VisiLibity::Polyline motionPath;
+
+AG_Surface *surf1;

@@ -1,9 +1,8 @@
 #ifndef _GEOMAP_H_
 #define _GEOMAP_H_
 
-#include <core.h>
-#include <gui.h>
-#include <agar/vg.h>
+#include <agar/core.h>
+#include <agar/gui.h>
 
 #include "visilibity.hpp"
 

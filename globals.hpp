@@ -25,6 +25,9 @@ extern VisiLibity::Visibility_Graph visGraphCollision;
 
 extern VisiLibity::Polyline motionPath;
 
+extern VisiLibity::Polyline motionPath;
+
+extern AG_Surface *surf1;
 
 #endif
 

@@ -8,8 +8,8 @@
  * inheritance, see demos/objsystem.
  */
 
-#include <core.h>
-#include <gui.h>
+#include <agar/core.h>
+#include <agar/gui.h>
 #include <agar/gui/widget.h>
 #include "myButton.h"
 
