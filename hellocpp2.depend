@@ -1,21 +1,20 @@
 # depslib dependency file v1.0
-1270819818 source:c:\agar\hellocpp2\main.cpp
+1275633706 source:c:\agar\hellocpp2\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
-	<core.h>
-	<gui.h>
-	<agar/vg.h>
-	"myButton.h"
-	"mywidget.h"
-	"mytextbox.h"
-	"dialog.cpp"
+	<agar/core.h>
+	<agar/gui.h>
 	"htmlite.h"
 	"htmlayout_dom.hpp"
+	"myButton.h"
+	<agar/core/types.h>
+	"dialog.cpp"
 	"geomap.hpp"
 	"events.hpp"
 	"globals.hpp"
 	"task.hpp"
+	"formaText.h"
 
 1264614050 c:\agar\hellocpp2\dialog.cpp
 	"dialog.h"
@@ -46,21 +45,24 @@
 	"rapidxml_print.hpp"
 	"dialog.h"
 
-1258923922 c:\agar\hellocpp2\mywidget.h
+1274785447 c:\agar\hellocpp2\mywidget.h
 
 1257510864 source:c:\agar\hellocpp2\mywidget.c
 	<core.h>
 	<gui.h>
 	"mywidget.h"
 
-1259357559 source:c:\agar\hellocpp2\mywidget.cpp
-	<core.h>
-	<gui.h>
+1274789234 source:c:\agar\hellocpp2\mywidget.cpp
+	<agar/core.h>
+	<agar/gui.h>
 	"mywidget.h"
+	"htmlite.h"
+	"htmlayout_dom.hpp"
+	"globals.hpp"
 
-1259701882 source:c:\agar\hellocpp2\mybutton.cpp
-	<core.h>
-	<gui.h>
+1274645199 source:c:\agar\hellocpp2\mybutton.cpp
+	<agar/core.h>
+	<agar/gui.h>
 	<agar/gui/widget.h>
 	"myButton.h"
 	<string>
@@ -182,7 +184,7 @@
 1249064176 c:\agar\hellocpp2\include\behaviors\notifications.h
 	<windows.h>
 
-1265204523 c:\agar\hellocpp2\visilibity.hpp
+1265208123 c:\agar\hellocpp2\visilibity.hpp
 	<cmath>
 	<vector>
 	<queue>
@@ -197,10 +199,9 @@
 	<string>
 	<cassert>
 
-1270818881 c:\agar\hellocpp2\geomap.hpp
-	<core.h>
-	<gui.h>
-	<agar/vg.h>
+1274645023 c:\agar\hellocpp2\geomap.hpp
+	<agar/core.h>
+	<agar/gui.h>
 	"visilibity.hpp"
 	<vector>
 	<sstream>
@@ -210,7 +211,7 @@
 	<agar/gui/opengl.h>
 	<GL/glu.h>
 
-1270819478 source:c:\agar\hellocpp2\geomap.cpp
+1274696811 source:c:\agar\hellocpp2\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre.h"
@@ -271,12 +272,12 @@
 1268231752 c:\agar\hellocpp2\entity.hpp
 	"visilibity.hpp"
 
-1270364641 c:\agar\hellocpp2\globals.hpp
+1274785441 c:\agar\hellocpp2\globals.hpp
 	"entity.hpp"
 	"events.hpp"
 	"geomap.hpp"
 
-1270364561 source:c:\agar\hellocpp2\globals.cpp
+1274785441 source:c:\agar\hellocpp2\globals.cpp
 	"globals.hpp"
 
 1269458970 c:\agar\hellocpp2\task.hpp
@@ -592,29 +593,29 @@
 
 1251738685 c:\agar\agar-source\include\agar\core\queue.h
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\opengl.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\opengl.h
 	<agar/config/have_opengl.h>
 	<agar/config/have_cygwin.h>
 	<agar/core/win32.h>
 	<OpenGL/gl.h>
 	<GL/gl.h>
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_opengl.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_opengl.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\have_cygwin.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_cygwin.h
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\win32.h
+1275463809 c:\msys\1.0\local\include\agar\agar\core\win32.h
 	<agar/config/have_cygwin.h>
 	<agar/core/queue_close.h>
 	<windows.h>
 	<agar/core/queue_close.h>
 	<agar/core/queue.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\queue_close.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\queue_close.h
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\queue.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\queue.h
 
-1274639902 c:\msys\1.0\local\include\agar\agar\core.h
+1275463825 c:\msys\1.0\local\include\agar\agar\core.h
 	<agar/core/core_begin.h>
 	<agar/core/core_init.h>
 	<agar/core/error.h>
@@ -644,7 +645,7 @@
 	<agar/core/getopt.h>
 	<agar/core/core_close.h>
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\core_begin.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\core_begin.h
 	<agar/config/ag_debug.h>
 	<agar/config/ag_legacy.h>
 	<agar/config/ag_threads.h>
@@ -661,28 +662,28 @@
 	<agar/config/_mk_big_endian.h>
 	<agar/config/_mk_little_endian.h>
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\ag_debug.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_debug.h
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\ag_legacy.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_legacy.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\ag_threads.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_threads.h
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\threads.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\threads.h
 	<agar/config/have_pthreads.h>
 	<pthread.h>
 	<signal.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_pthreads.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_pthreads.h
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\begin.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\begin.h
 	<agar/core/types.h>
 	<agar/core/attributes.h>
 	<agar/config/enable_nls.h>
 	<libintl.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\types.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\types.h
 	<agar/config/have_cygwin.h>
 	<basetyps.h>
 	<agar/config/_mk_have_sys_types_h.h>
@@ -690,13 +691,13 @@
 	<agar/config/have_64bit.h>
 	<agar/config/have_long_double.h>
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_have_sys_types_h.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_sys_types_h.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\have_64bit.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_64bit.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_long_double.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_long_double.h
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\attributes.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\attributes.h
 	<agar/config/have_aligned_attribute.h>
 	<agar/config/have_bounded_attribute.h>
 	<agar/config/have_const_attribute.h>
@@ -708,41 +709,41 @@
 	<agar/config/have_pure_attribute.h>
 	<agar/config/have_warn_unused_result_attribute.h>
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\have_aligned_attribute.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_aligned_attribute.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\have_bounded_attribute.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_bounded_attribute.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\have_const_attribute.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_const_attribute.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\have_deprecated_attribute.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_deprecated_attribute.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_format_attribute.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\have_format_attribute.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_nonnull_attribute.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_nonnull_attribute.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_noreturn_attribute.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_noreturn_attribute.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_packed_attribute.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_packed_attribute.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_pure_attribute.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_pure_attribute.h
 
-1274639901 c:\msys\1.0\local\include\agar\agar\config\have_warn_unused_result_attribute.h
+1275463824 c:\msys\1.0\local\include\agar\agar\config\have_warn_unused_result_attribute.h
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\enable_nls.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\enable_nls.h
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\close.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\close.h
 	<agar/core/close_types.h>
 	<agar/core/close_attributes.h>
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\close_types.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\close_types.h
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\close_attributes.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\close_attributes.h
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_have_stdlib_h.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_stdlib_h.h
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_have_unistd_h.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_unistd_h.h
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\limits.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\limits.h
 	<agar/config/_mk_have_limits_h.h>
 	<agar/config/_mk_have_float_h.h>
 	<agar/config/have_long_long.h>
@@ -750,38 +751,38 @@
 	<limits.h>
 	<float.h>
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_have_limits_h.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_limits_h.h
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_have_float_h.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_float_h.h
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_long_long.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_long_long.h
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\cpuinfo.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\cpuinfo.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_big_endian.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_big_endian.h
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\_mk_little_endian.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_little_endian.h
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\core_init.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\core_init.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\error.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\error.h
 	<agar/config/free_null_is_a_noop.h>
 	<agar/config/_mk_have_stdlib_h.h>
 	<stdlib.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639899 c:\msys\1.0\local\include\agar\agar\config\free_null_is_a_noop.h
+1275463822 c:\msys\1.0\local\include\agar\agar\config\free_null_is_a_noop.h
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\string_compat.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\string_compat.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\snprintf.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\snprintf.h
 	<agar/config/_mk_have_sys_types_h.h>
 	<sys/types.h>
 	<agar/config/have_snprintf.h>
@@ -789,9 +790,9 @@
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639901 c:\msys\1.0\local\include\agar\agar\config\have_snprintf.h
+1275463824 c:\msys\1.0\local\include\agar\agar\config\have_snprintf.h
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\vsnprintf.h
+1275463809 c:\msys\1.0\local\include\agar\agar\core\vsnprintf.h
 	<agar/config/_mk_have_sys_types_h.h>
 	<agar/config/have_vsnprintf.h>
 	<sys/types.h>
@@ -800,27 +801,27 @@
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639901 c:\msys\1.0\local\include\agar\agar\config\have_vsnprintf.h
+1275463824 c:\msys\1.0\local\include\agar\agar\config\have_vsnprintf.h
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\vasprintf.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\vasprintf.h
 	<stdarg.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\data_source.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\data_source.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\load_den.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\load_den.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\load_integral.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\load_integral.h
 	<agar/core/byteswap.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\byteswap.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\byteswap.h
 	<agar/config/have_64bit.h>
 	<agar/config/have_long_double.h>
 	<agar/config/_mk_big_endian.h>
@@ -828,25 +829,25 @@
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\load_real.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\load_real.h
 	<agar/config/have_long_double.h>
 	<agar/core/byteswap.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\load_string.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\load_string.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\load_version.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\load_version.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\version.h
+1275463809 c:\msys\1.0\local\include\agar\agar\core\version.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\object.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\object.h
 	<agar/core/timeout.h>
 	<agar/core/class.h>
 	<agar/core/begin.h>
@@ -855,80 +856,80 @@
 	<agar/core/event.h>
 	<agar/core/prop.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\timeout.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\timeout.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\class.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\class.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\variable.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\variable.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\event.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\event.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\prop.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\prop.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\list.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\list.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\tree.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\tree.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\tbl.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\tbl.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639880 c:\msys\1.0\local\include\agar\agar\core\config.h
+1275463805 c:\msys\1.0\local\include\agar\agar\core\config.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639882 c:\msys\1.0\local\include\agar\agar\core\rcs.h
+1275463807 c:\msys\1.0\local\include\agar\agar\core\rcs.h
 	<agar/config/ag_network.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639898 c:\msys\1.0\local\include\agar\agar\config\ag_network.h
+1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_network.h
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\file.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\file.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\dir.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\dir.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\dso.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\dso.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639883 c:\msys\1.0\local\include\agar\agar\core\time.h
+1275463808 c:\msys\1.0\local\include\agar\agar\core\time.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\db.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\db.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\dbobject.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\dbobject.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\getopt.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\getopt.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1274639881 c:\msys\1.0\local\include\agar\agar\core\core_close.h
+1275463806 c:\msys\1.0\local\include\agar\agar\core\core_close.h
 
-1274639902 c:\msys\1.0\local\include\agar\agar\gui.h
+1275463825 c:\msys\1.0\local\include\agar\agar\gui.h
 	<agar/core/core_begin.h>
 	<agar/gui/gui.h>
 	<agar/gui/icons.h>
@@ -984,7 +985,7 @@
 	<agar/gui/load_color.h>
 	<agar/core/core_close.h>
 
-1274639887 c:\msys\1.0\local\include\agar\agar\gui\gui.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\gui.h
 	<agar/config/have_sdl.h>
 	<agar/gui/widget.h>
 	<agar/gui/window.h>
@@ -993,9 +994,9 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639900 c:\msys\1.0\local\include\agar\agar\config\have_sdl.h
+1275463823 c:\msys\1.0\local\include\agar\agar\config\have_sdl.h
 
-1274639891 c:\msys\1.0\local\include\agar\agar\gui\widget.h
+1275463815 c:\msys\1.0\local\include\agar\agar\gui\widget.h
 	<agar/config/have_sdl.h>
 	<agar/config/have_opengl.h>
 	<agar/gui/geometry.h>
@@ -1009,104 +1010,104 @@
 	<agar/gui/widget_legacy.h>
 	<agar/gui/close.h>
 
-1274640957 c:\msys\1.0\local\include\agar\agar\gui\geometry.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\geometry.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\begin.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\begin.h
 	<agar/core/types.h>
 	<agar/core/attributes.h>
 	<agar/config/enable_nls.h>
 	<libintl.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\close.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\close.h
 	<agar/core/close_types.h>
 	<agar/core/close_attributes.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\colors.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\colors.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\surface.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\surface.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\style.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\style.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\mouse.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\mouse.h
 	<agar/gui/input_device.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\input_device.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\input_device.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\keyboard.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\keyboard.h
 	<agar/gui/input_device.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\drv.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\drv.h
 	<agar/gui/begin.h>
 	<agar/gui/drv_mw.h>
 	<agar/gui/drv_sw.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\drv_mw.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\drv_mw.h
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\drv_sw.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\drv_sw.h
 
-1274639891 c:\msys\1.0\local\include\agar\agar\gui\widget_legacy.h
+1275463815 c:\msys\1.0\local\include\agar\agar\gui\widget_legacy.h
 
-1274639891 c:\msys\1.0\local\include\agar\agar\gui\window.h
+1275463815 c:\msys\1.0\local\include\agar\agar\gui\window.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\text.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\text.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\iconmgr.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\iconmgr.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\icons.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\icons.h
 	<agar/gui/iconmgr.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\primitive.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\primitive.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\box.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\box.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\button.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\button.h
 	<agar/gui/widget.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\label.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\label.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\checkbox.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\checkbox.h
 	<agar/gui/widget.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\combo.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\combo.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1115,7 +1116,7 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\textbox.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\textbox.h
 	<agar/gui/widget.h>
 	<agar/gui/editable.h>
 	<agar/gui/label.h>
@@ -1123,46 +1124,46 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\editable.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\editable.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\scrollbar.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\scrollbar.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\tlist.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\tlist.h
 	<agar/gui/scrollbar.h>
 	<agar/gui/menu.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\menu.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\menu.h
 	<agar/gui/widget.h>
 	<agar/gui/window.h>
 	<agar/gui/toolbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\toolbar.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\toolbar.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/button.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639885 c:\msys\1.0\local\include\agar\agar\gui\console.h
+1275463809 c:\msys\1.0\local\include\agar\agar\gui\console.h
 	<agar/gui/widget.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\file_dlg.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\file_dlg.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1174,13 +1175,13 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\pane.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\pane.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\file_selector.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\file_selector.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1189,12 +1190,12 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\fixed.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\fixed.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\font_selector.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\font_selector.h
 	<agar/gui/pane.h>
 	<agar/gui/box.h>
 	<agar/gui/tlist.h>
@@ -1202,7 +1203,7 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\numerical.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\numerical.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1211,7 +1212,7 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639891 c:\msys\1.0\local\include\agar\agar\gui\ucombo.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\ucombo.h
 	<agar/gui/widget.h>
 	<agar/gui/button.h>
 	<agar/gui/window.h>
@@ -1219,14 +1220,14 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639891 c:\msys\1.0\local\include\agar\agar\gui\units.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\units.h
 	<agar/config/historical_units.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639901 c:\msys\1.0\local\include\agar\agar\config\historical_units.h
+1275463824 c:\msys\1.0\local\include\agar\agar\config\historical_units.h
 
-1274639887 c:\msys\1.0\local\include\agar\agar\gui\fspinbutton.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\fspinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1235,48 +1236,48 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639886 c:\msys\1.0\local\include\agar\agar\gui\fixed_plotter.h
+1275463810 c:\msys\1.0\local\include\agar\agar\gui\fixed_plotter.h
 	<agar/gui/widget.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639887 c:\msys\1.0\local\include\agar\agar\gui\glview.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\glview.h
 	<agar/gui/widget.h>
 	<agar/config/have_opengl.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639887 c:\msys\1.0\local\include\agar\agar\gui\graph.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\graph.h
 	<agar/gui/widget.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\hbox.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\hbox.h
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\hsvpal.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\hsvpal.h
 	<agar/gui/scrollbar.h>
 	<agar/gui/menu.h>
 	<agar/gui/window.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\icon.h
+1275463811 c:\msys\1.0\local\include\agar\agar\gui\icon.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\keymap.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\keymap.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\mfspinbutton.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\mfspinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1285,109 +1286,119 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\mpane.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\mpane.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\mspinbutton.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\mspinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\notebook.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\notebook.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\objsel.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\objsel.h
 	<agar/gui/widget.h>
 	<agar/gui/combo.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\pixmap.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\pixmap.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\progress_bar.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\progress_bar.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\radio.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\radio.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\scrollview.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\scrollview.h
 	<agar/gui/widget.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\separator.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\separator.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\socket.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\socket.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\spinbutton.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\spinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\slider.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\slider.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\statusbar.h
+1275463813 c:\msys\1.0\local\include\agar\agar\gui\statusbar.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\table.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\table.h
 	<agar/gui/scrollbar.h>
 	<agar/gui/menu.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\treetbl.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\treetbl.h
 	<agar/gui/label.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639890 c:\msys\1.0\local\include\agar\agar\gui\text_cache.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\text_cache.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639891 c:\msys\1.0\local\include\agar\agar\gui\vbox.h
+1275463814 c:\msys\1.0\local\include\agar\agar\gui\vbox.h
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639889 c:\msys\1.0\local\include\agar\agar\gui\load_surface.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\load_surface.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1274639888 c:\msys\1.0\local\include\agar\agar\gui\load_color.h
+1275463812 c:\msys\1.0\local\include\agar\agar\gui\load_color.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
+
+1275490332 c:\agar\hellocpp2\formatext.h
+
+1275506587 source:c:\agar\hellocpp2\formatext.cpp
+	<agar/core.h>
+	<agar/gui.h>
+	"formatext.h"
+	"htmlite.h"
+	"htmlayout_dom.hpp"
+	"globals.hpp"
 

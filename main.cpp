@@ -29,7 +29,7 @@
 
 #include "task.hpp"
 
-#include "mywidget.h"
+#include "formaText.h"
 
 
 using namespace std;
@@ -43,11 +43,11 @@ char *b;
 char *cmdPromptText;
 int curNode=0;
 
-std::vector <MyButton*> button;
+std::vector <AG_Button*> button;
 
 AG_Textbox *tb;
 
-MyWidget *outwin;
+formaText *outwin;
 
 AG_Window *win;
 
@@ -62,7 +62,6 @@ AG_Pixmap *pm1;
 HTMLite h1;
 BITMAPINFO bmpInfo;
 HBITMAP hbmp;
-unsigned int pixels2[300][800];
 
 template <typename PARAM>
 Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
@@ -77,21 +76,35 @@ void textResize(AG_Event *event)
 {
 
   int ww = AG_INT(3);
+  int hh = AG_INT(4);
 
   int w1,he1;
 
-  w1=800;
-  he1=300;
+//  w1=605;
+
+w1=outwin->_inherit.w;
+he1=outwin->_inherit.h;
+
+
+//w1=min(ww,800);
+//he1=min(hh,300);
+
+//w1=ww;
+//he1=hh;
+
+
 
   HELEMENT phe;
   phe=h1.getRootElement();
   dom::element div = dom::element(phe).find_first("div#test");
+  dom::element body = dom::element(phe).find_first("body");
 
 
   string search;
   stringstream s;
   //s<<pm1->pre_w;
-  s<<min(ww-15,785);
+  //s<<min(ww-15,785);
+  s<<ww-14;
   s<<"px";
   search=s.str();
     const size_t newsize = 100;
@@ -100,6 +113,7 @@ void textResize(AG_Event *event)
     wchar_t wcstring[newsize];
     mbstowcs( wcstring, search.c_str(), newsize);
     div.set_style_attribute("width",wcstring);
+    body.set_style_attribute("width",wcstring);
 
   HTMLayoutUpdateElementEx(div, REDRAW_NOW);
 
@@ -116,28 +130,76 @@ void textResize(AG_Event *event)
   h1.measure(w1,he1);
 
 
+BITMAPINFOHEADER bmpInfoHeader;
+  memset(&bmpInfoHeader,0,sizeof(BITMAPINFOHEADER));
+  bmpInfoHeader.biSize=sizeof(BITMAPINFOHEADER);
+  bmpInfoHeader.biPlanes = 1;
+  bmpInfoHeader.biBitCount=32;
+  bmpInfoHeader.biCompression = BI_RGB;
+  bmpInfoHeader.biWidth=w1;
+  bmpInfoHeader.biHeight=he1;
+  bmpInfoHeader.biSizeImage = 0;
+  bmpInfoHeader.biXPelsPerMeter = 0;
+  bmpInfoHeader.biYPelsPerMeter = 0;
+  bmpInfoHeader.biClrUsed = 0;
+  bmpInfoHeader.biClrImportant = 0;
+
+  //BITMAPINFO bmpInfo;
+  memset(&bmpInfo,0,sizeof(BITMAPINFO));
+  bmpInfo.bmiHeader = bmpInfoHeader;
+
   DeleteObject(hbmp);
 
   void* pixelbitmap=0;
+  //unsigned int pixels[he1][w1];
 
   hbmp =CreateDIBSection(NULL,(BITMAPINFO*)&bmpInfo,DIB_RGB_COLORS, &pixelbitmap,NULL,0);
   h1.render(hbmp,0,0,w1,he1);
 
-  unsigned int pixels[he1][w1];
-  //unsigned int pixels2[he1][w1];
-  memcpy(pixels,pixelbitmap,sizeof(pixels));
+  /*
+  unsigned int **pixels, **pixels2;
+
+	pixels = (unsigned int **)malloc(he1*sizeof(unsigned int *));
+	for (int i =0; i<he1; i++)
+		pixels[i] = (unsigned int *) malloc(w1*sizeof(unsigned int));
+
+	pixels2 = (unsigned int **)malloc(he1*sizeof(unsigned int *));
+	for (int i =0; i<he1; i++)
+		pixels2[i] = (unsigned int *) malloc(w1*sizeof(unsigned int));
+*/
+
+//int sp=sizeof(pixels);
+//unsigned int *pbm =new unsigned int ((w1)*(he1)*4) ;
+unsigned int *pbm = (unsigned int *) calloc((w1)*(he1),sizeof(unsigned int));
+
+unsigned int *pbm2 = (unsigned int *) calloc((w1)*(he1),sizeof(unsigned int));
+
+  memcpy(pbm,pixelbitmap,(w1)*(he1)*sizeof(unsigned int));
+
+  memcpy(pbm2,pbm,(w1)*(he1)*sizeof(unsigned int));
+
 
 for (int j=0;j<=he1-1;j++)
   for (int i=0;i<=w1-1;i++){
+      {
+          pbm2[j*w1+i]=pbm[(he1-1-j)*w1+i];
+      }
+   }
+  //unsigned int pixels2[he1][w1];
+
+//memcpy(pixels,pixelbitmap,sizeof(pixels));
+/*
+for (int j=0;j<he1-1;j++)
+  for (int i=0;i<w1-1;i++){
       {
           pixels2[j][i]=pixels[he1-1-j][i];
       }
    }
 
-
+*/
   //AG_SurfaceFree(surf1);
   //AG_ObjectDelete(surf1);
-  surf1=AG_SurfaceFromPixelsRGBA(pixels2,w1,he1,32,0x00ff0000,0x0000ff00,0x000000ff,0xff000000);
+  surf1=AG_SurfaceFromPixelsRGBA(pbm2,w1,he1,32,0x00ff0000,0x0000ff00,0x000000ff,0xff000000);
   if (outwin->mySurface!=-1)
     AG_WidgetReplaceSurface(outwin,outwin->mySurface,surf1);
   //AG_WidgetReplaceSurfaceNODUP(outwin,outwin->mySurface,surf1);
@@ -147,8 +209,11 @@ for (int j=0;j<=he1-1;j++)
   //pm1=AG_PixmapFromSurface(vbox,0,surf1);
   //AG_PixmapUpdateCurrentSurface(pm1);
 
-  delete [] pixels;
+ // delete [] pixels;
+ // delete [] pixels2;
   delete [] pixelbitmap ;
+  free(pbm);
+  free(pbm2);
   //delete &w1;
   //delete &he1;
   //delete [] &pt;
@@ -156,7 +221,7 @@ for (int j=0;j<=he1-1;j++)
 }
 
 void
-SayHello(AG_Event *event)
+chooseAnswer(AG_Event *event)
 {
     int cn = AG_INT(1);
     std::string c;
@@ -198,7 +263,7 @@ SayHello(AG_Event *event)
             //surf = AG_TextRender(c.c_str());
             //surf2=AG_SurfaceStdRGBA(surf->w*1.5,surf->h*1.5);
             //AG_ButtonSurface(button[i],surf2);
-            button[i]->_inherit.lbl=AG_LabelNew(button[i],0,c.c_str());
+            button[i]->lbl=AG_LabelNew(button[i],0,c.c_str());
             //AG_ButtonText((AG_Button*)button[i],c.c_str());
             AG_WidgetUpdate(button[i]);
             AG_WidgetShow(button[i]);
@@ -340,75 +405,11 @@ int w1,he1;
   //he1=100;
   //w1=100;
 
-  BITMAPINFOHEADER bmpInfoHeader;
-  memset(&bmpInfoHeader,0,sizeof(BITMAPINFOHEADER));
-  bmpInfoHeader.biSize=sizeof(BITMAPINFOHEADER);
-  bmpInfoHeader.biPlanes = 1;
-  bmpInfoHeader.biBitCount=32;
-  bmpInfoHeader.biCompression = BI_RGB;
-  bmpInfoHeader.biWidth=w1;
-  bmpInfoHeader.biHeight=he1;
-  bmpInfoHeader.biSizeImage = 0;
-  bmpInfoHeader.biXPelsPerMeter = 0;
-  bmpInfoHeader.biYPelsPerMeter = 0;
-  bmpInfoHeader.biClrUsed = 0;
-  bmpInfoHeader.biClrImportant = 0;
 
-  //BITMAPINFO bmpInfo;
-  memset(&bmpInfo,0,sizeof(BITMAPINFO));
-  bmpInfo.bmiHeader = bmpInfoHeader;
-
-  void* pixelbitmap=0;
-/*
-      unsigned int * pixelbitmap2 = (unsigned int *)pixelbitmap;
-      for( int n = 0; n < w1*he1; ++n)
-        *pixelbitmap2++ = 0xffffffff;
-*/
-
-
-  hbmp =CreateDIBSection(NULL,(BITMAPINFO*)&bmpInfo,DIB_RGB_COLORS, &pixelbitmap,NULL,0);
-
-  h1.render(hbmp,0,0,w1,he1);
-
-  /*hr=HTMLiteRenderOnBitmap(h1,hbmp,
-          0,    // x position of area to render
-          0,    // y position of area to render
-          w1,   // width of area to render
-          he1);  // height of area to render
-*/
-/*
-  BITMAP bitmap;
-  int res=GetObject(hbmp,sizeof(BITMAP),(LPSTR)&bitmap);
-*/
-  unsigned int pixels[he1][w1];
-  //unsigned int pixels2[he1][w1];
-
-  memcpy(pixels,pixelbitmap,sizeof(pixels));
-
-for (int j=0;j<=he1-1;j++)
-  for (int i=0;i<=w1-1;i++){
-      {
-          //pixels2[j][i]=pixels[w1-j-1][i];
-          //pixels2[i][j]=pixels[i][j];
-          pixels2[j][i]=pixels[he1-1-j][i];
-          //pixels2[i][j]=pixels[i][he1-1-j];
-      }
-   }
-
-
-
-  ofstream myfile;
-  myfile.open("pixelbitmap");
-  myfile.write((char*)pixelbitmap,w1*he1*4);
-  myfile.close();
-
-  surf1=AG_SurfaceFromPixelsRGBA(pixels2,w1,he1,32,0x00ff0000,0x0000ff00,0x000000ff,0xff000000);
-  //surf1=AG_SurfaceFromPixelsRGB(pixels2,w1,he1,32,0x00ff0000,0x0000ff00,0xff000000);
-
-  AG_RegisterClass(&myWidgetClass);
-  outwin=MyWidgetNew(vbox,"s");
+  AG_RegisterClass(&formaTextClass);
+  outwin=formaTextNew(vbox);
+  AG_Expand(outwin);
   //pm1=AG_PixmapFromSurface(vbox,0,surf1);
-  //AG_Expand(pm1);
 
 
 
@@ -430,14 +431,14 @@ for (int j=0;j<=he1-1;j++)
     //AG_WidgetDisable(tb2);
 
 
-  AG_RegisterClass(&MyButtonClass);
+  //AG_RegisterClass(&MyButtonClass);
 
 
 
   //myWidget=MyWidgetNew(vbox,"");
 
   for (int i=0;i<5;i++){
-    button.push_back(MyButtonNew(vbox, ""));
+    button.push_back(AG_ButtonNew(vbox,0,""));
   };
 
     AG_WindowSetGeometryAligned(win, AG_WINDOW_MC, 640, 480);
@@ -481,7 +482,8 @@ int main(int argc, char *argv[])
 	if (AG_InitCore("", 0) == -1) {
 		return (1);
 	}
-	if (AG_InitGraphics("sdlgl") == -1) {
+//	if (AG_InitGraphics("wgl") == -1) {
+    if (AG_InitVideo(1024,768,32,AG_VIDEO_OPENGL)==-1){
 		return (-1);
 	}
 
@@ -509,9 +511,13 @@ int main(int argc, char *argv[])
 	MultiLineExample("Лог", 1,a);
 
 
+  AG_Event ev;
+  AG_EventArgs(&ev,"%i%i%i%i",0,0,win->wid.w,win->wid.h);
+  textResize(&ev);
+
 	for (int i=0;i<button.size();i++)
 	{
-        AG_SetEvent(button[i], "button-pushed", SayHello,"%i",i);
+        AG_SetEvent(button[i], "button-pushed", chooseAnswer,"%i",i);
 	}
 
 	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
@@ -544,6 +550,8 @@ int main(int argc, char *argv[])
     AG_SetTimeout(TO, timerFunc<int>, &UpdateTimerSlot, 0);
 
     AG_ScheduleTimeout(NULL, TO, 100);
+
+    AG_BindGlobalKey(AG_KEY_ESCAPE, AG_KEYMOD_ANY, AG_QuitGUI);
 
 	AG_EventLoop();
 	AG_Destroy();
