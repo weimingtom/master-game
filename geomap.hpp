@@ -19,6 +19,26 @@
 #include <GL/glu.h>
 
 
+#include "bso_rational_nt.h"
+#include <CGAL/Cartesian.h>
+#include <CGAL/Boolean_set_operations_2.h>
+#include <list>
+
+#include <agar/core/types.h>
+
+
+// instead of
+typedef CGAL::Cartesian<double>               Kernel;
+// workaround for VC++
+//struct Kernel : public CGAL::Cartesian<Number_type> {};
+
+typedef Kernel::Point_2                            Point_2;
+typedef CGAL::Polygon_2<Kernel>                    Polygon_2;
+typedef CGAL::Polygon_with_holes_2<Kernel>         Polygon_with_holes_2;
+typedef std::list<Polygon_with_holes_2>            Pwh_list_2;
+
+
+
 typedef std::vector < std::vector < VisiLibity::Point > > geoData;
 
 void mapdraw();
@@ -27,5 +47,6 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
 std::vector<VisiLibity::Point> loadPath(char* str);
 void MapDrawFunction(AG_Event *event);
 void MapScaleFunction(AG_Event *event);
-
+void MapClickFunction(AG_Event *event);
+Polygon_2 ngon(int n, float r);
 #endif

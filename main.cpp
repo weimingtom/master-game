@@ -211,7 +211,8 @@ for (int j=0;j<he1-1;j++)
 
  // delete [] pixels;
  // delete [] pixels2;
-  delete [] pixelbitmap ;
+  //delete [] pixelbitmap ;
+  free(pixelbitmap);
   free(pbm);
   free(pbm2);
   //delete &w1;
@@ -227,6 +228,18 @@ chooseAnswer(AG_Event *event)
     std::string c;
     AG_Surface *surf;
 	AG_Surface *surf2;
+
+    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
+    ComplexTask followPath=ComplexTask(order1);
+    for (int i =1;i<motionPath.size();i++)
+    {
+        //goToPoint order2= ;
+        motionPath[i].snap_to_boundary_of(mapEnv);
+        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
+    }
+
+
+    UpdateTimerSlot.addTask<ComplexTask>(followPath);
 
     curNode=convGraph[curNode]->children[cn];
     if (convGraph[curNode]->owner=="npc")
@@ -456,7 +469,7 @@ int w1,he1;
     AG_WindowSetGeometryAligned(win3, AG_WINDOW_MC, 640, 480);
 
 	AG_WindowSetCaption(win3, "Карта");
-
+    AG_WindowSetMinSize(win3,650,650);
 
 	AG_Box *hb = AG_BoxNewHoriz(win3, 0);
 	AG_Expand(hb);
@@ -470,6 +483,8 @@ int w1,he1;
     AG_GLViewDrawFn(glv, MapDrawFunction,NULL);
 
     AG_GLViewScaleFn(glv, MapScaleFunction, NULL);
+
+    AG_GLViewButtondownFn(glv, MapClickFunction, NULL);
 
     AG_WindowShow(win3);
 }
@@ -543,7 +558,7 @@ int main(int argc, char *argv[])
 //    followPath.AddAction(order1);
     //followPath.AddAction(order2);
 
-    UpdateTimerSlot.addTask<ComplexTask>(followPath);
+    //UpdateTimerSlot.addTask<ComplexTask>(followPath);
 
     AG_Timeout *TO = new AG_Timeout;
 

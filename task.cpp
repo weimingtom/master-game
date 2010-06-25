@@ -12,12 +12,18 @@ int ComplexTask::execute(int time)
 {
 //    std::vector<Task*>::iterator it=Actions.begin();
 
-    if (!Actions[currentAction]->execute(time)){}
+    if (!Actions[currentAction]->execute(time))
+    {
+        return 0;
+    }
     else if (currentAction<Actions.size()-1)
     {
         currentAction++;
-    };
-    return 0;
+        return 0;
+    }
+    else
+    return 1;
+
 }
 
  void ComplexTask::AddAction(Task &t1)

@@ -1,7 +1,13 @@
 #include "geomap.hpp"
 #include "globals.hpp"
 #include "pcre.h"
+
+
+
 VisiLibity::Visibility_Polygon visiPoly;
+Polygon_with_holes_2 visiBounded;
+
+
 GLUtesselator *tess;
 
 
@@ -114,6 +120,15 @@ void mapdraw()
 
     visiPoly=VisiLibity::Visibility_Polygon(pt1,mapEnv,0.00001);
 
+    Polygon_2 CGALvp;
+    for (int j=0;j<visiPoly.n();j++){
+            CGALvp.push_back(Point_2(visiPoly[j].x(),visiPoly[j].y()));
+        };
+
+    Polygon_2 visRange=ngon(20,150.0);
+    Pwh_list_2 intR;
+    CGAL::intersection(CGALvp,visRange,std::back_inserter(intR));
+    visiBounded=intR.front();
 
     tess = gluNewTess();
     gluTessCallback (tess, GLU_TESS_BEGIN, (GLvoid (CALLBACK *)())tcbBegin);
@@ -209,8 +224,20 @@ void MapDrawFunction(AG_Event *event)
 
     gluTessBeginPolygon (tess, NULL);
     gluTessBeginContour (tess);
-    GLdouble data[visiPoly.n()][3];
 
+    GLdouble data[visiBounded.outer_boundary().size()][3];
+
+    CGAL::Polygon_2<Kernel>::Vertex_iterator  vit;
+    i=0;
+    for  (vit=visiBounded.outer_boundary().vertices_begin();vit!=visiBounded.outer_boundary().vertices_end();++vit)
+    {
+        data[i][0]=vit->x();
+        data[i][1]=vit->y();
+        data[i][2]=0;
+        gluTessVertex (tess, data[i], data[i]);
+        i++;
+    }
+    /*
     for (i=0; i<visiPoly.n();i++)
     {
         data[i][0]=visiPoly[i].x();
@@ -218,6 +245,7 @@ void MapDrawFunction(AG_Event *event)
         data[i][2]=0;
         gluTessVertex (tess, data[i], data[i]);
     }
+    */
     gluTessEndContour (tess);
     gluEndPolygon (tess);
 
@@ -258,9 +286,33 @@ MapScaleFunction(AG_Event *event)
 	xMin = yMin;
 	xMax = yMax;
 	*/
+	//glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
+	glOrtho(mapXMin, mapXMax, mapYMax,mapYMin, 0.1, 100.0);
+    //glScalef(0,-1,0);
+    //glTranslatef(0,-(mapYMax-mapYMin)/2,0);
+};
 
+void
+MapClickFunction(AG_Event *event)
+{
+    void *p=AG_SELF();
+    int b=AG_INT(1);
+    int x=AG_INT(2);
+    int y=AG_INT(3);
 
-	glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
+    //motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(x,y),visGraphCollision,5);
+    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
+
+    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
+    ComplexTask followPath=ComplexTask(order1);
+    for (int i =1;i<motionPath.size();i++)
+    {
+        //goToPoint order2= ;
+        motionPath[i].snap_to_boundary_of(mapEnv);
+        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
+    }
+    UpdateTimerSlot.addTask<ComplexTask>(followPath);
+
 };
 
 std::vector<VisiLibity::Point> loadPath(char* str)
@@ -375,4 +427,15 @@ VisiLibity::Point normal(VisiLibity::Point Vector)
 {
         VisiLibity::Point result=*(new VisiLibity::Point(-1.0*Vector.y(),Vector.x()));
         return 1/sqrt(result.x()*result.x() + result.y()*result.y())*result;
+}
+
+Polygon_2 ngon(int n, float r)
+{
+    Polygon_2 p;
+
+    for (int i=0;i<n;i++)
+    {       float PI=std::atan(1.0f)*4.0f;
+            p.push_back(Point_2(r*cos(2*PI/n*i)+guest1.pos.x(),r*sin(2*PI/n*i)+guest1.pos.y()));
+    }
+    return p;
 }
