@@ -1,6 +1,6 @@
 #ifndef __ENTITY_INCLUDED__
 #define __ENTITY_INCLUDED__
-#include "visilibity.hpp"
+#include "visilibity/visilibity.hpp"
 class Entity
 {
     public:

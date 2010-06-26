@@ -13,9 +13,9 @@
 
 #include "formatext.h"
 
-#include "htmlite.h"
+#include "htmlayout/htmlite.h"
 
-#include "htmlayout_dom.hpp"
+#include "htmlayout/htmlayout_dom.hpp"
 
 #include "globals.hpp"
 

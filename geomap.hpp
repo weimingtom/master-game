@@ -4,22 +4,22 @@
 #include <agar/core.h>
 #include <agar/gui.h>
 
-#include "visilibity.hpp"
+#include "visilibity/visilibity.hpp"
 
 #include <vector>
 #include <sstream>
 
-#include "rapidxml.hpp"
-#include "rapidxml_print.hpp"
+#include "rapidxml/rapidxml.hpp"
+#include "rapidxml/rapidxml_print.hpp"
 
-#include <direct.h>
+//#include <direct.h>
 
 #include <agar/gui/opengl.h>
 
 #include <GL/glu.h>
 
 
-#include "bso_rational_nt.h"
+#include "CGAL/bso_rational_nt.h"
 #include <CGAL/Cartesian.h>
 #include <CGAL/Boolean_set_operations_2.h>
 #include <list>

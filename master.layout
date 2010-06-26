@@ -4,26 +4,23 @@
 	<File name="dialog.h" open="0" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="entity.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="100" topLine="0" />
+	<File name="entity.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="1" topLine="0" />
 	</File>
-	<File name="events.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="13" topLine="0" />
+	<File name="events.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="23" topLine="0" />
 	</File>
-	<File name="formatext.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="2886" topLine="96" />
+	<File name="formatext.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="5104" topLine="196" />
 	</File>
-	<File name="geomap.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="9795" topLine="321" />
+	<File name="geomap.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="8523" topLine="296" />
 	</File>
-	<File name="globals.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="497" topLine="6" />
+	<File name="globals.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="69" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1227" topLine="85" />
-	</File>
-	<File name="myButton.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1010" topLine="36" />
+	<File name="main.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="5261" topLine="232" />
 	</File>
 	<File name="myButton.h" open="0" top="0" tabpos="3">
 		<Cursor position="262" topLine="0" />
@@ -31,13 +28,10 @@
 	<File name="mytextbox.h" open="0" top="0" tabpos="0">
 		<Cursor position="113" topLine="0" />
 	</File>
-	<File name="mywidget.h" open="1" top="0" tabpos="8">
-		<Cursor position="0" topLine="0" />
-	</File>
-	<File name="polygons.cpp" open="1" top="0" tabpos="9">
+	<File name="mywidget.h" open="0" top="0" tabpos="8">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="task.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="15" topLine="0" />
+		<Cursor position="625" topLine="31" />
 	</File>
 </CodeBlocks_layout_file>

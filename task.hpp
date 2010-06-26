@@ -2,7 +2,7 @@
 #define _TASK_INCLUDED_
 
 #include "entity.hpp"
-#include "visilibity.hpp"
+#include "visilibity/visilibity.hpp"
 #include <vector>
 class Task
 {

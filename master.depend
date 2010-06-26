@@ -9,8 +9,8 @@
 	<vector>
 	<srutil/delegate/delegate.hpp>
 
-1268231752 c:\agar\master\entity.hpp
-	"visilibity.hpp"
+1277531041 c:\agar\master\entity.hpp
+	"visilibity/visilibity.hpp"
 
 1265208123 c:\agar\master\visilibity.hpp
 	<cmath>
@@ -27,9 +27,9 @@
 	<string>
 	<cassert>
 
-1269458970 c:\agar\master\task.hpp
+1277531050 c:\agar\master\task.hpp
 	"entity.hpp"
-	"visilibity.hpp"
+	"visilibity/visilibity.hpp"
 	<vector>
 
 1120989748 c:\agar\master\include\srutil\delegate\delegate.hpp
@@ -50,12 +50,12 @@
 
 1121292996 c:\agar\master\include\srutil\delegate\detail\delegate_template.hpp
 
-1275506587 source:c:\agar\master\formatext.cpp
+1277530456 source:c:\agar\master\formatext.cpp
 	<agar/core.h>
 	<agar/gui.h>
 	"formatext.h"
-	"htmlite.h"
-	"htmlayout_dom.hpp"
+	"htmlayout/htmlite.h"
+	"htmlayout/htmlayout_dom.hpp"
 	"globals.hpp"
 
 1275463825 c:\msys\1.0\local\include\agar\agar\core.h
@@ -1237,7 +1237,7 @@
 	"events.hpp"
 	"geomap.hpp"
 
-1277384965 c:\agar\master\geomap.hpp
+1277530476 c:\agar\master\geomap.hpp
 	<agar/core.h>
 	<agar/gui.h>
 	"visilibity.hpp"
@@ -1248,7 +1248,7 @@
 	<direct.h>
 	<agar/gui/opengl.h>
 	<GL/glu.h>
-	"bso_rational_nt.h"
+	"CGAL/bso_rational_nt.h"
 	<CGAL/Cartesian.h>
 	<CGAL/Boolean_set_operations_2.h>
 	<list>
@@ -6431,10 +6431,10 @@
 	<CGAL/Gps_segment_traits_2.h>
 	<CGAL/Gps_traits_2.h>
 
-1277385559 source:c:\agar\master\geomap.cpp
+1277530509 source:c:\agar\master\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
-	"pcre.h"
+	"pcre/pcre.h"
 
 1166524294 c:\agar\master\include\pcre.h
 	<stdlib.h>
@@ -6442,15 +6442,14 @@
 1274785441 source:c:\agar\master\globals.cpp
 	"globals.hpp"
 
-1277452246 source:c:\agar\master\main.cpp
+1277530885 source:c:\agar\master\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
 	<agar/core.h>
 	<agar/gui.h>
-	"htmlite.h"
-	"htmlayout_dom.hpp"
-	"myButton.h"
+	"htmlayout/htmlite.h"
+	"htmlayout/htmlayout_dom.hpp"
 	<agar/core/types.h>
 	"dialog.cpp"
 	"geomap.hpp"
@@ -6483,4 +6482,126 @@
 1268250214 source:c:\agar\master\entity.cpp
 	"entity.hpp"
 	<agar/gui/opengl.h>
+
+1259085968 c:\agar\master\include\htmlayout\htmlite.h
+	"htmlayout.h"
+	"htmlayout_behavior.hpp"
+
+1260134630 c:\agar\master\include\htmlayout\htmlayout.h
+	<windows.h>
+	"value.h"
+	"htmlayout_dom.h"
+	"htmlayout_behavior.h"
+	"htmlayout_behavior.hpp"
+	"htmlayout_dom.hpp"
+	"htmlayout_dialog.hpp"
+	"behaviors/notifications.h"
+	"htmlayout_value.hpp"
+	"htmlayout_controls.hpp"
+
+1260564036 c:\agar\master\include\htmlayout\value.h
+	<windows.h>
+	<string>
+	"aux-slice.h"
+	"aux-cvt.h"
+
+1249064178 c:\agar\master\include\htmlayout\aux-slice.h
+	"aux-cvt.h"
+	"limits.h"
+
+1259420556 c:\agar\master\include\htmlayout\aux-cvt.h
+	<assert.h>
+	<wchar.h>
+	<string.h>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+
+1259172616 c:\agar\master\include\htmlayout\htmlayout_dom.h
+	"value.h"
+
+1249064178 c:\agar\master\include\htmlayout\htmlayout_behavior.h
+	<windows.h>
+
+1249064178 c:\agar\master\include\htmlayout\htmlayout_behavior.hpp
+	<windows.h>
+	<assert.h>
+	"htmlayout.h"
+	"htmlayout_behavior.h"
+	"behavior_impl.hpp"
+
+1259487426 c:\agar\master\include\htmlayout\htmlayout_dom.hpp
+	"value.h"
+	"htmlayout_dom.h"
+	"htmlayout_aux.h"
+	"htmlayout_queue.h"
+	<assert.h>
+	<stdio.h>
+	<vector>
+
+1253547200 c:\agar\master\include\htmlayout\htmlayout_aux.h
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"aux-cvt.h"
+	"aux-slice.h"
+	"htmlayout.h"
+
+1255014758 c:\agar\master\include\htmlayout\htmlayout_queue.h
+	<windows.h>
+	<stdio.h>
+	<assert.h>
+
+1259420570 c:\agar\master\include\htmlayout\htmlayout_dialog.hpp
+	"htmlayout_dom.hpp"
+	"htmlayout_behavior.hpp"
+	"htmlayout_controls.hpp"
+	"htmlayout_notifications.hpp"
+	"htmlayout_queue.h"
+	<shellapi.h>
+	<assert.h>
+
+1259173162 c:\agar\master\include\htmlayout\htmlayout_controls.hpp
+	<stdio.h>
+	"value.h"
+	"htmlayout_dom.hpp"
+	"htmlayout_value.hpp"
+	"htmlayout_aux.h"
+
+1249064178 c:\agar\master\include\htmlayout\htmlayout_value.hpp
+	<assert.h>
+	"value.h"
+	<map>
+	<string>
+	<vector>
+
+1254323518 c:\agar\master\include\htmlayout\htmlayout_notifications.hpp
+	"htmlayout_dom.h"
+	"htmlayout_aux.h"
+	"htmlayout_behavior.hpp"
+	<assert.h>
+
+1248439462 c:\agar\master\include\cgal\bso_rational_nt.h
+	<CGAL/basic.h>
+	<CGAL/Gmpq.h>
+	<CGAL/MP_Float.h>
+	<CGAL/Quotient.h>
+
+1166524294 c:\agar\master\include\pcre\pcre.h
+	<stdlib.h>
+
+1265208123 c:\agar\master\include\visilibity\visilibity.hpp
+	<cmath>
+	<vector>
+	<queue>
+	<set>
+	<list>
+	<algorithm>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<cstring>
+	<string>
+	<cassert>
 

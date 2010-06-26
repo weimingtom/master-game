@@ -8,12 +8,11 @@
 #include <agar/gui.h>
 
 
-#include "htmlite.h"
+#include "htmlayout/htmlite.h"
 
-#include "htmlayout_dom.hpp"
+#include "htmlayout/htmlayout_dom.hpp"
 
 
-#include "myButton.h"
 
 #include <agar/core/types.h>
 

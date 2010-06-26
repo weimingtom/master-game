@@ -54,11 +54,9 @@
 		<Unit filename="geomap.cpp" />
 		<Unit filename="globals.cpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="myButton.cpp" />
 		<Unit filename="myButton.h" />
 		<Unit filename="mytextbox.h" />
 		<Unit filename="mywidget.h" />
-		<Unit filename="polygons.cpp" />
 		<Unit filename="task.cpp" />
 		<Extensions>
 			<code_completion />

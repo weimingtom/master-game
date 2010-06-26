@@ -1,6 +1,6 @@
 #include "geomap.hpp"
 #include "globals.hpp"
-#include "pcre.h"
+#include "pcre/pcre.h"
 
 
 
