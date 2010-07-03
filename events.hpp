@@ -21,11 +21,8 @@ protected:
     typedef  FastDelegate Observer;
     typedef  std::vector<Observer> Observers;
 
-    Observers m_Observers;
-
 public:
-
-
+    Observers m_Observers;
 
 //template <typename OBJECT, typename FUNCTION>
 //void add(Entity & ent)
@@ -43,13 +40,17 @@ void addTask(TaskType & tsk)
 void operator() (PARAM p)
     {
 
-        //Observers::iterator cii=m_Observers.begin();
-        for (int i=0;i<m_Observers.size();i++)
+//        m_Observers.front()(p);
+
+       typename Observers::iterator cii=m_Observers.begin();
+       for (;cii!=m_Observers.end();++cii)
         {
-            int a=m_Observers[i](p);
+            //int a=m_Observers[i](p);
+            Observer cio=*cii;
+            int a=cio(p);
             if (a)
             {
-//                m_Observers.pop_back();
+                m_Observers.pop_back();
             };
         };
     }

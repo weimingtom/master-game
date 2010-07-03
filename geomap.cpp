@@ -10,6 +10,15 @@ Polygon_with_holes_2 visiBounded;
 
 GLUtesselator *tess;
 
+/*
+template <typename PARAM>
+Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
+{
+    static Slot<PARAM> b1=*(Slot<PARAM>*)arg;
+    b1(ival);
+    return 1;
+};
+*/
 
 GLvoid CALLBACK tcbBegin (GLenum prim)
 {
@@ -159,41 +168,6 @@ void MapDrawFunction(AG_Event *event)
 
     glClearColor(0.0f,0.0f,0.0f,1.0f);
 
-
-
-//	glEnable(GL_LIGHTING);
-//	glEnable(GL_LIGHT0);
-//
-//	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-//
-//	glShadeModel(shading == FLATSHADING ? GL_FLAT : GL_SMOOTH);
-
-//	glEnable(GL_LIGHT1);
-//	glEnable(GL_DEPTH_TEST);
-//	glPolygonMode(GL_FRONT_AND_BACK, wireframe ? GL_LINE : GL_POLYGON);
-//	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
-//	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
-//	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular);
-//	glShadeModel(shading == FLATSHADING ? GL_FLAT : GL_SMOOTH);
-//
-//	pos[0] = 10.0f;
-//	pos[1] = 10.0f;
-//	pos[2] = 0.0f;
-//	pos[3] = 1.0f;
-//	glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, 10.0f);
-//	glLightfv(GL_LIGHT1, GL_POSITION, pos);
-//
-//	pos[1] = -10.0f;
-//	pos[2] = 10.0f;
-//	glLightfv(GL_LIGHT0, GL_POSITION, pos);
-//	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 10.0f);
-//
-//	glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
-//	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-//	glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
-//
-
-
 	glPushMatrix();
 	glTranslated(0.0, 0.0, vz);
     GLfloat visi[4]={0.0,0.0,0.0,1.0};
@@ -269,6 +243,14 @@ void MapDrawFunction(AG_Event *event)
     glColor3f(1.0,0.0,0.0);
     guest1.Draw();
 
+    glColor3f(1.0,1.0,1.0);
+    glBegin(GL_TRIANGLES);
+        glVertex3f(cursorX-10,cursorY-10,1.0f);
+        glVertex3f(cursorX+10,cursorY-10,1.0f);
+        glVertex3f(cursorX-10,cursorY+10,1.0f);
+    glEnd();
+
+
     glPopMatrix();
     glPopAttrib();
 
@@ -277,8 +259,9 @@ void
 MapScaleFunction(AG_Event *event)
 {
 	//GLdouble xMin, xMax, yMin, yMax;
-
+    glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+    //glScalef(0.001,0.001,0);
 
 	/* Set a 60 degrees field of view with 1.0 aspect ratio. */
 	/*yMax = 0.01*tan(0.523598f);
@@ -286,10 +269,12 @@ MapScaleFunction(AG_Event *event)
 	xMin = yMin;
 	xMax = yMax;
 	*/
-	//glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
-	glOrtho(mapXMin, mapXMax, mapYMax,mapYMin, 0.1, 100.0);
-    //glScalef(0,-1,0);
+	glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
+	//glOrtho(mapXMin, mapXMax, mapYMax,mapYMin, 0.1, 100.0);
+
     //glTranslatef(0,-(mapYMax-mapYMin)/2,0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 };
 
 void
@@ -300,18 +285,42 @@ MapClickFunction(AG_Event *event)
     int x=AG_INT(2);
     int y=AG_INT(3);
 
-    //motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(x,y),visGraphCollision,5);
-    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
+    GLint viewport[4];
+    GLdouble modelview[16];
+    GLdouble projection[16];
 
-    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    ComplexTask followPath=ComplexTask(order1);
-    for (int i =1;i<motionPath.size();i++)
+    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+    glGetDoublev(GL_PROJECTION_MATRIX,projection);
+
+    glGetIntegerv(GL_VIEWPORT,viewport) ;
+
+//    viewport[2]=640;
+//    viewport[3]=480;
+
+    GLdouble posX,posY,posZ;
+
+//    y=viewport[3]-y;
+
+    gluUnProject(x,y,0,modelview,projection,viewport,&posX,&posY,&posZ);
+    cursorX=posX;
+    cursorY=posY;
+
+    /*
+    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(posX,posY),visGraphCollision,5);
+    //motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
+
+    static  goToPoint order1= goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
+    static ComplexTask followPath=ComplexTask(order1);
+    for (int i =2;i<motionPath.size();i++)
     {
         //goToPoint order2= ;
-        motionPath[i].snap_to_boundary_of(mapEnv);
-        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
+        //motionPath[i].snap_to_boundary_of(mapEnv);
+        static goToPoint gp1 = *(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
+        followPath.AddAction(gp1);
     }
+    if (UpdateTimerSlot.m_Observers.size()==0)
     UpdateTimerSlot.addTask<ComplexTask>(followPath);
+    */
 
 };
 

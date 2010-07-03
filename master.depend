@@ -2,7 +2,7 @@
 1277383385 source:c:\agar\master\events.cpp
 	"events.hpp"
 
-1277386239 c:\agar\master\events.hpp
+1278056316 c:\agar\master\events.hpp
 	"entity.hpp"
 	"task.hpp"
 	<iostream>
@@ -27,7 +27,7 @@
 	<string>
 	<cassert>
 
-1277531050 c:\agar\master\task.hpp
+1277888983 c:\agar\master\task.hpp
 	"entity.hpp"
 	"visilibity/visilibity.hpp"
 	<vector>
@@ -1232,20 +1232,19 @@
 1249064176 c:\agar\master\include\behaviors\notifications.h
 	<windows.h>
 
-1274785441 c:\agar\master\globals.hpp
+1278077111 c:\agar\master\globals.hpp
 	"entity.hpp"
 	"events.hpp"
 	"geomap.hpp"
 
-1277530476 c:\agar\master\geomap.hpp
+1277533866 c:\agar\master\geomap.hpp
 	<agar/core.h>
 	<agar/gui.h>
-	"visilibity.hpp"
+	"visilibity/visilibity.hpp"
 	<vector>
 	<sstream>
-	"rapidxml.hpp"
-	"rapidxml_print.hpp"
-	<direct.h>
+	"rapidxml/rapidxml.hpp"
+	"rapidxml/rapidxml_print.hpp"
 	<agar/gui/opengl.h>
 	<GL/glu.h>
 	"CGAL/bso_rational_nt.h"
@@ -6431,7 +6430,7 @@
 	<CGAL/Gps_segment_traits_2.h>
 	<CGAL/Gps_traits_2.h>
 
-1277530509 source:c:\agar\master\geomap.cpp
+1278071578 source:c:\agar\master\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre/pcre.h"
@@ -6439,10 +6438,10 @@
 1166524294 c:\agar\master\include\pcre.h
 	<stdlib.h>
 
-1274785441 source:c:\agar\master\globals.cpp
+1277904142 source:c:\agar\master\globals.cpp
 	"globals.hpp"
 
-1277530885 source:c:\agar\master\main.cpp
+1278076725 source:c:\agar\master\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
@@ -6476,7 +6475,7 @@
 	"rapidxml.hpp"
 	"rapidxml_print.hpp"
 
-1277374592 source:c:\agar\master\task.cpp
+1277888966 source:c:\agar\master\task.cpp
 	"task.hpp"
 
 1268250214 source:c:\agar\master\entity.cpp
@@ -6604,4 +6603,15 @@
 	<cstring>
 	<string>
 	<cassert>
+
+1242164778 c:\agar\master\include\rapidxml\rapidxml.hpp
+	<cstdlib>
+	<cassert>
+	<new>
+	<exception>
+
+1242413360 c:\agar\master\include\rapidxml\rapidxml_print.hpp
+	"rapidxml.hpp"
+	<ostream>
+	<iterator>
 

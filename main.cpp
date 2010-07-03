@@ -12,8 +12,6 @@
 
 #include "htmlayout/htmlayout_dom.hpp"
 
-
-
 #include <agar/core/types.h>
 
 #include "dialog.cpp"
@@ -43,6 +41,7 @@ char *cmdPromptText;
 int curNode=0;
 
 std::vector <AG_Button*> button;
+AG_GLView *glv;
 
 AG_Textbox *tb;
 
@@ -61,14 +60,6 @@ AG_Pixmap *pm1;
 HTMLite h1;
 BITMAPINFO bmpInfo;
 HBITMAP hbmp;
-
-template <typename PARAM>
-Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
-{
-    static Slot<PARAM> b1=*(Slot<PARAM>*)arg;
-    b1(ival);
-    return 1;
-};
 
 
 void textResize(AG_Event *event)
@@ -211,7 +202,7 @@ for (int j=0;j<he1-1;j++)
  // delete [] pixels;
  // delete [] pixels2;
   //delete [] pixelbitmap ;
-  free(pixelbitmap);
+//  free(pixelbitmap);
   free(pbm);
   free(pbm2);
   //delete &w1;
@@ -227,19 +218,6 @@ chooseAnswer(AG_Event *event)
     std::string c;
     AG_Surface *surf;
 	AG_Surface *surf2;
-
-    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    ComplexTask followPath=ComplexTask(order1);
-    for (int i =1;i<motionPath.size();i++)
-    {
-        //goToPoint order2= ;
-        motionPath[i].snap_to_boundary_of(mapEnv);
-        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
-    }
-
-
-    UpdateTimerSlot.addTask<ComplexTask>(followPath);
-
     curNode=convGraph[curNode]->children[cn];
     if (convGraph[curNode]->owner=="npc")
     {
@@ -287,10 +265,21 @@ chooseAnswer(AG_Event *event)
         }
 
 	};
-   // h1.load((LPCBYTE)a,(DWORD)sizeof(a));
-   //AG_LabelJustify(button[1]->lbl, AG_TEXT_CENTER);
-   //AG_LabelValign(button[1]->lbl, button[1]->valign);
-   //b=wchar_t(c.c_str());
+
+     motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
+
+    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
+    ComplexTask followPath=ComplexTask(order1);
+    for (int i =2;i<motionPath.size();i++)
+    {
+        //goToPoint order2= ;
+        motionPath[i].snap_to_boundary_of(mapEnv);
+        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
+    }
+    //if (UpdateTimerSlot.m_Observers.size()==0)
+    UpdateTimerSlot.addTask<ComplexTask>(followPath);
+
+
 }
 
 static void
@@ -465,7 +454,7 @@ int w1,he1;
 
 	win3 = AG_WindowNew(0);
 
-    AG_WindowSetGeometryAligned(win3, AG_WINDOW_MC, 640, 480);
+    AG_WindowSetGeometryAligned(win3, AG_WINDOW_MC, 650, 650);
 
 	AG_WindowSetCaption(win3, "Карта");
     AG_WindowSetMinSize(win3,650,650);
@@ -473,7 +462,6 @@ int w1,he1;
 	AG_Box *hb = AG_BoxNewHoriz(win3, 0);
 	AG_Expand(hb);
 
-	AG_GLView *glv;
 	glv = AG_GLViewNew(hb, 0);
     //AG_Expand(glv);
     AG_GLViewSizeHint(glv,600,500);
@@ -496,8 +484,8 @@ int main(int argc, char *argv[])
 	if (AG_InitCore("", 0) == -1) {
 		return (1);
 	}
-//	if (AG_InitGraphics("wgl") == -1) {
-    if (AG_InitVideo(1024,768,32,AG_VIDEO_OPENGL)==-1){
+	if (AG_InitGraphics("wgl") == -1) {
+    //if (AG_InitVideo(1024,768,32,AG_VIDEO_OPENGL)==-1){
 		return (-1);
 	}
 
@@ -536,10 +524,9 @@ int main(int argc, char *argv[])
 
 	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
 
-    AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
+    //AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
 
-    //UpdateTimerSlot.add(guest1);
-
+/*
     goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
     ComplexTask followPath=ComplexTask(order1);
     for (int i =1;i<motionPath.size();i++)
@@ -550,20 +537,17 @@ int main(int argc, char *argv[])
     }
 
 
-//    goToPoint order2=goToPoint(200,100,&guest1);
+    if (UpdateTimerSlot.m_Observers.size()==0)
+    UpdateTimerSlot.addTask<ComplexTask>(followPath);
+*/
+   AG_Timeout* TO = new AG_Timeout;
 
-//    ComplexTask followPath=ComplexTask(order1);
+   Slot<int>* pSlot =&UpdateTimerSlot;
 
-//    followPath.AddAction(order1);
-    //followPath.AddAction(order2);
+    AG_SetTimeout(TO, timerFunc<int>, &pSlot, 0);
 
-    //UpdateTimerSlot.addTask<ComplexTask>(followPath);
+    AG_ScheduleTimeout(NULL, TO, 1000);
 
-    AG_Timeout *TO = new AG_Timeout;
-
-    AG_SetTimeout(TO, timerFunc<int>, &UpdateTimerSlot, 0);
-
-    AG_ScheduleTimeout(NULL, TO, 100);
 
     AG_BindGlobalKey(AG_KEY_ESCAPE, AG_KEYMOD_ANY, AG_QuitGUI);
 

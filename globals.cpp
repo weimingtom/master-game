@@ -5,9 +5,9 @@ Entity guest1=  *(new Entity(160,180));
 Slot<int> UpdateTimerSlot;
 
 int mapYMin=0;
-int mapYMax=1000;
+int mapYMax=650;
 int mapXMin=0;
-int mapXMax=1024;
+int mapXMax=650;
 
 geoData sceneVertices;
 geoData sceneVerticesCollision;
@@ -21,3 +21,10 @@ VisiLibity::Visibility_Graph visGraphCollision;
 VisiLibity::Polyline motionPath;
 
 AG_Surface *surf1;
+
+float cursorX,cursorY;
+
+//AG_Timeout *TO;
+
+//ComplexTask followPath;
+//goToPoint order1;

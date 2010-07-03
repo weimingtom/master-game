@@ -14,6 +14,7 @@ class Task
 
 class ComplexTask: public Task {
     public:
+        ComplexTask();
         ComplexTask(Task &t1);
         std::vector<Task*> Actions;
         int currentAction;
@@ -25,6 +26,7 @@ class ComplexTask: public Task {
 class goToPoint: public Task {
         public:
         VisiLibity::Point dest;
+        goToPoint::goToPoint();
         goToPoint(float x,float y, Entity* ent);
         int execute(int time);
     };

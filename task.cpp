@@ -1,6 +1,11 @@
 
 #include "task.hpp"
 
+ComplexTask::ComplexTask()
+{
+}
+
+
 ComplexTask::ComplexTask(Task &t1)
 {
     AddAction(t1);
@@ -29,6 +34,11 @@ int ComplexTask::execute(int time)
  void ComplexTask::AddAction(Task &t1)
  {
      Actions.push_back(&t1);
+};
+
+goToPoint::goToPoint()
+{
+
 };
 
 goToPoint::goToPoint(float x,float y, Entity* ent)

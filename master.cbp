@@ -30,7 +30,6 @@
 		</Compiler>
 		<Linker>
 			<Add option="-mwindows" />
-			<Add library="C:\MinGW\lib\libmingw32.a" />
 			<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
 			<Add library="C:\cpp\visilibity\source_code\visilibity.o" />
 			<Add library="C:\MinGW\lib\libglu32.a" />

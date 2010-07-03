@@ -25,9 +25,25 @@ extern VisiLibity::Visibility_Graph visGraphCollision;
 
 extern VisiLibity::Polyline motionPath;
 
-extern VisiLibity::Polyline motionPath;
-
 extern AG_Surface *surf1;
+
+extern float cursorX,cursorY;
+
+//extern AG_Timeout *TO;
+
+//extern ComplexTask followPath;
+
+//extern goToPoint order1;
+
+template <typename PARAM>
+Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
+{
+    static Slot<PARAM> b1=**(Slot<PARAM>**)arg;
+    //b1(ival);
+    UpdateTimerSlot(ival);
+    return 1;
+};
+
 
 #endif
 
