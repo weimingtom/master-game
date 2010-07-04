@@ -27,6 +27,9 @@ extern VisiLibity::Polyline motionPath;
 
 extern AG_Surface *surf1;
 
+<<<<<<< local
+extern ComplexTask followPath;
+=======
 extern float cursorX,cursorY;
 
 //extern AG_Timeout *TO;
@@ -44,6 +47,7 @@ Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
     return 1;
 };
 
+>>>>>>> other
 
 #endif
 

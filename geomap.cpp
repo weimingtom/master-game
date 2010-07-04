@@ -285,13 +285,25 @@ MapClickFunction(AG_Event *event)
     int x=AG_INT(2);
     int y=AG_INT(3);
 
+<<<<<<< local
+=======
     GLint viewport[4];
     GLdouble modelview[16];
     GLdouble projection[16];
+>>>>>>> other
 
+<<<<<<< local
+    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(x,y),visGraphCollision,5);
+=======
     glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
     glGetDoublev(GL_PROJECTION_MATRIX,projection);
+>>>>>>> other
 
+<<<<<<< local
+     static goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
+    followPath=ComplexTask(order1);
+    for (int i =1;i<motionPath.size();i++)
+=======
     glGetIntegerv(GL_VIEWPORT,viewport) ;
 
 //    viewport[2]=640;
@@ -312,13 +324,24 @@ MapClickFunction(AG_Event *event)
     static  goToPoint order1= goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
     static ComplexTask followPath=ComplexTask(order1);
     for (int i =2;i<motionPath.size();i++)
+>>>>>>> other
     {
         //goToPoint order2= ;
+<<<<<<< local
+        motionPath[i].snap_to_boundary_of(mapEnv);
+        static goToPoint* gp1=new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1);
+        followPath.AddAction(*gp1);
+=======
         //motionPath[i].snap_to_boundary_of(mapEnv);
         static goToPoint gp1 = *(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
         followPath.AddAction(gp1);
+>>>>>>> other
     }
+<<<<<<< local
+
+=======
     if (UpdateTimerSlot.m_Observers.size()==0)
+>>>>>>> other
     UpdateTimerSlot.addTask<ComplexTask>(followPath);
     */
 
@@ -326,17 +349,17 @@ MapClickFunction(AG_Event *event)
 
 std::vector<VisiLibity::Point> loadPath(char* str)
 {
-char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // С€Р°Р±Р»РѕРЅ (СЂРµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ)
-   char point[] = "[-\\d]*\\.*\\d*,[-\\d]*\\.*\\d*"; // С€Р°Р±Р»РѕРЅ (СЂРµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ)
-//   char str[] = "m 148.57143,503.79075 l 5.71428,348.57143 85.71429,0 -17.14286,-354.28571 -74.28571,5.71428 z";  // СЂР°Р·Р±РёСЂР°РµРјР°СЏ СЃС‚СЂРѕРєР°
-   //char str[] = "eseses";  // СЂР°Р·Р±РёСЂР°РµРјР°СЏ СЃС‚СЂРѕРєР°
+char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
+   char point[] = "[-\\d]*\\.*\\d*,[-\\d]*\\.*\\d*"; // шаблон (регулярное выражение)
+//   char str[] = "m 148.57143,503.79075 l 5.71428,348.57143 85.71429,0 -17.14286,-354.28571 -74.28571,5.71428 z";  // разбираемая строка
+   //char str[] = "eseses";  // разбираемая строка
     std::vector<std::string> commands;
     std::vector<std::vector<VisiLibity::Point> > sequences;
 
     VisiLibity::Point curPos;
 
 
-   // РєРѕРјРїРёР»РёСЂРѕРІР°РЅРёРµ СЂРµРіСѓР»СЏСЂРЅРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ РІРѕ РІРЅСѓС‚СЂРµРЅРЅРµРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ
+   // компилирование регулярного выражения во внутреннее представление
    pcre *re;
    pcre *ptpattern;
    int options = 0;
@@ -346,7 +369,7 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // С€Р°Р±Р»РѕРЅ (СЂРµРіСѓР»СЏСЂРЅРѕРµ
    ptpattern = pcre_compile ((char *) point, options, &error, &erroffset, NULL);
 
 
-   if (!re){ // РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё РєРѕРјРїРёР»СЏС†РёРё
+   if (!re){ // в случае ошибки компиляции
         cout << "Failed\n";
    }
    else{
@@ -361,7 +384,7 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // С€Р°Р±Р»РѕРЅ (СЂРµРіСѓР»СЏСЂРЅРѕРµ
             count = pcre_exec (re, NULL, (char *) str, strlen(str), ovector[1]-1, 0, ovector, 30);
 
             for (int c = 0; c < 2 * count; c += 2){
-            if (ovector[c] < 0){ // РёР»Рё <unset> РґР»СЏ РЅРµСЃРѕРїРѕСЃС‚Р°РІРёРІС€РёС…СЃСЏ РїРѕРґРІС‹СЂР°Р¶РµРЅРёР№
+            if (ovector[c] < 0){ // или <unset> для несопоставившихся подвыражений
                cout << "<unset>\n";
             }
             else{
@@ -374,7 +397,7 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // С€Р°Р±Р»РѕРЅ (СЂРµРіСѓР»СЏСЂРЅРѕРµ
       }
    }
 
-   if (!ptpattern){ // РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё РєРѕРјРїРёР»СЏС†РёРё
+   if (!ptpattern){ // в случае ошибки компиляции
       cout << "Failed\n";
    }
    else{
@@ -397,7 +420,7 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // С€Р°Р±Р»РѕРЅ (СЂРµРіСѓР»СЏСЂРЅРѕРµ
           {
 
             count = pcre_exec (ptpattern, NULL, (char *)temp ,strlen(temp) , ovector[1]+1, 0, ovector, 30);
-             //РІС‹РІРѕРґ РїР°СЂ {РЅР°С‡Р°Р»Рѕ, РєРѕРЅРµС†} СЃРѕРІРїР°РґРµРЅРёСЏ
+             //вывод пар {начало, конец} совпадения
              for (int c = 0; c < 2 * count; c += 2)
              {
                 const char* tempcoords;

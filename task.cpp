@@ -1,14 +1,14 @@
 
 #include "task.hpp"
 
-ComplexTask::ComplexTask()
-{
-}
-
-
 ComplexTask::ComplexTask(Task &t1)
 {
     AddAction(t1);
+    currentAction=0;
+}
+
+ComplexTask::ComplexTask()
+{
     currentAction=0;
 }
 
