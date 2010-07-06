@@ -27,7 +27,13 @@ extern VisiLibity::Polyline motionPath;
 
 extern AG_Surface *surf1;
 
-extern float cursorX,cursorY;
+extern GLint viewport[4];
+extern GLdouble modelview[16];
+extern GLdouble projection[16];
+
+
+//extern float cursorX,cursorY;
+extern float cursorwX,cursorwY;
 
 //extern AG_Timeout *TO;
 

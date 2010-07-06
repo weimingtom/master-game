@@ -22,9 +22,13 @@ VisiLibity::Polyline motionPath;
 
 AG_Surface *surf1;
 
-float cursorX,cursorY;
+GLint viewport[4];
+GLdouble modelview[16];
+GLdouble projection[16];
 
+
+//float cursorX,cursorY;
+float cursorwX,cursorwY;
 //AG_Timeout *TO;
-
 //ComplexTask followPath;
 //goToPoint order1;

@@ -28,6 +28,8 @@
 
 #include "formaText.h"
 
+extern "C" void tss_cleanup_implemented() { }
+
 
 using namespace std;
 
@@ -60,7 +62,6 @@ AG_Pixmap *pm1;
 HTMLite h1;
 BITMAPINFO bmpInfo;
 HBITMAP hbmp;
-
 
 void textResize(AG_Event *event)
 {
@@ -202,7 +203,10 @@ for (int j=0;j<he1-1;j++)
  // delete [] pixels;
  // delete [] pixels2;
   //delete [] pixelbitmap ;
-//  free(pixelbitmap);
+
+  //free(pixelbitmap);
+
+
   free(pbm);
   free(pbm2);
   //delete &w1;
@@ -325,7 +329,7 @@ MultiLineExample(const char *title, int wordwrap,char* a)
     //AG_WidgetDisable(textbox);
 
    //win2 = AG_WindowNew(0);
-   //AG_WindowSetCaption(win2, "Ð’Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð²");
+   //AG_WindowSetCaption(win2, "Âàðèàíòû îòâåòîâ");
 
 
 
@@ -456,7 +460,7 @@ int w1,he1;
 
     AG_WindowSetGeometryAligned(win3, AG_WINDOW_MC, 650, 650);
 
-	AG_WindowSetCaption(win3, "ÐšÐ°Ñ€Ñ‚Ð°");
+	AG_WindowSetCaption(win3, "Map");
     AG_WindowSetMinSize(win3,650,650);
 
 	AG_Box *hb = AG_BoxNewHoriz(win3, 0);
@@ -484,8 +488,9 @@ int main(int argc, char *argv[])
 	if (AG_InitCore("", 0) == -1) {
 		return (1);
 	}
-	if (AG_InitGraphics("wgl") == -1) {
-    //if (AG_InitVideo(1024,768,32,AG_VIDEO_OPENGL)==-1){
+
+//	if (AG_InitGraphics("sdlgl") == -1) {
+    if (AG_InitVideo(1024,768,32,AG_VIDEO_OPENGL)==-1){
 		return (-1);
 	}
 
@@ -510,7 +515,7 @@ int main(int argc, char *argv[])
     strcat(a,"\n");
     strcat(a,convGraph[curNode]->text.c_str());
 
-	MultiLineExample("Ð›Ð¾Ð³", 1,a);
+	MultiLineExample("Log", 1,a);
 
 
   AG_Event ev;
@@ -525,18 +530,21 @@ int main(int argc, char *argv[])
 	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
 
     //AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
+    //UpdateTimerSlot.add(guest1);
 
+   /*
+=======
 /*
+>>>>>>> other
     goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    ComplexTask followPath=ComplexTask(order1);
+    followPath=ComplexTask(order1);
     for (int i =1;i<motionPath.size();i++)
     {
         //goToPoint order2= ;
         motionPath[i].snap_to_boundary_of(mapEnv);
-        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
+        goToPoint gp1=*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
+        followPath.AddAction(gp1);
     }
-
-
     if (UpdateTimerSlot.m_Observers.size()==0)
     UpdateTimerSlot.addTask<ComplexTask>(followPath);
 */
@@ -547,6 +555,8 @@ int main(int argc, char *argv[])
     AG_SetTimeout(TO, timerFunc<int>, &pSlot, 0);
 
     AG_ScheduleTimeout(NULL, TO, 1000);
+
+
 
 
     AG_BindGlobalKey(AG_KEY_ESCAPE, AG_KEYMOD_ANY, AG_QuitGUI);
