@@ -243,6 +243,23 @@ void MapDrawFunction(AG_Event *event)
     glColor3f(1.0,0.0,0.0);
     guest1.Draw();
 
+    GLint viewport[4];
+    GLdouble modelview[16];
+    GLdouble projection[16];
+
+    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+    glGetDoublev(GL_PROJECTION_MATRIX,projection);
+    glGetIntegerv(GL_VIEWPORT,viewport) ;
+
+    GLdouble posX,posY,posZ;
+
+//    y=viewport[3]-y;
+
+    gluUnProject(viewport[0]+cursorX,viewport[1] +viewport[3]-cursorY,0,modelview,projection,viewport,&posX,&posY,&posZ);
+
+
+
+
     glColor3f(1.0,1.0,1.0);
     glBegin(GL_TRIANGLES);
         glVertex3f(cursorX-10,cursorY-10,1.0f);
@@ -282,40 +299,14 @@ MapClickFunction(AG_Event *event)
 {
     void *p=AG_SELF();
     int b=AG_INT(1);
-    int x=AG_INT(2);
-    int y=AG_INT(3);
+    int cursorX=AG_INT(2);
+    int cursorY=AG_INT(3);
 
-<<<<<<< local
-=======
-    GLint viewport[4];
-    GLdouble modelview[16];
-    GLdouble projection[16];
->>>>>>> other
 
-<<<<<<< local
-    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(x,y),visGraphCollision,5);
-=======
-    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-    glGetDoublev(GL_PROJECTION_MATRIX,projection);
->>>>>>> other
-
-<<<<<<< local
-     static goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    followPath=ComplexTask(order1);
-    for (int i =1;i<motionPath.size();i++)
-=======
-    glGetIntegerv(GL_VIEWPORT,viewport) ;
 
 //    viewport[2]=640;
 //    viewport[3]=480;
 
-    GLdouble posX,posY,posZ;
-
-//    y=viewport[3]-y;
-
-    gluUnProject(x,y,0,modelview,projection,viewport,&posX,&posY,&posZ);
-    cursorX=posX;
-    cursorY=posY;
 
     /*
     motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(posX,posY),visGraphCollision,5);

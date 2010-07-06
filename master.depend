@@ -6604,11 +6604,12 @@
 	<string>
 	<cassert>
 
-<<<<<<< local
+1242413360 al
+
 1277574476 source:c:\agar\master-game\events.cpp
 	"events.hpp"
 
-1277987350 c:\agar\master-game\events.hpp
+1278166330 c:\agar\master-game\events.hpp
 	"entity.hpp"
 	"task.hpp"
 	<iostream>
@@ -6633,7 +6634,7 @@
 	<string>
 	<cassert>
 
-1277982552 c:\agar\master-game\task.hpp
+1278166472 c:\agar\master-game\task.hpp
 	"entity.hpp"
 	"visilibity/visilibity.hpp"
 	<vector>
@@ -6767,7 +6768,7 @@
 1277574476 c:\agar\master-game\include\behaviors\notifications.h
 	<windows.h>
 
-1277982466 c:\agar\master-game\globals.hpp
+1278358540 c:\agar\master-game\globals.hpp
 	"entity.hpp"
 	"events.hpp"
 	"geomap.hpp"
@@ -6789,24 +6790,22 @@
 	<agar/core/types.h>
 
 1277574476 c:\agar\master-game\include\rapidxml\rapidxml.hpp
-=======
+
 1242164778 c:\agar\master\include\rapidxml\rapidxml.hpp
->>>>>>> other
+
+1271350190 er
 	<cstdlib>
 	<cassert>
 	<new>
 	<exception>
-
-<<<<<<< local
-1277574476 c:\agar\master-game\include\rapidxml\rapidxml_print.hpp
-=======
-1242413360 c:\agar\master\include\rapidxml\rapidxml_print.hpp
->>>>>>> other
 	"rapidxml.hpp"
 	<ostream>
 	<iterator>
 
-<<<<<<< local
+1277574476 c:\agar\master-game\include\rapidxml\rapidxml_print.hpp
+
+1242413360 c:\agar\master\include\rapidxml\rapidxml_print.hpp
+
 1277574476 c:\agar\master-game\include\cgal\bso_rational_nt.h
 	<CGAL/basic.h>
 	<CGAL/Gmpq.h>
@@ -8825,7 +8824,7 @@
 	<CGAL/Gps_segment_traits_2.h>
 	<CGAL/Gps_traits_2.h>
 
-1277987302 source:c:\agar\master-game\geomap.cpp
+1278358494 source:c:\agar\master-game\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre/pcre.h"
@@ -8833,7 +8832,7 @@
 1277574476 c:\agar\master-game\include\pcre\pcre.h
 	<stdlib.h>
 
-1277982580 source:c:\agar\master-game\globals.cpp
+1278358526 source:c:\agar\master-game\globals.cpp
 	"globals.hpp"
 
 1277985554 source:c:\agar\master-game\main.cpp
@@ -8867,7 +8866,7 @@
 	"rapidxml/rapidxml.hpp"
 	"rapidxml/rapidxml_print.hpp"
 
-1277982596 source:c:\agar\master-game\task.cpp
+1278166916 source:c:\agar\master-game\task.cpp
 	"task.hpp"
 
 1277574476 source:c:\agar\master-game\entity.cpp
@@ -9824,5 +9823,5 @@
 	<cstddef>
 	<bits/gthr.h>
 
-=======
->>>>>>> other
+1271350190 .h>
+

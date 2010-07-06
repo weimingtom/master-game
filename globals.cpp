@@ -22,20 +22,7 @@ VisiLibity::Polyline motionPath;
 
 AG_Surface *surf1;
 
-<<<<<<< local
-ComplexTask followPath;
-=======
 float cursorX,cursorY;
->>>>>>> other
-
-<<<<<<< local
-=======
 //AG_Timeout *TO;
->>>>>>> other
-
-<<<<<<< local
-
-=======
 //ComplexTask followPath;
 //goToPoint order1;
->>>>>>> other
