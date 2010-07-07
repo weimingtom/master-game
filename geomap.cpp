@@ -251,9 +251,10 @@ void MapDrawFunction(AG_Event *event)
 
     glColor3f(1.0,1.0,1.0);
     glBegin(GL_TRIANGLES);
-        glVertex3f(cursorwX-10,cursorwY-10,1.0f);
-        glVertex3f(cursorwX+10,cursorwY-10,1.0f);
-        glVertex3f(cursorwX-10,cursorwY+10,1.0f);
+        glVertex3f(cursorwX,cursorwY+1/sqrt(2)*10
+                   ,1.0f);
+        glVertex3f(cursorwX-1/sqrt(2)*10,cursorwY-1/sqrt(2)*10,1.0f);
+        glVertex3f(cursorwX+1/sqrt(2)*10,cursorwY-1/sqrt(2)*10,1.0f);
     glEnd();
 
 
@@ -275,8 +276,8 @@ MapScaleFunction(AG_Event *event)
 	xMin = yMin;
 	xMax = yMax;
 	*/
-	glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
-	//glOrtho(mapXMin, mapXMax, mapYMax,mapYMin, 0.1, 100.0);
+	//glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
+	glOrtho(mapXMin, mapXMax, mapYMax,mapYMin, 0.1, 100.0);
 
     //glTranslatef(0,-(mapYMax-mapYMin)/2,0);
     glMatrixMode(GL_MODELVIEW);
@@ -312,16 +313,24 @@ MapClickFunction(AG_Event *event)
     motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(cursorwX,cursorwY),visGraphCollision,5);
     //motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
 
-    static  goToPoint order1= goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    static ComplexTask followPath=ComplexTask(order1);
+    static goToPoint orderChain[10];
+    orderChain[0]=*(new goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1));
+    //static  goToPoint order1= goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
+    static ComplexTask followPath;
+    followPath=ComplexTask(orderChain[0]);
+    //static std::vector<goToPoint> orderChain;
+
     for (int i =2;i<motionPath.size();i++){
 
         //motionPath[i].snap_to_boundary_of(mapEnv);
-        static goToPoint gp1 = *(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
-        followPath.AddAction(gp1);
+        //static goToPoint gp1;
+        //gp1 = *(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
+        orderChain[i-1]=*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
+        //orderChain.push_back(gp1);
+        followPath.AddAction(orderChain[i-1]);
 
     }
-    //if (UpdateTimerSlot.m_Observers.size()==0)
+    if (UpdateTimerSlot.m_Observers.size()==0)
     UpdateTimerSlot.addTask<ComplexTask>(followPath);
 
 };

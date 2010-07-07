@@ -3,6 +3,7 @@
 
 ComplexTask::ComplexTask()
 {
+    currentAction=0;
 }
 
 

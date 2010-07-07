@@ -51,6 +51,7 @@ void operator() (PARAM p)
             if (a)
             {
                 m_Observers.pop_back();
+                break;
             };
         };
     }
