@@ -48,5 +48,7 @@ std::vector<VisiLibity::Point> loadPath(char* str);
 void MapDrawFunction(AG_Event *event);
 void MapScaleFunction(AG_Event *event);
 void MapClickFunction(AG_Event *event);
+void MapMoveFunction(AG_Event *event);
+
 Polygon_2 ngon(int n, float r);
 #endif

@@ -5,9 +5,16 @@ Entity guest1=  *(new Entity(160,180));
 Slot<int> UpdateTimerSlot;
 
 int mapYMin=0;
-int mapYMax=650;
+int mapYMax=1200;
 int mapXMin=0;
-int mapXMax=650;
+int mapXMax=1600;
+
+float mapCenterX=400;
+float mapCenterY=300;
+float mapWidth=1024;
+float mapHeight=768;
+
+
 
 geoData sceneVertices;
 geoData sceneVerticesCollision;

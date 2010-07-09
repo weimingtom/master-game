@@ -15,7 +15,7 @@
     char cd[_MAX_PATH];
     getcwd(cd, _MAX_PATH);
     //cout << cd;
-    strcat(cd,"\\dialog2.xml");
+    strcat(cd,"\\res\\dialog2.xml");
     ifstream in(cd);
     //ifstream in("C:\\Agar\\hellocpp2\\bin\\Debug\\dialog2.xml");
     string s;

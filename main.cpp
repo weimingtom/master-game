@@ -18,7 +18,7 @@
 
 #include "geomap.hpp"
 
-#define TESTFONT "CONSOLA.ttf"
+#define TESTFONT "res\\CONSOLA.ttf"
 
 #include "events.hpp";
 
@@ -62,6 +62,12 @@ AG_Pixmap *pm1;
 HTMLite h1;
 BITMAPINFO bmpInfo;
 HBITMAP hbmp;
+
+void mapDownPush(AG_Event *event)
+{
+    mapCenterY=mapCenterY+30;
+    AG_PostEvent(glv,glv,"widget-moved","%i",0);
+};
 
 void textResize(AG_Event *event)
 {
@@ -238,7 +244,7 @@ chooseAnswer(AG_Event *event)
     strcat(a,"\n");
   strcpy(b,"");
   //memset(b1,' ',1000);
-  strcat(b,"<html><head><META http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><link rel=\"stylesheet\" type=\"text/css\" href=\"mysite.css\"></head><body><div#test>");
+  strcat(b,"<html><head><META http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><link rel=\"stylesheet\" type=\"text/css\" href=\"res\\mysite.css\"></head><body><div#test>");
   strcat(b,a);
   strcat(b,"</div#test></body></html>");
   h1.load(LPCBYTE(b),strlen(b));
@@ -271,18 +277,6 @@ chooseAnswer(AG_Event *event)
 	};
 
      motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
-
-    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    ComplexTask followPath=ComplexTask(order1);
-    for (int i =2;i<motionPath.size();i++)
-    {
-        //goToPoint order2= ;
-        motionPath[i].snap_to_boundary_of(mapEnv);
-        followPath.AddAction(*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1)));
-    }
-    //if (UpdateTimerSlot.m_Observers.size()==0)
-    UpdateTimerSlot.addTask<ComplexTask>(followPath);
-
 
 }
 
@@ -336,7 +330,7 @@ MultiLineExample(const char *title, int wordwrap,char* a)
     char cd[_MAX_PATH];
     getcwd(cd, _MAX_PATH);
     //cout << cd;
-    strcat(cd,"\\map.svg");
+    strcat(cd,"\\res\\map.svg");
 
     sceneVertices = mapload(cd,mapEnv,visGraph,1.0);
     sceneVerticesCollision = mapload(cd,mapEnvCollision,visGraphCollision,10);
@@ -471,11 +465,17 @@ int w1,he1;
     AG_GLViewSizeHint(glv,600,500);
 	AG_WidgetFocus(glv);
 
+	AG_Button* mapDown=AG_ButtonNew(win3,0,"|");
+
+    AG_SetEvent(mapDown, "button-pushed", mapDownPush,"%i",0);
+
     AG_GLViewDrawFn(glv, MapDrawFunction,NULL);
 
     AG_GLViewScaleFn(glv, MapScaleFunction, NULL);
 
     AG_GLViewButtondownFn(glv, MapClickFunction, NULL);
+
+    AG_GLViewMotionFn(glv,MapMoveFunction,NULL);
 
     AG_WindowShow(win3);
 }
@@ -529,7 +529,7 @@ int main(int argc, char *argv[])
 
 	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
 
-    //AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
+    AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
     //UpdateTimerSlot.add(guest1);
 
    /*

@@ -13,6 +13,11 @@ extern int mapYMax;
 extern int mapXMin;
 extern int mapXMax;
 
+extern float mapCenterX;
+extern float mapCenterY;
+extern float mapWidth;
+extern float mapHeight;
+
 extern geoData sceneVertices;
 extern geoData sceneVerticesCollision;
 

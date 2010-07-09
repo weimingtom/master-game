@@ -111,7 +111,7 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
     mapEnv.enforce_standard_form();
     //mapEnvCollision.enforce_standard_form();
 
-    visGraph = *(new VisiLibity::Visibility_Graph(mapEnv));
+    visGraph = *(new VisiLibity::Visibility_Graph(mapEnv,0.00000001));
     //visGraphCollision = *(new VisiLibity::Visibility_Graph(mapEnvCollision));
     return vertices_temp;
 
@@ -265,24 +265,22 @@ void MapDrawFunction(AG_Event *event)
 void
 MapScaleFunction(AG_Event *event)
 {
-	//GLdouble xMin, xMax, yMin, yMax;
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-    //glScalef(0.001,0.001,0);
-
-	/* Set a 60 degrees field of view with 1.0 aspect ratio. */
-	/*yMax = 0.01*tan(0.523598f);
-	yMin = -yMax;
-	xMin = yMin;
-	xMax = yMax;
-	*/
 	//glOrtho(mapXMin, mapXMax, mapYMin, mapYMax, 0.1, 100.0);
-	glOrtho(mapXMin, mapXMax, mapYMax,mapYMin, 0.1, 100.0);
 
-    //glTranslatef(0,-(mapYMax-mapYMin)/2,0);
+	glOrtho(mapCenterX-mapWidth/2, mapCenterX+mapWidth/2, mapCenterY+mapHeight/2,mapCenterY-mapHeight/2, 0.1, 100.0);
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+};
 
+void
+MapMoveFunction(AG_Event *event)
+{
+        void *p=AG_SELF();
+    int cursorX=AG_INT(1);
+    int cursorY=AG_INT(2);
 
 };
 
