@@ -8776,3 +8776,19 @@
 	"entity.hpp"
 	<agar/gui/opengl.h>
 
+1277578672 source:c:\agar\master\visilibity.cpp
+	"visilibity/visilibity.hpp"
+	<cmath>
+	<vector>
+	<queue>
+	<set>
+	<list>
+	<algorithm>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<cstring>
+	<string>
+	<cassert>
+
