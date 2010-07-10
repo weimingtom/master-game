@@ -3,4 +3,5 @@ syntax: regexp
 ^obj$
 ^libs$
 ^res$
+^doc$
 master.cbp
