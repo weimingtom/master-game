@@ -134,6 +134,26 @@ void mapdraw()
             CGALvp.push_back(Point_2(visiPoly[j].x(),visiPoly[j].y()));
         };
 
+    Polygon_with_holes_2 mapEnvOB;
+    Pwh_list_2 mapEvnCGAL;
+
+    for (int j=0;j<mapEnv[0].n();j++)
+        {
+            mapEvnCGAL. front().outer_boundary().push_back(Point_2(mapEnv[0][j].x(),mapEnv[0][j].y()));
+        };
+
+        Polygon_2 holeCGAL;
+        for (int j=0;j<mapEnv[1].n();j++)
+        {
+            holeCGAL.push_back(Point_2(mapEnv[1][j].x(),mapEnv[1][j].y()));
+        };
+
+
+
+
+    CGAL::difference(mapEvnCGAL.front(),holeCGAL,std::back_inserter(mapEvnCGAL));
+
+
     Polygon_2 visRange=ngon(20,150.0);
     Pwh_list_2 intR;
     CGAL::intersection(CGALvp,visRange,std::back_inserter(intR));
