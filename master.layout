@@ -13,13 +13,13 @@
 	<File name="formatext.cpp" open="1" top="0" tabpos="5">
 		<Cursor position="326" topLine="6" />
 	</File>
-	<File name="geomap.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="6792" topLine="232" />
+	<File name="geomap.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="4031" topLine="133" />
 	</File>
 	<File name="globals.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="495" topLine="12" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
+	<File name="main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="1186" topLine="72" />
 	</File>
 	<File name="task.cpp" open="1" top="0" tabpos="3">
