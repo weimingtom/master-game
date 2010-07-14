@@ -13,8 +13,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-O0" />
-					<Add option="-frounding-math" />
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
@@ -26,39 +24,39 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="C:\msys\1.0\local\include\agar" />
-			<Add directory="include" />
+			<Add directory="C:\Program Files\CGAL\include" />
 			<Add directory="C:\MinGW\include" />
 			<Add directory="C:\msys\1.0\local\include" />
-			<Add directory="..\..\..\cpp\CGAL-3.6\CGAL-3.6\include" />
 		</Compiler>
 		<Linker>
 			<Add option="-mwindows" />
-			<Add library="..\trunk\core\.libs\libag_core.a" />
-			<Add library="..\trunk\gui\.libs\libag_gui.a" />
-			<Add library="C:\Agar\master-game\HTMLayout.lib" />
+			<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
+			<Add library="C:\cpp\visilibity\source_code\visilibity.o" />
 			<Add library="C:\MinGW\lib\libglu32.a" />
-			<Add library="..\..\cpp\freetype-2.3.12\objs\.libs\libfreetype.a" />
-			<Add library="..\..\MinGW\lib\libz.a" />
-			<Add library="..\..\MinGW\lib\libSDL.a" />
-			<Add library="..\..\MinGW\lib\libdxguid.a" />
-			<Add library="..\..\MinGW\lib\libopengl32.a" />
-			<Add library="libs\libpcre.dll.a" />
+			<Add library="C:\Agar\Agar-1.4.1\core\.libs\libag_core.a" />
+			<Add library="C:\Agar\Agar-1.4.1\gui\.libs\libag_gui.a" />
+			<Add library="C:\Agar\freetype-2.1.10\objs\.libs\libfreetype.a" />
+			<Add library="C:\Agar\libSDL.a" />
+			<Add library="C:\Agar\Opengl32.lib" />
+			<Add library="C:\cpp\regex\lib\libpcre.dll.a" />
 			<Add library="libs\libpthreadGC2.a" />
 			<Add library="C:\MinGW\lib\libwinmm.a" />
-			<Add library="..\..\cpp\CGAL-3.6\CGAL-3.6\lib\libCGAL.a" />
-			<Add library="..\..\MinGW\lib\libboost_thread.a" />
-			<Add library="..\..\MinGW\lib\libboost_date_time.a" />
+			<Add library="C:\cpp\CGAL-3.6\build\lib\libCGAL.a" />
+			<Add library="C:\boost\lib\libboost_thread-mgw34-mt-d-1_43.a" />
+			<Add library="C:\boost\lib\libboost_date_time-mgw34-mt-d-1_43.a" />
+			<Add library="C:\MinGW\lib\libgmp.a" />
 		</Linker>
 		<Unit filename="dialog.h" />
 		<Unit filename="entity.cpp" />
 		<Unit filename="events.cpp" />
-		<Unit filename="events.hpp" />
 		<Unit filename="formatext.cpp" />
 		<Unit filename="geomap.cpp" />
 		<Unit filename="globals.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="myButton.h" />
+		<Unit filename="mytextbox.h" />
+		<Unit filename="mywidget.h" />
 		<Unit filename="task.cpp" />
-		<Unit filename="visilibity.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

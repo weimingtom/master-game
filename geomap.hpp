@@ -21,6 +21,7 @@
 
 #include <CGAL/Cartesian.h>
 #include <CGAL/Boolean_set_operations_2.h>
+#include <CGAL/Polygon_set_2.h>
 #include <list>
 
 #include <agar/core/types.h>
@@ -35,7 +36,7 @@ typedef Kernel::Point_2                            Point_2;
 typedef CGAL::Polygon_2<Kernel>                    Polygon_2;
 typedef CGAL::Polygon_with_holes_2<Kernel>         Polygon_with_holes_2;
 typedef std::list<Polygon_with_holes_2>            Pwh_list_2;
-
+typedef CGAL::Polygon_set_2<Kernel>                Polygon_set_2;
 
 
 typedef std::vector < std::vector < VisiLibity::Point > > geoData;

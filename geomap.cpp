@@ -139,6 +139,26 @@ void mapdraw()
     CGAL::intersection(CGALvp,visRange,std::back_inserter(intR));
     visiBounded=intR.front();
 
+    Polygon_set_2 S;
+
+    Polygon_2 OB;
+
+    for (int j=0;j<mapEnv[0].n();j++)
+    {
+        OB.push_back(Point_2(mapEnv[0][j].x(),mapEnv[0][j].y()));
+    };
+
+    Polygon_2 Hole;
+
+    for (int j=0;j<mapEnv[1].n();j++)
+    {
+        Hole.push_back(Point_2(mapEnv[1][j].x(),mapEnv[1][j].y()));
+    };
+    Hole.reverse_orientation();
+
+    S.insert(OB);
+    S.difference(Hole);
+
     tess = gluNewTess();
     gluTessCallback (tess, GLU_TESS_BEGIN, (GLvoid (CALLBACK *)())tcbBegin);
     gluTessCallback (tess, GLU_TESS_VERTEX, (GLvoid (CALLBACK *)())tcbVertex);
