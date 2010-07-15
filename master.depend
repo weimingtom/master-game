@@ -1237,7 +1237,7 @@
 	"events.hpp"
 	"geomap.hpp"
 
-1278961872 c:\agar\master\geomap.hpp
+1279195438 c:\agar\master\geomap.hpp
 	<agar/core.h>
 	<agar/gui.h>
 	"visilibity/visilibity.hpp"
@@ -1249,6 +1249,8 @@
 	<GL/glu.h>
 	<CGAL/Cartesian.h>
 	<CGAL/Boolean_set_operations_2.h>
+	<CGAL/Polygon_set_2.h>
+	<CGAL/Polygon_2_algorithms.h>
 	<list>
 	<agar/core/types.h>
 
@@ -6429,7 +6431,7 @@
 	<CGAL/Gps_segment_traits_2.h>
 	<CGAL/Gps_traits_2.h>
 
-1278689258 source:c:\agar\master\geomap.cpp
+1279041330 source:c:\agar\master\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre/pcre.h"
@@ -8791,4 +8793,103 @@
 	<cstring>
 	<string>
 	<cassert>
+
+1248439458 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\polygon_set_2.h
+	<CGAL/Polygon_2.h>
+	<CGAL/General_polygon_set_2.h>
+	<CGAL/Gps_segment_traits_2.h>
+	<CGAL/Boolean_set_operations_2/Gps_default_dcel.h>
+	<vector>
+
+1248439454 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmpq.h
+	<CGAL/number_type_basic.h>
+	<CGAL/Gmpz.h>
+	<CGAL/Gmp_coercion_traits.h>
+	<CGAL/Gmpz.h>
+	<CGAL/Gmpq.h>
+	<CGAL/Gmpzf.h>
+
+1263831398 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmpz.h
+	<CGAL/config.h>
+	<CGAL/number_type_basic.h>
+	<CGAL/Gmp_coercion_traits.h>
+	<CGAL/Quotient.h>
+	<string>
+	<locale>
+	<CGAL/Root_of_traits.h>
+	<CGAL/Modular_traits.h>
+	<CGAL/Gmpz.h>
+	<CGAL/Gmpq.h>
+	<CGAL/Gmpzf.h>
+
+1248439454 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmp_coercion_traits.h
+	<CGAL/number_type_basic.h>
+	<CGAL/GMP/Gmpz_type.h>
+	<CGAL/GMP/Gmpzf_type.h>
+	<CGAL/GMP/Gmpq_type.h>
+	<CGAL/Coercion_traits.h>
+
+1263831398 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmp\gmpz_type.h
+	<CGAL/basic.h>
+	<gmp.h>
+	<mpfr.h>
+	<boost/operators.hpp>
+	<CGAL/Handle_for.h>
+	<string>
+	<locale>
+	<CGAL/auto_link/GMP.h>
+	<CGAL/auto_link/MPFR.h>
+
+1248439352 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\auto_link\gmp.h
+	<CGAL/auto_link/auto_link.h>
+
+1248439352 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\auto_link\mpfr.h
+	<CGAL/auto_link/auto_link.h>
+
+1263831398 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmp\gmpzf_type.h
+	<CGAL/basic.h>
+	<CGAL/Handle_for.h>
+	<gmp.h>
+	<mpfr.h>
+	<CGAL/Quotient.h>
+	<CGAL/GMP/Gmpz_type.h>
+	<boost/operators.hpp>
+	<iostream>
+	<cmath>
+	<limits>
+	<string>
+	<utility>
+
+1263831398 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmp\gmpq_type.h
+	<CGAL/basic.h>
+	<CGAL/GMP/Gmpz_type.h>
+	<gmp.h>
+	<mpfr.h>
+	<utility>
+	<string>
+	<boost/operators.hpp>
+	<CGAL/Handle_for.h>
+	<CGAL/Profile_counter.h>
+
+1248439454 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\gmpzf.h
+	<CGAL/number_type_basic.h>
+	<CGAL/Gmp_coercion_traits.h>
+	<CGAL/Gmpz.h>
+	<CGAL/Interval_nt.h>
+	<CGAL/Gmpz.h>
+	<CGAL/Gmpq.h>
+	<CGAL/Gmpzf.h>
+
+1263831398 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\mp_float.h
+	<CGAL/number_type_basic.h>
+	<CGAL/Algebraic_structure_traits.h>
+	<CGAL/Real_embeddable_traits.h>
+	<CGAL/Coercion_traits.h>
+	<CGAL/Quotient.h>
+	<CGAL/Root_of_2.h>
+	<CGAL/utils.h>
+	<CGAL/Interval_nt.h>
+	<iostream>
+	<vector>
+	<algorithm>
 

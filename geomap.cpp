@@ -75,6 +75,43 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
         i++;
     }
 
+
+   Polygon_2 mapEnvOB;
+
+    for (int j=0;j<vertices_temp[0].size();j++)
+        {
+            mapEnvOB.push_back(Point_2(vertices_temp[0][j][0],vertices_temp[0][j][1]));
+        };
+
+Polygon_set_2 S;
+
+    for (int k=1;k<vertices_temp.size();k++)
+    {
+        Polygon_2 holeCGAL;
+        for (int j=0;j<vertices_temp[k].size();j++)
+        {
+            holeCGAL.push_back(Point_2(vertices_temp[k][j][0],vertices_temp[k][j][1]));
+        };
+
+        holeCGAL.reverse_orientation();
+
+
+        S.insert(mapEnvOB);
+        S.difference(holeCGAL);
+
+        holeCGAL.clear();
+    };
+
+  std::list<Polygon_with_holes_2> res;
+  std::list<Polygon_with_holes_2>::const_iterator it;
+
+
+   S.polygons_with_holes (std::back_inserter (res));
+
+   for (it = res.begin(); it != res.end(); ++it) {
+       CGAL::bounded_side_2(it->outer_boundary().vertices_begin(),it->outer_boundary().vertices_end(),Point_2(guest1.pos.x(),guest1.pos.y()),Kernel());
+  }
+
     float sf;
 
     std::vector<VisiLibity::Polygon> envPolys;
@@ -134,24 +171,7 @@ void mapdraw()
             CGALvp.push_back(Point_2(visiPoly[j].x(),visiPoly[j].y()));
         };
 
-    Polygon_with_holes_2 mapEnvOB;
-    Pwh_list_2 mapEvnCGAL;
-
-    for (int j=0;j<mapEnv[0].n();j++)
-        {
-            mapEvnCGAL. front().outer_boundary().push_back(Point_2(mapEnv[0][j].x(),mapEnv[0][j].y()));
-        };
-
-        Polygon_2 holeCGAL;
-        for (int j=0;j<mapEnv[1].n();j++)
-        {
-            holeCGAL.push_back(Point_2(mapEnv[1][j].x(),mapEnv[1][j].y()));
-        };
-
-
-
-
-    CGAL::difference(mapEvnCGAL.front(),holeCGAL,std::back_inserter(mapEvnCGAL));
+ //   CGAL::difference(mapEnvOB,holeCGAL,std::back_inserter(mapEnvOB));
 
 
     Polygon_2 visRange=ngon(20,150.0);
@@ -353,7 +373,7 @@ MapClickFunction(AG_Event *event)
 
 };
 
-std::vector<VisiLibity::Point> loadPath(char* str)
+std::vector<tuple> loadPath(char* str)
 {
 char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
    char point[] = "[-\\d]*\\.*\\d*,[-\\d]*\\.*\\d*"; // шаблон (регулярное выражение)
@@ -362,7 +382,7 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
     std::vector<std::string> commands;
     std::vector<std::vector<VisiLibity::Point> > sequences;
 
-    VisiLibity::Point curPos;
+    tuple curPos;
 
 
    // компилирование регулярного выражения во внутреннее представление
@@ -441,11 +461,16 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
 
                 if ((temp[0]=='l')||((temp[0]=='m')&&(sequences[i].size()>0)))
                 {
-                    pointx=pointx+curPos.x();
-                    pointy=pointy+curPos.y();
+                    pointx=pointx+curPos[0];
+                    pointy=pointy+curPos[1];
                 }
-                sequences[i].push_back(VisiLibity::Point(pointx,pointy));
-                curPos=VisiLibity::Point(pointx,pointy);
+                tuple nextVertex={pointx,pointy};
+
+                sequences[i].push_back(nextVertex);
+
+                curPos[0]=pointx;
+                curPos[1]=pointy;
+
                 cout<<sequences[i].back().x()<<","<<sequences[i].back().y()<<"\n";
                 //cout<<pointx<<separator<<pointy<<"\n";
              }
