@@ -65,8 +65,19 @@ HBITMAP hbmp;
 
 void mapDownPush(AG_Event *event)
 {
-    mapCenterY=mapCenterY+30;
-    AG_PostEvent(glv,glv,"widget-moved","%i",0);
+//    mapCenterY=mapCenterY+30;
+//    AG_PostEvent(glv,glv,"widget-moved","%i",0);
+    char cd[_MAX_PATH];
+    getcwd(cd, _MAX_PATH);
+    //cout << cd;
+    strcat(cd,"\\res\\map.svg");
+
+    sceneVertices = mapload(cd,mapEnv,visGraph,1.0);
+    sceneVerticesCollision = mapload(cd,mapEnvCollision,visGraphCollision,10);
+
+
+    motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(500,700),visGraphCollision,5);
+
 };
 
 void textResize(AG_Event *event)
@@ -465,7 +476,7 @@ int w1,he1;
     AG_GLViewSizeHint(glv,600,500);
 	AG_WidgetFocus(glv);
 
-	AG_Button* mapDown=AG_ButtonNew(win3,0,"|");
+	AG_Button* mapDown=AG_ButtonNew(win3,0,"Reload map");
 
     AG_SetEvent(mapDown, "button-pushed", mapDownPush,"%i",0);
 
@@ -530,24 +541,7 @@ int main(int argc, char *argv[])
 	AG_SetEvent(win, "window-user-resize", textResize,"%i%i");
 
     AG_PostEvent(button[0],button[0],"button-pushed","%i",0);
-    //UpdateTimerSlot.add(guest1);
 
-   /*
-=======
-/*
->>>>>>> other
-    goToPoint order1=goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-    followPath=ComplexTask(order1);
-    for (int i =1;i<motionPath.size();i++)
-    {
-        //goToPoint order2= ;
-        motionPath[i].snap_to_boundary_of(mapEnv);
-        goToPoint gp1=*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
-        followPath.AddAction(gp1);
-    }
-    if (UpdateTimerSlot.m_Observers.size()==0)
-    UpdateTimerSlot.addTask<ComplexTask>(followPath);
-*/
    AG_Timeout* TO = new AG_Timeout;
 
    Slot<int>* pSlot =&UpdateTimerSlot;
