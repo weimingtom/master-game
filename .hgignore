@@ -3,4 +3,7 @@ syntax: regexp
 ^obj$
 ^libs$
 ^res$
+^doc$
 master.cbp
+master.depend
+master.layout
