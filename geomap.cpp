@@ -80,10 +80,18 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
 
     for (int j=0;j<vertices_temp[0].size();j++)
         {
-            mapEnvOB.push_back(Point_2(vertices_temp[0][j][0],vertices_temp[0][j][1]));
+            Point_2 nextVert= Point_2(vertices_temp[0][j][0],vertices_temp[0][j][1]);
+            mapEnvOB.push_back(nextVert);
         };
+
+
+/*    mapEnvOB.push_back(Point_2(-100,-100));
+    mapEnvOB.push_back(Point_2(-100,100));
+    mapEnvOB.push_back(Point_2(100,100));
+    mapEnvOB.push_back(Point_2(100,-100));
+*/
         Polygon_set_2 S;
-        //mapEnvOB.reverse_orientation();
+    mapEnvOB.reverse_orientation();
 
         S.insert(mapEnvOB);
 
@@ -97,7 +105,7 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
             holeCGAL.push_back(Point_2(vertices_temp[k][j][0],vertices_temp[k][j][1]));
         };
 
-        holeCGAL.reverse_orientation();
+        //holeCGAL.reverse_orientation();
 
         S.difference(holeCGAL);
 
@@ -112,17 +120,17 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
 
     std::vector<VisiLibity::Polygon> envPolys;
 
-   for (it = res.begin(); it != res.end(); ++it) {
+   for (it = res.begin(); it != res.end(); ++it)
+   {
       if(CGAL::ON_BOUNDED_SIDE==CGAL::bounded_side_2(it->outer_boundary().vertices_begin(),it->outer_boundary().vertices_end(),Point_2(guest1.pos.x(),guest1.pos.y()),Kernel()))
       {
+        envPolys.push_back(ConvertPolygonCGAL2Vis(it->outer_boundary()));
 
-          VisiLibity::Polygon cPoly;
-         Polygon_2::Vertex_iterator cv ;
-          for (cv=it->outer_boundary().vertices_begin();cv!=it->outer_boundary().vertices_end();++cv)
-          {
-              cPoly.push_back(VisiLibity::Point(cv->x(),cv->y()));
-          }
-        envPolys.push_back(cPoly);
+        Polygon_with_holes_2::Hole_const_iterator hi;
+        for (hi=it->holes_begin();hi!=it->holes_end();++hi)
+        {
+            envPolys.push_back(ConvertPolygonCGAL2Vis(*hi));
+        };
 
 
       }
@@ -130,23 +138,23 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
   }
 
 
-    //for (int i=0;i<vertices_temp.size();i++){
+    for (int i=0;i<envPolys.size();i++){
         //envPolys.push_back(VisiLibity::Polygon(vertices_temp[i]));
-        i=0;
+        //i=0;
         envPolys[i].eliminate_redundant_vertices(0.0001);
         VisiLibity::Point cm=envPolys[i].centroid();
             for (int j=0;j<envPolys[i].n();j++)
             {
                     if (j<envPolys[i].n()-1){
-                        VisiLibity::Point n1=-clearDist*normal(envPolys[i][j+1]-envPolys[i][j]);
+                        VisiLibity::Point n1=clearDist*normal(envPolys[i][j+1]-envPolys[i][j]);
                         envPolys[i][j]=envPolys[i][j]+n1;
                         envPolys[i][j+1]=envPolys[i][j+1]+n1;
                     }
             }
-            VisiLibity::Point norm1=-clearDist*normal(envPolys[i][0]-envPolys[i][envPolys[i].n()-1]);
+            VisiLibity::Point norm1=clearDist*normal(envPolys[i][0]-envPolys[i][envPolys[i].n()-1]);
             envPolys[i][0]=envPolys[i][0]+norm1;
             envPolys[i][envPolys[i].n()-1]=envPolys[i][envPolys[i].n()-1]+norm1;
-    //};
+    };
 
     mapEnv = *(new VisiLibity::Environment(envPolys));
     mapEnv.enforce_standard_form();
@@ -180,26 +188,6 @@ void mapdraw()
     Pwh_list_2 intR;
     CGAL::intersection(CGALvp,visRange,std::back_inserter(intR));
     visiBounded=intR.front();
-
-    Polygon_set_2 S;
-
-    Polygon_2 OB;
-
-    for (int j=0;j<mapEnv[0].n();j++)
-    {
-        OB.push_back(Point_2(mapEnv[0][j].x(),mapEnv[0][j].y()));
-    };
-
-    Polygon_2 Hole;
-
-    for (int j=0;j<mapEnv[1].n();j++)
-    {
-        Hole.push_back(Point_2(mapEnv[1][j].x(),mapEnv[1][j].y()));
-    };
-    Hole.reverse_orientation();
-
-    S.insert(OB);
-    S.difference(Hole);
 
     tess = gluNewTess();
     gluTessCallback (tess, GLU_TESS_BEGIN, (GLvoid (CALLBACK *)())tcbBegin);
@@ -503,12 +491,13 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регул€рное выражение)
         }
      }
 
-    vertex_tuple nextVertex;
-    nextVertex.reserve(10);
+    //vertex_tuple nextVertex;
+   /* nextVertex.reserve(10);
     nextVertex.resize(10);
     nextVertex.push_back(0);
     nextVertex.push_back(0);
-    std::vector < vertex_tuple > path_curve(sequences[0]);
+    */
+    std::vector < vertex_tuple > path_curve;
 
 
    //for (vector<vector<vertex_tuple> >::iterator i1 = sequences.begin();i1 != sequences.end();++i1)
@@ -516,11 +505,12 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регул€рное выражение)
    for (int i=0;i<sequences.size();i++)
     for (int j=0;j<sequences[i].size();j++)
     {
-
-        //path_curve.push_back(nextVertex);
-        //path_curve[0].
+    vertex_tuple nextVertex;
+        nextVertex.push_back(sequences[i][j][0]);
+        nextVertex.push_back(sequences[i][j][1]);
+        path_curve.push_back(nextVertex);
     }
-
+path_curve.pop_back();
 
    return path_curve;
 };
@@ -541,3 +531,16 @@ Polygon_2 ngon(int n, float r)
     }
     return p;
 }
+
+VisiLibity::Polygon ConvertPolygonCGAL2Vis(Polygon_2 pgn)
+{
+    VisiLibity::Polygon cPoly;
+    Polygon_2::Vertex_iterator cv ;
+    for (cv=pgn.vertices_begin();cv!=pgn.vertices_end();++cv)
+          {
+              cPoly.push_back(VisiLibity::Point(cv->x(),cv->y()));
+          };
+    return cPoly;
+
+}
+

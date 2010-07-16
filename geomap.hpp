@@ -45,6 +45,7 @@ typedef std::vector<double> vertex_tuple;
 typedef std::vector < std::vector < vertex_tuple> > geoData;
 
 void mapdraw();
+VisiLibity::Polygon ConvertPolygonCGAL2Vis(Polygon_2 pgn);
 VisiLibity::Point normal(VisiLibity::Point Vector);
 geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibility_Graph & visGraph,float clearDist);
 std::vector<vertex_tuple> loadPath(char* str);

@@ -9185,7 +9185,7 @@
 	"events.hpp"
 	"geomap.hpp"
 
-1279102931 c:\agar\master-repository\geomap.hpp
+1279279903 c:\agar\master-repository\geomap.hpp
 	<agar/core.h>
 	<agar/gui.h>
 	"visilibity/visilibity.hpp"
@@ -9198,6 +9198,7 @@
 	<CGAL/Cartesian.h>
 	<CGAL/Boolean_set_operations_2.h>
 	<CGAL/Polygon_set_2.h>
+	<CGAL/Polygon_2_algorithms.h>
 	<list>
 	<agar/core/types.h>
 
@@ -9212,7 +9213,7 @@
 	<ostream>
 	<iterator>
 
-1278592951 source:c:\agar\master-repository\geomap.cpp
+1279275605 source:c:\agar\master-repository\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre/pcre.h"
