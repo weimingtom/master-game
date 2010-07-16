@@ -58,7 +58,7 @@
 	"htmlayout/htmlayout_dom.hpp"
 	"globals.hpp"
 
-1275463825 c:\msys\1.0\local\include\agar\agar\core.h
+1277835202 c:\msys\1.0\local\include\agar\agar\core.h
 	<agar/core/core_begin.h>
 	<agar/core/core_init.h>
 	<agar/core/error.h>
@@ -88,7 +88,7 @@
 	<agar/core/getopt.h>
 	<agar/core/core_close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\core_begin.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\core_begin.h
 	<agar/config/ag_debug.h>
 	<agar/config/ag_legacy.h>
 	<agar/config/ag_threads.h>
@@ -105,22 +105,22 @@
 	<agar/config/_mk_big_endian.h>
 	<agar/config/_mk_little_endian.h>
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_debug.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\ag_debug.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_legacy.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\ag_legacy.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_threads.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\ag_threads.h
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\threads.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\threads.h
 	<agar/config/have_pthreads.h>
 	<pthread.h>
 	<signal.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_pthreads.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_pthreads.h
 
-1252058593 c:\mingw\include\pthread.h
+1274030102 c:\mingw\include\pthread.h
 	<windows.h>
 	"config.h"
 	<time.h>
@@ -132,7 +132,7 @@
 	<sched.h>
 	<sys/types.h>
 
-1258788716 c:\mingw\include\windows.h
+1271341092 c:\mingw\include\windows.h
 	<winresrc.h>
 	<stdarg.h>
 	<windef.h>
@@ -162,7 +162,7 @@
 	<winsock.h>
 	<ole2.h>
 
-1258788717 c:\mingw\include\winresrc.h
+1271341094 c:\mingw\include\winresrc.h
 	<winuser.h>
 	<winnt.h>
 	<winver.h>
@@ -170,70 +170,70 @@
 	<dlgs.h>
 	<commctrl.h>
 
-1258788717 c:\mingw\include\winuser.h
+1271341094 c:\mingw\include\winuser.h
 
-1258788717 c:\mingw\include\winnt.h
+1271341094 c:\mingw\include\winnt.h
 	<winerror.h>
 	<string.h>
 	<basetsd.h>
 	<pshpack4.h>
 	<poppack.h>
 
-1258788716 c:\mingw\include\winerror.h
+1271341092 c:\mingw\include\winerror.h
 
-1259392358 c:\mingw\include\string.h
+1271341212 c:\mingw\include\string.h
 	<_mingw.h>
 	<stddef.h>
 
-1259392354 c:\mingw\include\_mingw.h
+1271341210 c:\mingw\include\_mingw.h
 
-1258788702 c:\mingw\include\basetsd.h
+1271341084 c:\mingw\include\basetsd.h
 
-1258788711 c:\mingw\include\pshpack4.h
+1271341090 c:\mingw\include\pshpack4.h
 
-1258788711 c:\mingw\include\poppack.h
+1271341090 c:\mingw\include\poppack.h
 
-1258788717 c:\mingw\include\winver.h
+1271341094 c:\mingw\include\winver.h
 
-1258788703 c:\mingw\include\dde.h
+1271341086 c:\mingw\include\dde.h
 
-1258788704 c:\mingw\include\dlgs.h
+1271341086 c:\mingw\include\dlgs.h
 
-1258788703 c:\mingw\include\commctrl.h
+1271341086 c:\mingw\include\commctrl.h
 	<prsht.h>
 
-1258788711 c:\mingw\include\prsht.h
+1271341090 c:\mingw\include\prsht.h
 
-1258788716 c:\mingw\include\windef.h
+1271341092 c:\mingw\include\windef.h
 	<winnt.h>
 
-1258788716 c:\mingw\include\wincon.h
+1271341092 c:\mingw\include\wincon.h
 
-1258788716 c:\mingw\include\winbase.h
+1271341092 c:\mingw\include\winbase.h
 
-1258788716 c:\mingw\include\wingdi.h
+1271341092 c:\mingw\include\wingdi.h
 
-1258788717 c:\mingw\include\winnls.h
+1271341094 c:\mingw\include\winnls.h
 
-1258788716 c:\mingw\include\winnetwk.h
+1271341092 c:\mingw\include\winnetwk.h
 
-1258788717 c:\mingw\include\winreg.h
+1271341094 c:\mingw\include\winreg.h
 
-1258788717 c:\mingw\include\winsvc.h
+1271341094 c:\mingw\include\winsvc.h
 
-1258788702 c:\mingw\include\cderr.h
+1271341084 c:\mingw\include\cderr.h
 
-1258788703 c:\mingw\include\ddeml.h
+1271341086 c:\mingw\include\ddeml.h
 
-1258788705 c:\mingw\include\imm.h
+1271341086 c:\mingw\include\imm.h
 
-1258788708 c:\mingw\include\lzexpand.h
+1271341088 c:\mingw\include\lzexpand.h
 
-1258788708 c:\mingw\include\mmsystem.h
+1271341088 c:\mingw\include\mmsystem.h
 
-1258788709 c:\mingw\include\nb30.h
+1271341088 c:\mingw\include\nb30.h
 
-1258788712 c:\mingw\include\rpc.h
+1271341090 c:\mingw\include\rpc.h
 	<windows.h>
 	<rpcdce.h>
 	<rpcnsi.h>
@@ -241,71 +241,71 @@
 	<winerror.h>
 	<excpt.h>
 
-1258788712 c:\mingw\include\rpcdce.h
+1271341090 c:\mingw\include\rpcdce.h
 	<basetyps.h>
 	<rpcdcep.h>
 
-1258788702 c:\mingw\include\basetyps.h
+1271341084 c:\mingw\include\basetyps.h
 
-1258788713 c:\mingw\include\rpcdcep.h
+1271341090 c:\mingw\include\rpcdcep.h
 
-1258788713 c:\mingw\include\rpcnsi.h
+1271341090 c:\mingw\include\rpcnsi.h
 
-1258788713 c:\mingw\include\rpcnterr.h
+1271341092 c:\mingw\include\rpcnterr.h
 
-1259392356 c:\mingw\include\excpt.h
+1271341210 c:\mingw\include\excpt.h
 	<_mingw.h>
 	<windef.h>
 
-1258788714 c:\mingw\include\shellapi.h
+1271341092 c:\mingw\include\shellapi.h
 	<pshpack2.h>
 	<poppack.h>
 
-1258788711 c:\mingw\include\pshpack2.h
+1271341090 c:\mingw\include\pshpack2.h
 
-1258788717 c:\mingw\include\winperf.h
+1271341094 c:\mingw\include\winperf.h
 
-1258788703 c:\mingw\include\commdlg.h
+1271341086 c:\mingw\include\commdlg.h
 	<unknwn.h>
 	<prsht.h>
 
-1258788715 c:\mingw\include\unknwn.h
+1271341092 c:\mingw\include\unknwn.h
 	<windows.h>
 	<objfwd.h>
 	<wtypes.h>
 
-1258788710 c:\mingw\include\objfwd.h
+1271341090 c:\mingw\include\objfwd.h
 	<basetyps.h>
 
-1258788718 c:\mingw\include\wtypes.h
+1271341094 c:\mingw\include\wtypes.h
 	<rpc.h>
 	<rpcndr.h>
 
-1258788713 c:\mingw\include\rpcndr.h
+1271341090 c:\mingw\include\rpcndr.h
 	<rpcnsip.h>
 	<objfwd.h>
 
-1258788713 c:\mingw\include\rpcnsip.h
+1271341090 c:\mingw\include\rpcnsip.h
 
-1258788717 c:\mingw\include\winspool.h
+1271341094 c:\mingw\include\winspool.h
 
-1258788717 c:\mingw\include\winsock2.h
+1271341094 c:\mingw\include\winsock2.h
 	<windows.h>
 
-1258788717 c:\mingw\include\winsock.h
+1271341094 c:\mingw\include\winsock.h
 	<windows.h>
 	<mswsock.h>
 
-1258788709 c:\mingw\include\mswsock.h
+1271341088 c:\mingw\include\mswsock.h
 
-1258788710 c:\mingw\include\ole2.h
+1271341090 c:\mingw\include\ole2.h
 	<winerror.h>
 	<objbase.h>
 	<olectlid.h>
 	<oleauto.h>
 	<oleidl.h>
 
-1258788710 c:\mingw\include\objbase.h
+1271341090 c:\mingw\include\objbase.h
 	<rpc.h>
 	<rpcndr.h>
 	<stdlib.h>
@@ -315,60 +315,60 @@
 	<objidl.h>
 	<cguid.h>
 
-1259392358 c:\mingw\include\stdlib.h
+1271341212 c:\mingw\include\stdlib.h
 	<_mingw.h>
 	<stddef.h>
 
-1258788710 c:\mingw\include\objidl.h
+1271341090 c:\mingw\include\objidl.h
 	<objfwd.h>
 
-1258788703 c:\mingw\include\cguid.h
+1271341084 c:\mingw\include\cguid.h
 
-1258788710 c:\mingw\include\olectlid.h
+1271341090 c:\mingw\include\olectlid.h
 
-1258788710 c:\mingw\include\oleauto.h
+1271341090 c:\mingw\include\oleauto.h
 	<oaidl.h>
 
-1258788710 c:\mingw\include\oaidl.h
+1271341090 c:\mingw\include\oaidl.h
 	<windows.h>
 	<ole2.h>
 
-1258788711 c:\mingw\include\oleidl.h
+1271341090 c:\mingw\include\oleidl.h
 	<objfwd.h>
 
-1259392358 c:\mingw\include\time.h
+1271341212 c:\mingw\include\time.h
 	<_mingw.h>
 	<stddef.h>
 
-1259392358 c:\mingw\include\signal.h
+1271341212 c:\mingw\include\signal.h
 	<_mingw.h>
 
-1259392358 c:\mingw\include\setjmp.h
+1271341212 c:\mingw\include\setjmp.h
 	<_mingw.h>
 
-1259392356 c:\mingw\include\limits.h
+1271341212 c:\mingw\include\limits.h
 	<_mingw.h>
 
-1259392354 c:\mingw\include\errno.h
+1271341210 c:\mingw\include\errno.h
 	<_mingw.h>
 
-1252058594 c:\mingw\include\sched.h
+1274030106 c:\mingw\include\sched.h
 	"need_errno.h"
 	<errno.h>
 	<sys/types.h>
 	<time.h>
 
-1259392360 c:\mingw\include\sys\types.h
+1271341214 c:\mingw\include\sys\types.h
 	<_mingw.h>
 	<stddef.h>
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\begin.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\begin.h
 	<agar/core/types.h>
 	<agar/core/attributes.h>
 	<agar/config/enable_nls.h>
 	<libintl.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\types.h
+1277835198 c:\msys\1.0\local\include\agar\agar\core\types.h
 	<agar/config/have_cygwin.h>
 	<basetyps.h>
 	<agar/config/_mk_have_sys_types_h.h>
@@ -376,15 +376,15 @@
 	<agar/config/have_64bit.h>
 	<agar/config/have_long_double.h>
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_cygwin.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_cygwin.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_sys_types_h.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_have_sys_types_h.h
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_64bit.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_64bit.h
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_long_double.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_long_double.h
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\attributes.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\attributes.h
 	<agar/config/have_aligned_attribute.h>
 	<agar/config/have_bounded_attribute.h>
 	<agar/config/have_const_attribute.h>
@@ -396,68 +396,68 @@
 	<agar/config/have_pure_attribute.h>
 	<agar/config/have_warn_unused_result_attribute.h>
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_aligned_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_aligned_attribute.h
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_bounded_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_bounded_attribute.h
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_const_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_const_attribute.h
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_deprecated_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_deprecated_attribute.h
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\have_format_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_format_attribute.h
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_nonnull_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_nonnull_attribute.h
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_noreturn_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_noreturn_attribute.h
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_packed_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_packed_attribute.h
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_pure_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_pure_attribute.h
 
-1275463824 c:\msys\1.0\local\include\agar\agar\config\have_warn_unused_result_attribute.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_warn_unused_result_attribute.h
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\enable_nls.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\enable_nls.h
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\close.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\close.h
 	<agar/core/close_types.h>
 	<agar/core/close_attributes.h>
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\close_types.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\close_types.h
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\close_attributes.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\close_attributes.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_stdlib_h.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_have_stdlib_h.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_unistd_h.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_have_unistd_h.h
 
-1259392358 c:\mingw\include\unistd.h
+1271341212 c:\mingw\include\unistd.h
 	<io.h>
 	<process.h>
 	<getopt.h>
 	<sys/types.h>
 
-1259392356 c:\mingw\include\io.h
+1271341212 c:\mingw\include\io.h
 	<_mingw.h>
 	<sys/types.h>
 
-1259392358 c:\mingw\include\process.h
+1271341212 c:\mingw\include\process.h
 	<_mingw.h>
 	<sys/types.h>
 	<stdint.h>
 
-1259392358 c:\mingw\include\stdint.h
+1271341212 c:\mingw\include\stdint.h
 	<stddef.h>
 
-1259392356 c:\mingw\include\getopt.h
+1271341210 c:\mingw\include\getopt.h
 	<_mingw.h>
 
-1259392358 c:\mingw\include\stdio.h
+1271341212 c:\mingw\include\stdio.h
 	<_mingw.h>
 	<stddef.h>
 	<stdarg.h>
 	<sys/types.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\limits.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\limits.h
 	<agar/config/_mk_have_limits_h.h>
 	<agar/config/_mk_have_float_h.h>
 	<agar/config/have_long_long.h>
@@ -465,43 +465,43 @@
 	<limits.h>
 	<float.h>
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_limits_h.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_have_limits_h.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_have_float_h.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_have_float_h.h
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_long_long.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_long_long.h
 
-1259392356 c:\mingw\include\float.h
+1271341210 c:\mingw\include\float.h
 	<_mingw.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\queue.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\queue.h
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\cpuinfo.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\cpuinfo.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_big_endian.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_big_endian.h
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\_mk_little_endian.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\_mk_little_endian.h
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\core_init.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\core_init.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\error.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\error.h
 	<agar/config/free_null_is_a_noop.h>
 	<agar/config/_mk_have_stdlib_h.h>
 	<stdlib.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463822 c:\msys\1.0\local\include\agar\agar\config\free_null_is_a_noop.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\free_null_is_a_noop.h
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\string_compat.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\string_compat.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\snprintf.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\snprintf.h
 	<agar/config/_mk_have_sys_types_h.h>
 	<sys/types.h>
 	<agar/config/have_snprintf.h>
@@ -509,9 +509,9 @@
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463824 c:\msys\1.0\local\include\agar\agar\config\have_snprintf.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_snprintf.h
 
-1275463809 c:\msys\1.0\local\include\agar\agar\core\vsnprintf.h
+1277835198 c:\msys\1.0\local\include\agar\agar\core\vsnprintf.h
 	<agar/config/_mk_have_sys_types_h.h>
 	<agar/config/have_vsnprintf.h>
 	<sys/types.h>
@@ -520,27 +520,27 @@
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463824 c:\msys\1.0\local\include\agar\agar\config\have_vsnprintf.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_vsnprintf.h
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\vasprintf.h
+1277835198 c:\msys\1.0\local\include\agar\agar\core\vasprintf.h
 	<stdarg.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\data_source.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\data_source.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\load_den.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\load_den.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\load_integral.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\load_integral.h
 	<agar/core/byteswap.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\byteswap.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\byteswap.h
 	<agar/config/have_64bit.h>
 	<agar/config/have_long_double.h>
 	<agar/config/_mk_big_endian.h>
@@ -548,25 +548,25 @@
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\load_real.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\load_real.h
 	<agar/config/have_long_double.h>
 	<agar/core/byteswap.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\load_string.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\load_string.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\load_version.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\load_version.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\core\version.h
+1277835198 c:\msys\1.0\local\include\agar\agar\core\version.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\object.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\object.h
 	<agar/core/timeout.h>
 	<agar/core/class.h>
 	<agar/core/begin.h>
@@ -575,80 +575,80 @@
 	<agar/core/event.h>
 	<agar/core/prop.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\timeout.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\timeout.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\class.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\class.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\variable.h
+1277835198 c:\msys\1.0\local\include\agar\agar\core\variable.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\event.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\event.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\prop.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\prop.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\list.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\list.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\tree.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\tree.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\tbl.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\tbl.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463805 c:\msys\1.0\local\include\agar\agar\core\config.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\config.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\rcs.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\rcs.h
 	<agar/config/ag_network.h>
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463821 c:\msys\1.0\local\include\agar\agar\config\ag_network.h
+1277835200 c:\msys\1.0\local\include\agar\agar\config\ag_network.h
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\file.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\file.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\dir.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\dir.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\dso.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\dso.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463808 c:\msys\1.0\local\include\agar\agar\core\time.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\time.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\db.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\db.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\dbobject.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\dbobject.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\getopt.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\getopt.h
 	<agar/core/begin.h>
 	<agar/core/close.h>
 
-1275463806 c:\msys\1.0\local\include\agar\agar\core\core_close.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\core_close.h
 
-1275463825 c:\msys\1.0\local\include\agar\agar\gui.h
+1277835202 c:\msys\1.0\local\include\agar\agar\gui.h
 	<agar/core/core_begin.h>
 	<agar/gui/gui.h>
 	<agar/gui/icons.h>
@@ -704,7 +704,7 @@
 	<agar/gui/load_color.h>
 	<agar/core/core_close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\gui.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\gui.h
 	<agar/config/have_sdl.h>
 	<agar/gui/widget.h>
 	<agar/gui/window.h>
@@ -713,9 +713,9 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_sdl.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_sdl.h
 
-1275463815 c:\msys\1.0\local\include\agar\agar\gui\widget.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\widget.h
 	<agar/config/have_sdl.h>
 	<agar/config/have_opengl.h>
 	<agar/gui/geometry.h>
@@ -729,106 +729,106 @@
 	<agar/gui/widget_legacy.h>
 	<agar/gui/close.h>
 
-1275463823 c:\msys\1.0\local\include\agar\agar\config\have_opengl.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\have_opengl.h
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\geometry.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\geometry.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\begin.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\begin.h
 	<agar/core/types.h>
 	<agar/core/attributes.h>
 	<agar/config/enable_nls.h>
 	<libintl.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\close.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\close.h
 	<agar/core/close_types.h>
 	<agar/core/close_attributes.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\colors.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\colors.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\surface.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\surface.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\style.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\style.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\mouse.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\mouse.h
 	<agar/gui/input_device.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\input_device.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\input_device.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\keyboard.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\keyboard.h
 	<agar/gui/input_device.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\drv.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\drv.h
 	<agar/gui/begin.h>
 	<agar/gui/drv_mw.h>
 	<agar/gui/drv_sw.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\drv_mw.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\drv_mw.h
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\drv_sw.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\drv_sw.h
 
-1275463815 c:\msys\1.0\local\include\agar\agar\gui\widget_legacy.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\widget_legacy.h
 
-1275463815 c:\msys\1.0\local\include\agar\agar\gui\window.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\window.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\text.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\text.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\iconmgr.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\iconmgr.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\icons.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\icons.h
 	<agar/gui/iconmgr.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\primitive.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\primitive.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\box.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\box.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\button.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\button.h
 	<agar/gui/widget.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\label.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\label.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\checkbox.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\checkbox.h
 	<agar/gui/widget.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\combo.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\combo.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -837,7 +837,7 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\textbox.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\textbox.h
 	<agar/gui/widget.h>
 	<agar/gui/editable.h>
 	<agar/gui/label.h>
@@ -845,46 +845,46 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\editable.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\editable.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\scrollbar.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\scrollbar.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\tlist.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\tlist.h
 	<agar/gui/scrollbar.h>
 	<agar/gui/menu.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\menu.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\menu.h
 	<agar/gui/widget.h>
 	<agar/gui/window.h>
 	<agar/gui/toolbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\toolbar.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\toolbar.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/button.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\gui\console.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\console.h
 	<agar/gui/widget.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\file_dlg.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\file_dlg.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -896,13 +896,13 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\pane.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\pane.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\file_selector.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\file_selector.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -911,12 +911,12 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\fixed.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\fixed.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\font_selector.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\font_selector.h
 	<agar/gui/pane.h>
 	<agar/gui/box.h>
 	<agar/gui/tlist.h>
@@ -924,7 +924,7 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\numerical.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\numerical.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -933,7 +933,7 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\ucombo.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\ucombo.h
 	<agar/gui/widget.h>
 	<agar/gui/button.h>
 	<agar/gui/window.h>
@@ -941,14 +941,14 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\units.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\units.h
 	<agar/config/historical_units.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463824 c:\msys\1.0\local\include\agar\agar\config\historical_units.h
+1277835202 c:\msys\1.0\local\include\agar\agar\config\historical_units.h
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\fspinbutton.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\fspinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -957,48 +957,48 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463810 c:\msys\1.0\local\include\agar\agar\gui\fixed_plotter.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\fixed_plotter.h
 	<agar/gui/widget.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\glview.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\glview.h
 	<agar/gui/widget.h>
 	<agar/config/have_opengl.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\graph.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\graph.h
 	<agar/gui/widget.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\hbox.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\hbox.h
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\hsvpal.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\hsvpal.h
 	<agar/gui/scrollbar.h>
 	<agar/gui/menu.h>
 	<agar/gui/window.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463811 c:\msys\1.0\local\include\agar\agar\gui\icon.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\icon.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\keymap.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\keymap.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\mfspinbutton.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\mfspinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
@@ -1007,109 +1007,109 @@
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\mpane.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\mpane.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\mspinbutton.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\mspinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\notebook.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\notebook.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\objsel.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\objsel.h
 	<agar/gui/widget.h>
 	<agar/gui/combo.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\pixmap.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\pixmap.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\progress_bar.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\progress_bar.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\radio.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\radio.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\scrollview.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\scrollview.h
 	<agar/gui/widget.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\separator.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\separator.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\socket.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\socket.h
 	<agar/gui/widget.h>
 	<agar/gui/text.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\spinbutton.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\spinbutton.h
 	<agar/gui/widget.h>
 	<agar/gui/textbox.h>
 	<agar/gui/button.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\slider.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\slider.h
 	<agar/gui/widget.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463813 c:\msys\1.0\local\include\agar\agar\gui\statusbar.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\statusbar.h
 	<agar/gui/widget.h>
 	<agar/gui/box.h>
 	<agar/gui/label.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\table.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\table.h
 	<agar/gui/scrollbar.h>
 	<agar/gui/menu.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\treetbl.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\treetbl.h
 	<agar/gui/label.h>
 	<agar/gui/scrollbar.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\text_cache.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\text_cache.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463814 c:\msys\1.0\local\include\agar\agar\gui\vbox.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\vbox.h
 	<agar/gui/box.h>
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\load_surface.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\load_surface.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\load_color.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\load_color.h
 	<agar/gui/begin.h>
 	<agar/gui/close.h>
 
@@ -1149,10 +1149,10 @@
 	<stdlib.h>
 	<stdio.h>
 
-1259392354 c:\mingw\include\assert.h
+1271341210 c:\mingw\include\assert.h
 	<_mingw.h>
 
-1259392360 c:\mingw\include\wchar.h
+1271341214 c:\mingw\include\wchar.h
 	<_mingw.h>
 	<stddef.h>
 	<stdarg.h>
@@ -1161,7 +1161,7 @@
 	<stdint.h>
 	<stdint.h>
 
-1259392360 c:\mingw\include\wctype.h
+1271341214 c:\mingw\include\wctype.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -1237,7 +1237,7 @@
 	"events.hpp"
 	"geomap.hpp"
 
-1278689908 c:\agar\master\geomap.hpp
+1279293972 c:\agar\master\geomap.hpp
 	<agar/core.h>
 	<agar/gui.h>
 	"visilibity/visilibity.hpp"
@@ -1249,33 +1249,35 @@
 	<GL/glu.h>
 	<CGAL/Cartesian.h>
 	<CGAL/Boolean_set_operations_2.h>
+	<CGAL/Polygon_set_2.h>
+	<CGAL/Polygon_2_algorithms.h>
 	<list>
 	<agar/core/types.h>
 
-1259392354 c:\mingw\include\direct.h
+1271341210 c:\mingw\include\direct.h
 	<_mingw.h>
 	<stddef.h>
 	<io.h>
 
-1275463812 c:\msys\1.0\local\include\agar\agar\gui\opengl.h
+1277835198 c:\msys\1.0\local\include\agar\agar\gui\opengl.h
 	<agar/config/have_opengl.h>
 	<agar/config/have_cygwin.h>
 	<agar/core/win32.h>
 	<OpenGL/gl.h>
 	<GL/gl.h>
 
-1275463809 c:\msys\1.0\local\include\agar\agar\core\win32.h
+1277835198 c:\msys\1.0\local\include\agar\agar\core\win32.h
 	<agar/config/have_cygwin.h>
 	<agar/core/queue_close.h>
 	<windows.h>
 	<agar/core/queue_close.h>
 	<agar/core/queue.h>
 
-1275463807 c:\msys\1.0\local\include\agar\agar\core\queue_close.h
+1277835196 c:\msys\1.0\local\include\agar\agar\core\queue_close.h
 
-1258788718 c:\mingw\include\gl\gl.h
+1271341094 c:\mingw\include\gl\gl.h
 
-1258788719 c:\mingw\include\gl\glu.h
+1271341094 c:\mingw\include\gl\glu.h
 	<stddef.h>
 	<GL/gl.h>
 
@@ -1311,22 +1313,22 @@
 	<boost/config/select_platform_config.hpp>
 	<boost/config/suffix.hpp>
 
-1268679347 c:\mingw\include\boost\config\select_compiler_config.hpp
+1268679348 c:\mingw\include\boost\config\select_compiler_config.hpp
 
-1243682185 c:\mingw\include\boost\config\select_stdlib_config.hpp
+1243682186 c:\mingw\include\boost\config\select_stdlib_config.hpp
 	<cstddef>
 	<boost/config/no_tr1/utility.hpp>
 
 1129739920 c:\mingw\include\boost\config\no_tr1\utility.hpp
 	<utility>
 
-1268679347 c:\mingw\include\boost\config\select_platform_config.hpp
+1268679348 c:\mingw\include\boost\config\select_platform_config.hpp
 	<boost/config/posix_features.hpp>
 
 1129299386 c:\mingw\include\boost\config\posix_features.hpp
 	<unistd.h>
 
-1268679347 c:\mingw\include\boost\config\suffix.hpp
+1268679348 c:\mingw\include\boost\config\suffix.hpp
 	<limits.h>
 	<cstddef>
 	"boost/type.hpp"
@@ -1334,7 +1336,7 @@
 
 1090801932 c:\mingw\include\boost\type.hpp
 
-1084699075 c:\mingw\include\boost\non_type.hpp
+1084699076 c:\mingw\include\boost\non_type.hpp
 
 1269118920 c:\program files\cgal\include\cgal\version.h
 
@@ -1415,26 +1417,26 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\config.hpp
+1224062970 c:\mingw\include\boost\type_traits\config.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 
 1228216082 c:\mingw\include\boost\detail\workaround.hpp
 	<boost/config.hpp>
 
-1070462051 c:\mingw\include\boost\type_traits\detail\yes_no_type.hpp
+1070462052 c:\mingw\include\boost\type_traits\detail\yes_no_type.hpp
 
 1128695198 c:\mingw\include\boost\type_traits\detail\ice_and.hpp
 	<boost/config.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_reference.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_reference.hpp
 	<boost/type_traits/config.hpp>
 	<boost/type_traits/detail/yes_no_type.hpp>
 	<boost/type_traits/detail/wrap.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1070462051 c:\mingw\include\boost\type_traits\detail\wrap.hpp
+1070462052 c:\mingw\include\boost\type_traits\detail\wrap.hpp
 
 1152702622 c:\mingw\include\boost\type_traits\detail\bool_trait_def.hpp
 	<boost/type_traits/detail/template_arity_spec.hpp>
@@ -1443,7 +1445,7 @@
 	<boost/mpl/aux_/lambda_support.hpp>
 	<boost/config.hpp>
 
-1094139697 c:\mingw\include\boost\type_traits\detail\template_arity_spec.hpp
+1094139698 c:\mingw\include\boost\type_traits\detail\template_arity_spec.hpp
 	<boost/mpl/int.hpp>
 	<boost/mpl/aux_/template_arity_fwd.hpp>
 	<boost/mpl/aux_/preprocessor/params.hpp>
@@ -1488,10 +1490,10 @@
 	<boost/mpl/aux_/config/msvc.hpp>
 	<boost/mpl/aux_/config/workaround.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\cat.hpp
+1095090690 c:\mingw\include\boost\preprocessor\cat.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1173267423 c:\mingw\include\boost\preprocessor\config\config.hpp
+1173267424 c:\mingw\include\boost\preprocessor\config\config.hpp
 
 1223705942 c:\mingw\include\boost\mpl\aux_\integral_wrapper.hpp
 	<boost/mpl/integral_c_tag.hpp>
@@ -1527,13 +1529,13 @@
 1090899814 c:\mingw\include\boost\preprocessor\comma_if.hpp
 	<boost/preprocessor/punctuation/comma_if.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\punctuation\comma_if.hpp
+1095090690 c:\mingw\include\boost\preprocessor\punctuation\comma_if.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/control/if.hpp>
 	<boost/preprocessor/facilities/empty.hpp>
 	<boost/preprocessor/punctuation/comma.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\if.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\if.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/logical/bool.hpp>
@@ -1541,17 +1543,17 @@
 1090899814 c:\mingw\include\boost\preprocessor\control\iif.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\logical\bool.hpp
+1095090690 c:\mingw\include\boost\preprocessor\logical\bool.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\facilities\empty.hpp
+1095090690 c:\mingw\include\boost\preprocessor\facilities\empty.hpp
 
-1095090689 c:\mingw\include\boost\preprocessor\punctuation\comma.hpp
+1095090690 c:\mingw\include\boost\preprocessor\punctuation\comma.hpp
 
 1090899814 c:\mingw\include\boost\preprocessor\repeat.hpp
 	<boost/preprocessor/repetition/repeat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\repeat.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\repeat.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/debug/error.hpp>
@@ -1570,13 +1572,13 @@
 1091345066 c:\mingw\include\boost\preprocessor\detail\dmc\auto_rec.hpp
 	<boost/preprocessor/control/iif.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\tuple\eat.hpp
+1095090690 c:\mingw\include\boost\preprocessor\tuple\eat.hpp
 	<boost/preprocessor/config/config.hpp>
 
 1090899814 c:\mingw\include\boost\preprocessor\inc.hpp
 	<boost/preprocessor/arithmetic/inc.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\arithmetic\inc.hpp
+1095090690 c:\mingw\include\boost\preprocessor\arithmetic\inc.hpp
 	<boost/preprocessor/config/config.hpp>
 
 1223705942 c:\mingw\include\boost\mpl\aux_\config\lambda.hpp
@@ -1595,7 +1597,7 @@
 1223705942 c:\mingw\include\boost\mpl\aux_\config\overload_resolution.hpp
 	<boost/mpl/aux_/config/workaround.hpp>
 
-1206225955 c:\mingw\include\boost\type_traits\integral_constant.hpp
+1206225956 c:\mingw\include\boost\type_traits\integral_constant.hpp
 	<boost/config.hpp>
 	<boost/mpl/bool.hpp>
 	<boost/mpl/integral_c.hpp>
@@ -1652,10 +1654,10 @@
 	<boost/preprocessor/comma_if.hpp>
 	<boost/preprocessor/repeat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\tuple\to_list.hpp
+1095090690 c:\mingw\include\boost\preprocessor\tuple\to_list.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\for_each_i.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\for_each_i.hpp
 	<boost/preprocessor/arithmetic/inc.hpp>
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/list/adt.hpp>
@@ -1663,7 +1665,7 @@
 	<boost/preprocessor/tuple/elem.hpp>
 	<boost/preprocessor/tuple/rem.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\adt.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\adt.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/detail/is_binary.hpp>
 	<boost/preprocessor/logical/compl.hpp>
@@ -1673,14 +1675,14 @@
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/detail/check.hpp>
 
-1196017639 c:\mingw\include\boost\preprocessor\detail\check.hpp
+1196017640 c:\mingw\include\boost\preprocessor\detail\check.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/config/config.hpp>
 
 1090899814 c:\mingw\include\boost\preprocessor\logical\compl.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\for.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\for.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/debug/error.hpp>
 	<boost/preprocessor/detail/auto_rec.hpp>
@@ -1689,15 +1691,15 @@
 	<boost/preprocessor/repetition/detail/dmc/for.hpp>
 	<boost/preprocessor/repetition/detail/for.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\detail\edg\for.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\detail\edg\for.hpp
 	<boost/preprocessor/control/if.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\detail\msvc\for.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\detail\msvc\for.hpp
 	<boost/preprocessor/control/if.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\detail\dmc\for.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\detail\dmc\for.hpp
 	<boost/preprocessor/control/expr_iif.hpp>
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/logical/bool.hpp>
@@ -1706,19 +1708,19 @@
 1090899814 c:\mingw\include\boost\preprocessor\control\expr_iif.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\detail\for.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\detail\for.hpp
 	<boost/preprocessor/control/expr_iif.hpp>
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/logical/bool.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\tuple\elem.hpp
+1095090690 c:\mingw\include\boost\preprocessor\tuple\elem.hpp
 	<boost/preprocessor/config/config.hpp>
 
 1090899814 c:\mingw\include\boost\preprocessor\tuple\rem.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1094139697 c:\mingw\include\boost\type_traits\detail\bool_trait_undef.hpp
+1094139698 c:\mingw\include\boost\type_traits\detail\bool_trait_undef.hpp
 
 1248439404 c:\program files\cgal\include\cgal\kernel\mpl.h
 	<CGAL/basic.h>
@@ -1817,7 +1819,7 @@
 
 1223705942 c:\mingw\include\boost\mpl\limits\arity.hpp
 
-1095090689 c:\mingw\include\boost\preprocessor\logical\and.hpp
+1095090690 c:\mingw\include\boost\preprocessor\logical\and.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/logical/bool.hpp>
 	<boost/preprocessor/logical/bitand.hpp>
@@ -1828,7 +1830,7 @@
 1090899814 c:\mingw\include\boost\preprocessor\identity.hpp
 	<boost/preprocessor/facilities/identity.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\facilities\identity.hpp
+1095090690 c:\mingw\include\boost\preprocessor\facilities\identity.hpp
 	<boost/preprocessor/facilities/empty.hpp>
 
 1090899814 c:\mingw\include\boost\preprocessor\empty.hpp
@@ -1844,16 +1846,16 @@
 
 1223705942 c:\mingw\include\boost\mpl\aux_\preprocessor\tuple.hpp
 
-1095090689 c:\mingw\include\boost\preprocessor\arithmetic\sub.hpp
+1095090690 c:\mingw\include\boost\preprocessor\arithmetic\sub.hpp
 	<boost/preprocessor/arithmetic/dec.hpp>
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/control/while.hpp>
 	<boost/preprocessor/tuple/elem.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\arithmetic\dec.hpp
+1095090690 c:\mingw\include\boost\preprocessor\arithmetic\dec.hpp
 	<boost/preprocessor/config/config.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\while.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\while.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/debug/error.hpp>
@@ -1866,7 +1868,7 @@
 	<boost/preprocessor/control/detail/dmc/while.hpp>
 	<boost/preprocessor/control/detail/while.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\fold_left.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\fold_left.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/control/while.hpp>
 	<boost/preprocessor/debug/error.hpp>
@@ -1875,25 +1877,25 @@
 	<boost/preprocessor/list/detail/dmc/fold_left.hpp>
 	<boost/preprocessor/list/detail/fold_left.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\detail\edg\fold_left.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\detail\edg\fold_left.hpp
 	<boost/preprocessor/control/expr_iif.hpp>
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/list/adt.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\detail\dmc\fold_left.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\detail\dmc\fold_left.hpp
 	<boost/preprocessor/control/expr_iif.hpp>
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/list/adt.hpp>
 	<boost/preprocessor/tuple/elem.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\detail\fold_left.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\detail\fold_left.hpp
 	<boost/preprocessor/control/expr_iif.hpp>
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/list/adt.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\fold_right.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\fold_right.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/control/while.hpp>
 	<boost/preprocessor/debug/error.hpp>
@@ -1901,38 +1903,38 @@
 	<boost/preprocessor/list/detail/edg/fold_right.hpp>
 	<boost/preprocessor/list/detail/fold_right.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\detail\edg\fold_right.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\detail\edg\fold_right.hpp
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/list/adt.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\detail\fold_right.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\detail\fold_right.hpp
 	<boost/preprocessor/list/fold_left.hpp>
 	<boost/preprocessor/list/reverse.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\reverse.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\reverse.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/list/fold_left.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\detail\edg\while.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\detail\edg\while.hpp
 	<boost/preprocessor/control/if.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\detail\msvc\while.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\detail\msvc\while.hpp
 	<boost/preprocessor/control/if.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\detail\dmc\while.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\detail\dmc\while.hpp
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/logical/bool.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\detail\while.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\detail\while.hpp
 	<boost/preprocessor/control/iif.hpp>
 	<boost/preprocessor/logical/bool.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\arithmetic\add.hpp
+1095090690 c:\mingw\include\boost\preprocessor\arithmetic\add.hpp
 	<boost/preprocessor/arithmetic/dec.hpp>
 	<boost/preprocessor/arithmetic/inc.hpp>
 	<boost/preprocessor/config/config.hpp>
@@ -1945,7 +1947,7 @@
 	<boost/iterator/transform_iterator.hpp>
 	<boost/type_traits/is_same.hpp>
 
-1196017639 c:\mingw\include\boost\iterator\transform_iterator.hpp
+1196017640 c:\mingw\include\boost\iterator\transform_iterator.hpp
 	<boost/function.hpp>
 	<boost/iterator.hpp>
 	<boost/iterator/detail/enable_if.hpp>
@@ -1964,7 +1966,7 @@
 	<boost/iterator/detail/config_def.hpp>
 	<boost/iterator/detail/config_undef.hpp>
 
-1196017639 c:\mingw\include\boost\function.hpp
+1196017640 c:\mingw\include\boost\function.hpp
 	<functional>
 	<boost/preprocessor/iterate.hpp>
 	<boost/detail/workaround.hpp>
@@ -2013,7 +2015,7 @@
 
 1090899814 c:\mingw\include\boost\preprocessor\slot\detail\def.hpp
 
-1216060349 c:\mingw\include\boost\function\detail\prologue.hpp
+1216060350 c:\mingw\include\boost\function\detail\prologue.hpp
 	<cassert>
 	<algorithm>
 	<boost/config/no_tr1/functional.hpp>
@@ -2032,7 +2034,7 @@
 1129739920 c:\mingw\include\boost\config\no_tr1\functional.hpp
 	<functional>
 
-1268039905 c:\mingw\include\boost\throw_exception.hpp
+1268039906 c:\mingw\include\boost\throw_exception.hpp
 	<boost/exception/detail/attribute_noreturn.hpp>
 	<boost/detail/workaround.hpp>
 	<boost/config.hpp>
@@ -2040,11 +2042,11 @@
 	<boost/exception/exception.hpp>
 	<boost/current_function.hpp>
 
-1261006017 c:\mingw\include\boost\exception\detail\attribute_noreturn.hpp
+1261006018 c:\mingw\include\boost\exception\detail\attribute_noreturn.hpp
 
-1268039905 c:\mingw\include\boost\exception\exception.hpp
+1268039906 c:\mingw\include\boost\exception\exception.hpp
 
-1196017639 c:\mingw\include\boost\current_function.hpp
+1196017640 c:\mingw\include\boost\current_function.hpp
 
 1260125428 c:\mingw\include\boost\function\function_base.hpp
 	<stdexcept>
@@ -2078,7 +2080,7 @@
 	<functional>
 	<typeinfo>
 
-1196017639 c:\mingw\include\boost\assert.hpp
+1196017640 c:\mingw\include\boost\assert.hpp
 	<boost/current_function.hpp>
 	<assert.h>
 
@@ -2101,14 +2103,14 @@
 	<limits>
 	<climits>
 
-1165057477 c:\mingw\include\boost\detail\limits.hpp
+1165057478 c:\mingw\include\boost\detail\limits.hpp
 	<climits>
 	<cfloat>
 	<boost/config.hpp>
 	<boost/detail/endian.hpp>
 	<cwchar>
 
-1256148465 c:\mingw\include\boost\detail\endian.hpp
+1256148466 c:\mingw\include\boost\detail\endian.hpp
 	<endian.h>
 
 1260818088 c:\mingw\include\boost\cstdint.hpp
@@ -2121,7 +2123,7 @@
 	<limits.h>
 	<limits.h>
 
-1259392356 c:\mingw\include\inttypes.h
+1271341212 c:\mingw\include\inttypes.h
 	<_mingw.h>
 	<stdint.h>
 	<stddef.h>
@@ -2132,7 +2134,7 @@
 	<limits.h>
 	<wchar.h>
 
-1196017639 c:\mingw\include\boost\type_traits\has_trivial_copy.hpp
+1196017640 c:\mingw\include\boost\type_traits\has_trivial_copy.hpp
 	<boost/type_traits/config.hpp>
 	<boost/type_traits/intrinsics.hpp>
 	<boost/type_traits/is_volatile.hpp>
@@ -2158,7 +2160,7 @@
 	<boost/type_traits/is_volatile.hpp>
 	<boost/type_traits/is_void.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_volatile.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_volatile.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 	<boost/type_traits/detail/cv_traits_impl.hpp>
@@ -2175,7 +2177,7 @@
 	<boost/detail/workaround.hpp>
 	<boost/type_traits/detail/yes_no_type.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\remove_bounds.hpp
+1224062970 c:\mingw\include\boost\type_traits\remove_bounds.hpp
 	<boost/config.hpp>
 	<cstddef>
 	<boost/detail/workaround.hpp>
@@ -2183,15 +2185,15 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_bounds.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_bounds.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_array.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\typeof.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\typeof.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_array.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_array.hpp
 	<boost/type_traits/config.hpp>
 	<boost/type_traits/detail/yes_no_type.hpp>
 	<boost/type_traits/detail/wrap.hpp>
@@ -2199,16 +2201,16 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1094139697 c:\mingw\include\boost\type_traits\detail\type_trait_def.hpp
+1094139698 c:\mingw\include\boost\type_traits\detail\type_trait_def.hpp
 	<boost/type_traits/detail/template_arity_spec.hpp>
 	<boost/mpl/aux_/lambda_support.hpp>
 
-1094139697 c:\mingw\include\boost\type_traits\detail\type_trait_undef.hpp
+1094139698 c:\mingw\include\boost\type_traits\detail\type_trait_undef.hpp
 
 1128695198 c:\mingw\include\boost\type_traits\detail\false_result.hpp
 	<boost/config.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_void.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_void.hpp
 	<boost/config.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
@@ -2233,7 +2235,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_arithmetic.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_arithmetic.hpp
 	<boost/type_traits/is_integral.hpp>
 	<boost/type_traits/is_float.hpp>
 	<boost/type_traits/detail/ice_or.hpp>
@@ -2241,7 +2243,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_integral.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_integral.hpp
 	<boost/config.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
@@ -2253,7 +2255,7 @@
 1128695198 c:\mingw\include\boost\type_traits\detail\ice_or.hpp
 	<boost/config.hpp>
 
-1215771279 c:\mingw\include\boost\type_traits\is_enum.hpp
+1215771280 c:\mingw\include\boost\type_traits\is_enum.hpp
 	<boost/type_traits/intrinsics.hpp>
 	<boost/type_traits/add_reference.hpp>
 	<boost/type_traits/is_arithmetic.hpp>
@@ -2267,7 +2269,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1149500389 c:\mingw\include\boost\type_traits\add_reference.hpp
+1149500390 c:\mingw\include\boost\type_traits\add_reference.hpp
 	<boost/type_traits/is_reference.hpp>
 	<boost/detail/workaround.hpp>
 	<boost/config.hpp>
@@ -2312,7 +2314,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1215773371 c:\mingw\include\boost\static_assert.hpp
+1215773372 c:\mingw\include\boost\static_assert.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 
@@ -2339,7 +2341,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1143653711 c:\mingw\include\boost\type_traits\remove_cv.hpp
+1143653712 c:\mingw\include\boost\type_traits\remove_cv.hpp
 	<boost/type_traits/broken_compiler_spec.hpp>
 	<boost/type_traits/detail/cv_traits_impl.hpp>
 	<boost/config.hpp>
@@ -2354,14 +2356,14 @@
 	<boost/config.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_cv.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_cv.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_volatile.hpp>
 	<boost/type_traits/is_const.hpp>
 	<boost/type_traits/is_pointer.hpp>
 	<boost/type_traits/is_array.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_const.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_const.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 	<boost/type_traits/detail/cv_traits_impl.hpp>
@@ -2374,7 +2376,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_pointer.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_pointer.hpp
 	<boost/type_traits/is_member_pointer.hpp>
 	<boost/type_traits/detail/ice_and.hpp>
 	<boost/type_traits/detail/ice_not.hpp>
@@ -2424,7 +2426,7 @@
 1090899814 c:\mingw\include\boost\preprocessor\enum_params.hpp
 	<boost/preprocessor/repetition/enum_params.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\enum_params.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\enum_params.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/punctuation/comma_if.hpp>
 	<boost/preprocessor/repetition/repeat.hpp>
@@ -2459,7 +2461,7 @@
 	<boost/preprocessor/enum_params.hpp>
 	<boost/preprocessor/comma_if.hpp>
 
-1215771279 c:\mingw\include\boost\type_traits\is_polymorphic.hpp
+1215771280 c:\mingw\include\boost\type_traits\is_polymorphic.hpp
 	<boost/type_traits/intrinsics.hpp>
 	<boost/type_traits/is_class.hpp>
 	<boost/type_traits/remove_cv.hpp>
@@ -2467,7 +2469,7 @@
 	<boost/detail/workaround.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\remove_reference.hpp
+1224062970 c:\mingw\include\boost\type_traits\remove_reference.hpp
 	<boost/type_traits/broken_compiler_spec.hpp>
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
@@ -2475,7 +2477,7 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_reference.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_reference.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_reference.hpp>
 
@@ -2503,7 +2505,7 @@
 	<boost/detail/workaround.hpp>
 	<boost/type.hpp>
 
-1242497717 c:\mingw\include\boost\utility\addressof.hpp
+1242497718 c:\mingw\include\boost\utility\addressof.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 
@@ -2530,9 +2532,9 @@
 	<boost/config.hpp>
 	<cstddef>
 
-1094139697 c:\mingw\include\boost\type_traits\detail\size_t_trait_undef.hpp
+1094139698 c:\mingw\include\boost\type_traits\detail\size_t_trait_undef.hpp
 
-1221706443 c:\mingw\include\boost\utility\enable_if.hpp
+1221706444 c:\mingw\include\boost\utility\enable_if.hpp
 	"boost/config.hpp"
 
 1110738342 c:\mingw\include\boost\function_equal.hpp
@@ -2574,7 +2576,7 @@
 1129739920 c:\mingw\include\boost\config\no_tr1\memory.hpp
 	<memory>
 
-1259865877 c:\mingw\include\boost\bind\mem_fn_template.hpp
+1259865878 c:\mingw\include\boost\bind\mem_fn_template.hpp
 
 1090801932 c:\mingw\include\boost\bind\mem_fn_vw.hpp
 
@@ -2583,7 +2585,7 @@
 1090899814 c:\mingw\include\boost\preprocessor\enum.hpp
 	<boost/preprocessor/repetition/enum.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\enum.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\enum.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/debug/error.hpp>
@@ -2593,10 +2595,10 @@
 	<boost/preprocessor/tuple/elem.hpp>
 	<boost/preprocessor/tuple/rem.hpp>
 
-1090722569 c:\mingw\include\boost\function\function0.hpp
+1090722570 c:\mingw\include\boost\function\function0.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\detail\maybe_include.hpp
+1090722570 c:\mingw\include\boost\function\detail\maybe_include.hpp
 	<boost/function/function_template.hpp>
 	<boost/function/function_template.hpp>
 	<boost/function/function_template.hpp>
@@ -2653,38 +2655,38 @@
 	<boost/function/detail/prologue.hpp>
 	<boost/detail/no_exceptions_support.hpp>
 
-1083926663 c:\mingw\include\boost\detail\no_exceptions_support.hpp
+1083926664 c:\mingw\include\boost\detail\no_exceptions_support.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 
-1090722569 c:\mingw\include\boost\function\function1.hpp
+1090722570 c:\mingw\include\boost\function\function1.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function2.hpp
+1090722570 c:\mingw\include\boost\function\function2.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function3.hpp
+1090722570 c:\mingw\include\boost\function\function3.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function4.hpp
+1090722570 c:\mingw\include\boost\function\function4.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function5.hpp
+1090722570 c:\mingw\include\boost\function\function5.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function6.hpp
+1090722570 c:\mingw\include\boost\function\function6.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function7.hpp
+1090722570 c:\mingw\include\boost\function\function7.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function8.hpp
+1090722570 c:\mingw\include\boost\function\function8.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function9.hpp
+1090722570 c:\mingw\include\boost\function\function9.hpp
 	<boost/function/detail/maybe_include.hpp>
 
-1090722569 c:\mingw\include\boost\function\function10.hpp
+1090722570 c:\mingw\include\boost\function\function10.hpp
 	<boost/function/detail/maybe_include.hpp>
 
 1125398672 c:\mingw\include\boost\iterator.hpp
@@ -2742,7 +2744,7 @@
 	<cstddef>
 	"boost/type_traits/detail/bool_trait_def.hpp"
 
-1149500389 c:\mingw\include\boost\type_traits\remove_const.hpp
+1149500390 c:\mingw\include\boost\type_traits\remove_const.hpp
 	<boost/type_traits/is_volatile.hpp>
 	<boost/type_traits/broken_compiler_spec.hpp>
 	<boost/type_traits/detail/cv_traits_impl.hpp>
@@ -2753,14 +2755,14 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_const.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_const.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_volatile.hpp>
 	<boost/type_traits/is_const.hpp>
 	<boost/type_traits/is_pointer.hpp>
 	<boost/type_traits/is_array.hpp>
 
-1149500389 c:\mingw\include\boost\type_traits\remove_pointer.hpp
+1149500390 c:\mingw\include\boost\type_traits\remove_pointer.hpp
 	<boost/type_traits/broken_compiler_spec.hpp>
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
@@ -2768,7 +2770,7 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_pointer.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_pointer.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_pointer.hpp>
 
@@ -2809,7 +2811,7 @@
 	<boost/mpl/aux_/config/msvc.hpp>
 	<boost/mpl/aux_/config/workaround.hpp>
 
-1196017639 c:\mingw\include\boost\iterator\iterator_categories.hpp
+1196017640 c:\mingw\include\boost\iterator\iterator_categories.hpp
 	<boost/config.hpp>
 	<boost/detail/iterator.hpp>
 	<boost/iterator/detail/config_def.hpp>
@@ -2926,7 +2928,7 @@
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/stringize.hpp>
 
-1243022875 c:\mingw\include\boost\mpl\aux_\config\compiler.hpp
+1243022876 c:\mingw\include\boost\mpl\aux_\config\compiler.hpp
 	<boost/mpl/aux_/config/dtp.hpp>
 	<boost/mpl/aux_/config/ttp.hpp>
 	<boost/mpl/aux_/config/ctps.hpp>
@@ -2972,7 +2974,7 @@
 	<boost/iterator/detail/config_def.hpp>
 	<boost/iterator/detail/config_undef.hpp>
 
-1092330787 c:\mingw\include\boost\iterator\interoperable.hpp
+1092330788 c:\mingw\include\boost\iterator\interoperable.hpp
 	<boost/mpl/bool.hpp>
 	<boost/mpl/or.hpp>
 	<boost/type_traits/is_convertible.hpp>
@@ -3020,11 +3022,11 @@
 1090899814 c:\mingw\include\boost\preprocessor\dec.hpp
 	<boost/preprocessor/arithmetic/dec.hpp>
 
-1196017639 c:\mingw\include\boost\iterator\iterator_traits.hpp
+1196017640 c:\mingw\include\boost\iterator\iterator_traits.hpp
 	<boost/detail/iterator.hpp>
 	<boost/detail/workaround.hpp>
 
-1206225955 c:\mingw\include\boost\iterator\detail\facade_iterator_category.hpp
+1206225956 c:\mingw\include\boost\iterator\detail\facade_iterator_category.hpp
 	<boost/iterator/iterator_categories.hpp>
 	<boost/mpl/or.hpp>
 	<boost/mpl/and.hpp>
@@ -3050,7 +3052,7 @@
 	<boost/mpl/aux_/include_preprocessed.hpp>
 	<boost/mpl/aux_/logical_op.hpp>
 
-1206225955 c:\mingw\include\boost\detail\indirect_traits.hpp
+1206225956 c:\mingw\include\boost\detail\indirect_traits.hpp
 	<boost/type_traits/is_function.hpp>
 	<boost/type_traits/is_reference.hpp>
 	<boost/type_traits/is_pointer.hpp>
@@ -3072,14 +3074,14 @@
 	<boost/mpl/aux_/lambda_support.hpp>
 	<boost/detail/is_function_ref_tester.hpp>
 
-1206225955 c:\mingw\include\boost\detail\is_function_ref_tester.hpp
+1206225956 c:\mingw\include\boost\detail\is_function_ref_tester.hpp
 	"boost/type_traits/detail/yes_no_type.hpp"
 	"boost/type_traits/config.hpp"
 	"boost/preprocessor/iterate.hpp"
 	"boost/preprocessor/enum_params.hpp"
 	"boost/preprocessor/comma_if.hpp"
 
-1206225955 c:\mingw\include\boost\implicit_cast.hpp
+1206225956 c:\mingw\include\boost\implicit_cast.hpp
 	<boost/mpl/identity.hpp>
 
 1128695198 c:\mingw\include\boost\type_traits\add_const.hpp
@@ -3087,7 +3089,7 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\add_pointer.hpp
+1224062970 c:\mingw\include\boost\type_traits\add_pointer.hpp
 	<boost/type_traits/remove_reference.hpp>
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
@@ -3289,7 +3291,7 @@
 1090899814 c:\mingw\include\boost\preprocessor\expr_if.hpp
 	<boost/preprocessor/control/expr_if.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\control\expr_if.hpp
+1095090690 c:\mingw\include\boost\preprocessor\control\expr_if.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/control/expr_iif.hpp>
 	<boost/preprocessor/logical/bool.hpp>
@@ -3297,7 +3299,7 @@
 1090899814 c:\mingw\include\boost\preprocessor\enum_shifted_params.hpp
 	<boost/preprocessor/repetition/enum_shifted_params.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\enum_shifted_params.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\enum_shifted_params.hpp
 	<boost/preprocessor/arithmetic/dec.hpp>
 	<boost/preprocessor/arithmetic/inc.hpp>
 	<boost/preprocessor/cat.hpp>
@@ -3410,7 +3412,7 @@
 	<boost/preprocessor/seq/first_n.hpp>
 	<boost/preprocessor/seq/rest_n.hpp>
 
-1098661975 c:\mingw\include\boost\preprocessor\seq\first_n.hpp
+1098661976 c:\mingw\include\boost\preprocessor\seq\first_n.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/control/if.hpp>
 	<boost/preprocessor/seq/detail/split.hpp>
@@ -3427,7 +3429,7 @@
 	<boost/preprocessor/seq/detail/split.hpp>
 	<boost/preprocessor/tuple/elem.hpp>
 
-1098661975 c:\mingw\include\boost\preprocessor\seq\fold_left.hpp
+1098661976 c:\mingw\include\boost\preprocessor\seq\fold_left.hpp
 	<boost/preprocessor/arithmetic/dec.hpp>
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/control/if.hpp>
@@ -3445,7 +3447,7 @@
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/facilities/empty.hpp>
 
-1119340515 c:\mingw\include\boost\preprocessor\seq\size.hpp
+1119340516 c:\mingw\include\boost\preprocessor\seq\size.hpp
 	<boost/preprocessor/cat.hpp>
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/tuple/eat.hpp>
@@ -3553,7 +3555,7 @@
 	<limits>
 	<xmmintrin.h>
 
-1259392356 c:\mingw\include\fenv.h
+1271341210 c:\mingw\include\fenv.h
 	<_mingw.h>
 
 1248439454 c:\program files\cgal\include\cgal\float.h
@@ -3573,7 +3575,7 @@
 	<cfloat>
 	<CGAL/IEEE_754_unions.h>
 
-1259392356 c:\mingw\include\math.h
+1271341212 c:\mingw\include\math.h
 	<_mingw.h>
 
 1248439454 c:\program files\cgal\include\cgal\long_double.h
@@ -3609,41 +3611,41 @@
 	<boost/operators.hpp>
 	<boost/thread/tss.hpp>
 
-1242982811 c:\mingw\include\boost\operators.hpp
+1242982812 c:\mingw\include\boost\operators.hpp
 	<boost/config.hpp>
 	<boost/iterator.hpp>
 	<boost/detail/workaround.hpp>
 
-1255943893 c:\mingw\include\boost\thread\tss.hpp
+1255943894 c:\mingw\include\boost\thread\tss.hpp
 	<boost/thread/detail/config.hpp>
 	<boost/shared_ptr.hpp>
 	<boost/thread/detail/thread_heap_alloc.hpp>
 	<boost/config/abi_prefix.hpp>
 	<boost/config/abi_suffix.hpp>
 
-1198241465 c:\mingw\include\boost\thread\detail\config.hpp
+1198241466 c:\mingw\include\boost\thread\detail\config.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 	"platform.hpp"
 	<boost/config/auto_link.hpp>
 
-1215503095 c:\mingw\include\boost\thread\detail\platform.hpp
+1215503096 c:\mingw\include\boost\thread\detail\platform.hpp
 	<boost/config.hpp>
 	<boost/config/requires_threads.hpp>
 
-1071924887 c:\mingw\include\boost\config\requires_threads.hpp
+1071924888 c:\mingw\include\boost\config\requires_threads.hpp
 	<boost/config.hpp>
 
 1231589922 c:\mingw\include\boost\config\auto_link.hpp
 	<boost/config.hpp>
 	<boost/version.hpp>
 
-1272745771 c:\mingw\include\boost\version.hpp
+1272745772 c:\mingw\include\boost\version.hpp
 
 1236014536 c:\mingw\include\boost\shared_ptr.hpp
 	<boost/smart_ptr/shared_ptr.hpp>
 
-1260816259 c:\mingw\include\boost\smart_ptr\shared_ptr.hpp
+1260816260 c:\mingw\include\boost\smart_ptr\shared_ptr.hpp
 	<boost/config.hpp>
 	<boost/smart_ptr/detail/shared_ptr_nmt.hpp>
 	<boost/config/no_tr1/memory.hpp>
@@ -3672,7 +3674,7 @@
 	<functional>
 	<new>
 
-1092330787 c:\mingw\include\boost\checked_delete.hpp
+1092330788 c:\mingw\include\boost\checked_delete.hpp
 
 1240136270 c:\mingw\include\boost\smart_ptr\detail\atomic_count.hpp
 	<boost/config.hpp>
@@ -3694,7 +3696,7 @@
 1236014536 c:\mingw\include\boost\smart_ptr\detail\atomic_count_win32.hpp
 	<boost/detail/interlocked.hpp>
 
-1259617111 c:\mingw\include\boost\detail\interlocked.hpp
+1259617112 c:\mingw\include\boost\detail\interlocked.hpp
 	<boost/config.hpp>
 	<windows.h>
 
@@ -3705,7 +3707,7 @@
 	<ext/atomicity.h>
 	<bits/atomicity.h>
 
-1249773675 c:\mingw\include\boost\smart_ptr\detail\shared_count.hpp
+1249773676 c:\mingw\include\boost\smart_ptr\detail\shared_count.hpp
 	<boost/config.hpp>
 	<boost/checked_delete.hpp>
 	<boost/throw_exception.hpp>
@@ -3828,7 +3830,7 @@
 	<memory>
 	<cstddef>
 
-1260816259 c:\mingw\include\boost\smart_ptr\detail\quick_allocator.hpp
+1260816260 c:\mingw\include\boost\smart_ptr\detail\quick_allocator.hpp
 	<boost/config.hpp>
 	<boost/smart_ptr/detail/lightweight_mutex.hpp>
 	<boost/type_traits/type_with_alignment.hpp>
@@ -3836,7 +3838,7 @@
 	<new>
 	<cstddef>
 
-1236015451 c:\mingw\include\boost\smart_ptr\detail\lightweight_mutex.hpp
+1236015452 c:\mingw\include\boost\smart_ptr\detail\lightweight_mutex.hpp
 	<boost/config.hpp>
 	<boost/smart_ptr/detail/lwm_nop.hpp>
 	<boost/smart_ptr/detail/lwm_pthreads.hpp>
@@ -3844,14 +3846,14 @@
 
 1236014536 c:\mingw\include\boost\smart_ptr\detail\lwm_nop.hpp
 
-1259616301 c:\mingw\include\boost\smart_ptr\detail\lwm_pthreads.hpp
+1259616302 c:\mingw\include\boost\smart_ptr\detail\lwm_pthreads.hpp
 	<boost/assert.hpp>
 	<pthread.h>
 
 1236014536 c:\mingw\include\boost\smart_ptr\detail\lwm_win32_cs.hpp
 	<windows.h>
 
-1224062969 c:\mingw\include\boost\type_traits\type_with_alignment.hpp
+1224062970 c:\mingw\include\boost\type_traits\type_with_alignment.hpp
 	<boost/mpl/if.hpp>
 	<boost/preprocessor/list/for_each_i.hpp>
 	<boost/preprocessor/tuple/to_list.hpp>
@@ -3866,20 +3868,20 @@
 	<cstddef>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\transform.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\transform.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/list/fold_right.hpp>
 	<boost/preprocessor/tuple/elem.hpp>
 	<boost/preprocessor/tuple/rem.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\list\append.hpp
+1095090690 c:\mingw\include\boost\preprocessor\list\append.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/list/fold_right.hpp>
 
 1270496252 c:\mingw\include\boost\smart_ptr\detail\sp_convertible.hpp
 	<boost/config.hpp>
 
-1259866237 c:\mingw\include\boost\memory_order.hpp
+1259866238 c:\mingw\include\boost\memory_order.hpp
 
 1236015922 c:\mingw\include\boost\smart_ptr\detail\operator_bool.hpp
 
@@ -3888,7 +3890,7 @@
 	<boost/thread/win32/thread_heap_alloc.hpp>
 	<boost/thread/pthread/thread_heap_alloc.hpp>
 
-1270134255 c:\mingw\include\boost\thread\win32\thread_heap_alloc.hpp
+1270134256 c:\mingw\include\boost\thread\win32\thread_heap_alloc.hpp
 	<new>
 	"thread_primitives.hpp"
 	<stdexcept>
@@ -3898,7 +3900,7 @@
 	<boost/config/abi_prefix.hpp>
 	<boost/config/abi_suffix.hpp>
 
-1270134255 c:\mingw\include\boost\thread\win32\thread_primitives.hpp
+1270134256 c:\mingw\include\boost\thread\win32\thread_primitives.hpp
 	<boost/config.hpp>
 	<boost/throw_exception.hpp>
 	<boost/assert.hpp>
@@ -3910,7 +3912,7 @@
 	<boost/config/abi_prefix.hpp>
 	<boost/config/abi_suffix.hpp>
 
-1255943893 c:\mingw\include\boost\thread\exceptions.hpp
+1255943894 c:\mingw\include\boost\thread\exceptions.hpp
 	<boost/thread/detail/config.hpp>
 	<string>
 	<stdexcept>
@@ -3922,7 +3924,7 @@
 
 1216118512 c:\mingw\include\boost\config\abi_suffix.hpp
 
-1270134255 c:\mingw\include\boost\thread\pthread\thread_heap_alloc.hpp
+1270134256 c:\mingw\include\boost\thread\pthread\thread_heap_alloc.hpp
 	<boost/config/abi_prefix.hpp>
 	<boost/config/abi_suffix.hpp>
 
@@ -4027,7 +4029,7 @@
 1248439404 c:\program files\cgal\include\cgal\qualified_result_of.h
 	<boost/type_traits.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits.hpp
+1196017640 c:\mingw\include\boost\type_traits.hpp
 	"boost/type_traits/add_const.hpp"
 	"boost/type_traits/add_cv.hpp"
 	"boost/type_traits/add_pointer.hpp"
@@ -4124,12 +4126,12 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\has_nothrow_constructor.hpp
+1196017640 c:\mingw\include\boost\type_traits\has_nothrow_constructor.hpp
 	<boost/type_traits/has_trivial_constructor.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\has_trivial_constructor.hpp
+1196017640 c:\mingw\include\boost\type_traits\has_trivial_constructor.hpp
 	<boost/type_traits/config.hpp>
 	<boost/type_traits/intrinsics.hpp>
 	<boost/type_traits/is_pod.hpp>
@@ -4137,7 +4139,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\has_nothrow_copy.hpp
+1196017640 c:\mingw\include\boost\type_traits\has_nothrow_copy.hpp
 	<boost/type_traits/has_trivial_copy.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
@@ -4147,7 +4149,7 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1206225955 c:\mingw\include\boost\type_traits\has_virtual_destructor.hpp
+1206225956 c:\mingw\include\boost\type_traits\has_virtual_destructor.hpp
 	<boost/type_traits/intrinsics.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
@@ -4177,21 +4179,21 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_compound.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_compound.hpp
 	<boost/config.hpp>
 	<boost/type_traits/is_fundamental.hpp>
 	<boost/type_traits/detail/ice_not.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\is_fundamental.hpp
+1224062970 c:\mingw\include\boost\type_traits\is_fundamental.hpp
 	<boost/type_traits/is_arithmetic.hpp>
 	<boost/type_traits/is_void.hpp>
 	<boost/type_traits/detail/ice_or.hpp>
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1268935063 c:\mingw\include\boost\type_traits\is_empty.hpp
+1268935064 c:\mingw\include\boost\type_traits\is_empty.hpp
 	<boost/type_traits/is_convertible.hpp>
 	<boost/type_traits/detail/ice_or.hpp>
 	<boost/type_traits/config.hpp>
@@ -4209,11 +4211,11 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1206225955 c:\mingw\include\boost\type_traits\is_floating_point.hpp
+1206225956 c:\mingw\include\boost\type_traits\is_floating_point.hpp
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1206225955 c:\mingw\include\boost\type_traits\is_member_object_pointer.hpp
+1206225956 c:\mingw\include\boost\type_traits\is_member_object_pointer.hpp
 	<boost/type_traits/config.hpp>
 	<boost/type_traits/is_member_pointer.hpp>
 	<boost/type_traits/is_member_function_pointer.hpp>
@@ -4243,15 +4245,15 @@
 	<boost/type_traits/detail/bool_trait_def.hpp>
 	<boost/type_traits/detail/bool_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\rank.hpp
+1224062970 c:\mingw\include\boost\type_traits\rank.hpp
 	<boost/type_traits/detail/size_t_trait_def.hpp>
 	<boost/type_traits/detail/size_t_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\extent.hpp
+1224062970 c:\mingw\include\boost\type_traits\extent.hpp
 	<boost/type_traits/detail/size_t_trait_def.hpp>
 	<boost/type_traits/detail/size_t_trait_undef.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\remove_extent.hpp
+1224062970 c:\mingw\include\boost\type_traits\remove_extent.hpp
 	<boost/config.hpp>
 	<boost/detail/workaround.hpp>
 	<cstddef>
@@ -4259,11 +4261,11 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_extent.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_extent.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_array.hpp>
 
-1224062969 c:\mingw\include\boost\type_traits\remove_all_extents.hpp
+1224062970 c:\mingw\include\boost\type_traits\remove_all_extents.hpp
 	<boost/config.hpp>
 	<cstddef>
 	<boost/detail/workaround.hpp>
@@ -4271,11 +4273,11 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_all_extents.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_all_extents.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_array.hpp>
 
-1149500389 c:\mingw\include\boost\type_traits\remove_volatile.hpp
+1149500390 c:\mingw\include\boost\type_traits\remove_volatile.hpp
 	<boost/type_traits/is_const.hpp>
 	<boost/type_traits/broken_compiler_spec.hpp>
 	<boost/type_traits/detail/cv_traits_impl.hpp>
@@ -4286,14 +4288,14 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196017639 c:\mingw\include\boost\type_traits\msvc\remove_volatile.hpp
+1196017640 c:\mingw\include\boost\type_traits\msvc\remove_volatile.hpp
 	<boost/type_traits/msvc/typeof.hpp>
 	<boost/type_traits/is_volatile.hpp>
 	<boost/type_traits/is_const.hpp>
 	<boost/type_traits/is_pointer.hpp>
 	<boost/type_traits/is_array.hpp>
 
-1206225955 c:\mingw\include\boost\type_traits\aligned_storage.hpp
+1206225956 c:\mingw\include\boost\type_traits\aligned_storage.hpp
 	<boost/aligned_storage.hpp>
 
 1248348000 c:\mingw\include\boost\aligned_storage.hpp
@@ -4308,7 +4310,7 @@
 	"boost/type_traits/detail/bool_trait_def.hpp"
 	"boost/type_traits/detail/bool_trait_undef.hpp"
 
-1196033695 c:\mingw\include\boost\type_traits\floating_point_promotion.hpp
+1196033696 c:\mingw\include\boost\type_traits\floating_point_promotion.hpp
 	<boost/config.hpp>
 	<boost/mpl/at.hpp>
 	<boost/mpl/int.hpp>
@@ -4588,7 +4590,7 @@
 1090899814 c:\mingw\include\boost\preprocessor\enum_params_with_a_default.hpp
 	<boost/preprocessor/repetition/enum_params_with_a_default.hpp>
 
-1095090689 c:\mingw\include\boost\preprocessor\repetition\enum_params_with_a_default.hpp
+1095090690 c:\mingw\include\boost\preprocessor\repetition\enum_params_with_a_default.hpp
 	<boost/preprocessor/config/config.hpp>
 	<boost/preprocessor/facilities/intercept.hpp>
 	<boost/preprocessor/repetition/enum_binary_params.hpp>
@@ -4603,7 +4605,7 @@
 	<boost/preprocessor/tuple/elem.hpp>
 	<boost/preprocessor/tuple/rem.hpp>
 
-1196033695 c:\mingw\include\boost\type_traits\integral_promotion.hpp
+1196033696 c:\mingw\include\boost\type_traits\integral_promotion.hpp
 	<boost/config.hpp>
 	<boost/mpl/eval_if.hpp>
 	<boost/mpl/identity.hpp>
@@ -4615,14 +4617,14 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1196033695 c:\mingw\include\boost\type_traits\promote.hpp
+1196033696 c:\mingw\include\boost\type_traits\promote.hpp
 	<boost/config.hpp>
 	<boost/type_traits/integral_promotion.hpp>
 	<boost/type_traits/floating_point_promotion.hpp>
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1215771279 c:\mingw\include\boost\type_traits\make_unsigned.hpp
+1215771280 c:\mingw\include\boost\type_traits\make_unsigned.hpp
 	<boost/mpl/if.hpp>
 	<boost/type_traits/is_integral.hpp>
 	<boost/type_traits/is_signed.hpp>
@@ -4641,7 +4643,7 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1215771279 c:\mingw\include\boost\type_traits\make_signed.hpp
+1215771280 c:\mingw\include\boost\type_traits\make_signed.hpp
 	<boost/mpl/if.hpp>
 	<boost/type_traits/is_integral.hpp>
 	<boost/type_traits/is_signed.hpp>
@@ -4660,7 +4662,7 @@
 	<boost/type_traits/detail/type_trait_def.hpp>
 	<boost/type_traits/detail/type_trait_undef.hpp>
 
-1206225955 c:\mingw\include\boost\type_traits\decay.hpp
+1206225956 c:\mingw\include\boost\type_traits\decay.hpp
 	<boost/type_traits/config.hpp>
 	<boost/type_traits/is_array.hpp>
 	<boost/type_traits/is_function.hpp>
@@ -4670,7 +4672,7 @@
 	<boost/mpl/eval_if.hpp>
 	<boost/mpl/identity.hpp>
 
-1196033695 c:\mingw\include\boost\type_traits\is_complex.hpp
+1196033696 c:\mingw\include\boost\type_traits\is_complex.hpp
 	<boost/type_traits/is_convertible.hpp>
 	<complex>
 	<boost/type_traits/detail/bool_trait_def.hpp>
@@ -4851,7 +4853,7 @@
 	<tr1/array>
 	<boost/array.hpp>
 
-1272745771 c:\mingw\include\boost\array.hpp
+1272745772 c:\mingw\include\boost\array.hpp
 	<boost/detail/workaround.hpp>
 	<cstddef>
 	<stdexcept>
@@ -5165,7 +5167,7 @@
 	"boost/type_traits.hpp"
 	<utility>
 
-1244917831 c:\mingw\include\boost\tuple\detail\tuple_basic.hpp
+1244917832 c:\mingw\include\boost\tuple\detail\tuple_basic.hpp
 	<utility>
 	"boost/type_traits/cv_traits.hpp"
 	"boost/type_traits/function_traits.hpp"
@@ -6429,7 +6431,7 @@
 	<CGAL/Gps_segment_traits_2.h>
 	<CGAL/Gps_traits_2.h>
 
-1278689258 source:c:\agar\master\geomap.cpp
+1279294356 source:c:\agar\master\geomap.cpp
 	"geomap.hpp"
 	"globals.hpp"
 	"pcre/pcre.h"
@@ -6440,7 +6442,7 @@
 1278689258 source:c:\agar\master\globals.cpp
 	"globals.hpp"
 
-1278689258 source:c:\agar\master\main.cpp
+1279293972 source:c:\agar\master\main.cpp
 	<iostream>
 	<sstream>
 	<fstream>
@@ -11204,4 +11206,27 @@
 	<CGAL/Gps_segment_traits_2.h>
 	<CGAL/Boolean_set_operations_2/Gps_default_dcel.h>
 	<vector>
+
+1248439458 c:\cpp\cgal-3.6\cgal-3.6\include\cgal\polygon_set_2.h
+	<CGAL/Polygon_2.h>
+	<CGAL/General_polygon_set_2.h>
+	<CGAL/Gps_segment_traits_2.h>
+	<CGAL/Boolean_set_operations_2/Gps_default_dcel.h>
+	<vector>
+
+1277578672 source:c:\agar\master\visilibity.cpp
+	"visilibity/visilibity.hpp"
+	<cmath>
+	<vector>
+	<queue>
+	<set>
+	<list>
+	<algorithm>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<cstring>
+	<string>
+	<cassert>
 

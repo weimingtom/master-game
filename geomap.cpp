@@ -85,11 +85,6 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
         };
 
 
-/*    mapEnvOB.push_back(Point_2(-100,-100));
-    mapEnvOB.push_back(Point_2(-100,100));
-    mapEnvOB.push_back(Point_2(100,100));
-    mapEnvOB.push_back(Point_2(100,-100));
-*/
         Polygon_set_2 S;
     mapEnvOB.reverse_orientation();
 

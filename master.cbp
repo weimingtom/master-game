@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="hellocpp2" />
+		<Option title="master" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\hellocpp2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\Debug\master" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -24,27 +24,27 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="C:\msys\1.0\local\include\agar" />
-			<Add directory="C:\Program Files\CGAL\include" />
+			<Add directory="..\..\cpp\CGAL-3.6\CGAL-3.6\include" />
 			<Add directory="C:\MinGW\include" />
 			<Add directory="C:\msys\1.0\local\include" />
 		</Compiler>
 		<Linker>
 			<Add option="-mwindows" />
-			<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
-			<Add library="C:\cpp\visilibity\source_code\visilibity.o" />
+			<Add library="libs\HTMLayout.lib" />
 			<Add library="C:\MinGW\lib\libglu32.a" />
-			<Add library="C:\Agar\Agar-1.4.1\core\.libs\libag_core.a" />
-			<Add library="C:\Agar\Agar-1.4.1\gui\.libs\libag_gui.a" />
-			<Add library="C:\Agar\freetype-2.1.10\objs\.libs\libfreetype.a" />
-			<Add library="C:\Agar\libSDL.a" />
-			<Add library="C:\Agar\Opengl32.lib" />
-			<Add library="C:\cpp\regex\lib\libpcre.dll.a" />
+			<Add library="..\trunk\core\.libs\libag_core.a" />
+			<Add library="..\trunk\gui\.libs\libag_gui.a" />
+			<Add library="..\..\MinGW\lib\libfreetype.a" />
+			<Add library="C:\MinGW\lib\libSDL.a" />
+			<Add library="..\..\MinGW\lib\libopengl32.a" />
+			<Add library="..\regex\lib\libpcre.dll.a" />
 			<Add library="libs\libpthreadGC2.a" />
 			<Add library="C:\MinGW\lib\libwinmm.a" />
-			<Add library="C:\cpp\CGAL-3.6\build\lib\libCGAL.a" />
-			<Add library="C:\boost\lib\libboost_thread-mgw34-mt-d-1_43.a" />
-			<Add library="C:\boost\lib\libboost_date_time-mgw34-mt-d-1_43.a" />
-			<Add library="C:\MinGW\lib\libgmp.a" />
+			<Add library="..\..\cpp\CGAL-3.6\CGAL-3.6\lib\libCGAL.a" />
+			<Add library="..\..\MinGW\lib\libboost_thread.a" />
+			<Add library="..\..\MinGW\lib\libboost_date_time.a" />
+			<Add library="..\..\MinGW\lib\libz.a" />
+			<Add library="..\..\MinGW\lib\libdxguid.a" />
 		</Linker>
 		<Unit filename="dialog.h" />
 		<Unit filename="entity.cpp" />
@@ -53,10 +53,8 @@
 		<Unit filename="geomap.cpp" />
 		<Unit filename="globals.cpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="myButton.h" />
-		<Unit filename="mytextbox.h" />
-		<Unit filename="mywidget.h" />
 		<Unit filename="task.cpp" />
+		<Unit filename="visilibity.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
