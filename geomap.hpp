@@ -38,6 +38,7 @@ typedef CGAL::Polygon_with_holes_2<Kernel>         Polygon_with_holes_2;
 typedef std::list<Polygon_with_holes_2>            Pwh_list_2;
 typedef CGAL::Polygon_set_2<Kernel>                Polygon_set_2;
 
+typedef double[2] tuple;
 
 typedef std::vector < std::vector < VisiLibity::Point > > geoData;
 
