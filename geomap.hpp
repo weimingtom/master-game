@@ -38,16 +38,16 @@ typedef CGAL::Polygon_2<Kernel>                    Polygon_2;
 typedef CGAL::Polygon_with_holes_2<Kernel>         Polygon_with_holes_2;
 typedef std::list<Polygon_with_holes_2>            Pwh_list_2;
 typedef CGAL::Polygon_set_2<Kernel>                Polygon_set_2;
-typedef double tuple[2];
+typedef std::vector<double> vertex_tuple;
 
 
 
-typedef std::vector < std::vector < tuple> > geoData;
+typedef std::vector < std::vector < vertex_tuple> > geoData;
 
 void mapdraw();
 VisiLibity::Point normal(VisiLibity::Point Vector);
 geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibility_Graph & visGraph,float clearDist);
-std::vector<tuple> loadPath(char* str);
+std::vector<vertex_tuple> loadPath(char* str);
 void MapDrawFunction(AG_Event *event);
 void MapScaleFunction(AG_Event *event);
 void MapClickFunction(AG_Event *event);
