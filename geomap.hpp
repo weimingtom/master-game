@@ -22,6 +22,7 @@
 #include <CGAL/Cartesian.h>
 #include <CGAL/Boolean_set_operations_2.h>
 #include <CGAL/Polygon_set_2.h>
+#include <CGAL/Polygon_2_algorithms.h>
 #include <list>
 
 #include <agar/core/types.h>
@@ -37,15 +38,16 @@ typedef CGAL::Polygon_2<Kernel>                    Polygon_2;
 typedef CGAL::Polygon_with_holes_2<Kernel>         Polygon_with_holes_2;
 typedef std::list<Polygon_with_holes_2>            Pwh_list_2;
 typedef CGAL::Polygon_set_2<Kernel>                Polygon_set_2;
+typedef std::vector<double> vertex_tuple;
 
-typedef double[2] tuple;
 
-typedef std::vector < std::vector < VisiLibity::Point > > geoData;
+
+typedef std::vector < std::vector < vertex_tuple> > geoData;
 
 void mapdraw();
 VisiLibity::Point normal(VisiLibity::Point Vector);
 geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibility_Graph & visGraph,float clearDist);
-std::vector<VisiLibity::Point> loadPath(char* str);
+std::vector<vertex_tuple> loadPath(char* str);
 void MapDrawFunction(AG_Event *event);
 void MapScaleFunction(AG_Event *event);
 void MapClickFunction(AG_Event *event);

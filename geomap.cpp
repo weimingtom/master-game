@@ -61,7 +61,7 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
     n1=doc.first_node("svg");
     n1=n1->first_node("g")->first_node("path");
 
-    std::vector < VisiLibity::Point > poly_temp;
+    //std::vector < VisiLibity::Point > poly_temp;
 
     //geoData vertices_temp(10,poly_temp);
     geoData vertices_temp;
@@ -75,15 +75,66 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
         i++;
     }
 
-    float sf;
+
+   Polygon_2 mapEnvOB;
+
+    for (int j=0;j<vertices_temp[0].size();j++)
+        {
+            mapEnvOB.push_back(Point_2(vertices_temp[0][j][0],vertices_temp[0][j][1]));
+        };
+        Polygon_set_2 S;
+        //mapEnvOB.reverse_orientation();
+
+        S.insert(mapEnvOB);
+
+
+
+    for (int k=1;k<vertices_temp.size();k++)
+    {
+        Polygon_2 holeCGAL;
+        for (int j=0;j<vertices_temp[k].size();j++)
+        {
+            holeCGAL.push_back(Point_2(vertices_temp[k][j][0],vertices_temp[k][j][1]));
+        };
+
+        holeCGAL.reverse_orientation();
+
+        S.difference(holeCGAL);
+
+        holeCGAL.clear();
+    };
+
+  std::list<Polygon_with_holes_2> res;
+  std::list<Polygon_with_holes_2>::const_iterator it;
+
+
+   S.polygons_with_holes (std::back_inserter (res));
 
     std::vector<VisiLibity::Polygon> envPolys;
-  //  std::vector<VisiLibity::Polygon> envPolysCollision;
-    for (int i=0;i<vertices_temp.size();i++){
-        envPolys.push_back(VisiLibity::Polygon(vertices_temp[i]));
+
+   for (it = res.begin(); it != res.end(); ++it) {
+      if(CGAL::ON_BOUNDED_SIDE==CGAL::bounded_side_2(it->outer_boundary().vertices_begin(),it->outer_boundary().vertices_end(),Point_2(guest1.pos.x(),guest1.pos.y()),Kernel()))
+      {
+
+          VisiLibity::Polygon cPoly;
+         Polygon_2::Vertex_iterator cv ;
+          for (cv=it->outer_boundary().vertices_begin();cv!=it->outer_boundary().vertices_end();++cv)
+          {
+              cPoly.push_back(VisiLibity::Point(cv->x(),cv->y()));
+          }
+        envPolys.push_back(cPoly);
+
+
+      }
+       break;
+  }
+
+
+    //for (int i=0;i<vertices_temp.size();i++){
+        //envPolys.push_back(VisiLibity::Polygon(vertices_temp[i]));
+        i=0;
         envPolys[i].eliminate_redundant_vertices(0.0001);
         VisiLibity::Point cm=envPolys[i].centroid();
- //       envPolysCollision.push_back(VisiLibity::Polygon(vertices_temp[i]));
             for (int j=0;j<envPolys[i].n();j++)
             {
                     if (j<envPolys[i].n()-1){
@@ -91,28 +142,16 @@ geoData mapload(char* path,VisiLibity::Environment & mapEnv,VisiLibity::Visibili
                         envPolys[i][j]=envPolys[i][j]+n1;
                         envPolys[i][j+1]=envPolys[i][j+1]+n1;
                     }
-//                if (i==0)
-//                    sf=1/scaleFactor;
-//                else
-//                    sf=scaleFactor;
-//                envPolys[i][j]=(envPolys[i][j]-cm)*sf+cm;
             }
-            VisiLibity::Point n1=-clearDist*normal(envPolys[i][0]-envPolys[i][envPolys[i].n()-1]);
-            envPolys[i][0]=envPolys[i][0]+n1;
-            envPolys[i][envPolys[i].n()-1]=envPolys[i][envPolys[i].n()-1]+n1;
-
-
-    };
+            VisiLibity::Point norm1=-clearDist*normal(envPolys[i][0]-envPolys[i][envPolys[i].n()-1]);
+            envPolys[i][0]=envPolys[i][0]+norm1;
+            envPolys[i][envPolys[i].n()-1]=envPolys[i][envPolys[i].n()-1]+norm1;
+    //};
 
     mapEnv = *(new VisiLibity::Environment(envPolys));
-    //mapEnvCollision = *(new VisiLibity::Environment(envPolysCollision));
-    //std::cout << mapEnv.h();
-    //int holes=mapEnv.h();
     mapEnv.enforce_standard_form();
-    //mapEnvCollision.enforce_standard_form();
 
     visGraph = *(new VisiLibity::Visibility_Graph(mapEnv,0.00000001));
-    //visGraphCollision = *(new VisiLibity::Visibility_Graph(mapEnvCollision));
     return vertices_temp;
 
 };
@@ -133,6 +172,9 @@ void mapdraw()
     for (int j=0;j<visiPoly.n();j++){
             CGALvp.push_back(Point_2(visiPoly[j].x(),visiPoly[j].y()));
         };
+
+ //   CGAL::difference(mapEnvOB,holeCGAL,std::back_inserter(mapEnvOB));
+
 
     Polygon_2 visRange=ngon(20,150.0);
     Pwh_list_2 intR;
@@ -196,9 +238,8 @@ void MapDrawFunction(AG_Event *event)
     for (int i=0;i<sceneVertices.size();i++){
         glBegin(GL_LINE_LOOP);
         for (int j=0;j<sceneVertices[i].size();j++){
-            glVertex3f( sceneVertices[i][j].x(), sceneVertices[i][j].y(), 0.0f);
+            glVertex3f( sceneVertices[i][j][0], sceneVertices[i][j][1], 0.0f);
         };
-        //glVertex3f( sceneVertices[i][0].x(), sceneVertices[i][0].y(), 0.0f);
         glEnd();
     };
 
@@ -353,16 +394,16 @@ MapClickFunction(AG_Event *event)
 
 };
 
-std::vector<VisiLibity::Point> loadPath(char* str)
+std::vector<vertex_tuple> loadPath(char* str)
 {
 char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
    char point[] = "[-\\d]*\\.*\\d*,[-\\d]*\\.*\\d*"; // шаблон (регулярное выражение)
 //   char str[] = "m 148.57143,503.79075 l 5.71428,348.57143 85.71429,0 -17.14286,-354.28571 -74.28571,5.71428 z";  // разбираемая строка
    //char str[] = "eseses";  // разбираемая строка
     std::vector<std::string> commands;
-    std::vector<std::vector<VisiLibity::Point> > sequences;
+    std::vector<std::vector<vertex_tuple> > sequences;
 
-    VisiLibity::Point curPos;
+    vertex_tuple curPos;
 
 
    // компилирование регулярного выражения во внутреннее представление
@@ -418,7 +459,7 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
 
         const char* temp=commands[i].c_str();
 
-         std::vector < VisiLibity::Point > poly_temp;
+         std::vector < vertex_tuple > poly_temp;
          sequences.push_back(poly_temp);
 
 
@@ -441,24 +482,47 @@ char pattern[] = "[a-z|A-Z] .*?[a-z|A-Z]"; // шаблон (регулярное выражение)
 
                 if ((temp[0]=='l')||((temp[0]=='m')&&(sequences[i].size()>0)))
                 {
-                    pointx=pointx+curPos.x();
-                    pointy=pointy+curPos.y();
+                    pointx=pointx+curPos[0];
+                    pointy=pointy+curPos[1];
                 }
-                sequences[i].push_back(VisiLibity::Point(pointx,pointy));
-                curPos=VisiLibity::Point(pointx,pointy);
-                cout<<sequences[i].back().x()<<","<<sequences[i].back().y()<<"\n";
+                vertex_tuple nextVertex;
+                nextVertex.push_back(pointx);
+                nextVertex.push_back(pointy);
+
+                sequences[i].push_back(nextVertex);
+
+                curPos.clear();
+
+                curPos.push_back(pointx);
+                curPos.push_back(pointy);
+
+                cout<<sequences[i].back()[0]<<","<<sequences[i].back()[1]<<"\n";
                 //cout<<pointx<<separator<<pointy<<"\n";
              }
            }
         }
      }
-   std::vector < VisiLibity::Point > path;
 
-   for (vector<vector<VisiLibity::Point> >::iterator i1 = sequences.begin();i1 != sequences.end();i1++)
-    for (vector<VisiLibity::Point>::iterator i2 = i1->begin();i2!=i1->end();i2++)
-        path.push_back(*i2);
+    vertex_tuple nextVertex;
+    nextVertex.reserve(10);
+    nextVertex.resize(10);
+    nextVertex.push_back(0);
+    nextVertex.push_back(0);
+    std::vector < vertex_tuple > path_curve(sequences[0]);
 
-   return path;
+
+   //for (vector<vector<vertex_tuple> >::iterator i1 = sequences.begin();i1 != sequences.end();++i1)
+   // for (vector<vertex_tuple>::iterator i2 = i1->begin();i2!=i1->end();++i2)
+   for (int i=0;i<sequences.size();i++)
+    for (int j=0;j<sequences[i].size();j++)
+    {
+
+        //path_curve.push_back(nextVertex);
+        //path_curve[0].
+    }
+
+
+   return path_curve;
 };
 
 VisiLibity::Point normal(VisiLibity::Point Vector)
