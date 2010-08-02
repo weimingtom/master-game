@@ -50,8 +50,8 @@ void operator() (PARAM p)
             int a=cio(p);
             if (a)
             {
-                m_Observers.pop_back();
-                break;
+                //m_Observers.pop_back();
+                //break;
             };
         };
     }

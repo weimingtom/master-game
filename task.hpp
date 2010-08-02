@@ -31,4 +31,14 @@ class goToPoint: public Task {
         int execute(int time);
     };
 
+
+    class visualSignal: public Task {
+        public:
+        VisiLibity::Point source;
+        visualSignal();
+        visualSignal(float x,float y, Entity* ent);
+        int execute(int time);
+    };
+
+
 #endif

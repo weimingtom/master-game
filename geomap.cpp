@@ -203,21 +203,51 @@ void MapDrawFunction(AG_Event *event)
     int i;
 	GLfloat pos[4];
 
-    mapdraw();
-
-
-
 	glLoadIdentity();
 	glPushAttrib(GL_POLYGON_BIT|GL_LIGHTING_BIT|GL_DEPTH_BUFFER_BIT);
+
+    glEnable(GL_POINT_SMOOTH);
+
     glEnable(GL_DEPTH_TEST);
+
+    //glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHT0);
+
+// Create light components
+    //GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 0.1f };
+    GLfloat diffuseLight[] = { 1, 1, 1, 1.0f };
+    GLfloat specularLight[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    GLfloat position[] = { cursorwX, cursorwY, 0.5f, 1.0f };
+
+// Assign created components to GL_LIGHT0
+    //glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+    glLightfv(GL_LIGHT0, GL_POSITION, position);
+
+    glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 1.0f);
+    glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.002f);
+    glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.0f);
+
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE);
 
     glClearColor(0.0f,0.0f,0.0f,1.0f);
 
 	glPushMatrix();
 	glTranslated(0.0, 0.0, vz);
-    GLfloat visi[4]={0.0,0.0,0.0,1.0};
+    GLfloat visi[4]={1.0,0.0,0.0,1.0};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, visi);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, visi);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, visi);
+
+
+
+
     glColor3f(0.9,0.9,0.6);
+
+    mapdraw();
+
     for (int i=0;i<sceneVertices.size();i++){
         glBegin(GL_LINE_LOOP);
         for (int j=0;j<sceneVertices[i].size();j++){
@@ -283,7 +313,7 @@ void MapDrawFunction(AG_Event *event)
 
     //glPopMatrix();
     GLfloat marker[4]={1.0,0.0,0.0,1.0};
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, marker);
+    //glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, marker);
     glColor3f(1.0,0.0,0.0);
     guest1.Draw();
 
@@ -295,8 +325,7 @@ void MapDrawFunction(AG_Event *event)
 
     glColor3f(1.0,1.0,1.0);
     glBegin(GL_TRIANGLES);
-        glVertex3f(cursorwX,cursorwY+1/sqrt(2)*10
-                   ,1.0f);
+        glVertex3f(cursorwX,cursorwY+1/sqrt(2)*10,1.0f);
         glVertex3f(cursorwX-1/sqrt(2)*10,cursorwY-1/sqrt(2)*10,1.0f);
         glVertex3f(cursorwX+1/sqrt(2)*10,cursorwY-1/sqrt(2)*10,1.0f);
     glEnd();
@@ -373,7 +402,7 @@ MapClickFunction(AG_Event *event)
             followPath.AddAction(orderChain[i-1]);
 
         }
-        if (UpdateTimerSlot.m_Observers.size()==0)
+        //if (UpdateTimerSlot.m_Observers.size()==0)
         UpdateTimerSlot.addTask<ComplexTask>(followPath);
     };
 };
