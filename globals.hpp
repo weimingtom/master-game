@@ -49,9 +49,9 @@ extern float cursorwX,cursorwY;
 template <typename PARAM>
 Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
 {
-    static Slot<PARAM> b1=**(Slot<PARAM>**)arg;
-    //b1(ival);
-    UpdateTimerSlot(ival);
+    static Slot<PARAM> b1=*(Slot<PARAM>*)arg;
+    b1(ival);
+    //UpdateTimerSlot(ival);
     return 1;
 };
 

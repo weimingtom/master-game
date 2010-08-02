@@ -544,9 +544,9 @@ int main(int argc, char *argv[])
 
    AG_Timeout* TO = new AG_Timeout;
 
-   Slot<int>* pSlot =&UpdateTimerSlot;
+   //Slot<int>* pSlot =&UpdateTimerSlot;
 
-    AG_SetTimeout(TO, timerFunc<int>, &pSlot, 0);
+    AG_SetTimeout(TO, timerFunc<int>, &UpdateTimerSlot, 0);
 
     AG_ScheduleTimeout(NULL, TO, 1000);
 
