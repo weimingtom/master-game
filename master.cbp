@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="master" />
+		<Option platforms="Windows;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\master" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add directory="C:\Agar\hellocpp2\bin\Debug" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="C:\msys\1.0\local\include\agar" />
+			<Add directory="C:\Program Files\CGAL\include" />
+			<Add directory="C:\MinGW\include" />
+			<Add directory="C:\msys\1.0\local\include" />
+		</Compiler>
+		<Linker>
+			<Add option="-mwindows" />
+			<Add library="C:\cpp\HTMLayout\lib\HTMLayout.lib" />
+			<Add library="C:\cpp\visilibity\source_code\visilibity.o" />
+			<Add library="C:\MinGW\lib\libglu32.a" />
+			<Add library="C:\Agar\Agar-1.4.1\core\.libs\libag_core.a" />
+			<Add library="C:\Agar\Agar-1.4.1\gui\.libs\libag_gui.a" />
+			<Add library="C:\Agar\freetype-2.1.10\objs\.libs\libfreetype.a" />
+			<Add library="C:\Agar\libSDL.a" />
+			<Add library="C:\Agar\Opengl32.lib" />
+			<Add library="C:\cpp\regex\lib\libpcre.dll.a" />
+			<Add library="libs\libpthreadGC2.a" />
+			<Add library="C:\MinGW\lib\libwinmm.a" />
+			<Add library="C:\cpp\CGAL-3.6\build\lib\libCGAL.a" />
+			<Add library="C:\boost\lib\libboost_thread-mgw34-mt-d-1_43.a" />
+			<Add library="C:\boost\lib\libboost_date_time-mgw34-mt-d-1_43.a" />
+			<Add library="C:\MinGW\lib\libgmp.a" />
+		</Linker>
+		<Unit filename="dialog.h" />
+		<Unit filename="entity.cpp" />
+		<Unit filename="events.cpp" />
+		<Unit filename="formatext.cpp" />
+		<Unit filename="geomap.cpp" />
+		<Unit filename="globals.cpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="myButton.h" />
+		<Unit filename="mytextbox.h" />
+		<Unit filename="mywidget.h" />
+		<Unit filename="task.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
