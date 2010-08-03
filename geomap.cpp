@@ -402,7 +402,7 @@ MapClickFunction(AG_Event *event)
             followPath.AddAction(orderChain[i-1]);
 
         }
-        //if (UpdateTimerSlot.m_Observers.size()==0)
+        if (UpdateTimerSlot.m_Observers.size()==0)
         UpdateTimerSlot.addTask<ComplexTask>(followPath);
     };
 };

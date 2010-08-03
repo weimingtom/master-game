@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="dialog.h" open="1" top="0" tabpos="7">
+		<Cursor position="430" topLine="7" />
+	</File>
+	<File name="entity.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="400" topLine="0" />
+	</File>
+	<File name="events.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="69" topLine="0" />
+	</File>
+	<File name="formatext.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="326" topLine="6" />
+	</File>
+	<File name="geomap.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="3222" topLine="121" />
+	</File>
+	<File name="globals.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="495" topLine="12" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="11468" topLine="469" />
+	</File>
+	<File name="task.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="739" topLine="32" />
+	</File>
+</CodeBlocks_layout_file>
