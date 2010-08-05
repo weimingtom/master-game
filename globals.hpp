@@ -6,7 +6,9 @@
 
 
 extern Entity guest1;
+
 extern Slot<int> UpdateTimerSlot;
+extern Slot<int> UpdateTimerOnceSlot;
 
 extern int mapYMin;
 extern int mapYMax;
@@ -54,6 +56,17 @@ Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
     //UpdateTimerSlot(ival);
     return 1;
 };
+
+template <typename PARAM>
+Uint32 timerFuncFireOnce(void *obj, Uint32 ival, void *arg)
+{
+    Slot<PARAM> b1=*(Slot<PARAM>*)arg;
+    b1(ival);
+    b1.removeTask();
+    //UpdateTimerSlot(ival);
+    return 1;
+};
+
 
 
 #endif

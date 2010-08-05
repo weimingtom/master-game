@@ -37,6 +37,12 @@ void addTask(TaskType & tsk)
  }
 
 
+void removeTask()
+  {
+      m_Observers.pop_back();
+ }
+
+
 void operator() (PARAM p)
     {
 

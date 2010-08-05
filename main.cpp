@@ -544,9 +544,11 @@ int main(int argc, char *argv[])
 
    AG_Timeout* TO = new AG_Timeout;
 
-   //Slot<int>* pSlot =&UpdateTimerSlot;
+   AG_Timeout* TOFireOnce = new AG_Timeout;
 
     AG_SetTimeout(TO, timerFunc<int>, &UpdateTimerSlot, 0);
+
+    AG_SetTimeout(TOFireOnce, timerFuncFireOnce()<int>, &UpdateTimerSlot, 0);
 
     AG_ScheduleTimeout(NULL, TO, 1000);
 

@@ -3,6 +3,7 @@
 Entity guest1=  *(new Entity(160,180));
 
 Slot<int> UpdateTimerSlot;
+Slot<int> UpdateTimerOnceSlot;
 
 int mapYMin=0;
 int mapYMax=1200;
