@@ -365,46 +365,17 @@ MapClickFunction(AG_Event *event)
     int cursorX=AG_INT(2);
     int cursorY=AG_INT(3);
 
-
     GLdouble posX,posY,posZ;
-
-//    y=viewport[3]-y;
 
     gluUnProject(viewport[0]+cursorX,viewport[1] +viewport[3]-cursorY,0,modelview,projection,viewport,&posX,&posY,&posZ);
 
     cursorwX=posX;
     cursorwY=posY;
 
-
-//    viewport[2]=640;
-//    viewport[3]=480;
-
-    VisiLibity::Point cp1 = VisiLibity::Point(cursorwX,cursorwY);
-    if (cp1.in(mapEnvCollision))
-    {
-        motionPath =mapEnvCollision.shortest_path(guest1.pos,cp1,visGraphCollision,5);
-        //motionPath =mapEnvCollision.shortest_path(guest1.pos,VisiLibity::Point(260,180),visGraphCollision,5);
-
-        static goToPoint orderChain[10];
-        orderChain[0]=*(new goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1));
-        //static  goToPoint order1= goToPoint(motionPath[1].x(),motionPath[1].y(),&guest1);
-        static ComplexTask followPath;
-        followPath=ComplexTask(orderChain[0]);
-        //static std::vector<goToPoint> orderChain;
-
-        for (int i =2;i<motionPath.size();i++){
-
-            //motionPath[i].snap_to_boundary_of(mapEnv);
-            //static goToPoint gp1;
-            //gp1 = *(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
-            orderChain[i-1]=*(new goToPoint(motionPath[i].x(),motionPath[i].y(),&guest1));
-            //orderChain.push_back(gp1);
-            followPath.AddAction(orderChain[i-1]);
-
-        }
-        if (UpdateTimerSlot.m_Observers.size()==0)
+    static ComplexTask followPath;
+    followPath = planPath(cursorwX,cursorwY);
+    if (UpdateTimerSlot.m_Observers.size()==0)
         UpdateTimerSlot.addTask<ComplexTask>(followPath);
-    };
 };
 
 std::vector<vertex_tuple> loadPath(char* str)

@@ -2,10 +2,13 @@
 #define __GLOBALS_INCLUDED__
 #include "entity.hpp"
 #include "events.hpp"
+#include "task.hpp"
 #include "geomap.hpp"
 
 
 extern Entity guest1;
+
+template <typename PARAM> class Slot ;
 
 extern Slot<int> UpdateTimerSlot;
 extern Slot<int> UpdateTimerOnceSlot;
@@ -53,7 +56,6 @@ Uint32 timerFunc(void *obj, Uint32 ival, void *arg)
 {
     Slot<PARAM> b1=*(Slot<PARAM>*)arg;
     b1(ival);
-    //UpdateTimerSlot(ival);
     return 1;
 };
 
@@ -61,11 +63,18 @@ template <typename PARAM>
 Uint32 timerFuncFireOnce(void *obj, Uint32 ival, void *arg)
 {
     Slot<PARAM> b1=*(Slot<PARAM>*)arg;
-    b1(ival);
-    b1.removeTask();
-    //UpdateTimerSlot(ival);
+
+     int a=(b1(ival));
+
+    if (a)
+    {
+        b1.removeTask();
+    }
     return 1;
 };
+class ComplexTask;
+
+ComplexTask planPath(float cursorwX, float cursorwY);
 
 
 

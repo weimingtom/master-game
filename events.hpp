@@ -24,11 +24,6 @@ protected:
 public:
     Observers m_Observers;
 
-//template <typename OBJECT, typename FUNCTION>
-//void add(Entity & ent)
-//  {
-//      m_Observers.push_back(FastDelegate::template from_method<Entity,&Entity::Update>(&ent));
-// }
 
 template <typename TaskType>
 void addTask(TaskType & tsk)
@@ -43,11 +38,8 @@ void removeTask()
  }
 
 
-void operator() (PARAM p)
+int operator() (PARAM p)
     {
-
-//        m_Observers.front()(p);
-
        typename Observers::iterator cii=m_Observers.begin();
        for (;cii!=m_Observers.end();++cii)
         {
@@ -57,9 +49,10 @@ void operator() (PARAM p)
             if (a)
             {
                 m_Observers.pop_back();
-                break;
             };
+            return a;
         };
+        return 0;
     }
 
 };
