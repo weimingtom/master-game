@@ -548,12 +548,16 @@ int main(int argc, char *argv[])
 
     AG_SetTimeout(TO, timerFunc<int>, &UpdateTimerSlot, 0);
 
-    AG_SetTimeout(TOFireOnce, timerFuncFireOnce()<int>, &UpdateTimerSlot, 0);
+    AG_SetTimeout(TOFireOnce, timerFuncFireOnce<int>, &UpdateTimerOnceSlot, 0);
+
+    static visualSignal terminal;
+    terminal = visualSignal(473.0f,500.0f,&guest1);
+    UpdateTimerOnceSlot.addTask<Task>(terminal);
+
 
     AG_ScheduleTimeout(NULL, TO, 1000);
 
-
-
+    AG_ScheduleTimeout(NULL, TOFireOnce, 1000);
 
     AG_BindGlobalKey(AG_KEY_ESCAPE, AG_KEYMOD_ANY, AG_QuitGUI);
 

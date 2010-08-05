@@ -3,6 +3,7 @@
 
 #include "entity.hpp"
 #include "visilibity/visilibity.hpp"
+#include "globals.hpp"
 #include <vector>
 class Task
 {
@@ -32,9 +33,10 @@ class goToPoint: public Task {
     };
 
 
-    class visualSignal: public Task {
+class visualSignal: public Task {
         public:
         VisiLibity::Point source;
+        float radius;
         visualSignal();
         visualSignal(float x,float y, Entity* ent);
         int execute(int time);
