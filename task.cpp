@@ -83,6 +83,7 @@ int visualSignal::execute(int time)
         followPath = planPath(source.x(),source.y());
         UpdateTimerSlot.removeTask();
         UpdateTimerSlot.addTask<ComplexTask>(followPath);
+        UpdateTimerOnceSlot.removeTask();
         return 1;
     };
     return 0;
