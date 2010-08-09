@@ -41,9 +41,9 @@ void removeTask()
 int operator() (PARAM p)
     {
        typename Observers::iterator cii=m_Observers.begin();
+       if (!m_Observers.empty())
        for (;cii!=m_Observers.end();++cii)
         {
-            //int a=m_Observers[i](p);
             Observer cio=*cii;
             int a=cio(p);
             if (a)
