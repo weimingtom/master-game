@@ -23,7 +23,6 @@ protected:
 class MouseOverListener : public Rocket::Core::EventListener
 {
 public:
-	/// Registers an elemenet as being a container of draggable elements.
 	static void RegisterMouseOverContainer(Rocket::Core::Element* element);
 
 protected:
@@ -33,7 +32,7 @@ protected:
 class MouseOutListener : public Rocket::Core::EventListener
 {
 public:
-	/// Registers an elemenet as being a container of draggable elements.
+
 	static void RegisterMouseOutContainer(Rocket::Core::Element* element);
 
 protected:

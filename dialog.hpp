@@ -19,11 +19,10 @@
 #include <sstream>
 
 #include <set>
+#include <algorithm>
 
-//#include <direct.h>
 
-//#include <sstream>
-
+typedef std::set<std::string> tags;
 
 using namespace std;
 using namespace rapidxml;
@@ -34,7 +33,10 @@ struct dialogNode {
     int orderNum;
     std::vector < int > children;
     std::string text;
-    std::set<std::string> tags;
+    tags precond;
+    tags effMin;
+    tags effPlus;
+
     std::string owner;
 };
 
@@ -43,5 +45,8 @@ std::vector<char*> currentAnswers ();
 std::vector<dialogNode*> dialog_fun();
 dialogNode getConvNode(int n);
 int getCurNode();
+void addTags(tags newTags);
+tags getTags();
+std::string getTagsAsString();
 
 #endif

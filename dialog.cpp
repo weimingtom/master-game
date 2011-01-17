@@ -1,5 +1,13 @@
 #include "dialog.hpp"
 
+
+
+std::vector<dialogNode*> convGraph = dialog_fun();
+int curNode=0;
+std::set<std::string> dialogState;
+
+
+
 std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
     std::stringstream ss(s);
     std::string item;
@@ -15,10 +23,6 @@ std::vector<std::string> split(const std::string &s, char delim) {
     return split(s, delim, elems);
 }
 
-std::vector<dialogNode*> convGraph = dialog_fun();
-int curNode=0;
-
-//formaText *outwin;
 std::vector<char*> currentAnswers()
 {
     std::vector<char*> ansList;
@@ -232,30 +236,48 @@ std:: vector<dialogNode*> dialog_fun()
             }
 
             if (v->first_node("conversationComments")){
-                string curTags;
-                print(back_inserter(curTags), *v->first_node("conversationComments"),0);
+                if (v->first_node("conversationComments")->first_node("pre"))
+                {
+                    string curTags;
+                    print(back_inserter(curTags), *v->first_node("conversationComments")->first_node("pre"),0);
 
-             /*   if (!strcmp(&dn->tags[dn->tags.size()-3],"/") )           //нет информации о тегах
-                 {
-                    dn->tags.clear();
-                    cout << "empty";
-                }
-                    else
-                {  */
 
-                    string tagStr="<conversationComments>";
+                    string tagStr="<pre>";
                     curTags.erase(curTags.size()-tagStr.size()-2);
                     curTags.erase(0,tagStr.size());
                     std::vector<std::string> sepTags=split(curTags,' ');
-                    dn->tags=std::set<string>(sepTags.begin(),sepTags.end());
-                    set<string>::iterator vi;
-                    for (vi=dn->tags.begin();vi!=dn->tags.end();vi++)
-                        cout << *vi << "\n";
-               // }
+                    dn->precond=std::set<string>(sepTags.begin(),sepTags.end());
+                }
 
+
+                    if (v->first_node("conversationComments")->first_node("ep"))
+                {
+
+                    string curTags;
+                    print(back_inserter(curTags), *v->first_node("conversationComments")->first_node("ep"),0);
+
+
+                    string tagStr="<ep>";
+                    curTags.erase(curTags.size()-tagStr.size()-2);
+                    curTags.erase(0,tagStr.size());
+                    std::vector<std::string> sepTags=split(curTags,' ');
+                    dn->effPlus=std::set<string>(sepTags.begin(),sepTags.end());
+
+                }
+
+                    if (v->first_node("conversationComments")->first_node("em"))
+                {
+                    string curTags;
+                    print(back_inserter(curTags), *v->first_node("conversationComments")->first_node("em"),0);
+
+
+                    string tagStr="<em>";
+                    curTags.erase(curTags.size()-tagStr.size()-2);
+                    curTags.erase(0,tagStr.size());
+                    std::vector<std::string> sepTags=split(curTags,' ');
+                    dn->effMin=std::set<string>(sepTags.begin(),sepTags.end());
+                }
             }
-
-                               //обход детей
 
             n1=v->first_node("subNodes")->first_node("ContentNode");
 
@@ -283,3 +305,29 @@ int getCurNode()
 {
     return curNode;
 }
+
+
+tags getTags()
+{
+    return dialogState;
+}
+
+std::string getTagsAsString()
+{
+    tags::iterator ti;
+    std::string result;
+
+    for (ti=dialogState.begin();ti!=dialogState.end();ti++)
+        result=result+" "+*ti;
+    return result;
+}
+
+
+
+void addTags(tags newTags)
+{
+    dialogState.insert(newTags.begin(),newTags.end());
+}
+
+
+
