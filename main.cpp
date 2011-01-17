@@ -4,6 +4,7 @@
 
 #include <Rocket/Core.h>
 #include <Rocket/Debugger.h>
+#include <Rocket/Core/Types.h>
 #include <Input.h>
 #include <Shell.h>
 #include "SystemInterface.h"
@@ -11,6 +12,9 @@
 #include "dialog.hpp"
 
 #include "Listeners.hpp"
+
+
+
 
 
 Rocket::Core::Context* context = NULL;
@@ -67,12 +71,40 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
 	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
 	// Load and show the demo document.
-	Rocket::Core::ElementDocument* document = context->LoadDocument(".\\assets\\demo.rml");
+	Rocket::Core::ElementDocument* document = context->LoadDocument(".\\assets\\dialog.rml");
 	if (document != NULL)
 	{
 		document->Show();
 		document->RemoveReference();
+
+
 	}
+
+		Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
+	if (debugWindow != NULL)
+	{
+		debugWindow->Show();
+		debugWindow->RemoveReference();
+		document->SetOffset(Rocket::Core::Vector2f(100,100),document);
+	}
+	debugWindow->SetId("debugWindow");
+
+
+
+    Rocket::Core::Element* debugText = debugWindow->CreateElement("div");
+	debugText->SetId("convTags");
+
+//	Rocket::Core::Element* newTag = debugWindow->CreateElement("p");
+
+//	debugText->AppendChild(newTag,true)
+
+	debugText->AppendChild(debugWindow->CreateTextNode("Текущее состояние диалога"),true);
+
+
+	debugWindow->GetElementById("content")->AppendChild(debugText,true);
+
+
+
     //chooseAnswer(0);
 	Rocket::Core::Element* text = document->CreateElement("div");
 	text->SetId("convText");
@@ -95,32 +127,29 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 
     int i=0;
-    for (std::vector<char*>::iterator curText=ansList.begin(); curText<ansList.end();curText++)
+    for (std::vector<char*>::iterator curText=ansList.begin(); curText!=ansList.end();curText++)
     {
+        dialogNode curNode=getConvNode(getConvNode(getCurNode()).children[i]);
+        tags curState=getTags();
+        if ((curState.empty() && curNode.precond.empty()) || (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end())))
+        {
+
+            Rocket::Core::Element* content = document->CreateElement("p");
+            content->SetId("pc");
+
+            content->AppendChild(document->CreateTextNode(*curText),true);
+            answers->AppendChild(content,true);
+
+            content->SetAttribute("orderNum",i);
 
 
-    Rocket::Core::Element* content = document->CreateElement("p");
-    content->SetId("pc");
-    //content->Update
+            MouseOverListener::RegisterMouseOverContainer(content);
+            MouseOutListener::RegisterMouseOutContainer(content);
+            ClickListener::RegisterClickableContainer(content);
+        }
+        i++;
 
-	content->AppendChild(document->CreateTextNode(*curText),true);
-	answers->AppendChild(content,true);
-
-	content->SetAttribute("orderNum",i);
-    //v1.Set(i);
-	i++;
-
-
-    printf("%i",content->GetAttribute("orderNum")->Get<int>());
-    printf("\n");
-
-
-
-    MouseOverListener::RegisterMouseOverContainer(content);
-    MouseOutListener::RegisterMouseOutContainer(content);
-    ClickListener::RegisterClickableContainer(content);
-
-}
+    }
 
 	Shell::EventLoop(GameLoop);
 
