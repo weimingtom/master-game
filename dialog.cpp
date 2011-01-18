@@ -3,7 +3,7 @@
 
 
 std::vector<dialogNode*> convGraph = dialog_fun();
-int curNode=0;
+int curNode=87;
 std::set<std::string> dialogState;
 
 
@@ -49,7 +49,7 @@ chooseAnswer( int cn)
 
     strcpy(text,"");
     //static char b[10000];
-    if (convGraph[curNode]->children.size()==0)
+    if ((convGraph[curNode]->children.size()==0))
     {
         strcat(text,"Разговор окончен");
         strcat(text,"\n");
@@ -208,8 +208,34 @@ std:: vector<dialogNode*> dialog_fun()
             if (v->first_attribute("idNum")){
                 curId=atoi(v->first_attribute("idNum")->value());
             } else {
-                curId=0;
+                curId=87;               //придумать раздачу незанятых номеров
             }
+
+
+            if (curId==0)           //пустая реплика со ссылкой
+            {
+                cout<<"\n" <<"node 0"<<"\n";
+                if (v->parent()->parent()->first_attribute("idNum"))
+
+                {
+
+                    int cind=atoi(v->parent()->parent()->first_attribute("idNum")->value());
+
+                    cout <<"\n" << "parent node of link:" << cind <<"\n";
+
+                    std::vector<int> *cc = &conversationGraph[cind]->children;
+                    std::vector<int>::iterator ci;
+                    ci = find (cc->begin(), cc->end(), curId);
+                    cc->erase(ci);
+
+                    int clink=atoi(v->first_attribute("linkTo")->value());
+
+                    cc->push_back(clink);
+
+
+                }
+            }
+
 
             if (v->first_attribute("orderNum")){
                 curNum=atoi(v->first_attribute("orderNum")->value());
@@ -229,8 +255,12 @@ std:: vector<dialogNode*> dialog_fun()
             if (v->first_node("conversationText")){
                 print(back_inserter(dn->text), *v->first_node("conversationText"),0);
                 string str="<conversationText>";
-                dn->text.erase(0,str.size());
-                dn->text.erase(dn->text.size()-str.size()-2);
+                    if (dn->text.size()>str.size()*2)
+                    {
+
+                        dn->text.erase(0,str.size());
+                        dn->text.erase(dn->text.size()-str.size()-2);
+                    }
 
 
             }
@@ -288,6 +318,7 @@ std:: vector<dialogNode*> dialog_fun()
                 dn->children.push_back(atoi(n1->first_attribute("idNum")->value()));
                 n1=n1->next_sibling();
             }
+
             conversationGraph[curId]=dn;
      }
 
