@@ -21,8 +21,11 @@
 #include <set>
 #include <algorithm>
 
+#include <iterator>
 
-typedef std::set<std::string> tags;
+
+
+typedef std::set<std::string>  tags;
 
 using namespace std;
 using namespace rapidxml;
@@ -34,6 +37,7 @@ struct dialogNode {
     std::vector < int > children;
     std::string text;
     tags precond;
+    tags neg_precond;
     tags effMin;
     tags effPlus;
     bool active;

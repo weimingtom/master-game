@@ -61,7 +61,15 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
     {
         dialogNode curNode=getConvNode(getConvNode(getCurNode()).children[i]);
         tags curState=getTags();
-        if (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end()) &&(curNode.active))
+        tags intNeg;
+        set_intersection(curState.begin(),curState.end(),curNode.neg_precond.begin(),curNode.neg_precond.end(),inserter <set <string> >(intNeg,intNeg.begin()));
+
+
+        //cout<<*intNeg.begin();
+
+        if (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end())
+            &&(curNode.active) &&
+            intNeg.empty())
         {
 
             Rocket::Core::Element* content = document->CreateElement("p");

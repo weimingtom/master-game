@@ -81,101 +81,13 @@ chooseAnswer( int cn)
         strcat(text,"\n");
 
     }
-/*        if (convGraph[curNode]->children.size()==0)
-        {
-            strcpy(text,"");
-            strcat(text,"Разговор окончен");
-            strcat(text,"\n");
-
-        } else
-
-        if (convGraph[curNode]->owner=="pc"){
-            strcpy(text,"");
-            curNode=convGraph[curNode]->children[0];
-            strcat(text,convGraph[curNode]->text.c_str());
-            strcat(text,"\n");
-        }
-
-        /*
-
-        if (convGraph[curNode]->owner=="npc"){
-            for (int i=0;i<convGraph[curNode]->children.size();i++){
-                printf("%d",convGraph[curNode]->children[i]);
-                //strcat(text,"<pc>");
-                strcat(text,"<p owner=\"");
-                strcat(text,convGraph[convGraph[curNode]->children[i]]->owner.c_str());
-                strcat(text,"\">");
-                strcat(text,convGraph[convGraph[curNode]->children[i]]->text.c_str());
-                strcat(text,"</p>");
-                //strcat(text,"</pc>");
-                strcat(text,"\n");
-            }
-        }
-        */
-
-
-      //strcpy(b,"");
-      //strcat(b,"<html><head><META http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><link rel=\"stylesheet\" type=\"text/css\" href=\"res\\mysite.css\"></head><body><div#test>");
-      //strcat(b,text);
-      //strcat(b,"</div#test></body></html>");
-      //h1->load(LPCBYTE(b),strlen(b));
-
-      //outwin->curNode=curNode;
-      //strcpy(text,convGraph[curNode]->text.c_str());
       printf(text);
       return text;
 
 }
-/*
-void dialogWindow()
-{
-	AG_Surface *surf;
-	AG_Surface *surf2;
-	char *someText;
-	size_t size, bufSize;
-
-
-
-	dialogWin = AG_WindowNew(0);
-	AG_WindowSetCaption(dialogWin, "Диалог");
-
-    AG_HBox* hbox = AG_HBoxNew(dialogWin,0);
-    AG_Expand(hbox);
-
-    AG_RegisterClass(&formaTextClass);
-    outwin=formaTextNew(hbox);
-
-    //AG_Scrollbar* DialogScrollbar=AG_ScrollbarNew(hbox,AG_SCROLLBAR_VERT,AG_SCROLLBAR_AUTOSIZE);
-    AG_Scrollbar* DialogScrollbar=AG_ScrollbarNewInt(hbox,AG_SCROLLBAR_VERT,AG_SCROLLBAR_AUTOSIZE|AG_SCROLLBAR_VFILL, &outwin->scrollPos, &outwin->scrollMin, &outwin->scrollMax, &outwin->scrollVisible);
-    AG_SetEvent(DialogScrollbar,"scrollbar-changed",scrollEvent,"%p",outwin);
-    AG_Expand(outwin);
-
-
-    AG_WindowSetGeometryAligned(dialogWin, AG_WINDOW_MC, 320, 240);
-
-    AG_WindowShow(dialogWin);
-
-    chooseAnswer(outwin->h1,outwin->dialogText,0);
-    updateSurface(outwin,outwin->_inherit.w,outwin->_inherit.h);
-
-
-}
-*/
 
 std:: vector<dialogNode*> dialog_fun()
 {
-    //std::locale rus("rus_rus.866");
-    //setlocale( LC_ALL,"Russian" );
-
-    //std::locale l(getenv("LANG"));
-    //std::locale::global(l);
-
-    //SetConsoleCP(866);
-    //SetConsoleOutputCP(866);
-    //char cd[_MAX_PATH];
-    //getcwd(cd, _MAX_PATH);
-    //cout << cd;
-    //strcat(cd,".\\assets\\dialog2.xml");
 
     std::ifstream in(".\\assets\\dialog2.xml");
     if (!in){
@@ -302,6 +214,20 @@ std:: vector<dialogNode*> dialog_fun()
                     std::vector<std::string> sepTags=split(curTags,' ');
                     dn->precond=std::set<string>(sepTags.begin(),sepTags.end());
                 }
+
+
+                if (v->first_node("conversationComments")->first_node("Npre"))
+                {
+                    string curTags;
+                    print(back_inserter(curTags), *v->first_node("conversationComments")->first_node("Npre"),0);
+
+                    string tagStr="<Npre>";
+                    curTags.erase(curTags.size()-tagStr.size()-2);
+                    curTags.erase(0,tagStr.size());
+                    std::vector<std::string> sepTags=split(curTags,' ');
+                    dn->neg_precond=std::set<string>(sepTags.begin(),sepTags.end());
+                }
+
 
 
                     if (v->first_node("conversationComments")->first_node("ep"))
