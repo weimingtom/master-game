@@ -61,7 +61,7 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
     {
         dialogNode curNode=getConvNode(getConvNode(getCurNode()).children[i]);
         tags curState=getTags();
-        if (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end()))
+        if (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end()) &&(curNode.active))
         {
 
             Rocket::Core::Element* content = document->CreateElement("p");

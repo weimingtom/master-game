@@ -40,12 +40,11 @@ std::vector<char*> currentAnswers()
     ansList.reserve(10);
     for (int i=0;i<convGraph[curNode]->children.size();i++)
     {
-        //printf("%i \n",convGraph[curNode]->children[i]);
-        //ansList[i]=(char*)malloc(200);
+
+
         char* temp=(char*)malloc(1000);
         strcpy(temp,convGraph[convGraph[curNode]->children[i]]->text.c_str());
         ansList.push_back(temp);
-        //printf(ansList[i]);
     }
     return ansList;
 
@@ -70,7 +69,9 @@ chooseAnswer( int cn)
         printf("children size: %i \n",convGraph[curNode]->children.size());
         printf("choooseAnswer: cn: %d, curNode:%d \n",cn,curNode);
 
-        //curNode=convGraph[curNode]->children[convGraph[curNode]->children.size()-1-cn];
+        if (convGraph[curNode]->oneTime)
+            convGraph[curNode]->active=false;
+
         curNode=convGraph[curNode]->children[cn];
         //strcat(text,"<p owner=\"");
         //strcat(text,convGraph[curNode]->owner.c_str());
@@ -219,6 +220,9 @@ std:: vector<dialogNode*> dialog_fun()
             q.pop_front();      // remove it from the list
 
             dialogNode *dn=new dialogNode;
+            dn->active=true;
+            dn->oneTime=false;
+
             int curId,curNum;
             if (v->first_attribute("idNum")){
                 curId=atoi(v->first_attribute("idNum")->value());
@@ -281,6 +285,12 @@ std:: vector<dialogNode*> dialog_fun()
             }
 
             if (v->first_node("conversationComments")){
+
+                if (v->first_node("conversationComments")->first_node("single"))
+                {
+                    dn->oneTime=true;
+                }
+
                 if (v->first_node("conversationComments")->first_node("pre"))
                 {
                     string curTags;

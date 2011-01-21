@@ -36,6 +36,8 @@ struct dialogNode {
     tags precond;
     tags effMin;
     tags effPlus;
+    bool active;
+    bool oneTime;
 
     std::string owner;
 };
