@@ -46,6 +46,7 @@ std::vector<dialogNode*> dialog_fun();
 dialogNode getConvNode(int n);
 int getCurNode();
 void addTags(tags newTags);
+void removeTags(tags newTags);
 tags getTags();
 std::string getTagsAsString();
 

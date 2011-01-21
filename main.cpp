@@ -117,6 +117,10 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 	text->AppendChild(newText,true);
 
+    addTags(getConvNode(getCurNode()).effPlus);
+    removeTags(getConvNode(getCurNode()).effMin);
+
+
 	document->GetElementById("content")->AppendChild(text,true);
 
     std::vector<char*> ansList=currentAnswers();
