@@ -4,7 +4,7 @@
 
 std::vector<dialogNode*> convGraph = dialog_fun();
 int curNode=87;
-std::set<std::string> dialogState;
+tags dialogState;
 
 
 
@@ -21,6 +21,17 @@ std::vector<std::string> &split(const std::string &s, char delim, std::vector<st
 std::vector<std::string> split(const std::string &s, char delim) {
     std::vector<std::string> elems;
     return split(s, delim, elems);
+}
+
+
+inline std::string replace(std::string text, std::string s, std::string d)
+{
+  for(unsigned index=0; index=text.find(s, index), index!=std::string::npos;)
+  {
+    text.replace(index, s.length(), d);
+    index+=d.length();
+  }
+  return text;
 }
 
 std::vector<char*> currentAnswers()
@@ -175,6 +186,10 @@ std:: vector<dialogNode*> dialog_fun()
     while(getline(in, s)) { // Discards newline char
     s1=s1+s+"\n";
     }
+
+    s1=replace(s1,"&gt;",">");
+    s1=replace(s1,"&lt;","<");
+
     //std::cout << s1;
 
 
@@ -271,7 +286,6 @@ std:: vector<dialogNode*> dialog_fun()
                     string curTags;
                     print(back_inserter(curTags), *v->first_node("conversationComments")->first_node("pre"),0);
 
-
                     string tagStr="<pre>";
                     curTags.erase(curTags.size()-tagStr.size()-2);
                     curTags.erase(0,tagStr.size());
@@ -360,5 +374,16 @@ void addTags(tags newTags)
     dialogState.insert(newTags.begin(),newTags.end());
 }
 
+void removeTags(tags newTags)
+{
+    tags result;
+    tags::iterator ti;
+    for (ti=newTags.begin();ti!=newTags.end();ti++)
+    {
+        dialogState.erase(*ti);
+    }
 
+    //ti=set_difference(dialogState.begin(),dialogState.end(),newTags.begin(),newTags.end(),result.begin());
+    //dialogState.remove(newTags.begin(),newTags.end());
+}
 

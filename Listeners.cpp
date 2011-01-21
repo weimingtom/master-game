@@ -44,12 +44,14 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
     newText->SetId("npc");
 
     addTags(getConvNode(getCurNode()).effPlus);
+    removeTags(getConvNode(getCurNode()).effMin);
 
     newText->AppendChild(document->CreateTextNode(chooseAnswer(0)),true);
 
     convText->AppendChild(newText,true);
 
     addTags(getConvNode(getCurNode()).effPlus);
+    removeTags(getConvNode(getCurNode()).effMin);
 
     std::vector<char*> ansList=currentAnswers();
 
