@@ -1,6 +1,7 @@
 #undef __WIN32__
 #undef _WIN32
-//#define ROCKET_PLATFORM_UNIX
+#undef ROCKET_PLATFORM_WIN32
+#define ROCKET_PLATFORM_UNIX
 
 #include <Rocket/Core.h>
 #include <Rocket/Debugger.h>
@@ -14,17 +15,40 @@
 #include "Listeners.hpp"
 
 
+#include "ElementMap.hpp"
+#include "map.hpp"
 
 
+
+	GLfloat vertices[] = {500.0f,500.0f,0.1f,500.0f,0.0f,0.1f,0.0f,500.0f,0.1f};
+    GLubyte indices[] = {0,1,2};
+
+
+//#include ""
 
 Rocket::Core::Context* context = NULL;
 
 void GameLoop()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
 
+
+
+    /*
+	glEnableClientState(GL_VERTEX_ARRAY);
+
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+	glDrawElements(GL_TRIANGLES, 1, GL_UNSIGNED_INT, indices);
+	//glDrawArrays(GL_TRIANGLES, 0, 1);
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+*/
 	context->Update();
+    glClear(GL_COLOR_BUFFER_BIT);
 	context->Render();
+
+
+
 
 	Shell::FlipBuffers();
 }
@@ -67,9 +91,17 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Debugger::Initialise(context);
 	Input::SetContext(context);
 
-	//Shell::LoadFonts(".\\assets\\");
-	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
+	Shell::LoadFonts(".\\assets\\");
+	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
 	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
+
+
+	Rocket::Core::ElementInstancer* element_instancer = new Rocket::Core::ElementInstancerGeneric< ElementMap >();
+	Rocket::Core::Factory::RegisterElementInstancer("game", element_instancer);
+	element_instancer->RemoveReference();
+
+
+
 	// Load and show the demo document.
 	Rocket::Core::ElementDocument* document = context->LoadDocument(".\\assets\\dialog.rml");
 	if (document != NULL)
@@ -79,6 +111,19 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 
 	}
+	//document->LoadMouse
+
+
+		Rocket::Core::ElementDocument* game = context->LoadDocument(".\\assets\\game.rml");
+	if (game != NULL)
+	{
+		game->Show();
+		game->RemoveReference();
+		document->SetOffset(Rocket::Core::Vector2f(200,100),document);
+	}
+    //game->AddEventListener("mousemove", this);
+    //MapListener::RegisterMap(game);
+
 
 		Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
 	if (debugWindow != NULL)
