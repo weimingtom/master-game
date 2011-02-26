@@ -30,6 +30,23 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 {
     Rocket::Core::Element::ProcessEvent(event);
 
+    if (event=="mousedown")
+    {
+
+
+        vertex_tuple v1;
+        v1.first=map->cursorX;
+        v1.second=map->cursorY;
+
+        int btn = event.GetParameter("button",0);
+        if (btn==0)
+            map->walls.insert(v1);
+        else
+            map->walls.erase(v1);
+
+    }
+
+
     if (event=="mousemove")
     {
         Rocket::Core::Element* dest_element = event.GetTargetElement();
@@ -43,12 +60,13 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 
 
 
-    GLdouble posX,posY,posZ;
+        GLdouble posX,posY,posZ;
 
 
-    gluUnProject(xcoord,-ycoord + map->viewport[1] + map->viewport[3] +map->top,0,map->modelview,map->projection,map->viewport,&posX,&posY,&posZ);
+        gluUnProject(xcoord,-ycoord + map->viewport[1] + map->viewport[3] +map->top,0,map->modelview,map->projection,map->viewport,&posX,&posY,&posZ);
 
-
+        map->cursorX=posX;
+        map->cursorY=posY;
 
         std::string s;
         std::stringstream out;
@@ -70,13 +88,13 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 // Updates the game.
 void ElementMap::OnUpdate()
 {
-    map->left=GetOwnerDocument()->GetAbsoluteLeft();
+    map->left=GetOwnerDocument()->GetElementById("content")->GetAbsoluteLeft();
 
-    map->top=GetOwnerDocument()->GetAbsoluteTop();
+    map->top=GetOwnerDocument()->GetElementById("content")->GetAbsoluteTop();
 
-    map->width=GetOwnerDocument()->GetClientWidth();
+    map->width=GetOwnerDocument()->GetElementById("content")->GetClientWidth();
 
-    map->height=GetOwnerDocument()->GetClientHeight();
+    map->height=GetOwnerDocument()->GetElementById("content")->GetClientHeight();
 
 	map->Update();
 
@@ -97,6 +115,7 @@ void ElementMap::OnChildAdd(Rocket::Core::Element* element)
 
 	if (element == this){
         GetOwnerDocument()->AddEventListener("mousemove", this);
+        GetOwnerDocument()->AddEventListener("mousedown", this);
         GetOwnerDocument()->AddEventListener("load", this);
 	}
 

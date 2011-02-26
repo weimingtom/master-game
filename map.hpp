@@ -9,7 +9,7 @@
 
 #include <GL/glu.h>
 
-
+typedef std::pair<int,int> vertex_tuple;
 
 class Map
 {
@@ -36,9 +36,14 @@ public:
 	int width;
 	int height;
 
+	int cursorX;
+	int cursorY;
+
 	GLint viewport[4];
     GLdouble modelview[16];
     GLdouble projection[16];
+    std::set<vertex_tuple> walls;
+
 
 
 
