@@ -13,7 +13,6 @@
 // The game's element context (declared in main.cpp).
 extern Rocket::Core::Context* context;
 
-typedef int vertex_tuple[2];
 
 
 Map::Map()
@@ -51,7 +50,7 @@ void Map::Render()
     glPushMatrix();
     glLoadIdentity();
 
-    gluOrtho2D(-200,200,-200,200);
+    gluOrtho2D(-10,10,-10,10);
 
 
     glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
@@ -71,8 +70,20 @@ void Map::Render()
         glVertex2f(200.0f,0.0f);
         glVertex2f(0.0f,200.0f);
         glVertex2f(0.0f,-200.0f);
-
 	glEnd();
+
+
+	glBegin(GL_QUADS);
+	std::set<vertex_tuple>::iterator i1;
+	for (i1=walls.begin();i1!=walls.end();i1++)
+    {
+        glVertex2f(i1->first-0.5,i1->second-0.5);
+        glVertex2f(i1->first-0.5,i1->second+0.5);
+        glVertex2f(i1->first+0.5,i1->second+0.5);
+        glVertex2f(i1->first+0.5,i1->second-0.5);
+    }
+	glEnd();
+
 
 	glPopMatrix();
 

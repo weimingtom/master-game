@@ -119,7 +119,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	{
 		game->Show();
 		game->RemoveReference();
-		document->SetOffset(Rocket::Core::Vector2f(200,100),document);
+		document->SetOffset(Rocket::Core::Vector2f(400,100),document);
 	}
     //game->AddEventListener("mousemove", this);
     //MapListener::RegisterMap(game);
