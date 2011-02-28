@@ -9,6 +9,8 @@
 
 #include <GL/glu.h>
 
+#include "textUtils.hpp"
+
 typedef std::pair<int,int> vertex_tuple;
 
 class Map
@@ -19,6 +21,9 @@ public:
 
 	/// Initialise a new game
 	void Initialise();
+
+	/// Finalise a new game
+	void Finalise();
 
 	/// Update the game
 	void Update();
@@ -43,6 +48,9 @@ public:
     GLdouble modelview[16];
     GLdouble projection[16];
     std::set<vertex_tuple> walls;
+
+    rapidxml::xml_document<> doc;
+    std::vector<char> xml_copy;
 
 
 
