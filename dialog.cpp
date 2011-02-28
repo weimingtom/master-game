@@ -7,33 +7,6 @@ int curNode=87;
 tags dialogState;
 
 
-
-std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
-    std::stringstream ss(s);
-    std::string item;
-    while(std::getline(ss, item, delim)) {
-        elems.push_back(item);
-    }
-    return elems;
-}
-
-
-std::vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
-    return split(s, delim, elems);
-}
-
-
-inline std::string replace(std::string text, std::string s, std::string d)
-{
-  for(unsigned index=0; index=text.find(s, index), index!=std::string::npos;)
-  {
-    text.replace(index, s.length(), d);
-    index+=d.length();
-  }
-  return text;
-}
-
 std::vector<char*> currentAnswers()
 {
     std::vector<char*> ansList;

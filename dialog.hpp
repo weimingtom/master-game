@@ -2,21 +2,11 @@
 #ifndef __DIALOG_HPP__
 #define __DIALOG_HPP__
 
-#include <iostream>
-#include <fstream>
-
 #include <vector>
 #include <list>
 //#include <map>
 
-#include "rapidxml/rapidxml.hpp"
-#include "rapidxml/rapidxml_print.hpp"
-
-#include <stdio.h>
-#include <string.h>
-
-#include <string>
-#include <sstream>
+#include "textUtils.hpp"
 
 #include <set>
 #include <algorithm>
