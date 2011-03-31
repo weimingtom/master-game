@@ -37,12 +37,27 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
         vertex_tuple v1;
         v1.first=map->cursorX;
         v1.second=map->cursorY;
-
+/*
         int btn = event.GetParameter("button",0);
         if (btn==0)
             map->walls.insert(v1);
         else
             map->walls.erase(v1);
+*/
+		if (map->walls.find(v1)==map->walls.end())
+		{
+
+            if (map->UpdateTimerSlot.m_Observers.size()==0)
+            {
+                static ComplexTask* followPath;
+                followPath = map->planPath(map->cursorX,map->cursorY);
+                if (followPath!=NULL)
+                {
+                    map->UpdateTimerSlot.addTask<ComplexTask>(*followPath);
+                }
+            }
+        }
+
 
     }
 
@@ -80,6 +95,12 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
         coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));
 
         //dest_element->Update();
+    }
+
+
+    if (event=="swap_mode")
+    {
+        std::cout<< "swap mode \n";
     }
 
 }

@@ -112,7 +112,7 @@ std:: vector<dialogNode*> dialog_fun()
             if (v->first_attribute("idNum")){
                 curId=atoi(v->first_attribute("idNum")->value());
             } else {
-                curId=87;               //придумать раздачу незанятых номеров
+                curId=87;               //TODO:придумать раздачу незанятых номеров
             }
 
 
