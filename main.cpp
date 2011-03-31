@@ -24,7 +24,10 @@
     GLubyte indices[] = {0,1,2};
 
 
-//#include ""
+
+typedef std::pair<short,short> vertex_tuple;
+
+
 
 Rocket::Core::Context* context = NULL;
 
@@ -121,6 +124,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 		game->RemoveReference();
 		document->SetOffset(Rocket::Core::Vector2f(400,100),document);
 	}
+
+	//Rocket::Core::Element* b1 = game->CreateElement("button");
+	//game->AppendChild(b1,true);
     //game->AddEventListener("mousemove", this);
     //MapListener::RegisterMap(game);
 

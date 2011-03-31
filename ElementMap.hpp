@@ -34,6 +34,10 @@ protected:
 
 private:
 	Map* map;
+
+public:
+    int mode;
+
 };
 
 #endif
