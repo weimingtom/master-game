@@ -83,6 +83,8 @@ public:
 
     Slot<Rocket::Core::Time> UpdateTimerSlot;
 
+    //int mapMode;
+
 
 
 

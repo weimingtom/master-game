@@ -14,10 +14,12 @@
 
 #include "Listeners.hpp"
 
-
 #include "ElementMap.hpp"
 #include "map.hpp"
 
+#include "EventInstancer.h"
+#include "EventManager.h"
+#include "EventHandlerMode.h"
 
 
 	GLfloat vertices[] = {500.0f,500.0f,0.1f,500.0f,0.0f,0.1f,0.0f,500.0f,0.1f};
@@ -103,7 +105,11 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Core::Factory::RegisterElementInstancer("game", element_instancer);
 	element_instancer->RemoveReference();
 
+    EventInstancer* event_instancer = new EventInstancer();
+	Rocket::Core::Factory::RegisterEventListenerInstancer(event_instancer);
+	event_instancer->RemoveReference();
 
+	EventManager::RegisterEventHandler("game", new EventHandlerMode());
 
 	// Load and show the demo document.
 	Rocket::Core::ElementDocument* document = context->LoadDocument(".\\assets\\dialog.rml");
@@ -114,16 +120,18 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 
 	}
-	//document->LoadMouse
 
 
-		Rocket::Core::ElementDocument* game = context->LoadDocument(".\\assets\\game.rml");
+
+    //Rocket::Core::ElementDocument* game = context->LoadDocument(".\\assets\\game.rml");
+	/*
 	if (game != NULL)
 	{
 		game->Show();
 		game->RemoveReference();
 		document->SetOffset(Rocket::Core::Vector2f(400,100),document);
 	}
+	*/
 
 	//Rocket::Core::Element* b1 = game->CreateElement("button");
 	//game->AppendChild(b1,true);
@@ -205,11 +213,13 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         i++;
 
     }
-
+    EventManager::LoadWindow("game");
 	Shell::EventLoop(GameLoop);
 
 	// Shutdown Rocket.
 	context->RemoveReference();
+
+	EventManager::Shutdown();
 	Rocket::Core::Shutdown();
 
 	Shell::CloseWindow();
