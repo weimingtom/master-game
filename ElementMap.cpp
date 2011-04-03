@@ -37,13 +37,17 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
         vertex_tuple v1;
         v1.first=map->cursorX;
         v1.second=map->cursorY;
-/*
+
+        if (mode)
+        {
+
         int btn = event.GetParameter("button",0);
         if (btn==0)
             map->walls.insert(v1);
         else
             map->walls.erase(v1);
-*/
+        } else
+
 		if (map->walls.find(v1)==map->walls.end())
 		{
 

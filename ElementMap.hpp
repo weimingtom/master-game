@@ -33,10 +33,11 @@ protected:
 	virtual void OnRender();
 
 private:
-	Map* map;
+    Map* map;
 
 public:
     int mode;
+
 
 };
 
