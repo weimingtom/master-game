@@ -38,6 +38,11 @@ void removeTask()
 
  }
 
+void clear()
+{
+    m_Observers.clear();
+}
+
 
 int operator() (PARAM p)
     {

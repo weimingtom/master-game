@@ -6,8 +6,8 @@
 
 #include "map.hpp"
 #include <Rocket/Core.h>
-#include <Shell.h>
 #include <cmath>
+#include <Shell.h>
 
 
 
@@ -23,6 +23,7 @@ Map::Map()
 
     Rocket::Core::Vector2i texture_dimensions;
 	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invaders.tga");
+
     Initialise();
 }
 
@@ -169,18 +170,15 @@ void Map::Finalise()
 
 void Map::Update()
 {
-    if (Shell::GetElapsedTime() - update_start >= update_freq)
+    int a=UpdateTimerSlot(Shell::GetElapsedTime());
+
+    if (a)
     {
-        int a=UpdateTimerSlot(Shell::GetElapsedTime());
-
-        if (a)
-        {
-            printf("removeTask");
-            UpdateTimerSlot.removeTask();
-        }
-
-        update_start = Shell::GetElapsedTime();
+        printf("removeTask");
+        UpdateTimerSlot.removeTask();
     }
+
+    update_start = Shell::GetElapsedTime();
 
 }
 

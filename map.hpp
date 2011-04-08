@@ -15,8 +15,6 @@
 
 #include "events.hpp"
 
-#include "globals.hpp"
-
 
 class Map : public micropather::Graph{
 public:
@@ -56,11 +54,6 @@ private:
 	// Texture that contains the sprites
 	Rocket::Core::TextureHandle texture;
 
-    Rocket::Core::Time update_start;
-	// How often the invaders move
-	Rocket::Core::Time update_freq;
-
-
 
 public:
 	int left;
@@ -83,7 +76,10 @@ public:
 
     Slot<Rocket::Core::Time> UpdateTimerSlot;
 
-    //int mapMode;
+    Rocket::Core::Time update_start;
+
+	Rocket::Core::Time update_freq;
+
 
 
 

@@ -36,8 +36,8 @@ private:
     Map* map;
 
 public:
-    int mode;
 
+    int mode;
 
 };
 

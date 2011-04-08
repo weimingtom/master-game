@@ -3,23 +3,23 @@ Copyright (c) 2000-2009 Lee Thomason (www.grinninglizard.com)
 
 Grinning Lizard Utilities.
 
-This software is provided 'as-is', without any express or implied 
-warranty. In no event will the authors be held liable for any 
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any
 damages arising from the use of this software.
 
-Permission is granted to anyone to use this software for any 
-purpose, including commercial applications, and to alter it and 
+Permission is granted to anyone to use this software for any
+purpose, including commercial applications, and to alter it and
 redistribute it freely, subject to the following restrictions:
 
-1. The origin of this software must not be misrepresented; you must 
-not claim that you wrote the original software. If you use this 
-software in a product, an acknowledgment in the product documentation 
+1. The origin of this software must not be misrepresented; you must
+not claim that you wrote the original software. If you use this
+software in a product, an acknowledgment in the product documentation
 would be appreciated but is not required.
 
-2. Altered source versions must be plainly marked as such, and 
+2. Altered source versions must be plainly marked as such, and
 must not be misrepresented as being the original software.
 
-3. This notice may not be removed or altered from any source 
+3. This notice may not be removed or altered from any source
 distribution.
 */
 
@@ -46,8 +46,8 @@ class OpenQueue
 {
   public:
 	OpenQueue( Graph* _graph )
-	{ 
-		graph = _graph; 
+	{
+		graph = _graph;
 		sentinel = (PathNode*) sentinelMem;
 		sentinel->InitSentinel();
 		#ifdef DEBUG
@@ -59,13 +59,13 @@ class OpenQueue
 	void Push( PathNode* pNode );
 	PathNode* Pop();
 	void Update( PathNode* pNode );
-    
+
 	bool Empty()	{ return sentinel->next == sentinel; }
 
   private:
 	OpenQueue( const OpenQueue& );	// undefined and unsupported
 	void operator=( const OpenQueue& );
-  
+
 	PathNode* sentinel;
 	int sentinelMem[ ( sizeof( PathNode ) + sizeof( int ) ) / sizeof( int ) ];
 	Graph* graph;	// for debugging
@@ -74,16 +74,16 @@ class OpenQueue
 
 void OpenQueue::Push( PathNode* pNode )
 {
-	
+
 	MPASSERT( pNode->inOpen == 0 );
 	MPASSERT( pNode->inClosed == 0 );
-	
+
 #ifdef DEBUG_PATH_DEEP
 	printf( "Open Push: " );
 	graph->PrintStateInfo( pNode->state );
-	printf( " total=%.1f\n", pNode->totalCost );		
+	printf( " total=%.1f\n", pNode->totalCost );
 #endif
-	
+
 	// Add sorted. Lowest to highest cost path. Note that the sentinel has
 	// a value of FLT_MAX, so it should always be sorted in.
 	MPASSERT( pNode->totalCost < FLT_MAX );
@@ -111,45 +111,45 @@ PathNode* OpenQueue::Pop()
 #ifdef DEBUG
 	sentinel->CheckList();
 #endif
-	
+
 	MPASSERT( pNode->inClosed == 0 );
 	MPASSERT( pNode->inOpen == 1 );
 	pNode->inOpen = 0;
-	
+
 #ifdef DEBUG_PATH_DEEP
 	printf( "Open Pop: " );
 	graph->PrintStateInfo( pNode->state );
-	printf( " total=%.1f\n", pNode->totalCost );		
+	printf( " total=%.1f\n", pNode->totalCost );
 #endif
-	
+
 	return pNode;
 }
 
 void OpenQueue::Update( PathNode* pNode )
 {
 #ifdef DEBUG_PATH_DEEP
-	printf( "Open Update: " );		
+	printf( "Open Update: " );
 	graph->PrintStateInfo( pNode->state );
-	printf( " total=%.1f\n", pNode->totalCost );		
+	printf( " total=%.1f\n", pNode->totalCost );
 #endif
-	
+
 	MPASSERT( pNode->inOpen );
-	
+
 	// If the node now cost less than the one before it,
 	// move it to the front of the list.
 	if ( pNode->prev != sentinel && pNode->totalCost < pNode->prev->totalCost ) {
 		pNode->Unlink();
 		sentinel->next->AddBefore( pNode );
 	}
-	
+
 	// If the node is too high, move to the right.
 	if ( pNode->totalCost > pNode->next->totalCost ) {
 		PathNode* it = pNode->next;
 		pNode->Unlink();
-		
+
 		while ( pNode->totalCost > it->totalCost )
 			it = it->next;
-		
+
 		it->AddBefore( pNode );
 #ifdef DEBUG
 		sentinel->CheckList();
@@ -167,9 +167,9 @@ class ClosedSet
 	void Add( PathNode* pNode )
 	{
 		#ifdef DEBUG_PATH_DEEP
-			printf( "Closed add: " );		
+			printf( "Closed add: " );
 			graph->PrintStateInfo( pNode->state );
-			printf( " total=%.1f\n", pNode->totalCost );		
+			printf( " total=%.1f\n", pNode->totalCost );
 		#endif
 		#ifdef DEBUG
 		MPASSERT( pNode->inClosed == 0 );
@@ -181,9 +181,9 @@ class ClosedSet
 	void Remove( PathNode* pNode )
 	{
 		#ifdef DEBUG_PATH_DEEP
-			printf( "Closed remove: " );		
+			printf( "Closed remove: " );
 			graph->PrintStateInfo( pNode->state );
-			printf( " total=%.1f\n", pNode->totalCost );		
+			printf( " total=%.1f\n", pNode->totalCost );
 		#endif
 		MPASSERT( pNode->inClosed == 1 );
 		MPASSERT( pNode->inOpen == 0 );
@@ -198,7 +198,7 @@ class ClosedSet
 };
 
 
-PathNodePool::PathNodePool( unsigned _allocate, unsigned _typicalAdjacent ) 
+PathNodePool::PathNodePool( unsigned _allocate, unsigned _typicalAdjacent )
 	: firstBlock( 0 ),
 	  blocks( 0 ),
 #if defined( MICROPATHER_STRESS )
@@ -215,9 +215,9 @@ PathNodePool::PathNodePool( unsigned _allocate, unsigned _typicalAdjacent )
 	cacheSize = 0;
 	cache = (NodeCost*)malloc(cacheCap * sizeof(NodeCost));
 
-	// Want the behavior that if the actual number of states is specified, the cache 
+	// Want the behavior that if the actual number of states is specified, the cache
 	// will be at least that big.
-	hashShift = 3;	// 8 (only useful for stress testing) 
+	hashShift = 3;	// 8 (only useful for stress testing)
 #if !defined( MICROPATHER_STRESS )
 	while( HashSize() < allocate )
 		++hashShift;
@@ -283,7 +283,7 @@ void PathNodePool::Clear()
 	if ( nAllocated > 0 ) {
 		freeMemSentinel.next = &freeMemSentinel;
 		freeMemSentinel.prev = &freeMemSentinel;
-	
+
 		memset( hashTable, 0, sizeof(PathNode*)*HashSize() );
 		for( unsigned i=0; i<allocate; ++i ) {
 			freeMemSentinel.AddBefore( &firstBlock->pathNode[i] );
@@ -308,7 +308,7 @@ PathNodePool::Block* PathNodePool::NewBlock()
 }
 
 
-unsigned PathNodePool::Hash( void* voidval ) 
+unsigned PathNodePool::Hash( void* voidval )
 {
 	/*
 		Spent quite some time on this, and the result isn't quite satifactory. The
@@ -318,7 +318,7 @@ unsigned PathNodePool::Hash( void* voidval )
 		about the same.
 
 		Simple folding reduces collisions to about 38k - big improvement. However, that may
-		be an artifact of the (x,y) pairs being well distributed. And for either the x,y case 
+		be an artifact of the (x,y) pairs being well distributed. And for either the x,y case
 		or the pointer case, there are probably very poor hash table sizes that cause "overlaps"
 		and grouping. (An x,y encoding with a hashShift of 8 is begging for trouble.)
 
@@ -355,7 +355,7 @@ unsigned PathNodePool::Hash( void* voidval )
 	// The HashMask() is used as the divisor. h%1024 has lots of common
 	// repetitions, but h%1023 will move things out more.
 	MP_UPTR h = (MP_UPTR)(voidval);
-	return h % HashMask();	
+	return h % HashMask();
 }
 
 
@@ -429,8 +429,8 @@ PathNode* PathNodePool::GetPathNode( unsigned frame, void* _state, float _costFr
 
 void PathNode::Init(	unsigned _frame,
 						void* _state,
-						float _costFromStart, 
-						float _estToGoal, 
+						float _costFromStart,
+						float _estToGoal,
 						PathNode* _parent )
 {
 	state = _state;
@@ -455,7 +455,7 @@ MicroPather::~MicroPather()
 {
 }
 
-	      
+
 void MicroPather::Reset()
 {
 	pathNodePool.Clear();
@@ -604,12 +604,12 @@ void MicroPather::DumpStats()
 	for( int i=0; i<HASH_SIZE; ++i )
 		if ( hashTable[i] )
 			++hashTableEntries;
-	
+
 	int pathNodeBlocks = 0;
 	for( PathNode* node = pathNodeMem; node; node = node[ALLOCATE-1].left )
 		++pathNodeBlocks;
 	printf( "HashTableEntries=%d/%d PathNodeBlocks=%d [%dk] PathNodes=%d SolverCalled=%d\n",
-			  hashTableEntries, HASH_SIZE, pathNodeBlocks, 
+			  hashTableEntries, HASH_SIZE, pathNodeBlocks,
 			  pathNodeBlocks*ALLOCATE*sizeof(PathNode)/1024,
 			  pathNodeCount,
 			  frame );
@@ -626,16 +626,16 @@ void MicroPather::StatesInPool( std::vector< void* >* stateVec )
 
 
 void PathNodePool::AllStates( unsigned frame, std::vector< void* >* stateVec )
-{	
+{
     for ( Block* b=blocks; b; b=b->nextBlock )
     {
     	for( unsigned i=0; i<allocate; ++i )
     	{
     	    if ( b->pathNode[i].frame == frame )
 	    	    stateVec->push_back( b->pathNode[i].state );
-    	}    
-	}           
-}   
+    	}
+	}
+}
 
 
 int MicroPather::Solve( void* startNode, void* endNode, vector< void* >* path, float* cost )
@@ -658,21 +658,24 @@ int MicroPather::Solve( void* startNode, void* endNode, vector< void* >* path, f
 
 	OpenQueue open( graph );
 	ClosedSet closed( graph );
-	
-	PathNode* newPathNode = pathNodePool.GetPathNode(	frame, 
-														startNode, 
-														0, 
-														graph->LeastCostEstimate( startNode, endNode ), 
+
+	PathNode* newPathNode = pathNodePool.GetPathNode(	frame,
+														startNode,
+														0,
+														graph->LeastCostEstimate( startNode, endNode ),
 														0 );
 
-	open.Push( newPathNode );	
+	open.Push( newPathNode );
 	stateCostVec.resize(0);
 	nodeCostVec.resize(0);
 
-	while ( !open.Empty() )
+	int nodesTried=0;
+
+	while ( !open.Empty() && nodesTried<10000)
 	{
+	    nodesTried++;
 		PathNode* node = open.Pop();
-		
+
 		if ( node->state == endNode )
 		{
 			GoalReached( node, startNode, endNode, path );
@@ -721,18 +724,18 @@ int MicroPather::Solve( void* startNode, void* endNode, vector< void* >* path, f
 					child->costFromStart = newCost;
 					child->estToGoal = graph->LeastCostEstimate( child->state, endNode ),
 					child->CalcTotalCost();
-					
+
 					MPASSERT( !child->inOpen && !child->inClosed );
 					open.Push( child );
 				}
 			}
-		}					
+		}
 	}
 	#ifdef DEBUG_PATH
 	DumpStats();
 	#endif
-	return NO_SOLUTION;		
-}	
+	return NO_SOLUTION;
+}
 
 
 int MicroPather::SolveForNearStates( void* startState, std::vector< StateCost >* near, float maxCost )
@@ -752,7 +755,7 @@ int MicroPather::SolveForNearStates( void* startState, std::vector< StateCost >*
 		10              break                         // all remaining vertices are inaccessible from source
 		11          remove u from Q
 		12          for each neighbor v of u:         // where v has not yet been removed from Q.
-		13              alt := dist[u] + dist_between(u, v) 
+		13              alt := dist[u] + dist_between(u, v)
 		14              if alt < dist[v]:             // Relax (u,v,a)
 		15                  dist[v] := alt
 		16                  previous[v] := u
@@ -774,13 +777,13 @@ int MicroPather::SolveForNearStates( void* startState, std::vector< StateCost >*
 
 	PathNode* newPathNode = pathNodePool.GetPathNode( frame, startState, 0, 0, 0 );
 	open.Push( newPathNode );
-	
+
 	while ( !open.Empty() )
 	{
 		PathNode* node = open.Pop();	// smallest dist
 		closed.Add( node );				// add to the things we've looked at
 		closedSentinel.AddBefore( node );
-			
+
 		if ( node->totalCost > maxCost )
 			continue;		// Too far away to ever get here.
 
@@ -816,7 +819,7 @@ int MicroPather::SolveForNearStates( void* startState, std::vector< StateCost >*
 				open.Push( child );
 			}
 		}
-	}	
+	}
 	near->clear();
 
 	for( PathNode* pNode=closedSentinel.next; pNode != &closedSentinel; pNode=pNode->next ) {

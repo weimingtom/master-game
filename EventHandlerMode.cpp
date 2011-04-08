@@ -35,7 +35,11 @@ void EventHandlerMode::ProcessEvent(Rocket::Core::Event& event, const Rocket::Co
         if (map->mode==1)
             map->mode=0;
         else
+        {
             map->mode=1;
+            //map->map->UpdateTimerSlot.removeTask();
+        }
+
 
         printf("\n");
         printf("mode:");

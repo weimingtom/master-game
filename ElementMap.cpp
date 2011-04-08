@@ -9,10 +9,12 @@
 
 #include <sstream>
 #include "map.hpp"
-
+#include <Shell.h>
 #include <ShellOpenGL.h>
 
 #include <GL/glu.h>
+
+//#include "globals.hpp"
 
 
 ElementMap::ElementMap(const Rocket::Core::String& tag) : Rocket::Core::Element(tag)
@@ -32,20 +34,17 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 
     if (event=="mousedown")
     {
-
-
         vertex_tuple v1;
         v1.first=map->cursorX;
         v1.second=map->cursorY;
 
         if (mode)
         {
-
-        int btn = event.GetParameter("button",0);
-        if (btn==0)
-            map->walls.insert(v1);
-        else
-            map->walls.erase(v1);
+            int btn = event.GetParameter("button",0);
+            if (btn==0)
+                map->walls.insert(v1);
+            else
+                map->walls.erase(v1);
         } else
 
 		if (map->walls.find(v1)==map->walls.end())
@@ -84,8 +83,8 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 
         gluUnProject(xcoord,-ycoord + map->viewport[1] + map->viewport[3] +map->top,0,map->modelview,map->projection,map->viewport,&posX,&posY,&posZ);
 
-        map->cursorX=posX;
-        map->cursorY=posY;
+        map->cursorX=round(posX);
+        map->cursorY=floor(posY);
 
         std::string s;
         std::stringstream out;
@@ -99,12 +98,6 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
         coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));
 
         //dest_element->Update();
-    }
-
-
-    if (event=="swap_mode")
-    {
-        std::cout<< "swap mode \n";
     }
 
 }
@@ -121,7 +114,20 @@ void ElementMap::OnUpdate()
 
     map->height=GetOwnerDocument()->GetElementById("content")->GetClientHeight();
 
-	map->Update();
+	//map->Update();
+
+
+    if (Shell::GetElapsedTime() - map->update_start >= map->update_freq)
+    {
+        if (mode==0)
+        {
+            map->Update();
+        } else
+        {
+            map->UpdateTimerSlot.clear();
+        }
+    }
+
 
 }
 
@@ -138,7 +144,8 @@ void ElementMap::OnChildAdd(Rocket::Core::Element* element)
 {
 	Rocket::Core::Element::OnChildAdd(element);
 
-	if (element == this){
+	if (element == this)
+	{
         GetOwnerDocument()->AddEventListener("mousemove", this);
         GetOwnerDocument()->AddEventListener("mousedown", this);
         GetOwnerDocument()->AddEventListener("load", this);
