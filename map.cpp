@@ -21,8 +21,7 @@ extern Rocket::Core::Context* context;
 Map::Map()
 {
 
-    Rocket::Core::Vector2i texture_dimensions;
-	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invaders.tga");
+	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invader.tga");
 
     Initialise();
 }
@@ -39,6 +38,12 @@ void Map::Initialise()
 	// How often the invaders move
 	update_freq = 0.2;
 
+
+    pc1.pos.first=5;
+
+    pc1.pos.second=5;
+
+    //загружаем карту
 
     std::ifstream in(".\\assets\\map.xml");
     if (!in){
@@ -59,22 +64,16 @@ void Map::Initialise()
     //rapidxml::xml_document<> doc;    // character type defaults to char
     doc.parse<0>(&xml_copy[0]);    // 0 means default parse flags
 
-
-
-
     rapidxml::xml_node<char> *v;
+
+
+    //загружаем стены
+
     v=doc.first_node("walls");
     std::string coords = v->first_attribute("coords")->value();
     std::vector<std::string> pairs = split(coords,' ');
 
 
-    /*
-    int minX,maxX,minY,maxY;
-    minX=0;
-    minY=0;
-    maxX=0;
-    maxY=0;
-    */
     for (std::vector<std::string>::iterator p1 = pairs.begin(); p1!=pairs.end();p1++)
     {
         std::vector<std::string> xy = split(*p1,',');
@@ -86,45 +85,123 @@ void Map::Initialise()
         walls.insert(v1);
     }
 
-    micropather::MicroPather pather( this );
-
-	std::vector< void* > path;
-	float totalCost;
-
-	void* startNode;
-	void* endNode;
-    startNode = XYToNode( -50, 0 );
-    endNode = XYToNode( 105, -35 );
-
-	std::cout << "\n";
-	PrintStateInfo(startNode);
-    std::cout << "\n";
-    PrintStateInfo(endNode);
-    std::cout << "\n";
 
 
+    //загружаем проводку
 
-	int result = pather.Solve( startNode,endNode, &path, &totalCost );
+    powerGrid.reserve(90);
+
+    rapidxml::xml_node<char> *n1=doc.first_node("powerGrid");
+
+    n1=n1->first_node("powerGridNode");
+
+    list < rapidxml::xml_node <char>* > q;
+    q.push_back(n1);
 
 
-	std::cout << "result:" << result << "totalcost" << totalCost<<"\n";
+    while( !q.empty( ) ){
+            v = q.front();
+            q.pop_front();      // remove it from the list
 
-	for (std::vector< void* >::iterator p1=path.begin();p1!=path.end();p1++)
-	{
-        short x, y;
-        NodeToXY( *p1, &x, &y );
-        std::cout << x << "," <<y <<"\n";
-	};
+            powerGridNode *pn=new powerGridNode;
 
-	if (UpdateTimerSlot.m_Observers.size()==0){
-        static ComplexTask* followPath;
-        followPath = planPath(10,10);
-        if (followPath!=NULL)
-        {
-            UpdateTimerSlot.addTask<ComplexTask>(*followPath);
-        }
+            printf("powerGridNode: \n");
+
+            short curId;
+            if (v->first_attribute("id")){
+                curId=atoi(v->first_attribute("id")->value());
+            } else {
+                curId=87;               //TODO:придумать раздачу незанятых номеров
+            }
+            pn->objectId=curId;
+
+            printf("id: \n");
+
+            printf("%i \n",curId);
+
+            std::string coords = v->first_attribute("pos")->value();  //координаты
+            std::vector<std::string> pairs = split(coords,',');
+
+            pn->pos.first=atoi(pairs[0].c_str());
+            pn->pos.second=atoi(pairs[1].c_str());
+
+            printf("coords: \n");
+
+            printf("%i \n",pn->pos.first);
+            printf("%i \n",pn->pos.second);
+
+            if (v->first_attribute("children")){
+                std::string c1 = v->first_attribute("children")->value();
+                std::vector<std::string> children = split(c1,',');
+
+                printf("children: \n");
+
+                for (std::vector<std::string>::iterator p1 = children.begin(); p1!=children.end();p1++)
+                {
+                    pn->children.push_back(atoi(p1->c_str()));
+                    printf("%i \n",(atoi(p1->c_str())));
+                }
+            }
+            powerGrid[pn->objectId]=pn;
+
+            if (v->next_sibling("powerGridNode"))
+            {
+                q.push_back((v->next_sibling("powerGridNode")));
+            }
+
     }
 
+    //загружаем игровые объекты
+
+    rapidxml::xml_node<char> *ob;
+
+    if (doc.first_node("guest"))
+    {
+        ob = doc.first_node("guest");
+
+        //int i1 = getUniqueId();
+        int i1 = 1;
+        //gameObjectsTable.insert(std::pair<int,Entity*>(i1, new Guest));
+
+
+        gameObjectsTable[i1]=new Guest;
+        gameObjectsTable[i1]->Deserialize(ob);
+
+
+
+        std::cout << "gameObjectsTable.size() is " << (int) gameObjectsTable.size() << endl;
+
+        for (std::map<int,Entity*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
+            {
+                printf("guest pos x: \n");
+                printf("% i \n",go1->second->pos.first);
+                printf("guest pos y: \n");
+                printf("% i \n",go1->second->pos.second);
+            };
+
+
+    };
+
+    //загружаем картинки
+
+     ob = doc.first_node("sprite");
+     while (ob!=0)
+     {
+
+        //int i1 = getUniqueId();
+        //gameObjectsTable.insert(std::pair<int,Entity*>(i1, new Guest));
+
+        static Sprite newSprite;
+        newSprite.bottom=atoi(ob->first_attribute("bottom")->value());
+        newSprite.left=atoi(ob->first_attribute("left")->value());
+        newSprite.right=atoi(ob->first_attribute("right")->value());
+        newSprite.top=atoi(ob->first_attribute("top")->value());
+        newSprite.textureHandle=texture;
+        newSprite.texture_dimensions=texture_dimensions;
+
+        spriteTable[atoi(ob->first_attribute("id")->value())]=&newSprite;
+        ob=ob->next_sibling("sprite");
+     };
 
 
 }
@@ -133,7 +210,14 @@ void Map::Finalise()
 {
 
 
-	std::set<vertex_tuple>::iterator i1;
+    //ws >> wt;
+    std::ofstream mapfile;
+
+    mapfile.open (".\\assets\\map.xml");
+
+    //записываем стены
+
+    std::set<vertex_tuple>::iterator i1;
 	std::stringstream ws;
 	std::string wt;
 	for (i1=walls.begin();i1!=walls.end();i1++)
@@ -143,14 +227,13 @@ void Map::Finalise()
 
 
     std::getline(ws,wt);
-    //ws >> wt;
-    std::ofstream mapfile;
 
-    mapfile.open (".\\assets\\map.xml");
 
     rapidxml::xml_attribute<> *attr = doc.allocate_attribute("coords", wt.c_str());
 
     rapidxml::xml_node<char> *v;
+
+    //rapidxml::xml_node<char> *v1=doc.allocate_node();
 
     v=doc.first_node("walls");
 
@@ -159,6 +242,44 @@ void Map::Finalise()
     v->remove_attribute(old_coords);
 
     v->append_attribute(attr);
+
+
+    rapidxml::xml_node<> *g1 = gameObjectsTable[1]->Serialize(doc);
+
+    printf("serialized id: \n");
+    printf(g1->name());
+    printf("\n");
+    printf(g1->first_attribute("id")->value());
+    printf("\n");
+
+    if (doc.first_node(g1->name()))
+    {
+        printf("found node \n");
+        rapidxml::xml_node<char> *v1 = doc.first_node(g1->name());
+
+        printf(v1->first_attribute("id")->value());
+        printf("\n");
+        printf(g1->first_attribute("id")->value());
+        printf("\n");
+        //printf("%i",strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()));
+        //printf("\n");
+
+        if (not strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()))
+        {
+            doc.remove_node(v1);
+            doc.append_node(g1);
+            printf("replaced node \n");
+        }
+
+    };
+
+
+
+    //записываем проводку
+
+    //v=doc.first_node("powerGrid");
+        //v->remove_all_nodes
+
 
     mapfile << doc;
 
@@ -184,17 +305,17 @@ void Map::Update()
 
 void Map::Render()
 {
-   glViewport(left,768 - height - top,width,height);
+    glViewport(left,768 - height - top,width,height);
 
-   glMatrixMode (GL_MODELVIEW);
+    glMatrixMode (GL_MODELVIEW);
 
-   glPushMatrix();
+    glPushMatrix();
 
     glMatrixMode (GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
 
-    gluOrtho2D(-10,10,-10,10);
+    gluOrtho2D(-5,5,-5,5);
 
 
     glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
@@ -204,11 +325,22 @@ void Map::Render()
 
 
 
-   glEnable(GL_TEXTURE_2D);
+    glEnable(GL_TEXTURE_2D);
 
-   	glBindTexture(GL_TEXTURE_2D, (GLuint) texture);
+   	//glBindTexture(GL_TEXTURE_2D, (GLuint) texture);
 
-	glColor3f(1.0,1.0,1.0);
+    //гость
+	gameObjectsTable[1]->Draw();
+
+	ps1.Draw();
+
+	pc1.Draw();
+
+
+
+
+    //координатные линии
+	glColor4f(1.0,1.0,1.0,1.0);
 	glBegin(GL_LINES);
         glVertex2f(-200.0f,0.0f);
         glVertex2f(200.0f,0.0f);
@@ -216,10 +348,11 @@ void Map::Render()
         glVertex2f(0.0f,-200.0f);
 	glEnd();
 
+    //стены
     glColor3f(1.0,1.0,1.0);
 	glBegin(GL_QUADS);
-	std::set<vertex_tuple>::iterator i1;
-	for (i1=walls.begin();i1!=walls.end();i1++)
+
+	for (std::set<vertex_tuple>::iterator i1=walls.begin();i1!=walls.end();i1++)
     {
         glVertex2f(i1->first-0.5,i1->second-0.5);
         glVertex2f(i1->first-0.5,i1->second+0.5);
@@ -228,8 +361,34 @@ void Map::Render()
     }
 	glEnd();
 
-	guest1.Draw();
+	//проводка
 
+    glColor3f(0.0,1.0,0.0);
+    set <powerGridNode*> q;
+    set <powerGridNode*> visited;
+    powerGridNode* v=powerGrid[0];
+
+    q.insert(v);
+    visited.insert(v);
+    while( !q.empty( ) ){
+            v = *(q.begin());
+            q.erase(q.begin());
+            for (std::vector<short>::iterator i1=v->children.begin();i1!=v->children.end();i1++)
+            {
+                glBegin(GL_LINES);
+                    glVertex2f((v)->pos.first,(v)->pos.second);
+                    glVertex2f((powerGrid[*i1])->pos.first,(powerGrid[*i1])->pos.second);
+                glEnd();
+                if (visited.find(powerGrid[*i1])==visited.end())
+                {
+                    q.insert(powerGrid[*i1]);
+                    visited.insert(powerGrid[*i1]);
+                }
+            }
+    }
+
+
+    //курсор
     glColor3f(0.0,0.0,1.0);
 	glBegin(GL_QUADS);
         glVertex2f(cursorX-0.5,cursorY-0.5);
@@ -349,7 +508,7 @@ ComplexTask* Map::planPath(short x, short y)
     std::vector< void* > path;
 	float totalCost;
 
-    int result = pather.Solve( XYToNode(guest1.pos.first,guest1.pos.second),XYToNode(x,y), &path, &totalCost );
+    int result = pather.Solve( XYToNode(gameObjectsTable[1]->pos.first,gameObjectsTable[1]->pos.second),XYToNode(x,y), &path, &totalCost );
 
     if (result)
     {
@@ -362,14 +521,14 @@ ComplexTask* Map::planPath(short x, short y)
     short x1, y1;
 
     NodeToXY( path[0], &x1, &y1 );
-    orderChain[0]=*(new goToPoint(x1,y1,&guest1));
+    orderChain[0]=*(new goToPoint(x1,y1,gameObjectsTable[1]));
     static ComplexTask followPath;
     followPath=ComplexTask(orderChain[0]);
     for (int i =1;i<path.size();i++){
 
         NodeToXY( path[i], &x1, &y1 );
 
-        orderChain[i-1]=*(new goToPoint(x1,y1,&guest1));
+        orderChain[i-1]=*(new goToPoint(x1,y1,gameObjectsTable[1]));
         followPath.AddAction(orderChain[i-1]);
     }
     return &followPath;

@@ -32,87 +32,135 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 {
     Rocket::Core::Element::ProcessEvent(event);
 
-    if (event=="mousedown")
+    int xcoord = event.GetParameter("mouse_x",0);
+    int ycoord = event.GetParameter("mouse_y",0);
+
+
+    if (GetOwnerDocument()->GetElementById("map")->IsPointWithinElement(Rocket::Core::Vector2f(xcoord,ycoord)))
     {
-        vertex_tuple v1;
-        v1.first=map->cursorX;
-        v1.second=map->cursorY;
 
-        if (mode)
+        if (event=="mousedown")
         {
-            int btn = event.GetParameter("button",0);
-            if (btn==0)
-                map->walls.insert(v1);
-            else
-                map->walls.erase(v1);
-        } else
+            vertex_tuple v1;
+            v1.first=map->cursorX;
+            v1.second=map->cursorY;
 
-		if (map->walls.find(v1)==map->walls.end())
-		{
 
-            if (map->UpdateTimerSlot.m_Observers.size()==0)
+            std::vector<Entity*> objectsOnSpot = getObjectsWithCoords(map->cursorX,map->cursorY);
+            if (!objectsOnSpot.empty())
             {
-                static ComplexTask* followPath;
-                followPath = map->planPath(map->cursorX,map->cursorY);
-                if (followPath!=NULL)
+                rapidxml::xml_node<> *currentParameters = objectsOnSpot[0]->Serialize(map->doc);
+                printf(currentParameters->name());
+
+                Rocket::Core::Element* dest_element = event.GetTargetElement();
+                Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
+                Rocket::Core::Element* window = document->GetElementById("fields");
+
+
+                while (window->HasChildNodes())
+                        window->RemoveChild(window->GetFirstChild());
+
+
+                //for (rapidxml::xml_attribute<> *attr = currentParameters->first_attribute();attr->next_attribute();attr=attr->next_attribute())
+                rapidxml::xml_attribute<> *attr = currentParameters->first_attribute();
+                 while (attr!=0)
+                 {
+
+
+                    Rocket::Core::Element* label = document->CreateElement("p");
+                    label->AppendChild((Rocket::Core::Element*) document->CreateTextNode(attr->name()),true);
+                    window->AppendChild(label,true);
+
+                    Rocket::Core::Element* newField = document->CreateElement("input");
+                    newField->SetAttribute("type","text");
+                    newField->SetAttribute("value",attr->value());
+                    window->AppendChild(newField,true);
+                    printf("\n");
+                    printf(attr->name());
+                    printf("\n");
+                    attr=attr->next_attribute();
+                };
+
+
+            }
+
+
+            if (mode)
+            {
+                int btn = event.GetParameter("button",0);
+                if (btn==0)
                 {
-                    map->UpdateTimerSlot.addTask<ComplexTask>(*followPath);
+
+                    map->walls.insert(v1);
+                }
+                else
+                    map->walls.erase(v1);
+            }
+
+            else
+
+            if (map->walls.find(v1)==map->walls.end())
+            {
+
+                if (map->UpdateTimerSlot.m_Observers.size()==0)
+                {
+                    static ComplexTask* followPath;
+                    followPath = map->planPath(map->cursorX,map->cursorY);
+                    if (followPath!=NULL)
+                    {
+                        map->UpdateTimerSlot.addTask<ComplexTask>(*followPath);
+                    }
                 }
             }
+
+
         }
 
 
-    }
+        if (event=="mousemove")
+        {
+            Rocket::Core::Element* dest_element = event.GetTargetElement();
+
+            Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
+
+            Rocket::Core::Element* coords = document->GetElementById("coords");
 
 
-    if (event=="mousemove")
-    {
-        Rocket::Core::Element* dest_element = event.GetTargetElement();
-
-        Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
-
-        Rocket::Core::Element* coords = document->GetElementById("coords");
-
-        int xcoord = event.GetParameter("mouse_x",0);
-        int ycoord = event.GetParameter("mouse_y",0);
+            GLdouble posX,posY,posZ;
 
 
+            gluUnProject(xcoord,-ycoord + map->viewport[1] + map->viewport[3] +map->top,0,map->modelview,map->projection,map->viewport,&posX,&posY,&posZ);
 
-        GLdouble posX,posY,posZ;
+            map->cursorX=round(posX);
+            map->cursorY=floor(posY);
 
+            std::string s;
+            std::stringstream out;
+            out << posX << "," <<posY;
+            s = out.str();
+            Rocket::Core::String rs = Rocket::Core::String(s.c_str());
 
-        gluUnProject(xcoord,-ycoord + map->viewport[1] + map->viewport[3] +map->top,0,map->modelview,map->projection,map->viewport,&posX,&posY,&posZ);
+            Rocket::Core::Element* newText = document->CreateElement("p");
+            newText->SetId("pc");
 
-        map->cursorX=round(posX);
-        map->cursorY=floor(posY);
+            coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));
 
-        std::string s;
-        std::stringstream out;
-        out << posX << "," <<posY;
-        s = out.str();
-        Rocket::Core::String rs = Rocket::Core::String(s.c_str());
-
-        Rocket::Core::Element* newText = document->CreateElement("p");
-        newText->SetId("pc");
-
-        coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));
-
-        //dest_element->Update();
-    }
-
+            //dest_element->Update();
+        }
+    };
 }
 
 
 // Updates the game.
 void ElementMap::OnUpdate()
 {
-    map->left=GetOwnerDocument()->GetElementById("content")->GetAbsoluteLeft();
+    map->left=GetOwnerDocument()->GetElementById("map")->GetAbsoluteLeft();
 
-    map->top=GetOwnerDocument()->GetElementById("content")->GetAbsoluteTop();
+    map->top=GetOwnerDocument()->GetElementById("map")->GetAbsoluteTop();
 
-    map->width=GetOwnerDocument()->GetElementById("content")->GetClientWidth();
+    map->width=GetOwnerDocument()->GetElementById("map")->GetClientWidth();
 
-    map->height=GetOwnerDocument()->GetElementById("content")->GetClientHeight();
+    map->height=GetOwnerDocument()->GetElementById("map")->GetClientHeight();
 
 	//map->Update();
 
