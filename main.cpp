@@ -6,6 +6,8 @@
 #include <Rocket/Core.h>
 #include <Rocket/Debugger.h>
 #include <Rocket/Core/Types.h>
+#include <Rocket/Controls.h>
+
 #include <Input.h>
 #include <Shell.h>
 #include "SystemInterface.h"
@@ -20,6 +22,8 @@
 #include "EventInstancer.h"
 #include "EventManager.h"
 #include "EventHandlerMode.h"
+
+#include "Rocket/Core/Decorator.h"
 
 
 	GLfloat vertices[] = {500.0f,500.0f,0.1f,500.0f,0.0f,0.1f,0.0f,500.0f,0.1f};
@@ -81,6 +85,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Core::SetSystemInterface(&system_interface);
 
 	Rocket::Core::Initialise();
+
+    Rocket::Controls::Initialise();
+
 
 
 
@@ -148,7 +155,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	}
 	debugWindow->SetId("debugWindow");
 
-
+    //debugWindow->IterateDecorators
 
     Rocket::Core::Element* debugText = debugWindow->CreateElement("div");
 	debugText->SetId("convTags");
@@ -161,8 +168,6 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 
 	debugWindow->GetElementById("content")->AppendChild(debugText,true);
-
-
 
     //chooseAnswer(0);
 	Rocket::Core::Element* text = document->CreateElement("div");

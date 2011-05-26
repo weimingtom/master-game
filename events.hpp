@@ -33,10 +33,9 @@ void addTask(TaskType & tsk)
 
 
 void removeTask()
-  {
-      m_Observers.pop_back();
-
- }
+{
+    m_Observers.pop_back();
+}
 
 void clear()
 {

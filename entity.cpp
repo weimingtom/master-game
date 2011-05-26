@@ -1,6 +1,34 @@
 #include "entity.hpp"
 #include "GL/gl.h"
 
+std::map<int,Entity*> gameObjectsTable;
+std::map<int,Sprite*> spriteTable;
+
+int getUniqueId()
+{
+    static std::set<int> idTable;
+    int id1=rand();
+    while (idTable.find(id1)!=idTable.end())
+        id1=rand();
+
+    idTable.insert(id1);
+    return id1;
+};
+
+std::vector<Entity*> getObjectsWithCoords(int x, int y)
+{
+    std::vector<Entity*> result;
+    for (std::map<int,Entity*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
+    {
+        if ((go1->second->pos.first==x) && (go1->second->pos.second==y))
+        {
+            result.push_back(go1->second);
+        }
+    };
+    return result;
+
+}
+
 
 Entity::Entity()
 {
@@ -8,10 +36,78 @@ Entity::Entity()
     pos.second=0;
 };
 
+rapidxml::xml_node<>* Entity::Serialize(xmlFile& doc)
+{
+
+
+
+    //запишем новый
+
+
+    std::stringstream idStr;
+    std::string id;
+
+
+    rapidxml::xml_node<> *entityNode = doc.allocate_node(rapidxml::node_element,"entity");
+
+    static char buffer [33];
+    itoa(objectId,buffer,10);
+
+    rapidxml::xml_attribute<> *idAttr = doc.allocate_attribute("id",buffer);
+
+    entityNode->append_attribute(idAttr);
+
+
+    static char buffer1 [33];
+    static char buffer2 [33];
+
+    itoa(pos.first,buffer1,10);
+    itoa(pos.second,buffer2,10);
+
+    strcat(buffer1,",");
+    strcat(buffer1,buffer2);
+
+    rapidxml::xml_attribute<> *posAttr = doc.allocate_attribute("pos", buffer1);
+
+    entityNode->append_attribute(posAttr);
+
+
+    printf("serializing id: \n");
+    printf(entityNode->first_attribute("id")->value());
+
+
+    return entityNode;
+
+};
+
+void Entity::Deserialize(rapidxml::xml_node<>* node)
+{
+    if (node->first_attribute("id"))
+    {
+        std::string c1 = node->first_attribute("id")->value();
+        objectId = atoi(c1.c_str());
+    };
+
+    if (node->first_attribute("pos"))
+    {
+        std::string c2 = node->first_attribute("pos")->value();
+        std::vector<std::string> pairs = split(c2,',');
+        pos.first=atoi(pairs[0].c_str());
+        pos.second=atoi(pairs[1].c_str());
+    };
+
+
+};
+
 Entity::Entity(int initX,int initY)
 {
     pos.first=initX;
     pos.second=initY;
+
+    //Rocket::Core::Texture texture;
+    //texture.Load(".\\assets\\entity.tga");
+
+    //texture.GetHandle()
 };
 
 void Entity::Update(int time)
@@ -19,34 +115,12 @@ void Entity::Update(int time)
 };
 void Entity::Draw()
 {
-
-glColor3f(0.0,0.0,1.0);
-	glBegin(GL_QUADS);
-        glVertex2f(pos.first-0.5,pos.second-0.5);
-        glVertex2f(pos.first-0.5,pos.second+0.5);
-        glVertex2f(pos.first+0.5,pos.second+0.5);
-        glVertex2f(pos.first+0.5,pos.second-0.5);
-    glEnd();
 };
-
+/*
 void Entity::setPos(int X, int Y)
 {
     pos.first=X;
     pos.second=Y;
-};
-
-/*
-uint8 line_listener(int x, int y) {
-    static float lightEnergy=1;
-	if (!TCOD_map_is_walkable(levelMap,x,y)|| !( x>= 0 && y >= 0 && x < MAP_WIDTH && y < MAP_HEIGHT) )
-	{
-            lightEnergy=1;
-            return false;
-        }
-
-    lightMap[x][y]=min(1.0f,lightMap[x][y]+lightEnergy);
-    lightEnergy=lightEnergy*0.85;
-	return true;
 };
 */
 
@@ -58,49 +132,147 @@ Light::Light(int initX,int initY)
 
 
 void Light::updateLightmap()
-
 {
-//    memset(lightMap,0,sizeof(float)*MAP_WIDTH*MAP_HEIGHT);
-/*
-    for (int x=0; x <MAP_WIDTH ; x++) {
-        TCOD_line(pos[0],pos[1],x,0,line_listener);
-    }
 
-    for (int y=0; y < MAP_HEIGHT; y++ ) {
-        TCOD_line(pos[0],pos[1],MAP_WIDTH,y,line_listener);
-    }
+};
 
-
-    for (int x=MAP_WIDTH; x >0 ; x--) {
-        TCOD_line(pos[0],pos[1],x,MAP_HEIGHT,line_listener);
-    }
-
-   for (int y=MAP_HEIGHT; y >0 ; y-- ) {
-        TCOD_line(pos[0],pos[1],0,y,line_listener);
-    }
-
-*/
-/*
-    for (float t=0.0;t<2*3.1451;t=t+0.05)
+void PowerSource::Draw()
 {
-    float radius=100;
-    int x=pos[0]+round(radius*cos(t));
-    int y=pos[1]+round(radius*sin(t));
-    TCOD_line(pos[0],pos[1],x,y,line_listener);
-    /*
-    TCOD_line(pos[0]+1,pos[1],x,y,line_listener);
-    TCOD_line(pos[0]-1,pos[1],x,y,line_listener);
-    TCOD_line(pos[0],pos[1]-1,x,y,line_listener);
-    TCOD_line(pos[0],pos[1]+1,x,y,line_listener);
+    glColor3f(0.5,0.0,0.0);
+	glBegin(GL_QUADS);
+        glVertex2f(pos.first-0.5,pos.second-0.5);
+        glVertex2f(pos.first-0.5,pos.second+0.5);
+        glVertex2f(pos.first+0.5,pos.second+0.5);
+        glVertex2f(pos.first+0.5,pos.second-0.5);
+    glEnd();
 
-}
-*/
-/*
-    for (int y=0; y < MAP_HEIGHT; y++ ) {
-        for (int x=0; x < MAP_WIDTH; x++ ) {
-            printf("%f ",lightMap[x][y]);
-        }
-        printf("/n");
-    }
-*/
+};
+
+void PowerConsumer::Draw()
+{
+    glColor3f(0.0,0.5,0.0);
+	glBegin(GL_QUADS);
+        glVertex2f(pos.first-0.5,pos.second-0.5);
+        glVertex2f(pos.first-0.5,pos.second+0.5);
+        glVertex2f(pos.first+0.5,pos.second+0.5);
+        glVertex2f(pos.first+0.5,pos.second-0.5);
+    glEnd();
+
+};
+
+
+rapidxml::xml_node<>* PowerConsumer::Serialize(xmlFile& doc)
+{
+    rapidxml::xml_node<>* v1 =  Entity::Serialize(doc);
+
+    char *node_name = doc.allocate_string("powerConsumer");        // Allocate string and copy name into it
+    rapidxml::xml_node<> *node = doc.allocate_node(rapidxml::node_element, node_name);  // Set node name to node_name
+    node = doc.clone_node(v1);
+
+    return node;
+};
+
+
+void PowerConsumer::Deserialize(rapidxml::xml_node<>* node)
+{
+
+    Entity::Deserialize(node);
+};
+
+
+
+Guest::Guest()
+{
+    pos.first=0;
+    pos.second=0;
+};
+
+
+rapidxml::xml_node<>* Guest::Serialize(xmlFile& doc)
+{
+    rapidxml::xml_node<>* v1 =  Entity::Serialize(doc);
+
+    char *node_name = doc.allocate_string("guest");        // Allocate string and copy name into it
+
+    v1->name(node_name);
+
+    rapidxml::xml_attribute<>* sp1 = doc.allocate_attribute("sprite");
+
+    char buffer1 [33];
+
+    itoa(sprite,buffer1,10);
+
+    char *spriteNum = doc.allocate_string(buffer1);
+
+    sp1->value(spriteNum);
+
+    v1->append_attribute(sp1);
+
+    return v1;
+};
+
+
+void Guest::Deserialize(rapidxml::xml_node<>* node)
+{
+    Entity::Deserialize(node);
+
+    if (node->first_attribute("sprite"))
+    {
+        sprite =  atoi(node->first_attribute("sprite")->value());
+        printf("guest's sprite: %i \n",sprite);
+    };
+
+};
+
+void Guest::Draw()
+{
+
+    float vertices[8]={-1,-1,-1,1,1,1,1,-1};
+    //float texcoords[8]={0.2,0.6,0.2,0.2,0.6,0.2,0.6,0.6};
+    float texcoords[8]={0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0};
+    unsigned char colors[32] = {255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255};
+
+
+    Sprite curSprite=*spriteTable[sprite];
+
+    texcoords[0]=(float) curSprite.left/curSprite.texture_dimensions.x;
+    texcoords[1]=(float) curSprite.bottom/curSprite.texture_dimensions.y;
+
+    texcoords[2]=(float)curSprite.left/curSprite.texture_dimensions.x;
+    texcoords[3]=(float) curSprite.top/curSprite.texture_dimensions.y;
+
+    texcoords[4]=(float) curSprite.right/curSprite.texture_dimensions.x;
+    texcoords[5]=(float) curSprite.top/curSprite.texture_dimensions.y;
+
+    texcoords[6]=(float) curSprite.right/curSprite.texture_dimensions.x;
+    texcoords[7]=(float) curSprite.bottom/curSprite.texture_dimensions.y;
+    //printf("%d",texcoords[7]);
+
+
+    glPushMatrix();
+
+    glTranslatef(pos.first,pos.second,0.0);
+
+    glVertexPointer(2, GL_FLOAT,0, vertices);
+	glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, (GLuint) spriteTable[sprite]->textureHandle);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT,0, texcoords);
+
+    unsigned int indices[6]={0,1,2,2,3,0};
+
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, indices);
+
+    glDisable(GL_TEXTURE_2D);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glPopMatrix();
 };
