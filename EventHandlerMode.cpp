@@ -47,4 +47,43 @@ void EventHandlerMode::ProcessEvent(Rocket::Core::Event& event, const Rocket::Co
         printf("\n");
 
 	}
+
+
+	if (value == "close")
+    {
+	    Rocket::Core::Element* dest_element = event.GetTargetElement();
+
+        Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
+
+        document->Close();
+	}
+
+
+	if (value == "minimize")
+    {
+	    Rocket::Core::Element* dest_element = event.GetTargetElement();
+
+        Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
+
+
+
+        Rocket::Core::Box box;
+        box.SetContent(Rocket::Core::Vector2f(100, 10));
+        box.SetEdge(Rocket::Core::Box::BORDER, Rocket::Core::Box::TOP, 1);
+        //document->RemoveChild(document->GetElementById("window"));
+        //document->SetBox(box);
+        if (document->GetElementById("window")->IsVisible())
+        {
+            document->GetElementById("window")->SetProperty("visibility","hidden");
+            document->SetProperty("height","10px");
+        } else
+
+        {
+            document->GetElementById("window")->SetProperty("visibility","visible");
+            document->SetProperty("height","200px");
+        }
+        document->Update();
+	}
+
+
 }

@@ -37,6 +37,8 @@ typedef std::pair<short,short> vertex_tuple;
 
 Rocket::Core::Context* context = NULL;
 
+
+
 void GameLoop()
 {
 
@@ -103,9 +105,28 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Debugger::Initialise(context);
 	Input::SetContext(context);
 
-	Shell::LoadFonts(".\\assets\\");
+
+    string dir = string(".\\assets\\");
+    vector<string> files = vector<string>();
+
+    getDir(dir,files);
+
+    for (unsigned int i = 0;i < files.size();i++) {
+
+    std::vector<std::string> filename = split(files[i],'.');
+        if (filename[1].compare("ttf")==0)
+        {
+            cout << files[i] << endl;
+            files[i].insert(0,dir);
+            Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
+        };
+    };
+
+
 	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
 	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
+
+	//Shell::LoadFonts(".\\assets\\");
 
 
 	Rocket::Core::ElementInstancer* element_instancer = new Rocket::Core::ElementInstancerGeneric< ElementMap >();
@@ -151,7 +172,6 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	{
 		debugWindow->Show();
 		debugWindow->RemoveReference();
-		document->SetOffset(Rocket::Core::Vector2f(100,100),document);
 	}
 	debugWindow->SetId("debugWindow");
 

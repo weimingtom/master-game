@@ -227,7 +227,7 @@ void Guest::Deserialize(rapidxml::xml_node<>* node)
 void Guest::Draw()
 {
 
-    float vertices[8]={-1,-1,-1,1,1,1,1,-1};
+    float vertices[8]={-0.5,-0.5,-0.5,0.5,0.5,0.5,0.5,-0.5};
     //float texcoords[8]={0.2,0.6,0.2,0.2,0.6,0.2,0.6,0.6};
     float texcoords[8]={0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0};
     unsigned char colors[32] = {255,255,255,255,
