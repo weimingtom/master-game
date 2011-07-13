@@ -3,7 +3,7 @@
 
 
 std::vector<dialogNode*> convGraph = dialog_fun();
-int curNode=87;
+int curNode=999;
 tags dialogState;
 
 
@@ -73,8 +73,12 @@ std:: vector<dialogNode*> dialog_fun()
     s1=s1+s+"\n";
     }
 
+
+
     s1=replace(s1,"&gt;",">");
     s1=replace(s1,"&lt;","<");
+    //s1=replace(s1,"&quot;",'o');
+    //s1=replace(s1,"&quot;"," \" ");
 
     //std::cout << s1;
 
@@ -92,7 +96,7 @@ std:: vector<dialogNode*> dialog_fun()
 
     std::vector<dialogNode*> conversationGraph;
 
-    conversationGraph.reserve(90);
+    conversationGraph.reserve(1000);
 
     n1=doc.first_node("Conversation");
 
@@ -112,7 +116,7 @@ std:: vector<dialogNode*> dialog_fun()
             if (v->first_attribute("idNum")){
                 curId=atoi(v->first_attribute("idNum")->value());
             } else {
-                curId=87;               //TODO:придумать раздачу незанятых номеров
+                curId=999;               //TODO:придумать раздачу незанятых номеров
             }
 
 
@@ -165,6 +169,8 @@ std:: vector<dialogNode*> dialog_fun()
                         dn->text.erase(0,str.size());
                         dn->text.erase(dn->text.size()-str.size()-2);
                     }
+
+            dn->text=replace(dn->text,"&quot;","\"");
 
 
             }

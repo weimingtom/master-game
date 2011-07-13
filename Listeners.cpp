@@ -80,6 +80,8 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
 
             content->SetAttribute("orderNum",i);
 
+            content->ScrollIntoView();
+
 
             MouseOverListener::RegisterMouseOverContainer(content);
             MouseOutListener::RegisterMouseOutContainer(content);
