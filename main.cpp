@@ -25,6 +25,9 @@
 
 #include "Rocket/Core/Decorator.h"
 
+#include "globals.hpp"
+
+
 
 	GLfloat vertices[] = {500.0f,500.0f,0.1f,500.0f,0.0f,0.1f,0.0f,500.0f,0.1f};
     GLubyte indices[] = {0,1,2};
@@ -94,7 +97,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 
 	// Create the main Rocket context and set it on the shell's input layer.
-	context = Rocket::Core::CreateContext("main", Rocket::Core::Vector2i(1024, 768));
+	context = Rocket::Core::CreateContext("main", Rocket::Core::Vector2i(screen_width, screen_height));
 	if (context == NULL)
 	{
 		Rocket::Core::Shutdown();
