@@ -4,4 +4,9 @@
 
 typedef std::pair<short,short> vertex_tuple;
 
+extern int screen_width;
+extern int screen_height;
+
+
+
 #endif

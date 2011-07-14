@@ -9,6 +9,7 @@
 #include <cmath>
 #include <Shell.h>
 
+#include "globals.hpp"
 
 
 
@@ -305,7 +306,7 @@ void Map::Update()
 
 void Map::Render()
 {
-    glViewport(left,768 - height - top,width,height);
+    glViewport(left,screen_height - height - top,width,height);
 
     glMatrixMode (GL_MODELVIEW);
 
@@ -405,7 +406,7 @@ void Map::Render()
 
 	glPopMatrix();
 
-	glViewport(0,0,1024,768);
+	glViewport(0,0,screen_width,screen_height);
 
 };
 
