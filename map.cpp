@@ -306,6 +306,7 @@ void Map::Update()
 
 void Map::Render()
 {
+
     glViewport(left,screen_height - height - top,width,height);
 
     glMatrixMode (GL_MODELVIEW);
@@ -407,6 +408,9 @@ void Map::Render()
 	glPopMatrix();
 
 	glViewport(0,0,screen_width,screen_height);
+
+
+
 
 };
 
