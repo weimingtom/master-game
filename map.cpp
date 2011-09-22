@@ -90,7 +90,7 @@ void Map::Initialise()
 
     //загружаем проводку
 
-    powerGrid.reserve(90);
+    powerGrid.resize(90);
 
     rapidxml::xml_node<char> *n1=doc.first_node("powerGrid");
 

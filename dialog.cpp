@@ -96,7 +96,7 @@ std:: vector<dialogNode*> dialog_fun()
 
     std::vector<dialogNode*> conversationGraph;
 
-    conversationGraph.reserve(1000);
+    conversationGraph.resize(1000);
 
     n1=doc.first_node("Conversation");
 
