@@ -14,7 +14,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,6 +27,10 @@
 
 #include <ShellRenderInterfaceOpenGL.h>
 #include <Rocket/Core.h>
+
+#include <Rocket/Core.h>
+
+#include "../../globals.hpp"
 
 #define GL_CLAMP_TO_EDGE 0x812F
 
@@ -61,23 +65,23 @@ void ShellRenderInterfaceOpenGL::RenderGeometry(Rocket::Core::Vertex* vertices, 
 	glPopMatrix();
 }
 
-// Called by Rocket when it wants to compile geometry it believes will be static for the forseeable future.		
+// Called by Rocket when it wants to compile geometry it believes will be static for the forseeable future.
 Rocket::Core::CompiledGeometryHandle ShellRenderInterfaceOpenGL::CompileGeometry(Rocket::Core::Vertex* ROCKET_UNUSED(vertices), int ROCKET_UNUSED(num_vertices), int* ROCKET_UNUSED(indices), int ROCKET_UNUSED(num_indices), const Rocket::Core::TextureHandle ROCKET_UNUSED(texture))
 {
 	return (Rocket::Core::CompiledGeometryHandle) NULL;
 }
 
-// Called by Rocket when it wants to render application-compiled geometry.		
+// Called by Rocket when it wants to render application-compiled geometry.
 void ShellRenderInterfaceOpenGL::RenderCompiledGeometry(Rocket::Core::CompiledGeometryHandle ROCKET_UNUSED(geometry), const Rocket::Core::Vector2f& ROCKET_UNUSED(translation))
 {
 }
 
-// Called by Rocket when it wants to release application-compiled geometry.		
+// Called by Rocket when it wants to release application-compiled geometry.
 void ShellRenderInterfaceOpenGL::ReleaseCompiledGeometry(Rocket::Core::CompiledGeometryHandle ROCKET_UNUSED(geometry))
 {
 }
 
-// Called by Rocket when it wants to enable or disable scissoring to clip content.		
+// Called by Rocket when it wants to enable or disable scissoring to clip content.
 void ShellRenderInterfaceOpenGL::EnableScissorRegion(bool enable)
 {
 	if (enable)
@@ -86,15 +90,15 @@ void ShellRenderInterfaceOpenGL::EnableScissorRegion(bool enable)
 		glDisable(GL_SCISSOR_TEST);
 }
 
-// Called by Rocket when it wants to change the scissor region.		
+// Called by Rocket when it wants to change the scissor region.
 void ShellRenderInterfaceOpenGL::SetScissorRegion(int x, int y, int width, int height)
 {
-	glScissor(x, 768 - (y + height), width, height);
+	glScissor(x, screen_height - (y + height), width, height);
 }
 
 // Set to byte packing, or the compiler will expand our struct, which means it won't read correctly from file
-#pragma pack(1) 
-struct TGAHeader 
+#pragma pack(1)
+struct TGAHeader
 {
 	char  idLength;
 	char  colourMapType;
@@ -112,7 +116,7 @@ struct TGAHeader
 // Restore packing
 #pragma pack()
 
-// Called by Rocket when a texture is required by the library.		
+// Called by Rocket when a texture is required by the library.
 bool ShellRenderInterfaceOpenGL::LoadTexture(Rocket::Core::TextureHandle& texture_handle, Rocket::Core::Vector2i& texture_dimensions, const Rocket::Core::String& source)
 {
 	Rocket::Core::FileInterface* file_interface = Rocket::Core::GetFileInterface();
@@ -121,37 +125,37 @@ bool ShellRenderInterfaceOpenGL::LoadTexture(Rocket::Core::TextureHandle& textur
 	{
 		return false;
 	}
-	
+
 	file_interface->Seek(file_handle, 0, SEEK_END);
 	size_t buffer_size = file_interface->Tell(file_handle);
 	file_interface->Seek(file_handle, 0, SEEK_SET);
-	
+
 	char* buffer = new char[buffer_size];
 	file_interface->Read(buffer, buffer_size, file_handle);
 	file_interface->Close(file_handle);
 
 	TGAHeader header;
 	memcpy(&header, buffer, sizeof(TGAHeader));
-	
+
 	int color_mode = header.bitsPerPixel / 8;
-	int image_size = header.width * header.height * 4; // We always make 32bit textures 
-	
+	int image_size = header.width * header.height * 4; // We always make 32bit textures
+
 	if (header.dataType != 2)
 	{
 		Rocket::Core::Log::Message(Rocket::Core::Log::LT_ERROR, "Only 24/32bit uncompressed TGAs are supported.");
 		return false;
 	}
-	
+
 	// Ensure we have at least 3 colors
 	if (color_mode < 3)
 	{
 		Rocket::Core::Log::Message(Rocket::Core::Log::LT_ERROR, "Only 24 and 32bit textures are supported");
 		return false;
 	}
-	
+
 	const char* image_src = buffer + sizeof(TGAHeader);
 	unsigned char* image_dest = new unsigned char[image_size];
-	
+
 	// Targa is BGR, swap to RGB and flip Y axis
 	for (long y = 0; y < header.height; y++)
 	{
@@ -166,7 +170,7 @@ bool ShellRenderInterfaceOpenGL::LoadTexture(Rocket::Core::TextureHandle& textur
 				image_dest[write_index+3] = image_src[read_index+3];
 			else
 				image_dest[write_index+3] = 255;
-			
+
 			write_index += 4;
 			read_index += color_mode;
 		}
@@ -174,12 +178,12 @@ bool ShellRenderInterfaceOpenGL::LoadTexture(Rocket::Core::TextureHandle& textur
 
 	texture_dimensions.x = header.width;
 	texture_dimensions.y = header.height;
-	
+
 	bool success = GenerateTexture(texture_handle, image_dest, texture_dimensions);
-	
+
 	delete [] image_dest;
 	delete [] buffer;
-	
+
 	return success;
 }
 
@@ -208,7 +212,7 @@ bool ShellRenderInterfaceOpenGL::GenerateTexture(Rocket::Core::TextureHandle& te
 	return true;
 }
 
-// Called by Rocket when a loaded texture is no longer required.		
+// Called by Rocket when a loaded texture is no longer required.
 void ShellRenderInterfaceOpenGL::ReleaseTexture(Rocket::Core::TextureHandle texture_handle)
 {
 	glDeleteTextures(1, (GLuint*) &texture_handle);

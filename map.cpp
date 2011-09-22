@@ -1,8 +1,9 @@
 
-
+#ifndef __MY_WIN32__
 #undef ROCKET_PLATFORM_WIN32
 #undef __WIN32__
 #undef _WIN32
+#endif
 
 #include "map.hpp"
 #include <Rocket/Core.h>
@@ -12,7 +13,9 @@
 #include "globals.hpp"
 
 
-
+#ifdef __MY_NOT__
+#define not !
+#endif
 
 // The game's element context (declared in main.cpp).
 extern Rocket::Core::Context* context;
@@ -90,7 +93,8 @@ void Map::Initialise()
 
     //загружаем проводку
 
-    powerGrid.reserve(90);
+    //powerGrid.reserve(90);
+	powerGrid.resize(90);
 
     rapidxml::xml_node<char> *n1=doc.first_node("powerGrid");
 
@@ -306,6 +310,7 @@ void Map::Update()
 
 void Map::Render()
 {
+
     glViewport(left,screen_height - height - top,width,height);
 
     glMatrixMode (GL_MODELVIEW);
@@ -407,6 +412,9 @@ void Map::Render()
 	glPopMatrix();
 
 	glViewport(0,0,screen_width,screen_height);
+
+
+
 
 };
 

@@ -11,6 +11,7 @@ std::vector<char*> currentAnswers()
 {
     std::vector<char*> ansList;
     ansList.reserve(10);
+	//ansList.resize(10);
     for (int i=0;i<convGraph[curNode]->children.size();i++)
     {
 
@@ -78,7 +79,7 @@ std:: vector<dialogNode*> dialog_fun()
     s1=replace(s1,"&gt;",">");
     s1=replace(s1,"&lt;","<");
     //s1=replace(s1,"&quot;",'o');
-    //s1=replace(s1,"&quot;"," \" ");
+    s1=replace(s1,"&quot;"," \" ");
 
     //std::cout << s1;
 
@@ -96,7 +97,8 @@ std:: vector<dialogNode*> dialog_fun()
 
     std::vector<dialogNode*> conversationGraph;
 
-    conversationGraph.reserve(1000);
+    //conversationGraph.reserve(1000);
+	conversationGraph.resize(1000);
 
     n1=doc.first_node("Conversation");
 
@@ -246,6 +248,15 @@ std:: vector<dialogNode*> dialog_fun()
                 q.push_back(n1);
                 dn->children.push_back(atoi(n1->first_attribute("idNum")->value()));
                 n1=n1->next_sibling();
+            }
+
+            if (curId==999)          //начальное значение текущей реплики
+            {
+                dialogNode *dn1=new dialogNode;
+                dn1->children.push_back(1); //пустая реплика в начале, нужна для правильного чередования pc/npc. Ссылается на 1ую содержательную реплику.
+                conversationGraph[998]=dn1;
+                dn->children[0]=998;
+
             }
 
             conversationGraph[curId]=dn;

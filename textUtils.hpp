@@ -7,7 +7,7 @@
 
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_print.hpp"
-
+#include<windows.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -15,7 +15,7 @@
 #include <sstream>
 
 #include <sys/types.h>
-#include <dirent.h>
+//#include <dirent.h>
 #include <errno.h>
 #include <vector>
 #include <iostream>
@@ -53,7 +53,7 @@ inline std::string replace(std::string text, std::string s, std::string d)
 }
 
 
-
+/*
 inline int getDir (std::string dir, std::vector<std::string> &files)
 {
     DIR *dp;
@@ -70,6 +70,20 @@ inline int getDir (std::string dir, std::vector<std::string> &files)
     closedir(dp);
     return 0;
 }
-
+*/
+inline int getDir (std::string dir, std::vector<std::string> &files){
+	WIN32_FIND_DATAA findData;
+	HANDLE h=FindFirstFileA(dir.c_str(), &findData);
+	if(h==INVALID_HANDLE_VALUE){
+		int err=GetLastError();
+		std::cout << "Error(" << err << ") opening " << dir << std::endl;
+		return err;
+	}
+	do{
+		files.push_back(std::string(findData.cFileName));
+	}while(FindNextFileA(h, &findData)!=0);
+	FindClose(h);
+	return 0;
+}
 
 #endif

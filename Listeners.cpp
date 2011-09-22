@@ -21,13 +21,14 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
 
     Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
 
-    Rocket::Core::Element* answers = dest_element->GetParentNode();
+    Rocket::Core::Element* answers = document->GetElementById("answers");
 
 
     while (answers->HasChildNodes())
     {
         answers->RemoveChild(answers->GetChild(0));
     }
+
 
     Rocket::Core::Element* convText =document->GetElementById("content")->GetElementById("convText");
 
@@ -36,7 +37,9 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
     newText->SetId("pc");
 
 
-    newText->AppendChild(document->CreateTextNode(chooseAnswer(dest_element->GetAttribute("orderNum")->Get<int>())),true);
+    //newText->AppendChild(document->CreateTextNode(chooseAnswer(dest_element->GetAttribute("orderNum")->Get<int>())),true);
+    Rocket::Core::String RMLtext1 (chooseAnswer(dest_element->GetAttribute("orderNum")->Get<int>()));
+    newText->SetInnerRML(RMLtext1);
 
     convText->AppendChild(newText,true);
 
@@ -46,9 +49,14 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
     addTags(getConvNode(getCurNode()).effPlus);
     removeTags(getConvNode(getCurNode()).effMin);
 
-    newText->AppendChild(document->CreateTextNode(chooseAnswer(0)),true);
+    //newText->AppendChild(document->CreateTextNode(chooseAnswer(0)),true);
+
+    Rocket::Core::String RMLtext (chooseAnswer(0));
+    newText->SetInnerRML(RMLtext);
 
     convText->AppendChild(newText,true);
+
+
 
     addTags(getConvNode(getCurNode()).effPlus);
     removeTags(getConvNode(getCurNode()).effMin);
@@ -75,7 +83,10 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
             Rocket::Core::Element* content = document->CreateElement("p");
             content->SetId("pc");
 
-            content->AppendChild(document->CreateTextNode(*curText),true);
+            Rocket::Core::String RMLtext (*curText);
+            content->SetInnerRML(RMLtext);
+
+            //content->AppendChild(document->CreateTextNode(*curText),true);
             answers->AppendChild(content,true);
 
             content->SetAttribute("orderNum",i);
@@ -101,8 +112,6 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
 
     convTags->ReplaceChild(debugWindow->CreateTextNode(getTagsAsString().c_str()),convTags->GetFirstChild());
    // convTags->ReplaceChild(debugWindow->CreateTextNode(getTags().pop_front()),convTags->GetFirstChild());
-
-
 
 
 }
