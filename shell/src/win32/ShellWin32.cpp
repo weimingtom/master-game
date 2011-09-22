@@ -45,6 +45,7 @@ void SysSetDisplayMode (int width, int height, int depth)
 	dmode.dmPelsHeight = height;
 	dmode.dmBitsPerPel = depth;
 	dmode.dmFields = DM_PELSWIDTH|DM_PELSHEIGHT|DM_BITSPERPEL;
+	//dmode.dmDisplayFrequency =
     long res=ChangeDisplaySettings(&dmode, CDS_FULLSCREEN);
 	// change resolution, if possible
 	if (res!= DISP_CHANGE_SUCCESSFUL)
@@ -83,6 +84,8 @@ bool Shell::Initialise(const Rocket::Core::String& path)
 	file_interface = new ShellFileInterface(executable_path + path);
 	Rocket::Core::SetFileInterface(file_interface);
 
+	//загрузка параметров из конфигурационного файла
+
     std::ifstream in("config.ini");
 
     char* optString;
@@ -102,15 +105,6 @@ bool Shell::Initialise(const Rocket::Core::String& path)
     name_value =  split(std::string(optString),'=');
 
     screen_height=atoi(name_value[1].c_str());
-
-
-
-
-
-
-
-
-
 
 	return true;
 }
@@ -149,16 +143,19 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 
         SysSetDisplayMode(screen_width, screen_height, 32);
 
-	    window_handle = CreateWindowEx(NULL,
+	    window_handle = CreateWindowEx(WS_EX_TOPMOST,
                   name,
                   name,
-                  WS_CLIPCHILDREN|WS_CLIPSIBLINGS,
+                  WS_POPUP,
                   0, 0,
                   screen_width, screen_height,
                   NULL,
                   NULL,
                   instance_handle,
                   NULL);
+
+        //SetWindowLong(window_handle, GWL_STYLE, GetWindowLong(window_handle, GWL_STYLE) &~ WS_CAPTION);
+        //SetWindowPos(window_handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
 
 	/*window_handle = CreateWindowEx(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE,
 								   name,	// Window class name.
@@ -181,8 +178,11 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 
 	instance_name = name;
 
-	DWORD style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX;
-	DWORD extended_style = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
+    DWORD style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX; //& ~WS_CAPTION;
+	DWORD extended_style = WS_EX_APPWINDOW;
+
+	//DWORD style = WS_POPUP& WS_CAPTION;
+	//DWORD extended_style = WS_EX_TOPMOST;
 
 	// Adjust the window size to take into account the edges
 	RECT window_rect;

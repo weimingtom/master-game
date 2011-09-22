@@ -1,6 +1,7 @@
-
+#ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
+#endif
 
 
 #include "ElementMap.hpp"
@@ -16,6 +17,9 @@
 
 //#include "globals.hpp"
 
+#ifndef round
+#define	round(x)	((x-floor(x))>0.5 ? ceil(x) : floor(x))
+#endif
 
 ElementMap::ElementMap(const Rocket::Core::String& tag) : Rocket::Core::Element(tag)
 {

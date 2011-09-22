@@ -1,12 +1,21 @@
+#ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
 #undef ROCKET_PLATFORM_WIN32
 #define ROCKET_PLATFORM_UNIX
+#endif
+
+#if defined ROCKET_PLATFORM_WIN32
+#include <windows.h>
+#endif
 
 #include <Rocket/Core.h>
 #include <Rocket/Debugger.h>
 #include <Rocket/Core/Types.h>
 #include <Rocket/Controls.h>
+
+//#include <GL/glew.h>
+
 
 #include <Input.h>
 #include <Shell.h>
@@ -27,10 +36,13 @@
 
 #include "globals.hpp"
 
+#include "Rocket/Core/StreamMemory.h"
+#include "Rocket/Core/Factory.h"
 
 
-	GLfloat vertices[] = {500.0f,500.0f,0.1f,500.0f,0.0f,0.1f,0.0f,500.0f,0.1f};
-    GLubyte indices[] = {0,1,2};
+
+
+
 
 
 
@@ -40,38 +52,76 @@ typedef std::pair<short,short> vertex_tuple;
 
 Rocket::Core::Context* context = NULL;
 
+Rocket::Core::TextureHandle wallpaperTexture;
+Rocket::Core::Vector2i wallpaperTexture_dimensions;
+
+
 
 
 void GameLoop()
 {
 
 
-
-    /*
-	glEnableClientState(GL_VERTEX_ARRAY);
-
-	glVertexPointer(3, GL_FLOAT, 0, vertices);
-
-	glDrawElements(GL_TRIANGLES, 1, GL_UNSIGNED_INT, indices);
-	//glDrawArrays(GL_TRIANGLES, 0, 1);
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-*/
 	context->Update();
-    glClear(GL_COLOR_BUFFER_BIT);
-	context->Render();
 
+    glClear(GL_COLOR_BUFFER_BIT);
+
+
+    //glDisable(GL_TEXTURE_2D);  //без этого не отображается
+
+
+	glViewport(0,0,screen_width,screen_height);
+
+	float vertices[8]={0,screen_height,0,0,screen_width,0,screen_width,screen_height};
+    //float texcoords[8]={0.2,0.6,0.2,0.2,0.6,0.2,0.6,0.6};
+    float texcoords[8]={0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0};
+    unsigned char colors[32] = {255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255,
+    255,255,255,255};
+
+
+    glPushMatrix();
+
+    glVertexPointer(2, GL_FLOAT,0, vertices);
+	glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
+    glEnable(GL_TEXTURE_2D);
+
+    glBindTexture(GL_TEXTURE_2D, (GLuint) wallpaperTexture);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT,0, texcoords);
+
+    unsigned int indices[6]={0,1,2,2,3,0};
+
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, indices);
+
+    //glDisable(GL_TEXTURE_RECTANGLE_ARB);
+    glDisable(GL_TEXTURE_2D);
+
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glPopMatrix();
+
+
+
+
+
+	context->Render();
 
 
 
 	Shell::FlipBuffers();
 }
 
-//#if defined ROCKET_PLATFORM_WIN32
-//#include <windows.h>
-//int APIENTRY WinMain(HINSTANCE ROCKET_UNUSED(instance_handle), HINSTANCE ROCKET_UNUSED(previous_instance_handle), char* ROCKET_UNUSED(command_line), int ROCKET_UNUSED(command_show))
-
+/*#if defined ROCKET_PLATFORM_WIN32
+int APIENTRY WinMain(HINSTANCE ROCKET_UNUSED(instance_handle), HINSTANCE ROCKET_UNUSED(previous_instance_handle), char* ROCKET_UNUSED(command_line), int ROCKET_UNUSED(command_show))
+#else*/
 int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
+//#endif
 {
 	// Generic OS initialisation, creates a window and attaches OpenGL.
 	if (!Shell::Initialise("Master") ||
@@ -109,7 +159,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Input::SetContext(context);
 
 
-    string dir = string(".\\assets\\");
+    string dir = string(".\\assets\\*");
     vector<string> files = vector<string>();
 
     getDir(dir,files);
@@ -117,6 +167,8 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
     for (unsigned int i = 0;i < files.size();i++) {
 
     std::vector<std::string> filename = split(files[i],'.');
+	if(filename.size()!=2)
+		continue;
         if (filename[1].compare("ttf")==0)
         {
             cout << files[i] << endl;
@@ -127,10 +179,12 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 
 	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
-	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
+	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
 
-	//Shell::LoadFonts(".\\assets\\");
 
+	Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, ".\\assets\\wallpaper.tga");
+    printf("texture width:%i \n",wallpaperTexture_dimensions.x);
+    printf("texture height:%i \n",wallpaperTexture_dimensions.y);
 
 	Rocket::Core::ElementInstancer* element_instancer = new Rocket::Core::ElementInstancerGeneric< ElementMap >();
 	Rocket::Core::Factory::RegisterElementInstancer("game", element_instancer);
@@ -148,26 +202,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	{
 		document->Show();
 		document->RemoveReference();
-
-
 	}
-
-
-
-    //Rocket::Core::ElementDocument* game = context->LoadDocument(".\\assets\\game.rml");
-	/*
-	if (game != NULL)
-	{
-		game->Show();
-		game->RemoveReference();
-		document->SetOffset(Rocket::Core::Vector2f(400,100),document);
-	}
-	*/
-
-	//Rocket::Core::Element* b1 = game->CreateElement("button");
-	//game->AppendChild(b1,true);
-    //game->AddEventListener("mousemove", this);
-    //MapListener::RegisterMap(game);
 
 
 		Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
@@ -178,14 +213,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	}
 	debugWindow->SetId("debugWindow");
 
-    //debugWindow->IterateDecorators
 
     Rocket::Core::Element* debugText = debugWindow->CreateElement("div");
 	debugText->SetId("convTags");
-
-//	Rocket::Core::Element* newTag = debugWindow->CreateElement("p");
-
-//	debugText->AppendChild(newTag,true)
 
 	debugText->AppendChild(debugWindow->CreateTextNode("Текущее состояние диалога"),true);
 
@@ -196,13 +226,36 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Core::Element* text = document->CreateElement("div");
 	text->SetId("convText");
 
+    Rocket::Core::Element* answers = document->CreateElement("div");
+    answers->SetId("answers");
+
+
 
 	Rocket::Core::Element* newText = document->CreateElement("p");
-	newText->SetId("npc");
+	newText->SetId("pc");
 
+	document->GetElementById("content")->AppendChild(text,true);
+
+    document->GetElementById("content")->AppendChild(answers,true);
+
+    answers->AppendChild(newText,true);
+
+    ClickListener::RegisterClickableContainer(newText);
+
+    Rocket::Core::Dictionary parameters;
+    parameters.Set("mouse_x", 0);
+    parameters.Set("mouse_y", 0);
+    parameters.Set("button", 0);
+
+    newText->SetAttribute("orderNum",0);
+
+    newText->DispatchEvent("click", parameters);
+
+
+/*
 	newText->AppendChild(document->CreateTextNode(chooseAnswer(0)),true);
 
-	text->AppendChild(newText,true);
+
 
     addTags(getConvNode(getCurNode()).effPlus);
     removeTags(getConvNode(getCurNode()).effMin);
@@ -227,12 +280,22 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
             Rocket::Core::Element* content = document->CreateElement("p");
             content->SetId("pc");
+            //Rocket::Core::Element* content;
 
-            content->AppendChild(document->CreateTextNode(*curText),true);
+
+            //content->AppendChild(document->CreateTextNode(*curText),true);
+            Rocket::Core::String RMLtext (*curText);
+            //content->ResolveProperty
+            //Rocket::Core::StreamMemory s1 =  Rocket::Core::StreamMemory((Rocket::Core::byte*)*curText, sizeof(char)*strlen(*curText));
+            //printf("%i \n",s1.Length());
+            content->SetInnerRML(RMLtext);
+            //bool parsed = Rocket::Core::Factory::InstanceElementStream(content,&s1);
+
+            printf("%i \n",answers->GetNumChildren());
+
             answers->AppendChild(content,true);
 
             content->SetAttribute("orderNum",i);
-
 
             MouseOverListener::RegisterMouseOverContainer(content);
             MouseOutListener::RegisterMouseOutContainer(content);
@@ -241,6 +304,8 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         i++;
 
     }
+
+    */
     EventManager::LoadWindow("game");
 	Shell::EventLoop(GameLoop);
 
@@ -255,3 +320,4 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 	return 0;
 }
+
