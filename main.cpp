@@ -1,3 +1,4 @@
+#undef __MY_WIN32__
 #ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
@@ -172,12 +173,10 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         if (filename[1].compare("ttf")==0)
         {
             cout << files[i] << endl;
-            files[i].insert(0,dir);
+            files[i].insert(0,dir,0,dir.length()-1); //без звездочки
             Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
         };
     };
-
-
 	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
 	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
 
