@@ -24,6 +24,8 @@
 ElementMap::ElementMap(const Rocket::Core::String& tag) : Rocket::Core::Element(tag)
 {
 	map = new Map();
+	mode=MAP;
+	mode_element=WALL;
 }
 
 ElementMap::~ElementMap()
@@ -60,8 +62,8 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
                 Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
                 Rocket::Core::Element* window = document->GetElementById("fields");
 
-
-                while (window->HasChildNodes())
+				if(window!=NULL){
+					while (window->HasChildNodes())
                         window->RemoveChild(window->GetFirstChild());
 
 
@@ -84,12 +86,18 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
                     printf("\n");
                     attr=attr->next_attribute();
                 };
+				}
 
 
             }
 
-
-            if (mode)
+			int btn = event.GetParameter("button",0);
+			if(btn==0){
+				map->try_insert_element(v1,mode, mode_element);
+			}else{
+				map->try_delete_element(v1, mode);
+			}
+            /*if (mode)
             {
                 int btn = event.GetParameter("button",0);
                 if (btn==0)
@@ -99,9 +107,10 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
                 }
                 else
                     map->walls.erase(v1);
-            }
+            }*/
 
-            else
+
+            /*else
 
             if (map->walls.find(v1)==map->walls.end())
             {
@@ -115,7 +124,7 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
                         map->UpdateTimerSlot.addTask<ComplexTask>(*followPath);
                     }
                 }
-            }
+            }*/
 
 
         }
@@ -138,7 +147,7 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
             map->cursorX=round(posX);
             map->cursorY=floor(posY);
 
-            std::string s;
+            /*std::string s;
             std::stringstream out;
             out << posX << "," <<posY;
             s = out.str();
@@ -147,7 +156,7 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
             Rocket::Core::Element* newText = document->CreateElement("p");
             newText->SetId("pc");
 
-            coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));
+            coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));*/
 
             //dest_element->Update();
         }
@@ -187,7 +196,7 @@ void ElementMap::OnUpdate()
 void ElementMap::OnRender()
 {
 
-	map->Render();
+	map->Render(mode, mode_element);
 
 
 }

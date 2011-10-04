@@ -1,4 +1,3 @@
-#undef __MY_WIN32__
 #ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
@@ -204,7 +203,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	}
 
 
-		Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
+	/*	Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
 	if (debugWindow != NULL)
 	{
 		debugWindow->Show();
@@ -219,7 +218,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	debugText->AppendChild(debugWindow->CreateTextNode("Текущее состояние диалога"),true);
 
 
-	debugWindow->GetElementById("content")->AppendChild(debugText,true);
+	debugWindow->GetElementById("content")->AppendChild(debugText,true);*/
 
     //chooseAnswer(0);
 	Rocket::Core::Element* text = document->CreateElement("div");

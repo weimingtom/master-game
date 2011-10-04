@@ -19,14 +19,43 @@
 
 // The game's element context (declared in main.cpp).
 extern Rocket::Core::Context* context;
-
-
+#define MAX_POINTS 3
+struct map_element_info{
+	int dx[MAX_POINTS];
+	int dy[MAX_POINTS];
+	int npoints;
+	//float dy1, dy2, dy3, dy4;
+	GLfloat r,g,b;
+};
+map_element_info tube_info={{0},{0},1,1.0, 1.0, 1.0,};
+map_element_info valve_info={{0},{0},1, 1.0, 1.0, 0};
+map_element_info walls_info={{0},{0},1, 0, 0, 0};
+map_element_info res_gen_start_info={{0},{0},1, 0.0, 0.0, 1.0};
+map_element_info gen_info={{0,1},{0,0},2, 0.0, 1.0, 0.0};
+map_element_info water_gen_info={{0,0,0},{0,1,2},3, 0.0, 1.0, 1.0};
+map_element_info control_info={{0},{0},1, 1.0, 0.0, 0.0};
+map_element_info pump_info={{0,0},{0,1},2, 1.0, 0.0, 1.0};
+map_element_info light_info={{0},{0},1, 1.0, 1.0, 0.0};
+map_element_info outer_link_info={{0},{0},1, 1.0, 1.0, 1.0};
+map_element_info patient_info={{0},{0},1, 1.0, 1.0, 1.0};
+map_element_info alarm_magistral_info={{0},{0},1,0.0, 0.0, 0.0};
+map_element_info reserve_magistral_info={{0},{0},1, 0.0, 0.0, 1.0};
+map_element_info div_corb_info={{0},{0},1, 0.0, 1.0, 0.0};
+map_element_info corb_info={{0},{0},1, 1.0, 0.0, 0.0};
 
 Map::Map()
 {
 
-	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invader.tga");
 
+	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invader.tga");
+	if_res_gen_start=false;
+	if_gen=false;
+	if_water_gen=false;
+	if_control=false;
+	if_pump=false;
+	if_light=false;
+	if_outer_link=false;
+	if_patient=false;
     Initialise();
 }
 
@@ -308,7 +337,53 @@ void Map::Update()
 
 }
 
-void Map::Render()
+void RenderElements(std::set<vertex_tuple> &elements,
+						 map_element_info& info){
+	glColor3f(info.r, info.g, info.b);
+	glBegin(GL_QUADS);
+
+	for (std::set<vertex_tuple>::iterator i1=elements.begin();i1!=elements.end();i1++)
+	{
+		/*glVertex2f(i1->first+info.dx1,i1->second+info.dy1);
+		glVertex2f(i1->first+info.dx2,i1->second+info.dy2);
+		glVertex2f(i1->first+info.dx3,i1->second+info.dy3);
+		glVertex2f(i1->first+info.dx4,i1->second+info.dy4);*/
+		for(int j=0;j<info.npoints;j++){
+			glVertex2f(i1->first+info.dx[j]-0.5,i1->second+info.dy[j]-0.5);
+			glVertex2f(i1->first+info.dx[j]-0.5,i1->second+info.dy[j]+0.5);
+			glVertex2f(i1->first+info.dx[j]+0.5,i1->second+info.dy[j]+0.5);
+			glVertex2f(i1->first+info.dx[j]+0.5,i1->second+info.dy[j]-0.5);
+		}
+	}
+	glEnd();
+}
+void RenderElement(vertex_tuple &element, map_element_info&info, bool if_render){
+	if(!if_render)
+		return;
+	glColor3f(info.r, info.g, info.b);
+	glBegin(GL_QUADS);
+
+	for(int j=0;j<info.npoints;j++){
+		glVertex2f(element.first+info.dx[j]-0.5,element.second+info.dy[j]-0.5);
+		glVertex2f(element.first+info.dx[j]-0.5,element.second+info.dy[j]+0.5);
+		glVertex2f(element.first+info.dx[j]+0.5,element.second+info.dy[j]+0.5);
+		glVertex2f(element.first+info.dx[j]+0.5,element.second+info.dy[j]-0.5);
+	}
+	glEnd();
+
+}
+void RenderCursor(int cursorX, int cursorY, map_element_info &info){
+    glColor3f(info.r, info.g, info.b);
+	glBegin(GL_QUADS);
+	for(int j=0;j<info.npoints;j++){
+		glVertex2f(cursorX+info.dx[j]-0.5,cursorY+info.dy[j]-0.5);
+		glVertex2f(cursorX+info.dx[j]-0.5,cursorY+info.dy[j]+0.5);
+		glVertex2f(cursorX+info.dx[j]+0.5,cursorY+info.dy[j]+0.5);
+		glVertex2f(cursorX+info.dx[j]+0.5,cursorY+info.dy[j]-0.5);
+	}
+    glEnd();
+}
+void Map::Render(int mode, int mode_element)
 {
 
     glViewport(left,screen_height - height - top,width,height);
@@ -353,9 +428,46 @@ void Map::Render()
         glVertex2f(0.0f,200.0f);
         glVertex2f(0.0f,-200.0f);
 	glEnd();
-
+	if(mode==MAP){
     //стены
-    glColor3f(1.0,1.0,1.0);
+		RenderElements(walls, walls_info);
+		RenderElement(res_gen_start, res_gen_start_info, if_res_gen_start);
+		RenderElement(gen, gen_info, if_gen);
+		RenderElement(water_gen, water_gen_info, if_water_gen);
+		RenderElement(control, control_info, if_control);
+		RenderElement(pump, pump_info, if_pump);
+		RenderElement(light, light_info, if_light);
+		RenderElement(outer_link, outer_link_info, if_outer_link);
+		RenderElement(patient, patient_info, if_patient);
+		if(mode_element==WALL){
+			RenderCursor(cursorX, cursorY, walls_info);
+		}
+		else if(mode_element==RES_GEN_START){
+			RenderCursor(cursorX, cursorY, res_gen_start_info);
+		}
+		else if(mode_element==GEN){
+			RenderCursor(cursorX, cursorY, gen_info);
+		}
+		else if(mode_element==WATER_GEN){
+			RenderCursor(cursorX, cursorY, water_gen_info);
+		}
+		else if(mode_element==CONTROL){
+			RenderCursor(cursorX, cursorY, control_info);
+		}
+		else if(mode_element==PUMP){
+			RenderCursor(cursorX, cursorY, pump_info);
+		}
+		else if(mode_element==LIGHT){
+			RenderCursor(cursorX, cursorY, light_info);
+		}
+		else if(mode_element==OUTER_LINK){
+			RenderCursor(cursorX, cursorY, outer_link_info);
+		}
+		else if(mode_element==PATIENT){
+			RenderCursor(cursorX, cursorY, patient_info);
+		}
+
+    /*glColor3f(1.0,1.0,1.0);
 	glBegin(GL_QUADS);
 
 	for (std::set<vertex_tuple>::iterator i1=walls.begin();i1!=walls.end();i1++)
@@ -365,11 +477,38 @@ void Map::Render()
         glVertex2f(i1->first+0.5,i1->second+0.5);
         glVertex2f(i1->first+0.5,i1->second-0.5);
     }
-	glEnd();
+	glEnd();*/
+	}else if(mode==CANALISATION){
+		RenderElements(tubes, tube_info);
+		RenderElements(valves, valve_info);
+		if(mode_element==TUBE){
+			RenderCursor(cursorX, cursorY, tube_info);
+		}
+		else if(mode_element==VALVE){
+			RenderCursor(cursorX, cursorY, valve_info);
+		}
+	}else if(mode==ELECTRICITY){
+		RenderElements(alarm_magistral, alarm_magistral_info);
+		RenderElements(reserve_magistral, reserve_magistral_info);
+		RenderElements(div_corb, div_corb_info);
+		RenderElements(corb, corb_info);
+		if(mode_element==ALARM_MAGISTRAL){
+			RenderCursor(cursorX, cursorY, alarm_magistral_info);
+		}
+		else if(mode_element==RESERVE_MAGISTRAL){
+			RenderCursor(cursorX, cursorY, reserve_magistral_info);
+		}
+		else if(mode_element==DIV_CORB){
+			RenderCursor(cursorX, cursorY, div_corb_info);
+		}
+		else if(mode_element==CORB){
+			RenderCursor(cursorX, cursorY, corb_info);
+		}
+	}
 
 	//проводка
 
-    glColor3f(0.0,1.0,0.0);
+    /*glColor3f(0.0,1.0,0.0);
     set <powerGridNode*> q;
     set <powerGridNode*> visited;
     powerGridNode* v=powerGrid[0];
@@ -391,18 +530,17 @@ void Map::Render()
                     visited.insert(powerGrid[*i1]);
                 }
             }
-    }
+    }*/
 
 
     //курсор
-    glColor3f(0.0,0.0,1.0);
+    /*glColor3f(1,1,0);
 	glBegin(GL_QUADS);
         glVertex2f(cursorX-0.5,cursorY-0.5);
         glVertex2f(cursorX-0.5,cursorY+0.5);
         glVertex2f(cursorX+0.5,cursorY+0.5);
         glVertex2f(cursorX+0.5,cursorY-0.5);
-    glEnd();
-
+    glEnd();*/
 
 
 	glPopMatrix();
@@ -417,7 +555,179 @@ void Map::Render()
 
 
 };
+bool find_and_delete_element(std::set<vertex_tuple>&elements, vertex_tuple &v1){
+	return elements.erase(v1);
+}
+bool search_element(vertex_tuple &element, map_element_info &element_info, vertex_tuple &v1, map_element_info &v1_info){
+	for(int i=0;i<element_info.npoints;i++){
+		for(int j=0;j<v1_info.npoints;j++){
+			if((element.first+element_info.dx[i]==v1.first+v1_info.dx[j]) &&
+				(element.second+element_info.dy[i]==v1.second+v1_info.dy[j]))
+				return true;
+		}
+	}
+	return false;
+}
+bool search_elements(std::set<vertex_tuple>&elements, map_element_info &elements_info, 
+					 vertex_tuple &v1, map_element_info &v1_info){
+	for(std::set<vertex_tuple>::iterator i=elements.begin();i!=elements.end();i++){
+		if(search_element(*i, elements_info, v1, v1_info))
+			return true;
+	}
+	return false;
+}
 
+void Map::try_insert_element(vertex_tuple &v1,int mode, int mode_element){
+	if(mode==CANALISATION){
+		map_element_info *v1_info=NULL;
+		std::set<vertex_tuple> *target_set=NULL;
+		if(mode_element==TUBE){
+			v1_info=&tube_info;
+			target_set=&tubes;
+		}
+		else if(mode_element==VALVE){
+			v1_info=&valve_info;
+			target_set=&valves;
+		}
+		if(search_elements(tubes, tube_info, v1, *v1_info))
+			return;
+		if(search_elements(valves, valve_info, v1, *v1_info))
+			return;
+		target_set->insert(v1);
+	}else if(mode==MAP){
+		map_element_info *v1_info=NULL;
+		if(mode_element==WALL){
+			v1_info=&walls_info;
+		}else if(mode_element==RES_GEN_START){
+			v1_info=&res_gen_start_info;
+		}else if(mode_element==GEN){
+			v1_info=&gen_info;
+		}else if(mode_element==WATER_GEN){
+			v1_info=&water_gen_info;
+		}else if(mode_element==CONTROL){
+			v1_info=&control_info;
+		}else if(mode_element==PUMP){
+			v1_info=&pump_info;
+		}else if(mode_element==LIGHT){
+			v1_info=&light_info;
+		}else if(mode_element==OUTER_LINK){
+			v1_info=&outer_link_info;
+		}else if(mode_element==PATIENT){
+			v1_info=&patient_info;
+		}
+		if(search_elements(walls, walls_info, v1, *v1_info))
+			return;
+		if(if_res_gen_start && search_element(res_gen_start, res_gen_start_info, v1, *v1_info))
+			return;
+		if(if_gen && search_element(gen, gen_info, v1, *v1_info))
+			return;
+		if(if_water_gen && search_element(water_gen, water_gen_info, v1, *v1_info))
+			return;
+		if(if_control && search_element(control, control_info, v1, *v1_info))
+			return;
+		if(if_pump && search_element(pump, pump_info, v1, *v1_info))
+			return;
+		if(if_light && search_element(light, light_info, v1, *v1_info))
+			return;
+		if(if_outer_link && search_element(outer_link, outer_link_info, v1, *v1_info))
+			return;
+		if(if_patient && search_element(patient, patient_info, v1, *v1_info))
+			return;
+
+		if(mode_element==WALL){
+			walls.insert(v1);
+		}else if(mode_element==RES_GEN_START){
+			res_gen_start=v1;
+			if_res_gen_start=true;
+		}else if(mode_element==GEN){
+			gen=v1;
+			if_gen=true;
+		}else if(mode_element==WATER_GEN){
+			water_gen=v1;
+			if_water_gen=true;
+		}else if(mode_element==CONTROL){
+			control=v1;
+			if_control=true;
+		}else if(mode_element==PUMP){
+			pump=v1;
+			if_pump=true;
+		}else if(mode_element==LIGHT){
+			light=v1;
+			if_light=true;
+		}else if(mode_element==OUTER_LINK){
+			outer_link=v1;
+			if_outer_link=true;
+		}else if(mode_element==PATIENT){
+			patient=v1;
+			if_patient=true;
+		}
+
+	}else if(mode==ELECTRICITY){
+		map_element_info *v1_info=NULL;
+		std::set<vertex_tuple> *target_set=NULL;
+		if(mode_element==ALARM_MAGISTRAL){
+			v1_info=&alarm_magistral_info;
+			target_set=&alarm_magistral;
+		}
+		else if(mode_element==RESERVE_MAGISTRAL){
+			v1_info=&reserve_magistral_info;
+			target_set=&reserve_magistral;
+		}else if(mode_element==DIV_CORB){
+			v1_info=&div_corb_info;
+			target_set=&div_corb;
+		}else if(mode_element==CORB){
+			v1_info=&corb_info;
+			target_set=&corb;
+		}
+
+		if(search_elements(alarm_magistral, alarm_magistral_info, v1, *v1_info))
+			return;
+		if(search_elements(reserve_magistral, reserve_magistral_info, v1, *v1_info))
+			return;
+		if(search_elements(div_corb, div_corb_info, v1, *v1_info))
+			return;
+		if(search_elements(corb, corb_info, v1, *v1_info))
+			return;
+		target_set->insert(v1);
+	}
+}
+void Map::try_delete_element(vertex_tuple &v1, int mode){
+	if(mode==CANALISATION){
+		if(find_and_delete_element(tubes, v1))
+			;
+		else if(find_and_delete_element(valves, v1))
+			;
+	}else if(mode==MAP){
+		if(find_and_delete_element(walls, v1))
+			;
+		else if(if_res_gen_start && res_gen_start==v1){
+			if_res_gen_start=false;
+		}else if(if_gen && gen==v1){
+			if_gen=false;
+		}else if(if_water_gen && water_gen==v1){
+			if_water_gen=false;
+		}else if(if_control && control==v1){
+			if_control=false;
+		}else if(if_pump && pump==v1){
+			if_pump=false;
+		}else if(if_light && light==v1){
+			if_light=false;
+		}else if(if_outer_link && outer_link==v1){
+			if_outer_link=false;
+		}else if(if_patient && patient==v1){
+			if_patient=false;
+		}
+	}else if(mode==ELECTRICITY){
+		if(find_and_delete_element(alarm_magistral, v1))
+			;
+		else if(find_and_delete_element(reserve_magistral, v1))
+			;
+		else if(find_and_delete_element(div_corb, v1))
+			;
+		else if(find_and_delete_element(corb, v1))
+			;
+	}
+}
  float Map::LeastCostEstimate( void* nodeStart, void* nodeEnd )
 	{
 		short xStart, yStart, xEnd, yEnd;
