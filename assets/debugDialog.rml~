@@ -1,0 +1,74 @@
+<rml>
+	<head>
+		<title>Отладка</title>
+		<META content="text/html; charset=utf-8">
+		</META>
+
+		<link type="text/template" href="window.rml" />
+		<style>
+			body
+			{
+				width: 300px;
+				height: 325px;
+				margin: 100px 700px;
+			}
+			
+			div#title_bar div#icon
+			{
+				display: none;
+			}
+			
+			div#content
+			{
+				text-align: left;
+			}
+
+			p
+			{
+				color: white;
+
+			}
+
+			p#npc
+			{
+				color: green;
+				display: block;
+
+			}
+
+			p#pc
+			{
+				color: red;
+				display: block;
+			}
+
+
+			p#select
+			{
+				color: yellow;
+				display: block;
+			}
+
+		</style>
+	</head>
+	<head>
+	<link type="text/rcss" href="rkt.rcss"/>
+	<link type="text/rcss" href="invader.rcss"/>
+</head>
+<body class="window">
+	<div id="title_bar">
+		<handle move_target="#document">
+			<div id="icon"></div>
+			<span id="title">Отладка</span>
+			<button id="minimize" onclick="close" style="position: absolute; width: 44px; height: 30px; bottom: 0px; right: 44px;">-</button>
+			<button id="close" onclick="close" style="position: absolute; width: 44px; height: 30px; bottom: 0px; right: 0px;">X</button>
+		</handle>
+	</div>
+	<div id="window">
+		<div id="content">
+		</div>
+	</div>
+	<handle size_target="#document" style="position: absolute; width: 16px; height: 16px; bottom: 100px; right: 100px;"></handle>
+</body>
+
+</rml>

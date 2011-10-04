@@ -1,0 +1,1341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Conversation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <subNodes>
+    <ContentNode idNum="1" orderNum="1" linkTo="0" nodeType="npc">
+      <conversationText>Добро пожаловать в систему управления АННА. Пожалуйста, подтвердите загрузку драйверов в память Оператора или прервите подключение.</conversationText>
+      <conversationComments />
+      <subNodes>
+        <ContentNode idNum="33" orderNum="1" linkTo="0" nodeType="pc">
+
+	<conversationText>- Э... &lt;span style=&quot; color:blue; &quot;&gt; что? &lt;/span&gt;</conversationText> 
+	 <!-- <conversationText><span style="color:blue;"> - Э... что? </span></conversationText> !-->
+         <!-- 	<conversationText>- Э... что? </conversationText> 	!-->
+          <conversationComments>&lt;ep&gt;НАЧАЛО_НОВОЙ_ИГРЫ АННА Подключение Оператор Драйверы&lt;/ep&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+              <conversationText />
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="34" orderNum="2" linkTo="0" nodeType="pc">
+          <conversationText>- Загрузить индивидуальную конфигурацию драйверов. Код подтверждения: П-12/1.</conversationText>
+          <conversationComments>&lt;ep&gt;ЗАГРУЗИТЬ_СОХРАНЕННУЮ_ИГРУ_реплика_доступна_при_повторном_запуске_игры&lt;/ep&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="37" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Пожалуйста, выберите предпочтительную конфигурацию:</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="38" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- LOAD GAME 1</conversationText>
+                  <conversationComments />
+                  <subNodes />
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="39" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- LOAD GAME 2</conversationText>
+                  <conversationComments />
+                  <subNodes />
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="40" orderNum="3" linkTo="0" nodeType="pc">
+                  <conversationText>- LOAD GAME 3</conversationText>
+                  <conversationComments />
+                  <subNodes />
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="43" orderNum="4" linkTo="0" nodeType="pc">
+                  <conversationText>- LOAD GAME N</conversationText>
+                  <conversationComments />
+                  <subNodes />
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="41" orderNum="5" linkTo="0" nodeType="pc">
+                  <conversationText>- Отменить загрузку.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="1" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="35" orderNum="3" linkTo="0" nodeType="pc">
+          <conversationText>- Оператор добровольно прерывает подключение к АННА на стадии Безопасного режима, сознавая опасность, которую это действие представляет для его мозга, и возможную ответственность за негативные последствия своего решения. Код подтверждения: П-06/3.</conversationText>
+          <conversationComments>&lt;ep&gt;ВЫХОД_ИЗ_ИГРЫ_реплика_доступна_при_повторном_запуске_игры&lt;/ep&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="124" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>[ВЫХОД ИЗ ИГРЫ]</conversationText>
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+      </subNodes>
+      <additionalData />
+      <infoObjects />
+    </ContentNode>
+    <ContentNode idNum="2" orderNum="2" linkTo="0" nodeType="npc">
+      <conversationText>ПОВТОР: Добро пожаловать в систему управления АННА. Пожалуйста, подтвердите загрузку драйверов в память Оператора или прервите подключение.</conversationText>
+      <conversationComments>&lt;ep&gt;АННА Оператор Подключение Драйверы&lt;/ep&gt;</conversationComments>
+      <subNodes>
+        <ContentNode idNum="3" orderNum="1" linkTo="0" nodeType="pc">
+          <conversationText>- Подтверждаю загрузку драйверов.</conversationText>
+          <conversationComments />
+          <subNodes>
+            <ContentNode idNum="45" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>ВНИМАНИЕ: Вы уверены в том, что подтверждаете загрузку драйверов управления АННА в память Оператора? Пожалуйста, отвечайте ДА или НЕТ.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="46" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Да.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="44" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="47" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Нет.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="48" orderNum="3" linkTo="0" nodeType="pc">
+                  <conversationText>- Подождите, я хотел бы кое-что уточнить!</conversationText>
+                  <conversationComments>&lt;Npre&gt;Вопросы&lt;/Npre&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="10" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="49" orderNum="4" linkTo="0" nodeType="pc">
+                  <conversationText>- У меня все ещё есть вопросы.</conversationText>
+                  <conversationComments>&lt;pre&gt;Вопросы&lt;/pre&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="4" orderNum="2" linkTo="0" nodeType="pc">
+          <conversationText>- Я хочу прервать подключение.</conversationText>
+          <conversationComments>&lt;single /&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="6" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>ВНИМАНИЕ: Отказ от подключения на текущем этапе нежелателен и опасен для всех сторон - участников подключения. Пожалуйста, отказывайтесь от подключения только при особой необходимости.</conversationText>
+              <conversationComments>&lt;ep&gt;Откл-1&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="7" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Эй, если это опасно, то я не хочу рисковать.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="25" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Я хочу знать, насколько это опасно.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="10" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="8" orderNum="3" linkTo="0" nodeType="pc">
+                  <conversationText>- Я все-таки хочу прервать подключение.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="27" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>В ПРОТОКОЛ: Оператор формулирует отказ от завершения процедуры подключения. ВАНИМАНИЕ: В соответствии с пп. 1-4 Правил подключения для отмены подключения Оператор должен посредством вербализатора сообщить АННА контрольную формулу П-06/3.</conversationText>
+                      <conversationComments>&lt;ep&gt;Правила_подключения П-06/3&lt;/ep&gt;</conversationComments>
+                      <subNodes>
+                        <ContentNode idNum="29" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>- Но я не знаю этой формулы!</conversationText>
+                          <conversationComments>&lt;single /&gt;</conversationComments>
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="10" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                        <ContentNode idNum="31" orderNum="2" linkTo="0" nodeType="pc">
+                          <conversationText>- Я согласен на подключение.</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="45" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                        <ContentNode idNum="32" orderNum="3" linkTo="0" nodeType="pc">
+                          <conversationText>- Стоп, сначала я бы хотел понять, что вообще происходит.</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="10" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="26" orderNum="4" linkTo="0" nodeType="pc">
+                  <conversationText>- Стойте, у меня все ещё есть вопросы.</conversationText>
+                  <conversationComments>&lt;pre&gt;Вопросы&lt;/pre&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="101" orderNum="5" linkTo="0" nodeType="pc">
+                  <conversationText>- Так, кажется, сначала все-таки нужно разобраться в происходящем.</conversationText>
+                  <conversationComments>&lt;Npre&gt;Вопросы&lt;/Npre&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="10" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="5" orderNum="3" linkTo="0" nodeType="pc">
+          <conversationText>- Я все-таки хочу прервать подключение.</conversationText>
+          <conversationComments>&lt;pre&gt;Откл-1&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="0" orderNum="1" linkTo="27" nodeType="npc">
+              <conversationText />
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="9" orderNum="4" linkTo="0" nodeType="pc">
+          <conversationText>- У меня есть вопросы!</conversationText>
+          <conversationComments>&lt;single /&gt; &lt;Npre&gt;Вопросы&lt;/Npre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="10" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>ВНИМАНИЕ: На текущем этапе подключения от Оператора требуется однозначный ответ на вопрос: продолжить или прервать подключение. АННА не может гарантировать полноценную интерпретацию более сложных запросов до загрузки драйверов в сознание Оператора.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="11" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Продолжить подключение.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="45" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="12" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Прервать подключение.</conversationText>
+                  <conversationComments>&lt;Npre&gt;Откл-1&lt;/Npre&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="6" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="100" orderNum="3" linkTo="0" nodeType="pc">
+                  <conversationText>- Что-то мне опять захотелось прервать это подключение.</conversationText>
+                  <conversationComments>&lt;pre&gt;Откл-1&lt;/pre&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="27" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="13" orderNum="5" linkTo="0" nodeType="pc">
+                  <conversationText>- И все-таки у меня есть вопросы.</conversationText>
+                  <conversationComments>&lt;ep&gt;Вопросы&lt;/ep&gt;</conversationComments>
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="50" orderNum="5" linkTo="0" nodeType="pc">
+          <conversationText>- Я бы хотел уточнить ещё кое-что.</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+              <conversationText />
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="74" orderNum="6" linkTo="0" nodeType="pc">
+          <conversationText>- Оператор добровольно прерывает подключение к АННА на стадии Безопасного режима, сознавая опасность, которую это действие представляет для его мозга, и возможную ответственность за негативные последствия своего решения. Код подтверждения: П-06/3.</conversationText>
+          <conversationComments>&lt;pre&gt;Откл-2&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="125" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>[ВЫХОД ИЗ ИГРЫ]</conversationText>
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+      </subNodes>
+      <additionalData />
+      <infoObjects />
+    </ContentNode>
+    <ContentNode idNum="14" orderNum="3" linkTo="0" nodeType="npc">
+      <conversationText>ПОВТОР: На текущем этапе подключения от Оператора требуется однозначный ответ на вопрос: продолжить или прервать подключение. АННА не может гарантировать полноценную интерпретацию более сложных запросов до загрузки драйверов в сознание Оператора.</conversationText>
+      <conversationComments />
+      <subNodes>
+        <ContentNode idNum="15" orderNum="1" linkTo="0" nodeType="pc">
+          <conversationText>- Кто такая АННА?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы АННА&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="58" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>ОШИБКА: Информация недоступна в Безопасном режиме. Для того, чтобы получить ответ на запрос "Кто такая АННА?", пожалуйста, выполните подключение к АННА.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="99" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>Так, понятно. Дальше.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="52" orderNum="2" linkTo="0" nodeType="pc">
+          <conversationText>- Что за наблюдатели?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Наблюдатели&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="59" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Удаленное наблюдение эксплуатации АННА и смежного оборудования Центра предусмотрено закрытой документацией, учреждающей Центр и регулирующей его работу. Доступная для рядовых сотрудников информация содержится также в Правилах подключения, пп. 8.1-8.4.</conversationText>
+              <conversationComments>&lt;ep&gt;Правила_подключения Центр&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="103" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Ничего не понимаю.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="104" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Ага, ясно.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="53" orderNum="3" linkTo="0" nodeType="pc">
+          <conversationText>- Безопасный режим чего? И безопасный для чего?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Безопасный_режим&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="60" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Безопасный режим обеспечивает связь АННА и Оператора до прокладки нейрофизиологического канала и прямой загрузки драйверов управления в память Оператора и используется на ранних стадиях подключения для выполнения общей диагностики и подтверждения воли Оператора.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="115" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- "Нейрофизиологический канал"? Звучит паршиво.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="116" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Да-да, я понял, коллега.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="20" orderNum="4" linkTo="0" nodeType="pc">
+          <conversationText>- Что за подключение? Чего? Куда?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Подключение&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="61" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Подключение Оператора к АННА используется для высокоточного нейроуправления АННА и обеспечивается загрузкой драйверов непосредственно в память Оператора. Подробнее см. пп. 1-2 Правил подключения. В ПРОТОКОЛ: Текущее подключение не подтверждено внешними Наблюдателями и проводитися АННА и/или Оператором самостоятельно.</conversationText>
+              <conversationComments>&lt;ep&gt;Протокол Правила_подключения Наблюдатели&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="82" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Так, есть ещё вопросы.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="83" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Будем считать, что понятно. Теперь можно вернуться к вопросу о подключении.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="17" orderNum="5" linkTo="0" nodeType="pc">
+          <conversationText>- Драйверы? Что это?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Драйверы&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="62" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Драйверы управления АННА обеспечивают двухстороннюю связь между, с одной стороны, аппаратным обеспечением Оператора (головным мозгом) и программным обеспечением АННА и, с другой стороны, аппаратным обеспечением АННА и виртуальной машиной, моделирующей программное обеспечение Оператора. Базовый комплект драйверов занимает объем физической памяти Оператора, равный 2.4 тебибайта информации.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="117" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Это похоже на шутку.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="118" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Кажется, это интересно. Давайте сделаем это!</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="16" orderNum="6" linkTo="0" nodeType="pc">
+          <conversationText>- Что за Оператор?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Оператор&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="63" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Под Оператором в широком смысле понимается человек, реализовавший подключение к АННА. ВНИМАНИЕ: При отключенном узле интерпретации стремитесь в запросах избегать ссылок на источник запроса.</conversationText>
+              <conversationComments>&lt;ep&gt;Узел_интерпретации&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="64" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- А в узком смысле?</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="65" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>Под Оператором в узком смысле понимается виртуальная машина, осуществляющая двухстороннее взаимодействие между мозгом и аппаратным обеспечением АННА.</conversationText>
+                      <conversationComments />
+                      <subNodes>
+                        <ContentNode idNum="119" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>- Звучит отвратительно. У меня есть другие вопросы.</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                        <ContentNode idNum="121" orderNum="2" linkTo="0" nodeType="pc">
+                          <conversationText>- Я запутался!</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="120" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Ссылок на источник запроса? Что это значит?</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="19" orderNum="8" linkTo="0" nodeType="pc">
+          <conversationText>- Что ещё за Центр?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Центр&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="110" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Центр Нейрохирургических Исследований при НИИ Мозга МРАН проводит дни открытых дверей с первого по пятое мая и с пятнадцатого по двадцатое октября каждого года. В любое другое время вы можете связаться с Администрацией Центра через республиканскую сеть правительственных организаций.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="111" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Э... какое сегодня число?</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="112" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>Текущие дата и время: 26.07.2075. 18:16.</conversationText>
+                      <conversationComments />
+                      <subNodes>
+                        <ContentNode idNum="113" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>Не попадаю. Ладно, другой вопрос.</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="114" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Что-то это, кажется, не для меня.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="18" orderNum="9" linkTo="0" nodeType="pc">
+          <conversationText>- Администрация?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Администрация&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="105" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Администрация Центра убедительно просит вас своевременно сообщать обо всех случаях нарушения внутреннего распорядка работы Центра, подозрительных происшествиях, неудовлетворительном психическом состоянии сотрудников Центра, сбоях в работе оборудования.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="106" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Да, я хотел бы связаться с администрацией!</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="108" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>ОШИБКА: Внешняя связь недоступна в Безопасном режиме.</conversationText>
+                      <conversationComments>&lt;ep&gt;Безопасный_режим&lt;/ep&gt;</conversationComments>
+                      <subNodes>
+                        <ContentNode idNum="109" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>- Так и знал.</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="107" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Так, это мне сейчас не нужно.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="55" orderNum="10" linkTo="0" nodeType="pc">
+          <conversationText>- Правила подключения. Кажется, это то, что мне нужно.</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Правила_подключения&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="91" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Правила подключения в обязательном порядке предоставляются Оператору до начала подключения. Оператор обязан поставить электронную подпись, подтверждающую ознакомление с Правилами.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="92" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Но я не знаю никаких правил!</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="96" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>ВНИМАНИЕ: В ПРОТОКОЛ: Многократное подтверждение некомпетентности Оператора. Контрольный отчет отправлен внешним Наблюдателям.</conversationText>
+                      <conversationComments>&lt;ep&gt;Наблюдатели Протокол&lt;/ep&gt;</conversationComments>
+                      <subNodes>
+                        <ContentNode idNum="97" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>- И что? А мне что делать?</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="93" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Я бы хотел посмотреть на эти правила.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="95" orderNum="1" linkTo="0" nodeType="npc">
+                      <conversationText>ОШИБКА: Полнотекстовая версия Правил подключения недоступна в Безопасном режиме.</conversationText>
+                      <conversationComments>&lt;ep&gt;Безопасный_режим&lt;/ep&gt;</conversationComments>
+                      <subNodes>
+                        <ContentNode idNum="98" orderNum="1" linkTo="0" nodeType="pc">
+                          <conversationText>- И что мне делать?</conversationText>
+                          <conversationComments />
+                          <subNodes>
+                            <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                              <conversationText />
+                              <conversationComments />
+                              <subNodes />
+                              <additionalData />
+                              <infoObjects />
+                            </ContentNode>
+                          </subNodes>
+                          <additionalData />
+                          <infoObjects />
+                        </ContentNode>
+                      </subNodes>
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="94" orderNum="3" linkTo="0" nodeType="pc">
+                  <conversationText>- Понятно, все как обычно. У меня есть другие вопросы.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="30" orderNum="11" linkTo="0" nodeType="pc">
+          <conversationText>- Я хочу знать контрольную формулу П-06/3.</conversationText>
+          <conversationComments>&lt;single /&gt; &lt;pre&gt;Вопросы П-06/3&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="36" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Воспроизведите через вербализатор следующий текст без кавычек и каких-либо дополнений: "Оператор добровольно прерывает подключение к АННА на стадии Безопасного режима, сознавая опасность, которую это действие представляет для его мозга, и возможную ответственность за негативные последствия своего решения. Код подтверждения: П-06/3".</conversationText>
+              <conversationComments>&lt;ep&gt;Откл-2&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="56" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Подождите, я не уверен.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="75" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Так, я хочу уточнить ещё кое-что.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="0" orderNum="3" linkTo="35" nodeType="pc">
+                  <conversationText />
+                  <conversationComments />
+                  <subNodes />
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="28" orderNum="12" linkTo="0" nodeType="pc">
+          <conversationText>- Протокол? Вы записываете мои слова?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Протокол&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="87" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>ОШИБКА: Информация о текущих настройках протоколирования недоступна в Безопасном режиме. Для того, чтобы получить ответ на запрос "Вы записываете мои слова?", пожалуйста, выполните подключение к АННА.</conversationText>
+              <conversationComments>&lt;ep&gt;Безопасный_режим&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="88" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>Понятно. Есть ещё вопросы.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="21" orderNum="13" linkTo="0" nodeType="pc">
+          <conversationText>- Чем опасен отказ от подключения?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы Откл-1&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="73" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Отказ от подключения на стадии Безопасного режима может повлечь необратимые нарушения в сознании и памяти Оператора и/или дисциплинарное взыскание со стороны Администрации Центра.</conversationText>
+              <conversationComments>&lt;ep&gt;Безопасный_режим Администрация Центр&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="122" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Ничего себе "безопасный" режим...</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="123" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Значит, отказываться себе дороже?</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="78" orderNum="14" linkTo="0" nodeType="pc">
+          <conversationText>- Что это за "узел интерпретации"?</conversationText>
+          <conversationComments>&lt;pre&gt;Узел_интерпретации&lt;/pre&gt;</conversationComments>
+          <subNodes>
+            <ContentNode idNum="79" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>Узел интерпретации - самообучающаяся виртуальная нейросеть в составе АННА, обеспечивающая распознование необднозначных языковых сообщений Оператора. Для подключения узла интерпретации необходимо произвести загрузку драйверов в память Оператора.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="80" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Нужно загрузить драйверы? Выбор невелик, вернемся к этому вопросу.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="81" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Кажется, понятно. Ещё вопросы.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="23" orderNum="15" linkTo="0" nodeType="pc">
+          <conversationText>- Где я?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="69" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>ОШИБКА: Невозможно обработать запрос при отключенном узле интерпретации.</conversationText>
+              <conversationComments>&lt;ep&gt;Узел_интерпретации&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="71" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Что это за "узел интерпретации"?</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="79" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="76" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- У меня есть другой вопрос.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="77" orderNum="3" linkTo="0" nodeType="pc">
+                  <conversationText>- Самое главное и не узнать.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="22" orderNum="16" linkTo="0" nodeType="pc">
+          <conversationText>- С кем я разговариваю?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="0" orderNum="2" linkTo="69" nodeType="npc">
+              <conversationText />
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="24" orderNum="17" linkTo="0" nodeType="pc">
+          <conversationText>- Что происходит?</conversationText>
+          <conversationComments>&lt;pre&gt;Вопросы&lt;/pre&gt; </conversationComments>
+          <subNodes>
+            <ContentNode idNum="66" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>На текущем этапе подключения осуществляется диагностика мозга и сознания Оператора внешними средствами и подготовка к загрузке драйверов управления в память Оператора.</conversationText>
+              <conversationComments />
+              <subNodes>
+                <ContentNode idNum="67" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Теперь все встало на свои места...</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="68" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Я все равно ничего не понимаю!</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="84" orderNum="18" linkTo="0" nodeType="pc">
+          <conversationText>- Почему вы повторяете одно и то же по несколько раз?</conversationText>
+          <conversationComments />
+          <subNodes>
+            <ContentNode idNum="85" orderNum="1" linkTo="0" nodeType="npc">
+              <conversationText>При отключенном узле интерпретации для коммуникации с Оператором АННА пользуется, во-первых, ограниченными языковыми и информационными ресурсами, и, во-вторых, задействует специальные указатели протоколирования, такие как ВНИМАНИЕ, В ПРОТОКОЛ, ОШИБКА и ПОВТОР.</conversationText>
+              <conversationComments>&lt;ep&gt;Протокол Узел_интерпретации&lt;/ep&gt;</conversationComments>
+              <subNodes>
+                <ContentNode idNum="86" orderNum="1" linkTo="0" nodeType="pc">
+                  <conversationText>- Я что, разговариваю с машиной?</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="69" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+                <ContentNode idNum="89" orderNum="2" linkTo="0" nodeType="pc">
+                  <conversationText>- Так, есть ещё вопросы.</conversationText>
+                  <conversationComments />
+                  <subNodes>
+                    <ContentNode idNum="0" orderNum="1" linkTo="14" nodeType="npc">
+                      <conversationText />
+                      <conversationComments />
+                      <subNodes />
+                      <additionalData />
+                      <infoObjects />
+                    </ContentNode>
+                  </subNodes>
+                  <additionalData />
+                  <infoObjects />
+                </ContentNode>
+              </subNodes>
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+        <ContentNode idNum="90" orderNum="19" linkTo="0" nodeType="pc">
+          <conversationText>- Ладно, давайте вернемся к тому, с чего начали.</conversationText>
+          <conversationComments />
+          <subNodes>
+            <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
+              <conversationText />
+              <conversationComments />
+              <subNodes />
+              <additionalData />
+              <infoObjects />
+            </ContentNode>
+          </subNodes>
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+      </subNodes>
+      <additionalData />
+      <infoObjects />
+    </ContentNode>
+    <ContentNode idNum="44" orderNum="4" linkTo="0" nodeType="npc">
+      <conversationText>Загрузка драйверов управления АННА в память Оператора подтверждена. В ПРОТОКОЛ: Выход из Безопасного режима. ВНИМАНИЕ: Для ускорения операции закройте глаза и сосредоточьтесь на высказывании: "Если это утверждение верно, то русалки существуют". ОШИБКА: Глазные яблоки оператора не обнаружены. В ПРОТОКОЛ: Перезагрузка.</conversationText>
+      <conversationComments />
+      <subNodes>
+        <ContentNode idNum="51" orderNum="1" linkTo="0" nodeType="pc">
+          <conversationText>- OMG [Видео: Подключение]</conversationText>
+          <conversationComments />
+          <subNodes />
+          <additionalData />
+          <infoObjects />
+        </ContentNode>
+      </subNodes>
+      <additionalData />
+      <infoObjects />
+    </ContentNode>
+  </subNodes>
+  <additionalData />
+  <infoObjects />
+  <VersionNumber>2</VersionNumber>
+</Conversation>

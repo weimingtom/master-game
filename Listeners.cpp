@@ -104,13 +104,13 @@ void ClickListener::ProcessEvent(Rocket::Core::Event& event)
 
 
 
-    Rocket::Core::ElementDocument* debugWindow = dest_element->GetContext()->GetDocument("debugWindow");
+    /*Rocket::Core::ElementDocument* debugWindow = dest_element->GetContext()->GetDocument("debugWindow");
 
     Rocket::Core::Element* convTags = debugWindow->GetElementById("convTags");
 
     cout<<getTagsAsString();
 
-    convTags->ReplaceChild(debugWindow->CreateTextNode(getTagsAsString().c_str()),convTags->GetFirstChild());
+    convTags->ReplaceChild(debugWindow->CreateTextNode(getTagsAsString().c_str()),convTags->GetFirstChild());*/
    // convTags->ReplaceChild(debugWindow->CreateTextNode(getTags().pop_front()),convTags->GetFirstChild());
 
 

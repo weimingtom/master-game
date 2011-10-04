@@ -5,6 +5,8 @@
 #include <Rocket/Core/Element.h>
 #include <Rocket/Core/EventListener.h>
 #include <Rocket/Core/Types.h>
+#include "map.hpp"
+
 
 
 class Map;
@@ -38,6 +40,8 @@ private:
 public:
 
     int mode;
+	int mode_element;
+
 
 };
 
