@@ -386,7 +386,7 @@ void RenderCursor(int cursorX, int cursorY, map_element_info &info){
 void Map::Render(int mode, int mode_element)
 {
 
-    glViewport(left,screen_height - height - top,width,height);
+    glViewport(left,screen_height - min(width,height) - top,min(width,height),min(width,height));
 
     glMatrixMode (GL_MODELVIEW);
 
@@ -568,14 +568,16 @@ bool search_element(vertex_tuple &element, map_element_info &element_info, verte
 	}
 	return false;
 }
-bool search_elements(std::set<vertex_tuple>&elements, map_element_info &elements_info, 
+bool search_elements(std::set<vertex_tuple>&elements, map_element_info &elements_info,
 					 vertex_tuple &v1, map_element_info &v1_info){
 	for(std::set<vertex_tuple>::iterator i=elements.begin();i!=elements.end();i++){
-		if(search_element(*i, elements_info, v1, v1_info))
+	    vertex_tuple v2 = *i;
+		if(search_element(v2, elements_info, v1, v1_info))
 			return true;
 	}
 	return false;
 }
+
 
 void Map::try_insert_element(vertex_tuple &v1,int mode, int mode_element){
 	if(mode==CANALISATION){
