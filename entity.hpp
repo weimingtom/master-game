@@ -10,20 +10,11 @@
 
 #include "textUtils.hpp"
 
-#include <Rocket/Core/Texture.h>
+#include "Object.hpp"
 
 
 
-struct Sprite
-{
-    int left;
-    int top;
-    int bottom;
-    int right;
-
-    int textureHandle;
-    Rocket::Core::Vector2i texture_dimensions;
-};
+/*
 
 class Entity
 {
@@ -92,12 +83,26 @@ class powerGridNode: public Entity
         std::vector < short > children;
 };
 
-extern std::map<int,Entity*> gameObjectsTable;
-extern std::map<int,Sprite*> spriteTable;
+
+class resGenStart: public Entity   //кнопка запуска резервного генератора
+{
+    public:
+
+        void Draw();
+        rapidxml::xml_node<>* Serialize(xmlFile& doc);
+        void Deserialize(rapidxml::xml_node<>* node);
+
+
+
+};
+
+*/
+extern std::map<obj_id_type,Object*> gameObjectsTable;
+
 
 
 int getUniqueId();
-std::vector<Entity*> getObjectsWithCoords(int x, int y);
+std::vector<Object*> getObjectsWithCoords(int x, int y);
 
 
 #endif

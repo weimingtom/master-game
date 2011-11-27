@@ -1,8 +1,38 @@
 #include "entity.hpp"
-#include "GL/gl.h"
+#include "Object.hpp"
 
-std::map<int,Entity*> gameObjectsTable;
-std::map<int,Sprite*> spriteTable;
+#include "test/CompPhys.hpp"
+
+
+std::map<obj_id_type,Object*> gameObjectsTable;
+
+/*
+#define MAX_POINTS 3
+
+struct map_element_info{
+	int dx[MAX_POINTS];
+	int dy[MAX_POINTS];
+	int npoints;
+	//float dy1, dy2, dy3, dy4;
+	GLfloat r,g,b;
+};
+
+map_element_info tube_info={{0},{0},1,1.0, 1.0, 1.0,};
+map_element_info valve_info={{0},{0},1, 1.0, 1.0, 0};
+map_element_info walls_info={{0},{0},1, 0, 0, 0};
+map_element_info res_gen_start_info={{0},{0},1, 0.0, 0.0, 1.0};
+map_element_info gen_info={{0,1},{0,0},2, 0.0, 1.0, 0.0};
+map_element_info water_gen_info={{0,0,0},{0,1,2},3, 0.0, 1.0, 1.0};
+map_element_info control_info={{0},{0},1, 1.0, 0.0, 0.0};
+map_element_info pump_info={{0,0},{0,1},2, 1.0, 0.0, 1.0};
+map_element_info light_info={{0},{0},1, 1.0, 1.0, 0.0};
+map_element_info outer_link_info={{0},{0},1, 1.0, 1.0, 1.0};
+map_element_info patient_info={{0},{0},1, 1.0, 1.0, 1.0};
+map_element_info alarm_magistral_info={{0},{0},1,0.0, 0.0, 0.0};
+map_element_info reserve_magistral_info={{0},{0},1, 0.0, 0.0, 1.0};
+map_element_info div_corb_info={{0},{0},1, 0.0, 1.0, 0.0};
+map_element_info corb_info={{0},{0},1, 1.0, 0.0, 0.0};
+*/
 
 int getUniqueId()
 {
@@ -15,12 +45,24 @@ int getUniqueId()
     return id1;
 };
 
-std::vector<Entity*> getObjectsWithCoords(int x, int y)
+std::vector<Object*> getObjectsWithCoords(int x, int y)
 {
-    std::vector<Entity*> result;
-    for (std::map<int,Entity*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
+    std::vector<Object*> result;
+    for (std::map<std::string,Object*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
     {
-        if ((go1->second->pos.first==x) && (go1->second->pos.second==y))
+        //std::string p1 = go1->second->getComponent("CompPhys")->getField("pos");
+
+        //int x1,y1;
+
+        //x1=split(p1)
+
+        //std::stringstream st1;
+        //st1 << x <<","<<y;
+        vertex_tuple p1;
+
+        p1=static_cast<CompPhys*>(go1->second->getComponent("CompPhys"))->pos;
+
+        if ((p1.first==x)&&(p1.second==y))
         {
             result.push_back(go1->second);
         }
@@ -28,7 +70,7 @@ std::vector<Entity*> getObjectsWithCoords(int x, int y)
     return result;
 
 }
-
+/*
 
 Entity::Entity()
 {
@@ -123,7 +165,7 @@ void Entity::setPos(int X, int Y)
     pos.second=Y;
 };
 */
-
+/*
 Light::Light(int initX,int initY)
 {
     pos.first=initX;
@@ -276,3 +318,52 @@ void Guest::Draw()
 
     glPopMatrix();
 };
+
+
+void resGenStart::Draw()   //кнопка запуска резервного генератора
+{
+
+    map_element_info info={{0},{0},1, 0.0, 0.0, 1.0};
+
+
+	glColor3f(info.r, info.g, info.b);
+	glBegin(GL_QUADS);
+
+	for(int j=0;j<info.npoints;j++){
+		glVertex2f(pos.first+info.dx[j]-0.5,pos.second+info.dy[j]-0.5);
+		glVertex2f(pos.first+info.dx[j]-0.5,pos.second+info.dy[j]+0.5);
+		glVertex2f(pos.first+info.dx[j]+0.5,pos.second+info.dy[j]+0.5);
+		glVertex2f(pos.first+info.dx[j]+0.5,pos.second+info.dy[j]-0.5);
+	}
+	glEnd();
+
+
+};
+
+
+
+rapidxml::xml_node<>* resGenStart::Serialize(xmlFile& doc)
+{
+    rapidxml::xml_node<>* v1 =  Entity::Serialize(doc);
+
+    char *node_name = doc.allocate_string("resGenStart");        // Allocate string and copy name into it
+
+    v1->name(node_name);
+
+
+    return v1;
+
+
+};
+
+void resGenStart::Deserialize(rapidxml::xml_node<>* node)
+{
+    Entity::Deserialize(node);
+
+};
+
+
+
+
+
+*/

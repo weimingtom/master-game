@@ -1,4 +1,6 @@
 #include "task.hpp"
+#include "objects/test/CompPhys.hpp"
+
 
 
 ComplexTask::ComplexTask()
@@ -42,7 +44,7 @@ goToPoint::goToPoint()
 
 };
 
-goToPoint::goToPoint(short x,short y, Entity* ent)
+goToPoint::goToPoint(short x,short y, Object* ent)
 {
     dest.first=x;
     dest.second=y;
@@ -52,9 +54,10 @@ goToPoint::goToPoint(short x,short y, Entity* ent)
 int goToPoint::execute(Rocket::Core::Time time)
 {
 
-    owner->pos.first=dest.first;
-    owner->pos.second=dest.second;
-    printf("%i,%i \n",owner->pos.first,owner->pos.second);
+    static_cast<CompPhys*>(owner->getComponent("CompPhys"))->pos.first=dest.first;
+    static_cast<CompPhys*>(owner->getComponent("CompPhys"))->pos.second=dest.second;
+    printf("%i,%i \n",static_cast<CompPhys*>(owner->getComponent("CompPhys"))->pos.first,
+           static_cast<CompPhys*>(owner->getComponent("CompPhys"))->pos.second);
 
     return 1;
     };
@@ -65,7 +68,7 @@ visualSignal::visualSignal()
 
 };
 
-visualSignal::visualSignal(short x,short y, Entity* ent)
+visualSignal::visualSignal(short x,short y, Object* ent)
 {
     radius=100;
     source.first=x;

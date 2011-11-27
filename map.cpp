@@ -12,6 +12,16 @@
 
 #include "globals.hpp"
 
+#include "Object.hpp"
+#include "ObjectTemplate.hpp"
+#include "ObjTemplateMgr.hpp"
+
+#include "test/CompPhysTemplate.hpp"
+#include "test/CompVisualSqTemplate.hpp"
+#include "CompTemplateMgr.hpp"
+
+#include "sprites.hpp"
+
 
 #ifdef __MY_NOT__
 #define not !
@@ -19,35 +29,15 @@
 
 // The game's element context (declared in main.cpp).
 extern Rocket::Core::Context* context;
-#define MAX_POINTS 3
-struct map_element_info{
-	int dx[MAX_POINTS];
-	int dy[MAX_POINTS];
-	int npoints;
-	//float dy1, dy2, dy3, dy4;
-	GLfloat r,g,b;
-};
-map_element_info tube_info={{0},{0},1,1.0, 1.0, 1.0,};
-map_element_info valve_info={{0},{0},1, 1.0, 1.0, 0};
-map_element_info walls_info={{0},{0},1, 0, 0, 0};
-map_element_info res_gen_start_info={{0},{0},1, 0.0, 0.0, 1.0};
-map_element_info gen_info={{0,1},{0,0},2, 0.0, 1.0, 0.0};
-map_element_info water_gen_info={{0,0,0},{0,1,2},3, 0.0, 1.0, 1.0};
-map_element_info control_info={{0},{0},1, 1.0, 0.0, 0.0};
-map_element_info pump_info={{0,0},{0,1},2, 1.0, 0.0, 1.0};
-map_element_info light_info={{0},{0},1, 1.0, 1.0, 0.0};
-map_element_info outer_link_info={{0},{0},1, 1.0, 1.0, 1.0};
-map_element_info patient_info={{0},{0},1, 1.0, 1.0, 1.0};
-map_element_info alarm_magistral_info={{0},{0},1,0.0, 0.0, 0.0};
-map_element_info reserve_magistral_info={{0},{0},1, 0.0, 0.0, 1.0};
-map_element_info div_corb_info={{0},{0},1, 0.0, 1.0, 0.0};
-map_element_info corb_info={{0},{0},1, 1.0, 0.0, 0.0};
+
 
 Map::Map()
 {
 
 
 	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invader.tga");
+
+	/*
 	if_res_gen_start=false;
 	if_gen=false;
 	if_water_gen=false;
@@ -56,6 +46,7 @@ Map::Map()
 	if_light=false;
 	if_outer_link=false;
 	if_patient=false;
+	*/
     Initialise();
 }
 
@@ -72,9 +63,6 @@ void Map::Initialise()
 	update_freq = 0.2;
 
 
-    pc1.pos.first=5;
-
-    pc1.pos.second=5;
 
     //загружаем карту
 
@@ -118,78 +106,61 @@ void Map::Initialise()
         walls.insert(v1);
     }
 
+    //CompTemplateMgr templateManager = new CompTemplateMgr();
+    //создадим все фабрики
+    CompPhysTemplate *compPhysTemplate2 = new CompPhysTemplate();   //физические свойства
+    CompTemplateMgr::getInstance()->registerTemplate(compPhysTemplate2);
 
+    CompVisualSqTemplate *compVisualSqTemplate2 = new CompVisualSqTemplate();   //внешний вид
+    CompTemplateMgr::getInstance()->registerTemplate(compVisualSqTemplate2);
 
-    //загружаем проводку
-
-    //powerGrid.reserve(90);
-	powerGrid.resize(90);
-
-    rapidxml::xml_node<char> *n1=doc.first_node("powerGrid");
-
-    n1=n1->first_node("powerGridNode");
-
-    list < rapidxml::xml_node <char>* > q;
-    q.push_back(n1);
-
-
-    while( !q.empty( ) ){
-            v = q.front();
-            q.pop_front();      // remove it from the list
-
-            powerGridNode *pn=new powerGridNode;
-
-            printf("powerGridNode: \n");
-
-            short curId;
-            if (v->first_attribute("id")){
-                curId=atoi(v->first_attribute("id")->value());
-            } else {
-                curId=87;               //TODO:придумать раздачу незанятых номеров
-            }
-            pn->objectId=curId;
-
-            printf("id: \n");
-
-            printf("%i \n",curId);
-
-            std::string coords = v->first_attribute("pos")->value();  //координаты
-            std::vector<std::string> pairs = split(coords,',');
-
-            pn->pos.first=atoi(pairs[0].c_str());
-            pn->pos.second=atoi(pairs[1].c_str());
-
-            printf("coords: \n");
-
-            printf("%i \n",pn->pos.first);
-            printf("%i \n",pn->pos.second);
-
-            if (v->first_attribute("children")){
-                std::string c1 = v->first_attribute("children")->value();
-                std::vector<std::string> children = split(c1,',');
-
-                printf("children: \n");
-
-                for (std::vector<std::string>::iterator p1 = children.begin(); p1!=children.end();p1++)
-                {
-                    pn->children.push_back(atoi(p1->c_str()));
-                    printf("%i \n",(atoi(p1->c_str())));
-                }
-            }
-            powerGrid[pn->objectId]=pn;
-
-            if (v->next_sibling("powerGridNode"))
-            {
-                q.push_back((v->next_sibling("powerGridNode")));
-            }
-
-    }
 
     //загружаем игровые объекты
 
-    rapidxml::xml_node<char> *ob;
+    rapidxml::xml_node<char> *ob = doc.first_node("object_template");
 
-    if (doc.first_node("guest"))
+    while (ob)
+    {
+        static comp_id_type objTemplName=ob->first_attribute("name")->value();
+        ObjectTemplate *objTemplate = new ObjectTemplate(objTemplName);
+
+        int i1 = 1;
+        rapidxml::xml_node<char> *comp = ob->first_node("goc");
+        while (comp)
+        {
+            static comp_id_type compName=comp->first_attribute("component")->value();
+
+            objTemplate->addCompTemplate(CompTemplateMgr::getInstance()->getTemplate(compName));
+
+            ObjTemplateMgr::getInstance()->registerTemplate( objTemplate );
+
+            static comp_id_type str2 = comp_id_type("Guest");
+            static Object* guest = ObjTemplateMgr::getInstance()->createObject( "GuestTemplate", str2);
+
+            static_cast<Component*>(guest->getComponent("CompPhys"))->Deserialize(ob);
+            static_cast<Component*>(guest->getComponent("CompVisualSq"))->Deserialize(ob);
+            //guest->getComponent("CompVisualSq");
+            //std::cout << guest->getComponent("CompPhys")->getField("pos");
+
+            gameObjectsTable[guest->getID()]=guest;
+            //gameObjectsTable[i1]->Deserialize(ob);
+            //gameObjectsTable.insert(std::pair<std::string, Object*>(guest->getID(),guest));
+
+
+
+            std::cout << "gameObjectsTable.size() is " << (int) gameObjectsTable.size() << endl;
+
+            for (std::map<obj_id_type,Object*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
+                {
+                    std::cout << "guest pos x,y: \n";
+                    //std::cout <<  guest->getComponent("CompPhys")->getField("pos");
+                };
+        };
+
+
+    };
+
+    /*if (doc.first_node("guest"))
     {
         ob = doc.first_node("guest");
 
@@ -197,24 +168,40 @@ void Map::Initialise()
         int i1 = 1;
         //gameObjectsTable.insert(std::pair<int,Entity*>(i1, new Guest));
 
+        ObjectTemplate *objTemplate = new ObjectTemplate( "GuestTemplate" );
+        CompPhysTemplate *compPhysTemplate2 = new CompPhysTemplate();   //физические свойства
+        objTemplate->addCompTemplate(compPhysTemplate2);
 
-        gameObjectsTable[i1]=new Guest;
-        gameObjectsTable[i1]->Deserialize(ob);
+        CompVisualSqTemplate *compVisualSqTemplate2 = new CompVisualSqTemplate();   //внешний вид
+        objTemplate->addCompTemplate(compVisualSqTemplate2);
+
+        ObjTemplateMgr::getInstance()->registerTemplate( objTemplate );
+
+        static comp_id_type str2 = comp_id_type("Guest");
+        static Object* guest = ObjTemplateMgr::getInstance()->createObject( "GuestTemplate", str2);
+
+        static_cast<Component*>(guest->getComponent("CompPhys"))->Deserialize(ob);
+        static_cast<Component*>(guest->getComponent("CompVisualSq"))->Deserialize(ob);
+        //guest->getComponent("CompVisualSq");
+        //std::cout << guest->getComponent("CompPhys")->getField("pos");
+
+        gameObjectsTable[guest->getID()]=guest;
+        //gameObjectsTable[i1]->Deserialize(ob);
+        //gameObjectsTable.insert(std::pair<std::string, Object*>(guest->getID(),guest));
 
 
 
         std::cout << "gameObjectsTable.size() is " << (int) gameObjectsTable.size() << endl;
 
-        for (std::map<int,Entity*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
+        for (std::map<obj_id_type,Object*>::iterator go1=gameObjectsTable.begin();go1!=gameObjectsTable.end();go1++)
             {
-                printf("guest pos x: \n");
-                printf("% i \n",go1->second->pos.first);
-                printf("guest pos y: \n");
-                printf("% i \n",go1->second->pos.second);
+                std::cout << "guest pos x,y: \n";
+                //std::cout <<  guest->getComponent("CompPhys")->getField("pos");
             };
 
 
     };
+    */
 
     //загружаем картинки
 
@@ -278,42 +265,37 @@ void Map::Finalise()
     v->append_attribute(attr);
 
 
-    rapidxml::xml_node<> *g1 = gameObjectsTable[1]->Serialize(doc);
+    //rapidxml::xml_node<> *g1 = gameObjectsTable["guest"]->Serialize(doc);
 
-    printf("serialized id: \n");
-    printf(g1->name());
-    printf("\n");
-    printf(g1->first_attribute("id")->value());
-    printf("\n");
-
-    if (doc.first_node(g1->name()))
+    for (component_table_type::iterator i1 = gameObjectsTable["Guest"]->Components()->begin();
+    i1!=gameObjectsTable["Guest"]->Components()->end(); i1++)
     {
-        printf("found node \n");
-        rapidxml::xml_node<char> *v1 = doc.first_node(g1->name());
+        rapidxml::xml_node<>* g1 = i1->second->Serialize(doc);
 
-        printf(v1->first_attribute("id")->value());
+        printf("serialized: \n");
+        printf(g1->name());
         printf("\n");
-        printf(g1->first_attribute("id")->value());
-        printf("\n");
-        //printf("%i",strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()));
-        //printf("\n");
 
-        if (not strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()))
+        if (doc.first_node(g1->name()))
         {
-            doc.remove_node(v1);
-            doc.append_node(g1);
-            printf("replaced node \n");
-        }
+            printf("found node \n");
+            rapidxml::xml_node<char> *v1 = doc.first_node(g1->name());
 
-    };
+            printf(v1->first_attribute("id")->value());
+            printf("\n");
+            printf(g1->first_attribute("id")->value());
+            printf("\n");
+            //printf("%i",strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()));
+            //printf("\n");
 
-
-
-    //записываем проводку
-
-    //v=doc.first_node("powerGrid");
-        //v->remove_all_nodes
-
+            if (not strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()))
+            {
+                doc.remove_node(v1);
+                doc.append_node(g1);
+                printf("replaced node \n");
+            }
+        };
+    }
 
     mapfile << doc;
 
@@ -336,7 +318,7 @@ void Map::Update()
     update_start = Shell::GetElapsedTime();
 
 }
-
+/*
 void RenderElements(std::set<vertex_tuple> &elements,
 						 map_element_info& info){
 	glColor3f(info.r, info.g, info.b);
@@ -344,10 +326,7 @@ void RenderElements(std::set<vertex_tuple> &elements,
 
 	for (std::set<vertex_tuple>::iterator i1=elements.begin();i1!=elements.end();i1++)
 	{
-		/*glVertex2f(i1->first+info.dx1,i1->second+info.dy1);
-		glVertex2f(i1->first+info.dx2,i1->second+info.dy2);
-		glVertex2f(i1->first+info.dx3,i1->second+info.dy3);
-		glVertex2f(i1->first+info.dx4,i1->second+info.dy4);*/
+
 		for(int j=0;j<info.npoints;j++){
 			glVertex2f(i1->first+info.dx[j]-0.5,i1->second+info.dy[j]-0.5);
 			glVertex2f(i1->first+info.dx[j]-0.5,i1->second+info.dy[j]+0.5);
@@ -383,6 +362,10 @@ void RenderCursor(int cursorX, int cursorY, map_element_info &info){
 	}
     glEnd();
 }
+
+*/
+
+
 void Map::Render(int mode, int mode_element)
 {
 
@@ -396,7 +379,7 @@ void Map::Render(int mode, int mode_element)
     glPushMatrix();
     glLoadIdentity();
 
-    gluOrtho2D(-5,5,-5,5);
+    gluOrtho2D(-25,25,-25,25);
 
 
     glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
@@ -411,11 +394,7 @@ void Map::Render(int mode, int mode_element)
    	//glBindTexture(GL_TEXTURE_2D, (GLuint) texture);
 
     //гость
-	gameObjectsTable[1]->Draw();
-
-	ps1.Draw();
-
-	pc1.Draw();
+	static_cast<CompVisualSq*>(gameObjectsTable["Guest"]->getComponent("CompVisualSq"))->Draw();
 
 
 
@@ -428,6 +407,8 @@ void Map::Render(int mode, int mode_element)
         glVertex2f(0.0f,200.0f);
         glVertex2f(0.0f,-200.0f);
 	glEnd();
+
+	/*
 	if(mode==MAP){
     //стены
 		RenderElements(walls, walls_info);
@@ -467,17 +448,8 @@ void Map::Render(int mode, int mode_element)
 			RenderCursor(cursorX, cursorY, patient_info);
 		}
 
-    /*glColor3f(1.0,1.0,1.0);
-	glBegin(GL_QUADS);
 
-	for (std::set<vertex_tuple>::iterator i1=walls.begin();i1!=walls.end();i1++)
-    {
-        glVertex2f(i1->first-0.5,i1->second-0.5);
-        glVertex2f(i1->first-0.5,i1->second+0.5);
-        glVertex2f(i1->first+0.5,i1->second+0.5);
-        glVertex2f(i1->first+0.5,i1->second-0.5);
-    }
-	glEnd();*/
+
 	}else if(mode==CANALISATION){
 		RenderElements(tubes, tube_info);
 		RenderElements(valves, valve_info);
@@ -505,32 +477,8 @@ void Map::Render(int mode, int mode_element)
 			RenderCursor(cursorX, cursorY, corb_info);
 		}
 	}
+	*/
 
-	//проводка
-
-    /*glColor3f(0.0,1.0,0.0);
-    set <powerGridNode*> q;
-    set <powerGridNode*> visited;
-    powerGridNode* v=powerGrid[0];
-
-    q.insert(v);
-    visited.insert(v);
-    while( !q.empty( ) ){
-            v = *(q.begin());
-            q.erase(q.begin());
-            for (std::vector<short>::iterator i1=v->children.begin();i1!=v->children.end();i1++)
-            {
-                glBegin(GL_LINES);
-                    glVertex2f((v)->pos.first,(v)->pos.second);
-                    glVertex2f((powerGrid[*i1])->pos.first,(powerGrid[*i1])->pos.second);
-                glEnd();
-                if (visited.find(powerGrid[*i1])==visited.end())
-                {
-                    q.insert(powerGrid[*i1]);
-                    visited.insert(powerGrid[*i1]);
-                }
-            }
-    }*/
 
 
     //курсор
@@ -555,6 +503,9 @@ void Map::Render(int mode, int mode_element)
 
 
 };
+
+
+/*
 bool find_and_delete_element(std::set<vertex_tuple>&elements, vertex_tuple &v1){
 	return elements.erase(v1);
 }
@@ -577,9 +528,9 @@ bool search_elements(std::set<vertex_tuple>&elements, map_element_info &elements
 	}
 	return false;
 }
+*/
 
-
-void Map::try_insert_element(vertex_tuple &v1,int mode, int mode_element){
+/*void Map::try_insert_element(vertex_tuple &v1,int mode, int mode_element){
 	if(mode==CANALISATION){
 		map_element_info *v1_info=NULL;
 		std::set<vertex_tuple> *target_set=NULL;
@@ -730,6 +681,8 @@ void Map::try_delete_element(vertex_tuple &v1, int mode){
 			;
 	}
 }
+
+*/
  float Map::LeastCostEstimate( void* nodeStart, void* nodeEnd )
 	{
 		short xStart, yStart, xEnd, yEnd;
@@ -829,7 +782,9 @@ ComplexTask* Map::planPath(short x, short y)
     std::vector< void* > path;
 	float totalCost;
 
-    int result = pather.Solve( XYToNode(gameObjectsTable[1]->pos.first,gameObjectsTable[1]->pos.second),XYToNode(x,y), &path, &totalCost );
+	vertex_tuple tpos = static_cast<CompPhys*>(gameObjectsTable["Guest"]->getComponent("CompPhys"))->pos;
+
+    int result = pather.Solve( XYToNode(tpos.first,tpos.second),XYToNode(x,y), &path, &totalCost );
 
     if (result)
     {
@@ -842,14 +797,14 @@ ComplexTask* Map::planPath(short x, short y)
     short x1, y1;
 
     NodeToXY( path[0], &x1, &y1 );
-    orderChain[0]=*(new goToPoint(x1,y1,gameObjectsTable[1]));
+    orderChain[0]=*(new goToPoint(x1,y1,gameObjectsTable["Guest"]));
     static ComplexTask followPath;
     followPath=ComplexTask(orderChain[0]);
     for (int i =1;i<path.size();i++){
 
         NodeToXY( path[i], &x1, &y1 );
 
-        orderChain[i-1]=*(new goToPoint(x1,y1,gameObjectsTable[1]));
+        orderChain[i-1]=*(new goToPoint(x1,y1,gameObjectsTable["Guest"]));
         followPath.AddAction(orderChain[i-1]);
     }
     return &followPath;
