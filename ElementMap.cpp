@@ -47,12 +47,14 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 
         if (event=="mousedown")
         {
+
+            /*
             vertex_tuple v1;
             v1.first=map->cursorX;
             v1.second=map->cursorY;
 
 
-            std::vector<Entity*> objectsOnSpot = getObjectsWithCoords(map->cursorX,map->cursorY);
+            std::vector<Object*> objectsOnSpot = getObjectsWithCoords(map->cursorX,map->cursorY);
             if (!objectsOnSpot.empty())
             {
                 rapidxml::xml_node<> *currentParameters = objectsOnSpot[0]->Serialize(map->doc);
@@ -92,11 +94,15 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
             }
 
 			int btn = event.GetParameter("button",0);
+
+			*/
+			/*
 			if(btn==0){
 				map->try_insert_element(v1,mode, mode_element);
 			}else{
 				map->try_delete_element(v1, mode);
 			}
+			*/
             /*if (mode)
             {
                 int btn = event.GetParameter("button",0);

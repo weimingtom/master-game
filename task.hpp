@@ -12,7 +12,7 @@ class Entity;
 class Task
 {
     public:
-        Entity* owner;
+        Object* owner;
         Task(){};
         virtual int execute(Rocket::Core::Time time)=0;
 };
@@ -32,7 +32,7 @@ class goToPoint: public Task {
         public:
         vertex_tuple dest;
         goToPoint();
-        goToPoint(short x,short y, Entity* ent);
+        goToPoint(short x,short y, Object* ent);
         int execute(Rocket::Core::Time time);
     };
 
@@ -42,7 +42,7 @@ class visualSignal: public Task {
         vertex_tuple source;
         float radius;
         visualSignal();
-        visualSignal(short x,short y, Entity* ent);
+        visualSignal(short x,short y, Object* ent);
         int execute(Rocket::Core::Time time);
     };
 

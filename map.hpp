@@ -67,8 +67,8 @@ class Map : public micropather::Graph{
         int Passable( short nx, short ny );
 
         ComplexTask* planPath(short x, short y);
-		void try_insert_element(vertex_tuple &v1,int mode, int mode_element);
-		void try_delete_element(vertex_tuple &v1, int mode);
+		//void try_insert_element(vertex_tuple &v1,int mode, int mode_element);
+		//void try_delete_element(vertex_tuple &v1, int mode);
 
 
     private:
@@ -115,17 +115,13 @@ class Map : public micropather::Graph{
 
         //objectTable
 
-        std::vector<powerGridNode*> powerGrid;
+        //std::vector<powerGridNode*> powerGrid;
 
 
         xmlFile doc;
         std::vector<char> xml_copy;
 
         //Entity guest1;
-
-        PowerSource ps1;
-
-        PowerConsumer pc1;
 
         Slot<Rocket::Core::Time> UpdateTimerSlot;
 
