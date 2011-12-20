@@ -4,6 +4,7 @@
 
 #include "ComponentTemplate.hpp"
 #include "CompPhys.hpp"
+#include <cstdio>
 
 class CompPhysTemplate : public ComponentTemplate {
 
@@ -19,10 +20,12 @@ public:
 
 	virtual Component *makeComponent() {
 		CompPhys *comp = new CompPhys(this);
+		printf("\n creating CompPhys %i,%i \n",comp->pos.first,comp->pos.second);
+
 		//comp->reset();
 		return comp;
 	}
-    rapidxml::xml_node<>* Serialize(xmlFile& doc);
+    void Deserialize(rapidxml::xml_node<>* node);
 
 
 	// CompPhys interface

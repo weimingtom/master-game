@@ -42,10 +42,6 @@
 
 
 
-
-
-
-
 typedef std::pair<short,short> vertex_tuple;
 
 
@@ -60,7 +56,6 @@ Rocket::Core::Vector2i wallpaperTexture_dimensions;
 
 void GameLoop()
 {
-
 
 	context->Update();
 
@@ -176,7 +171,8 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
             Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
         };
     };
-	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
+
+	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
 	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
 
 
@@ -187,6 +183,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Core::ElementInstancer* element_instancer = new Rocket::Core::ElementInstancerGeneric< ElementMap >();
 	Rocket::Core::Factory::RegisterElementInstancer("game", element_instancer);
 	element_instancer->RemoveReference();
+
 
     EventInstancer* event_instancer = new EventInstancer();
 	Rocket::Core::Factory::RegisterEventListenerInstancer(event_instancer);
@@ -201,7 +198,6 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 		document->Show();
 		document->RemoveReference();
 	}
-
 
 	/*	Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
 	if (debugWindow != NULL)
@@ -304,7 +300,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
     }
 
     */
+
     EventManager::LoadWindow("game");
+
 	Shell::EventLoop(GameLoop);
 
 	// Shutdown Rocket.

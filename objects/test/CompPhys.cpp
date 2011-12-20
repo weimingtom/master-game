@@ -50,9 +50,9 @@ rapidxml::xml_node<>* CompPhys::Serialize(xmlFile& doc)
 void CompPhys::Deserialize(rapidxml::xml_node<>* node)
 {
 
-    if (node->first_attribute("pos"))
+    if (node->first_node("pos"))
     {
-        std::string c2 = node->first_attribute("pos")->value();
+        std::string c2 = node->first_node("pos")->first_attribute("value")->value();
         std::vector<std::string> pairs = split(c2,',');
         pos.first=atoi(pairs[0].c_str());
         pos.second=atoi(pairs[1].c_str());

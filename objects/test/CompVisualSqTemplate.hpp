@@ -4,6 +4,8 @@
 
 #include "ComponentTemplate.hpp"
 #include "CompVisualSq.hpp"
+#include "../sprites.hpp"
+
 
 class CompVisualSqTemplate : public ComponentTemplate {
 
@@ -25,6 +27,10 @@ public:
 
 	// CompVisualSq interface
 
+	void Deserialize(rapidxml::xml_node<>* node);
+
+public:
+	int sprite;
 
 private:
 

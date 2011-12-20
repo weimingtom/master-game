@@ -4,6 +4,7 @@
 
 #include <string>
 #include <map>
+#include <cstring>
 
 #include "Component.hpp"
 typedef std::map<const comp_id_type, Component*> component_table_type;
@@ -32,7 +33,7 @@ public:
 		return oldComp;
 	}
 	void clearComponents() {
-		std::map<const comp_id_type, Component*>::iterator iter;
+		component_table_type::iterator iter;
 		for(iter = mComponents.begin(); iter != mComponents.end(); iter++) {
 			delete iter->second;
 		}
@@ -41,6 +42,30 @@ public:
 
     component_table_type* Components() {
 		return &mComponents;
+	}
+
+	void Deserialize(rapidxml::xml_node<>* node) {
+
+        component_table_type::iterator iter;
+		for(iter = mComponents.begin(); iter != mComponents.end(); iter++) {
+
+            rapidxml::xml_node<char> *templ = node->first_node("components")->first_node("goc");
+
+            while (templ)
+
+            {
+
+                if (not (strcmp(templ->first_attribute("name")->value(),iter->second->componentID().c_str())))
+                    {
+                        iter->second->Deserialize(templ);
+                    }
+
+                templ=templ->next_sibling("goc");
+            }
+
+		}
+
+
 	}
 
 
