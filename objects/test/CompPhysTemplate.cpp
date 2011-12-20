@@ -1,36 +1,26 @@
 
 #include "CompPhysTemplate.hpp"
+#include "../../textUtils.hpp"
 #include <cstring>
+#include <vector>
 
 
 
 /*static*/ comp_id_type CompPhysTemplate::mComponentID = "CompPhys" ;
 /*static*/ comp_id_type CompPhysTemplate::mFamilyID = "CompPhys" ;
 
-rapidxml::xml_node<>* CompPhysTemplate::Serialize(xmlFile& doc)
+
+void CompPhysTemplate::Deserialize(rapidxml::xml_node<>* node)
 {
 
-    //запишем новый
-
-    std::string id;
-
-
-    rapidxml::xml_node<> *entityNode = doc.allocate_node(rapidxml::node_element,"CompPhys");
-
-    static char buffer1 [33];
-    static char buffer2 [33];
-
-    itoa(pos.first,buffer1,10);
-    itoa(pos.second,buffer2,10);
-
-    strcat(buffer1,",");
-    strcat(buffer1,buffer2);
-
-    rapidxml::xml_attribute<> *posAttr = doc.allocate_attribute("pos", buffer1);
-
-    entityNode->append_attribute(posAttr);
+    if (node->first_node("pos"))
+    {
+        std::string c2 = node->first_node("pos")->first_attribute("value")->value();
+        std::vector<std::string> pairs = split(c2,',');
+        pos.first=atoi(pairs[0].c_str());
+        pos.second=atoi(pairs[1].c_str());
+    };
 
 
-    return entityNode;
 };
 

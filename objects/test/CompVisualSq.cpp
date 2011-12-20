@@ -1,5 +1,6 @@
 
 #include "CompVisualSq.hpp"
+#include "CompVisualSqTemplate.hpp"
 #include "CompPhys.hpp"
 #include "../sprites.hpp"
 #include "Object.hpp"
@@ -9,11 +10,7 @@
 
 CompVisualSq::CompVisualSq(CompVisualSqTemplate *templ) {
 	// Construct
-	//int i;
-	/*for(i=0; i<cNumBodyParts; i++) {
-		mInitialHPs[i] = templ->getInitialHealthAt(static_cast<CompHealthTemplate::bodyPart_e>(i));
-	}
-*/
+    sprite=templ->sprite;
 }
 
 
@@ -38,10 +35,14 @@ rapidxml::xml_node<>* CompVisualSq::Serialize(xmlFile& doc)
 void CompVisualSq::Deserialize(rapidxml::xml_node<>* node)
 {
 
-    if (node->first_attribute("sprite"))
+    if (node->first_node("sprite"))
     {
-        std::string c2 = node->first_attribute("sprite")->value();
+        std::string c2 = node->first_node("sprite")->first_attribute("value")->value();
         sprite=atoi(c2.c_str());
+
+        printf("Loading sprite #");
+        printf(c2.c_str());
+        printf("\n");
     };
 
 

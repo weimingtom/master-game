@@ -179,6 +179,7 @@ bool ShellRenderInterfaceOpenGL::LoadTexture(Rocket::Core::TextureHandle& textur
 	texture_dimensions.x = header.width;
 	texture_dimensions.y = header.height;
 
+
 	bool success = GenerateTexture(texture_handle, image_dest, texture_dimensions);
 
 	delete [] image_dest;

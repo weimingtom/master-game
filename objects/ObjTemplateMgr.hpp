@@ -8,6 +8,9 @@
 #include "Object.hpp"
 #include "ObjectTemplate.hpp"
 
+#include <cstdio>
+#include <iostream>
+
 class ObjTemplateMgr {
 protected:
 	typedef std::vector<ObjectTemplate*> object_list_t;
@@ -35,6 +38,8 @@ public:
 
 
 	Object *createObject(std::string templateName, obj_id_type &objectID) {
+
+        printf("creating object \n");
 		int i = 0;
 		while(i<mObjectTemplates.size()) {
 			if(mObjectTemplates[i]->name() == templateName)
@@ -43,12 +48,14 @@ public:
 		}
 		if(i==mObjectTemplates.size())
 			return NULL;
+        printf(templateName.c_str(), "\n");
 
 		Object *newObj = new Object(objectID);
 		ObjectTemplate::compTempl_list_type components = mObjectTemplates[i]->components();
 		for(int j=0; j<components.size(); j++) {
 			newObj->setComponent( components[j]->makeComponent() );
 		}
+
 		return newObj;
 	}
 
