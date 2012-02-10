@@ -23,14 +23,14 @@
 
 #include "dialog.hpp"
 
-#include "Listeners.hpp"
+#include "GUIevents/Listeners.hpp"
 
 #include "ElementMap.hpp"
 #include "map.hpp"
 
-#include "EventInstancer.h"
-#include "EventManager.h"
-#include "EventHandlerMode.h"
+#include "GUIevents/EventInstancer.h"
+#include "GUIevents/EventManager.h"
+#include "GUIevents/EventHandlerMode.h"
 
 #include "Rocket/Core/Decorator.h"
 
@@ -245,61 +245,6 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
     newText->DispatchEvent("click", parameters);
 
-
-/*
-	newText->AppendChild(document->CreateTextNode(chooseAnswer(0)),true);
-
-
-
-    addTags(getConvNode(getCurNode()).effPlus);
-    removeTags(getConvNode(getCurNode()).effMin);
-
-
-	document->GetElementById("content")->AppendChild(text,true);
-
-    std::vector<char*> ansList=currentAnswers();
-
-    Rocket::Core::Element* answers = document->CreateElement("div");
-
-    document->GetElementById("content")->AppendChild(answers,true);
-
-
-    int i=0;
-    for (std::vector<char*>::iterator curText=ansList.begin(); curText!=ansList.end();curText++)
-    {
-        dialogNode curNode=getConvNode(getConvNode(getCurNode()).children[i]);
-        tags curState=getTags();
-        if ((curState.empty() && curNode.precond.empty()) || (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end())))
-        {
-
-            Rocket::Core::Element* content = document->CreateElement("p");
-            content->SetId("pc");
-            //Rocket::Core::Element* content;
-
-
-            //content->AppendChild(document->CreateTextNode(*curText),true);
-            Rocket::Core::String RMLtext (*curText);
-            //content->ResolveProperty
-            //Rocket::Core::StreamMemory s1 =  Rocket::Core::StreamMemory((Rocket::Core::byte*)*curText, sizeof(char)*strlen(*curText));
-            //printf("%i \n",s1.Length());
-            content->SetInnerRML(RMLtext);
-            //bool parsed = Rocket::Core::Factory::InstanceElementStream(content,&s1);
-
-            printf("%i \n",answers->GetNumChildren());
-
-            answers->AppendChild(content,true);
-
-            content->SetAttribute("orderNum",i);
-
-            MouseOverListener::RegisterMouseOverContainer(content);
-            MouseOutListener::RegisterMouseOutContainer(content);
-            ClickListener::RegisterClickableContainer(content);
-        }
-        i++;
-
-    }
-
-    */
 
     EventManager::LoadWindow("game");
 

@@ -1,35 +1,10 @@
-/*
- * This source file is part of libRocket, the HTML/CSS Interface Middleware
- *
- * For the latest information, see http://www.librocket.com
- *
- * Copyright (c) 2008-2010 CodePoint Ltd, Shift Technology Ltd
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- */
 
 #include <win32/InputWin32.h>
 #include <Rocket/Core/Context.h>
 #include <Rocket/Core/Input.h>
 #include <Rocket/Debugger.h>
 #include <Shell.h>
+#include <iostream>
 
 static int GetKeyModifierState();
 static void InitialiseKeymap();
@@ -158,7 +133,7 @@ static void InitialiseKeymap()
 {
 	// Initialise the key map with default values.
 	memset(key_identifier_map, 0, sizeof(key_identifier_map));
-	
+
 	// Assign individual values.
 	key_identifier_map['A'] = Rocket::Core::Input::KI_A;
 	key_identifier_map['B'] = Rocket::Core::Input::KI_B;
@@ -180,7 +155,7 @@ static void InitialiseKeymap()
 	key_identifier_map['R'] = Rocket::Core::Input::KI_R;
 	key_identifier_map['S'] = Rocket::Core::Input::KI_S;
 	key_identifier_map['T'] = Rocket::Core::Input::KI_T;
-	key_identifier_map['U'] = Rocket::Core::Input::KI_U;	
+	key_identifier_map['U'] = Rocket::Core::Input::KI_U;
 	key_identifier_map['V'] = Rocket::Core::Input::KI_V;
 	key_identifier_map['W'] = Rocket::Core::Input::KI_W;
 	key_identifier_map['X'] = Rocket::Core::Input::KI_X;
@@ -288,7 +263,7 @@ static void InitialiseKeymap()
 	key_identifier_map[VK_NUMLOCK] = Rocket::Core::Input::KI_NUMLOCK;
 	key_identifier_map[VK_SCROLL] = Rocket::Core::Input::KI_SCROLL;
 
-/*	
+/*
 	key_identifier_map[VK_OEM_NEC_EQUAL] = Rocket::Core::Input::KI_OEM_NEC_EQUAL;
 
 	key_identifier_map[VK_OEM_FJ_JISHO] = Rocket::Core::Input::KI_OEM_FJ_JISHO;

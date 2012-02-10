@@ -14,7 +14,8 @@ class Task
     public:
         Object* owner;
         Task(){};
-        virtual int execute(Rocket::Core::Time time)=0;
+        virtual int execute(Rocket::Core::Time time) {}
+        virtual int execute(obj_id_type target,obj_id_type sender) {}
 };
 
 class ComplexTask: public Task {
@@ -45,6 +46,15 @@ class visualSignal: public Task {
         visualSignal(short x,short y, Object* ent);
         int execute(Rocket::Core::Time time);
     };
+
+class move: public Task {
+    public:
+        move();
+        move(obj_id_type target);
+        int execute(obj_id_type target,obj_id_type sender);
+    };
+
+int handleMoveFun(obj_id_type target,obj_id_type sender);
 
 
 #endif

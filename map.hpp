@@ -83,45 +83,22 @@ class Map : public micropather::Graph{
         int width;
         int height;
 
+        float mapLeft;
+        float mapTop;
+        float mapRight;
+        float mapBottom;
+
         int cursorX;
         int cursorY;
 
         GLint viewport[4];
         GLdouble modelview[16];
         GLdouble projection[16];
+
         std::set<vertex_tuple> walls;
-		std::set<vertex_tuple> tubes;
-		std::set<vertex_tuple> valves;
-		vertex_tuple res_gen_start;
-		bool if_res_gen_start;
-		vertex_tuple gen;
-		bool if_gen;
-		vertex_tuple water_gen;
-		bool if_water_gen;
-		vertex_tuple control;
-		bool if_control;
-		vertex_tuple pump;
-		bool if_pump;
-		vertex_tuple light;
-		bool if_light;
-		vertex_tuple outer_link;
-		bool if_outer_link;
-		vertex_tuple patient;
-		bool if_patient;
-		std::set<vertex_tuple> alarm_magistral;
-		std::set<vertex_tuple> reserve_magistral;
-		std::set<vertex_tuple> div_corb;
-		std::set<vertex_tuple> corb;
-
-        //objectTable
-
-        //std::vector<powerGridNode*> powerGrid;
-
 
         xmlFile doc;
         std::vector<char> xml_copy;
-
-        //Entity guest1;
 
         Slot<Rocket::Core::Time> UpdateTimerSlot;
 
