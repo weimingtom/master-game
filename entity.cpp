@@ -1,7 +1,7 @@
 #include "entity.hpp"
 #include "Object.hpp"
 
-#include "test/CompPhys.hpp"
+#include "components/CompPhys.hpp"
 
 
 std::map<obj_id_type,Object*> gameObjectsTable;

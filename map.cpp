@@ -17,12 +17,14 @@
 #include "ObjTemplateMgr.hpp"
 
 #include "ComponentTemplate.hpp"
-#include "test/CompPhysTemplate.hpp"
-#include "test/CompVisualSqTemplate.hpp"
+#include "components/CompPhysTemplate.hpp"
+#include "components/CompVisualSqTemplate.hpp"
+#include "components/CompTogglableTemplate.hpp"
 #include "CompTemplateMgr.hpp"
 
 #include "sprites.hpp"
 
+#include "events/eventManager.hpp"
 
 #ifdef __MY_NOT__
 #define not !
@@ -64,6 +66,10 @@ void Map::Initialise()
 	update_freq = 0.2;
 
 
+    mapLeft=-15;
+    mapRight=15;
+    mapTop=15;
+    mapBottom=-15;
 
     //загружаем карту
 
@@ -118,23 +124,25 @@ void Map::Initialise()
     {
         if (not (strcmp(templ->first_attribute("name")->value(),"CompPhys")))
             {
-                //ComponentTemplate *compPhysTemplate2 = new CompPhysTemplate();   //физические свойства
-                //static_cast<CompPhysTemplate*>(compPhysTemplate2)->Deserialize(templ);
-                //CompTemplateMgr::getInstance()->registerTemplate(compPhysTemplate2);
                 comp_id_type compName = comp_id_type("CompPhys");
                 CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
             }
 
         if (not (strcmp(templ->first_attribute("name")->value(),"CompVisualSq")))
             {
-                //CompVisualSqTemplate *compVisualSqTemplate2 = new CompVisualSqTemplate();   //внешний вид
-                //static_cast<CompVisualSqTemplate*>(compVisualSqTemplate2)->Deserialize(templ);
-                //CompTemplateMgr::getInstance()->registerTemplate(compVisualSqTemplate2);
-
                 comp_id_type compName = comp_id_type("CompVisualSq");
                 CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
 
             }
+
+        if (not (strcmp(templ->first_attribute("name")->value(),"CompTogglable")))
+            {
+
+                comp_id_type compName = comp_id_type("CompTogglable");
+                CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
+
+            }
+
 
         templ=templ->next_sibling("goc");
     }
@@ -161,7 +169,6 @@ void Map::Initialise()
                     ComponentTemplate *compPhysTemplate2 = new CompPhysTemplate();   //физические свойства
                     static_cast<CompPhysTemplate*>(compPhysTemplate2)->Deserialize(CompTemplateMgr::getInstance()->getRootTemplateNode(compName));
                     static_cast<CompPhysTemplate*>(compPhysTemplate2)->Deserialize(templ);
-
                     CompTemplateMgr::getInstance()->registerTemplate(compPhysTemplate2);
 
                 }
@@ -175,8 +182,21 @@ void Map::Initialise()
                     CompTemplateMgr::getInstance()->registerTemplate(compVisualSqTemplate2);
                 }
 
+            if (not (strcmp(templ->first_attribute("name")->value(),"CompTogglable")))
+                {
+                    comp_id_type compName = comp_id_type("CompTogglable");
+                    CompTogglableTemplate *CompTogglableTemplate2 = new CompTogglableTemplate();   //переключаемость
+                    static_cast<CompTogglableTemplate*>(CompTogglableTemplate2)->Deserialize(CompTemplateMgr::getInstance()->getRootTemplateNode(compName));
+                    static_cast<CompTogglableTemplate*>(CompTogglableTemplate2)->Deserialize(templ);
+
+                    CompTemplateMgr::getInstance()->registerTemplate(CompTogglableTemplate2);
+
+                }
+
+
             templ=templ->next_sibling("goc");
         }
+
 
         ob=ob->next_sibling("object_template");
     };
@@ -256,8 +276,7 @@ void Map::Initialise()
         spriteTable[atoi(ob->first_attribute("id")->value())]=newSprite;
         ob=ob->next_sibling("sprite");
      };
-
-
+    registerEvents();
 
 }
 
@@ -368,7 +387,7 @@ void Map::Render(int mode, int mode_element)
     glPushMatrix();
     glLoadIdentity();
 
-    gluOrtho2D(-25,25,-25,25);
+    gluOrtho2D(mapLeft,mapRight,mapBottom,mapTop);
 
 
     glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
@@ -399,7 +418,27 @@ void Map::Render(int mode, int mode_element)
         glVertex2f(0.0f,200.0f);
         glVertex2f(0.0f,-200.0f);
 	glEnd();
+    //курсор
+	glColor4f(1.0,1.0,1.0,1.0);
+	glPointSize(10.0f);
+	glBegin(GL_POINTS);
+        glVertex2f(cursorX,cursorY);
+	glEnd();
+
+    //середина экрана
+	glColor4f(0.0,1.0,0.0,1.0);
+	glBegin(GL_LINES);
+        glVertex2f((mapRight+mapLeft)/2.0,(mapTop+mapBottom)/2.0);
+        glVertex2f((mapRight+mapLeft)/2.0+(mapRight-mapLeft)*0.1,(mapTop+mapBottom)/2.0);
+        glVertex2f((mapRight+mapLeft)/2.0,(mapTop+mapBottom)/2.0);
+        glVertex2f((mapRight+mapLeft)/2.0,(mapTop+mapBottom)/2.0+(mapTop-mapBottom)*0.1);
+	glEnd();
+
+
 	glPopMatrix();
+
+
+
 
     glMatrixMode (GL_MODELVIEW);
 
