@@ -21,7 +21,8 @@ rapidxml::xml_node<>* CompVisualSq::Serialize(xmlFile& doc)
 
     static char buffer1 [33];
 
-    itoa(sprite,buffer1,10);
+    sprintf(buffer1, "%d", sprite);
+    //itoa(sprite,buffer1,10);
 
     rapidxml::xml_attribute<> *posAttr = doc.allocate_attribute("sprite", buffer1);
 

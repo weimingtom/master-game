@@ -57,6 +57,7 @@ Rocket::Core::Vector2i wallpaperTexture_dimensions;
 
 void GameLoop()
 {
+
 	context->Update();
 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -132,6 +133,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
     Rocket::Controls::Initialise();
 
+
+
+
 	// Create the main Rocket context and set it on the shell's input layer.
 	context = Rocket::Core::CreateContext("main", Rocket::Core::Vector2i(screen_width, screen_height));
 	if (context == NULL)
@@ -145,7 +149,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Input::SetContext(context);
 
 
-    string dir = string(".\\assets\\*");
+    string dir = string("./assets/");
     vector<string> files = vector<string>();
 
     getDir(dir,files);
@@ -158,16 +162,16 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         if (filename[1].compare("ttf")==0)
         {
             cout << files[i] << endl;
-            files[i].insert(0,dir,0,dir.length()-1); //без звездочки
+            files[i].insert(0,dir,0,dir.length());
             Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
         };
     };
 
-	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
-	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
+	//Rocket::Core::FontDatabase::LoadFontFace("./assets/arial.ttf");
+	//Rocket::Core::FontDatabase::LoadFontFace("./assets/CONSOLA.TTF");
 
 
-    Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, "./assets/wallpaper.tga");
+	Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, "./assets/wallpaper.tga");
     printf("texture width:%i \n",wallpaperTexture_dimensions.x);
     printf("texture height:%i \n",wallpaperTexture_dimensions.y);
 
@@ -183,14 +187,14 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	EventManager::RegisterEventHandler("game", new EventHandlerMode());
 
 	// Load and show the demo document.
-    Rocket::Core::ElementDocument* document = context->LoadDocument("./assets/dialog.rml");
+	Rocket::Core::ElementDocument* document = context->LoadDocument("./assets/dialog.rml");
 	if (document != NULL)
 	{
 		document->Show();
 		document->RemoveReference();
 	}
 
-	/*	Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
+	/*	Rocket::Core::ElementDocument* debugWindow = context->LoadDocument("./assets/debugDialog.rml");
 	if (debugWindow != NULL)
 	{
 		debugWindow->Show();
