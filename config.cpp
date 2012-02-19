@@ -3,8 +3,8 @@
 // Set Resolution from config.ini
 void setResolution()
 {
-	// загрузка параметров из конфигурационного файла
-	char* optString;
+    // load resolution config
+    char* optString;
     std::ifstream in("config.ini");
 
     if(in)

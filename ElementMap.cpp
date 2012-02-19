@@ -108,10 +108,10 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
                 //printf("%f,%f \n",startPanX,startPanY);
 
             }
-                else if (event.GetParameter("button",-1)==1)
+            else if (event.GetParameter("button",-1)==1)
             {
 
-                Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
+                Rocket::Core::ElementDocument* debugWindow = context->LoadDocument("./assets/debugDialog.rml");
                 if (debugWindow != NULL)
                 {
                     debugWindow->Show();
