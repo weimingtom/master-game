@@ -1,0 +1,121 @@
+﻿
+<rml>
+	<head>
+		<title>Карта</title>
+		<META content="text/html; charset=utf-8">
+		</META>
+
+		<link type="text/template" href="window.rml" />
+		<style>
+			body
+			{
+				width: 800px;
+				height: 600px;
+				margin: 50px 500px;
+			}
+
+			button#close
+			{
+				width: 40px;
+				height: 30px;
+			}
+
+			
+			div#title_bar div#icon
+			{
+				display: none;
+			}
+			
+			div#content
+			{
+				text-align: left;
+			}
+
+			p
+			{
+				color: white;
+
+			}
+
+			p#npc
+			{
+				color: green;
+				display: block;
+
+			}
+
+			p#pc
+			{
+				color: red;
+				display: block;
+			}
+
+
+			p#select
+			{
+				color: yellow;
+				display: block;
+			}
+
+		</style>
+	</head>
+	<head>
+	<link type="text/rcss" href="rkt.rcss"/>
+	<link type="text/rcss" href="invader.rcss"/>
+</head>
+<body class="window">
+
+	<div id="title_bar">
+		<handle move_target="#document">
+			<div id="icon"></div>
+			<span id="title">Карта</span>
+			<button id="minimize" onclick="minimize" style="position: absolute; width: 44px; height: 30px; bottom: 0px; right: 44px;">-</button>
+			<button id="close" onclick="close" style="position: absolute; width: 44px; height: 30px; bottom: 0px; right: 0px;">X</button>
+		</handle>
+		
+	</div>
+	<div id="window">
+		<!--<div id="coords">
+			<p>		
+			</p>		
+		</div>-->
+	
+		<div id="map">
+	
+			<game id="game">
+			</game>
+		</div>
+		<div id="canalisation_elements" style="width:1px; height:1px; visibility:hidden;">
+      <button onclick="tube">Труба</button>
+      <button onclick="valve">Кран</button>
+		</div>
+		<div id="map_elements" style="visibility:visible;">
+      <button onclick="wall">Стена</button>
+      <button onclick="res_gen_start">Сис. заж. ген.</button>
+      <button onclick="gen">Генератор</button>
+      <button onclick="water_gen">Водн. охл. ген.</button>
+      <button onclick="control">Щит управл.</button>
+      <button onclick="pump">Насос</button>
+      <button onclick="light">Аварийное осв.</button>
+      <button onclick="outer_link">Внешняя связь</button>
+      <button onclick="patient">Сис. жизн. пац.</button>
+		</div>
+    <div id="electricity_elements" style="width:1px; height:1px; visibility:hidden;">
+      <button onclick="alarm_magistral">Ав. магистраль</button>
+      <button onclick="reserve_magistral">Рез. магистраль</button>
+      <button onclick="div_corb">Разд. проводов</button>
+      <button onclick="corb">Кабель</button>
+    </div>
+		
+	</div>
+
+	
+	<handle size_target="#document" style="position: absolute; width: 16px; height: 16px; bottom: 0px; right: 0px;"></handle>
+	<button onclick="canalisation">Канализация</button>
+	<button onclick="map">Карта</button>
+	<button onclick="electricity">Электричество</button>
+	<!--<button onclick="ventilation">Вентиляция</button>-->
+	<!--<button onclick="network">Сеть</button>-->
+</body>
+
+</rml>
