@@ -2,12 +2,16 @@
 #ifndef __TEXTUTILS_HPP__
 #define __TEXTUTILS_HPP__
 
+#if defined ROCKET_PLATFORM_WIN32
+#include <windows.h>
+#endif
+
 #include <iostream>
 #include <fstream>
 
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_print.hpp"
-#include<windows.h>
+
 #include <stdio.h>
 #include <string.h>
 
@@ -15,8 +19,7 @@
 #include <sstream>
 
 #include <sys/types.h>
-#include <sys/types.h>
-//#include <dirent.h>
+#include <dirent.h>
 #include <errno.h>
 #include <vector>
 #include <iostream>
@@ -54,7 +57,7 @@ inline std::string replace(std::string text, std::string s, std::string d)
 }
 
 
-/*
+
 inline int getDir (std::string dir, std::vector<std::string> &files)
 {
     DIR *dp;
@@ -71,7 +74,7 @@ inline int getDir (std::string dir, std::vector<std::string> &files)
     closedir(dp);
     return 0;
 }
-*/
+/*
 inline int getDir (std::string dir, std::vector<std::string> &files){
 	WIN32_FIND_DATAA findData;
 	HANDLE h=FindFirstFileA(dir.c_str(), &findData);
@@ -86,5 +89,5 @@ inline int getDir (std::string dir, std::vector<std::string> &files){
 	FindClose(h);
 	return 0;
 }
-
+*/
 #endif
