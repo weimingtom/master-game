@@ -35,6 +35,7 @@
 #include "Rocket/Core/Decorator.h"
 
 #include "globals.hpp"
+#include "config.h"
 
 #include "Rocket/Core/StreamMemory.h"
 #include "Rocket/Core/Factory.h"
@@ -56,14 +57,11 @@ Rocket::Core::Vector2i wallpaperTexture_dimensions;
 
 void GameLoop()
 {
-
 	context->Update();
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-
     //glDisable(GL_TEXTURE_2D);  //без этого не отображается
-
 
 	glViewport(0,0,screen_width,screen_height);
 
@@ -78,7 +76,6 @@ void GameLoop()
     255,255,255,255,
     255,255,255,255,
     255,255,255,255};
-
 
     glPushMatrix();
 
@@ -101,23 +98,20 @@ void GameLoop()
 
     glPopMatrix();
 
-
-
-
-
 	context->Render();
-
-
 
 	Shell::FlipBuffers();
 }
 
-/*#if defined ROCKET_PLATFORM_WIN32
+/*
+#if defined ROCKET_PLATFORM_WIN32
 int APIENTRY WinMain(HINSTANCE ROCKET_UNUSED(instance_handle), HINSTANCE ROCKET_UNUSED(previous_instance_handle), char* ROCKET_UNUSED(command_line), int ROCKET_UNUSED(command_show))
-#else*/
+*/
 int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
-//#endif
 {
+    // Resolution initialisation
+    setResolution();
+
 	// Generic OS initialisation, creates a window and attaches OpenGL.
 	if (!Shell::Initialise("Master") ||
 		!Shell::OpenWindow("Master", true))
@@ -137,9 +131,6 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Rocket::Core::Initialise();
 
     Rocket::Controls::Initialise();
-
-
-
 
 	// Create the main Rocket context and set it on the shell's input layer.
 	context = Rocket::Core::CreateContext("main", Rocket::Core::Vector2i(screen_width, screen_height));
@@ -176,7 +167,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
 
 
-	Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, ".\\assets\\wallpaper.tga");
+    Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, "./assets/wallpaper.tga");
     printf("texture width:%i \n",wallpaperTexture_dimensions.x);
     printf("texture height:%i \n",wallpaperTexture_dimensions.y);
 
@@ -192,7 +183,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	EventManager::RegisterEventHandler("game", new EventHandlerMode());
 
 	// Load and show the demo document.
-	Rocket::Core::ElementDocument* document = context->LoadDocument(".\\assets\\dialog.rml");
+    Rocket::Core::ElementDocument* document = context->LoadDocument("./assets/dialog.rml");
 	if (document != NULL)
 	{
 		document->Show();
@@ -245,6 +236,61 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
     newText->DispatchEvent("click", parameters);
 
+
+/*
+	newText->AppendChild(document->CreateTextNode(chooseAnswer(0)),true);
+
+
+
+    addTags(getConvNode(getCurNode()).effPlus);
+    removeTags(getConvNode(getCurNode()).effMin);
+
+
+	document->GetElementById("content")->AppendChild(text,true);
+
+    std::vector<char*> ansList=currentAnswers();
+
+    Rocket::Core::Element* answers = document->CreateElement("div");
+
+    document->GetElementById("content")->AppendChild(answers,true);
+
+
+    int i=0;
+    for (std::vector<char*>::iterator curText=ansList.begin(); curText!=ansList.end();curText++)
+    {
+        dialogNode curNode=getConvNode(getConvNode(getCurNode()).children[i]);
+        tags curState=getTags();
+        if ((curState.empty() && curNode.precond.empty()) || (includes(curState.begin(),curState.end(),curNode.precond.begin(),curNode.precond.end())))
+        {
+
+            Rocket::Core::Element* content = document->CreateElement("p");
+            content->SetId("pc");
+            //Rocket::Core::Element* content;
+
+
+            //content->AppendChild(document->CreateTextNode(*curText),true);
+            Rocket::Core::String RMLtext (*curText);
+            //content->ResolveProperty
+            //Rocket::Core::StreamMemory s1 =  Rocket::Core::StreamMemory((Rocket::Core::byte*)*curText, sizeof(char)*strlen(*curText));
+            //printf("%i \n",s1.Length());
+            content->SetInnerRML(RMLtext);
+            //bool parsed = Rocket::Core::Factory::InstanceElementStream(content,&s1);
+
+            printf("%i \n",answers->GetNumChildren());
+
+            answers->AppendChild(content,true);
+
+            content->SetAttribute("orderNum",i);
+
+            MouseOverListener::RegisterMouseOverContainer(content);
+            MouseOutListener::RegisterMouseOutContainer(content);
+            ClickListener::RegisterClickableContainer(content);
+        }
+        i++;
+
+    }
+
+    */
 
     EventManager::LoadWindow("game");
 

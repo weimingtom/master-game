@@ -45,6 +45,8 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 {
     Rocket::Core::Element::ProcessEvent(event);
 
+    // перетаскивание карты
+
     static float startPanX=0;
     static float startPanY=0;
 
@@ -102,11 +104,78 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
                 memcpy(modelview, map->modelview, sizeof(map->modelview));
                 memcpy(projection, map->projection, sizeof(map->projection));
 
-                printf("%f,%f \n",panCenterX,panCenterX);
-                printf("%f,%f \n",startPanX,startPanY);
+                //printf("%f,%f \n",panCenterX,panCenterX);
+                //printf("%f,%f \n",startPanX,startPanY);
 
-            } else
+            }
+                else if (event.GetParameter("button",-1)==1)
+            {
 
+                Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
+                if (debugWindow != NULL)
+                {
+                    debugWindow->Show();
+                    debugWindow->RemoveReference();
+                }
+                debugWindow->SetId("debugWindow");
+
+
+                Rocket::Core::Element* window = debugWindow->CreateElement("div");
+                debugWindow->GetElementById("content")->AppendChild(window,true);
+                //window->SetId("convTags");
+
+                /*debugText->AppendChild(debugWindow->CreateTextNode("Текущее состояние диалога"),true);
+
+
+                debugWindow->GetElementById("content")->AppendChild(debugText,true);
+                */
+                std::vector<Object*> objectsOnSpot = getObjectsWithCoords(map->cursorX,map->cursorY);
+                rapidxml::xml_node<> *currentParameters = gameObjectsTable["guest"]->Serialize(map->doc);
+
+                printf(currentParameters->name());
+
+                Rocket::Core::Element* dest_element = event.GetTargetElement();
+                Rocket::Core::ElementDocument* document  = dest_element->GetOwnerDocument();
+                //Rocket::Core::Element* window = document->GetElementById("fields");
+
+                if(window!=NULL)
+                {
+                    while (window->HasChildNodes())
+                    window->RemoveChild(window->GetFirstChild());
+
+                    //rapidxml::xml_node<> *attr = currentParameters->first_node();
+                    rapidxml::xml_node<> *curComp = currentParameters->first_node()->first_node();
+                    while (curComp!=0)
+                        {
+                        printf("\n");
+                        printf(curComp->name());
+
+
+                        rapidxml::xml_attribute<> *attr = curComp->first_attribute();
+                        while (attr!=0)
+                        {
+                            Rocket::Core::Element* label = document->CreateElement("p");
+                            label->AppendChild((Rocket::Core::Element*) document->CreateTextNode(attr->name()),true);
+                            window->AppendChild(label,true);
+
+                            Rocket::Core::Element* newField = document->CreateElement("input");
+                            newField->SetAttribute("type","text");
+                            newField->SetAttribute("value",attr->value());
+                            window->AppendChild(newField,true);
+                            printf("\n");
+                            printf(attr->name());
+                            printf("\n");
+                            printf(attr->value());
+                            printf("\n");
+
+                            attr=attr->next_attribute();
+                        };
+                        curComp=curComp->next_sibling();
+                    };
+                };
+
+            }
+                else
             {
 
             vertex_tuple v1;
@@ -223,8 +292,8 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
 
                 GLdouble newCenterY = panCenterY - (posY-startPanY);
 
-                printf("newCenterX: %f, newCenterY: %f \n",newCenterX,newCenterY);
-                printf("%f,%f \n",posX,posY);
+                //printf("newCenterX: %f, newCenterY: %f \n",newCenterX,newCenterY);
+                //printf("%f,%f \n",posX,posY);
 
 
                 map->mapLeft=newCenterX - mapWidth/2.0;
@@ -253,25 +322,9 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
             map->cursorX=round(posX);
             map->cursorY=floor(posY);
 
-
-            /*std::string s;
-            std::stringstream out;
-            out << posX << "," <<posY;
-            s = out.str();
-            Rocket::Core::String rs = Rocket::Core::String(s.c_str());
-
-            Rocket::Core::Element* newText = document->CreateElement("p");
-            newText->SetId("pc");
-
-            coords->ReplaceChild((Rocket::Core::Element*)document->CreateTextNode(s.c_str()),coords->GetChild(0));*/
-
-            //dest_element->Update();
             }
-
         }
     };
-    //oldX=xcoord;
-    //oldY=ycoord;
 }
 
 

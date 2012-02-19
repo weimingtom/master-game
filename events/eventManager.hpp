@@ -65,6 +65,39 @@ public:
         }
 	}
 
+
+	eventHandler getHandler(event_handler_id handler_id, obj_id_type obj)
+	{
+
+        return handlersByObj[obj][handler_id];
+
+	}
+
+	eventNotifier getNotifier(event_notifier_id notifier_id, obj_id_type obj) {
+
+        return notifiersByObj[obj][notifier_id];
+
+	}
+
+	void copyNotifier(event_notifier_id notifier_id, obj_id_type dest)
+	{
+
+        eventNotifier en1 = getNotifier(notifier_id,"none");
+
+        eventManager::getInstance()->registerNotifier(en1,notifier_id,dest);
+
+	}
+
+	void copyHandler(event_handler_id handler_id, obj_id_type dest)
+	{
+
+        eventHandler eh1 = getHandler(handler_id,"none");
+
+        eventManager::getInstance()->registerHandler(eh1,handler_id,dest);
+
+	}
+
+
 protected:
 	static eventManager *mInstance;
 };

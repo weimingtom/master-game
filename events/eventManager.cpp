@@ -12,8 +12,8 @@ int handleButtonToggle(gameEvent evt)
     CompTogglable* buttonState =  static_cast<CompTogglable*>(gameObjectsTable[target]->getComponent("CompTogglable"));
     CompVisualSq* vis =  static_cast<CompVisualSq*>(gameObjectsTable[target]->getComponent("CompVisualSq"));
     //tgtPos->pos.first=tgtPos->pos.first+1;
-    vis->sprite=1;
     buttonState->state=(buttonState->state ? 0 : 1);
+    vis->sprite=(buttonState->state ? 3 : 4);
     std::cout << "Button pressed \n";
     return 0;
 }
@@ -33,10 +33,10 @@ int handleMoveFun(gameEvent evt)
 void registerEvents()
 {
     eventManager::eventHandler e1 = eventManager::eventHandler::from_function<&handleButtonToggle>();
-    eventManager::getInstance()->registerHandler(e1,"handleButtonToggle","button");
+    eventManager::getInstance()->registerHandler(e1,"handleButtonToggle","none");
     eventManager::eventNotifier n1;
-    eventManager::getInstance()->registerNotifier(n1,"toggleNotifier","button");
-    eventManager::getInstance()->Subscribe("toggleEvent","handleButtonToggle","button");
+    eventManager::getInstance()->registerNotifier(n1,"toggleNotifier","none");
+    //eventManager::getInstance()->Subscribe("toggleEvent","handleButtonToggle","button");
 };
 
 

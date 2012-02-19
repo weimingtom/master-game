@@ -38,7 +38,7 @@ Map::Map()
 {
 
 
-	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "assets/invader.tga");
+		Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "./assets/invader.tga");
 
 	/*
 	if_res_gen_start=false;
@@ -70,6 +70,9 @@ void Map::Initialise()
     mapRight=15;
     mapTop=15;
     mapBottom=-15;
+
+     // привязываем события
+    registerEvents();
 
     //загружаем карту
 
@@ -247,8 +250,31 @@ void Map::Initialise()
         Object* obj = ObjTemplateMgr::getInstance()->createObject( templ, name);
         //cout << guest->getID();
         obj->Deserialize(ob);
-        gameObjectsTable[obj->getID()]=obj;
 
+        // события
+        if (ob->first_node("events"))
+        {
+            rapidxml::xml_node<char> *events = ob->first_node("events");
+            rapidxml::xml_node<char> *ev1 = events->first_node();
+
+            while (ev1)
+            {
+
+                event_notifier_id listenTo = event_notifier_id (ev1->first_attribute("listen")->value());
+                event_handler_id handler = event_handler_id (ev1->first_attribute("handler")->value());
+
+                eventManager::getInstance()->copyHandler(handler,name);
+
+                eventManager::getInstance()->copyNotifier(listenTo,name);
+
+                eventManager::getInstance()->Subscribe(listenTo,handler,name);
+
+                ev1=ev1->next_sibling();
+            }
+        }
+
+
+        gameObjectsTable[obj->getID()]=obj;
 
        ob=ob->next_sibling("object");
     };
@@ -276,14 +302,13 @@ void Map::Initialise()
         spriteTable[atoi(ob->first_attribute("id")->value())]=newSprite;
         ob=ob->next_sibling("sprite");
      };
-    registerEvents();
 
 }
 
 void Map::Finalise()
 {
 
-
+/*
     //ws >> wt;
     std::ofstream mapfile;
 
@@ -333,14 +358,12 @@ void Map::Finalise()
             if (doc.first_node(g1->name()))
             {
                 printf("found node \n");
-                rapidxml::xml_node<char> *v1 = doc.first_node(g1->name());
+                rapidxml::xml_node<> *v1 = doc.first_node(g1->name());
 
                 printf(v1->first_attribute("id")->value());
                 printf("\n");
                 printf(g1->first_attribute("id")->value());
                 printf("\n");
-                //printf("%i",strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()));
-                //printf("\n");
 
                 if (not strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()))
                 {
@@ -356,7 +379,7 @@ void Map::Finalise()
 
 
     mapfile.close();
-
+*/
 }
 
 

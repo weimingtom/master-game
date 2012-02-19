@@ -14,7 +14,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,22 +25,26 @@
  *
  */
 
-#ifndef ROCKETINVADERSEVENTHANDLERSTARTGAME_H
-#define ROCKETINVADERSEVENTHANDLERSTARTGAME_H
+#ifndef INPUTMACOSX_H
+#define INPUTMACOSX_H
 
-#include "EventHandler.h"
+#include "Input.h"
+#include <Carbon/Carbon.h>
 
 /**
-	@author Peter Curry
+	Input Wrapper Code
+	Feel free to take this class and integrate it with your project.
+	@author Lloyd Weehuizen
  */
 
-class EventHandlerMode : public EventHandler
+class InputMacOSX : public Input
 {
 public:
-	EventHandlerMode();
-	virtual ~EventHandlerMode();
+	static bool Initialise();
+	static void Shutdown();
 
-	virtual void ProcessEvent(Rocket::Core::Event& event, const Rocket::Core::String& value);
+	/// Process the Carbon event.
+	static OSStatus EventHandler(EventHandlerCallRef next_handler, EventRef event, void* p);
 };
 
 #endif

@@ -4,7 +4,6 @@
 #include <Rocket/Core/Input.h>
 #include <Rocket/Debugger.h>
 #include <Shell.h>
-#include <iostream>
 
 static int GetKeyModifierState();
 static void InitialiseKeymap();

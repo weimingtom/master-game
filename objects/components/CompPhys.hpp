@@ -14,6 +14,7 @@ class CompPhys : public Component {
 public:
 
     vertex_tuple pos;  // положение в пространстве
+    int passable;  // проходимо ли
 
     virtual rapidxml::xml_node<>* Serialize(xmlFile& doc);
 	virtual void Deserialize(rapidxml::xml_node<>* node);
