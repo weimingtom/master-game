@@ -1,3 +1,0 @@
-main:  main.cpp
-	g++ CompHealth.cpp CompHealthTemplate.cpp CompVisual.cpp CompVisualSphere.cpp ../CompTemplateMgr.cpp ../ObjTemplateMgr.cpp ../Component.cpp ../ComponentTemplate.cpp main.cpp -I../
-
