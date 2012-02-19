@@ -7,9 +7,9 @@
       <subNodes>
         <ContentNode idNum="33" orderNum="1" linkTo="0" nodeType="pc">
 
-	<conversationText>- Э... &lt;span &gt; что? &lt;/span&gt;</conversationText> 
-	 <!-- <conversationText><span style="color:blue;"> - Э... что? </span></conversationText> !-->
-         <!-- 	<conversationText>- Э... что? </conversationText> 	!-->
+	<!-- <conversationText>- Э... &lt;span &gt; что? &lt;/span&gt;</conversationText> !-->
+	<!-- <conversationText><span style="color:blue;"> - Э... что? </span></conversationText> !-->
+         <conversationText>- Э... что? </conversationText> 	
           <conversationComments>&lt;ep&gt;НАЧАЛО_НОВОЙ_ИГРЫ АННА Подключение Оператор Драйверы&lt;/ep&gt;</conversationComments>
           <subNodes>
             <ContentNode idNum="0" orderNum="1" linkTo="2" nodeType="npc">
