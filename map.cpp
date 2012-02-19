@@ -19,7 +19,6 @@
 #include "ComponentTemplate.hpp"
 #include "components/CompPhysTemplate.hpp"
 #include "components/CompVisualSqTemplate.hpp"
-#include "components/CompTogglableTemplate.hpp"
 #include "CompTemplateMgr.hpp"
 
 #include "sprites.hpp"
@@ -38,7 +37,7 @@ Map::Map()
 {
 
 
-		Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "./assets/invader.tga");
+	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "./assets/invader.tga");
 
 	/*
 	if_res_gen_start=false;
@@ -66,17 +65,10 @@ void Map::Initialise()
 	update_freq = 0.2;
 
 
-    mapLeft=-15;
-    mapRight=15;
-    mapTop=15;
-    mapBottom=-15;
-
-     // привязываем события
-    registerEvents();
 
     //загружаем карту
 
-    std::ifstream in(".\\assets\\map.xml");
+    std::ifstream in("./assets/map.xml");
     if (!in){
         printf("error opening file");
     }
@@ -127,25 +119,23 @@ void Map::Initialise()
     {
         if (not (strcmp(templ->first_attribute("name")->value(),"CompPhys")))
             {
+                //ComponentTemplate *compPhysTemplate2 = new CompPhysTemplate();   //физические свойства
+                //static_cast<CompPhysTemplate*>(compPhysTemplate2)->Deserialize(templ);
+                //CompTemplateMgr::getInstance()->registerTemplate(compPhysTemplate2);
                 comp_id_type compName = comp_id_type("CompPhys");
                 CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
             }
 
         if (not (strcmp(templ->first_attribute("name")->value(),"CompVisualSq")))
             {
+                //CompVisualSqTemplate *compVisualSqTemplate2 = new CompVisualSqTemplate();   //внешний вид
+                //static_cast<CompVisualSqTemplate*>(compVisualSqTemplate2)->Deserialize(templ);
+                //CompTemplateMgr::getInstance()->registerTemplate(compVisualSqTemplate2);
+
                 comp_id_type compName = comp_id_type("CompVisualSq");
                 CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
 
             }
-
-        if (not (strcmp(templ->first_attribute("name")->value(),"CompTogglable")))
-            {
-
-                comp_id_type compName = comp_id_type("CompTogglable");
-                CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
-
-            }
-
 
         templ=templ->next_sibling("goc");
     }
@@ -172,6 +162,7 @@ void Map::Initialise()
                     ComponentTemplate *compPhysTemplate2 = new CompPhysTemplate();   //физические свойства
                     static_cast<CompPhysTemplate*>(compPhysTemplate2)->Deserialize(CompTemplateMgr::getInstance()->getRootTemplateNode(compName));
                     static_cast<CompPhysTemplate*>(compPhysTemplate2)->Deserialize(templ);
+
                     CompTemplateMgr::getInstance()->registerTemplate(compPhysTemplate2);
 
                 }
@@ -185,21 +176,8 @@ void Map::Initialise()
                     CompTemplateMgr::getInstance()->registerTemplate(compVisualSqTemplate2);
                 }
 
-            if (not (strcmp(templ->first_attribute("name")->value(),"CompTogglable")))
-                {
-                    comp_id_type compName = comp_id_type("CompTogglable");
-                    CompTogglableTemplate *CompTogglableTemplate2 = new CompTogglableTemplate();   //переключаемость
-                    static_cast<CompTogglableTemplate*>(CompTogglableTemplate2)->Deserialize(CompTemplateMgr::getInstance()->getRootTemplateNode(compName));
-                    static_cast<CompTogglableTemplate*>(CompTogglableTemplate2)->Deserialize(templ);
-
-                    CompTemplateMgr::getInstance()->registerTemplate(CompTogglableTemplate2);
-
-                }
-
-
             templ=templ->next_sibling("goc");
         }
-
 
         ob=ob->next_sibling("object_template");
     };
@@ -250,31 +228,8 @@ void Map::Initialise()
         Object* obj = ObjTemplateMgr::getInstance()->createObject( templ, name);
         //cout << guest->getID();
         obj->Deserialize(ob);
-
-        // события
-        if (ob->first_node("events"))
-        {
-            rapidxml::xml_node<char> *events = ob->first_node("events");
-            rapidxml::xml_node<char> *ev1 = events->first_node();
-
-            while (ev1)
-            {
-
-                event_notifier_id listenTo = event_notifier_id (ev1->first_attribute("listen")->value());
-                event_handler_id handler = event_handler_id (ev1->first_attribute("handler")->value());
-
-                eventManager::getInstance()->copyHandler(handler,name);
-
-                eventManager::getInstance()->copyNotifier(listenTo,name);
-
-                eventManager::getInstance()->Subscribe(listenTo,handler,name);
-
-                ev1=ev1->next_sibling();
-            }
-        }
-
-
         gameObjectsTable[obj->getID()]=obj;
+
 
        ob=ob->next_sibling("object");
     };
@@ -302,17 +257,18 @@ void Map::Initialise()
         spriteTable[atoi(ob->first_attribute("id")->value())]=newSprite;
         ob=ob->next_sibling("sprite");
      };
+    registerEvents();
 
 }
 
 void Map::Finalise()
 {
 
-/*
+
     //ws >> wt;
     std::ofstream mapfile;
 
-    mapfile.open (".\\assets\\map.xml");
+    mapfile.open ("./assets/map.xml");
 
     //записываем стены
 
@@ -358,12 +314,14 @@ void Map::Finalise()
             if (doc.first_node(g1->name()))
             {
                 printf("found node \n");
-                rapidxml::xml_node<> *v1 = doc.first_node(g1->name());
+                rapidxml::xml_node<char> *v1 = doc.first_node(g1->name());
 
                 printf(v1->first_attribute("id")->value());
                 printf("\n");
                 printf(g1->first_attribute("id")->value());
                 printf("\n");
+                //printf("%i",strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()));
+                //printf("\n");
 
                 if (not strcmp(v1->first_attribute("id")->value(),g1->first_attribute("id")->value()))
                 {
@@ -379,7 +337,7 @@ void Map::Finalise()
 
 
     mapfile.close();
-*/
+
 }
 
 
@@ -410,7 +368,7 @@ void Map::Render(int mode, int mode_element)
     glPushMatrix();
     glLoadIdentity();
 
-    gluOrtho2D(mapLeft,mapRight,mapBottom,mapTop);
+    gluOrtho2D(-25,25,-25,25);
 
 
     glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
@@ -441,27 +399,7 @@ void Map::Render(int mode, int mode_element)
         glVertex2f(0.0f,200.0f);
         glVertex2f(0.0f,-200.0f);
 	glEnd();
-    //курсор
-	glColor4f(1.0,1.0,1.0,1.0);
-	glPointSize(10.0f);
-	glBegin(GL_POINTS);
-        glVertex2f(cursorX,cursorY);
-	glEnd();
-
-    //середина экрана
-	glColor4f(0.0,1.0,0.0,1.0);
-	glBegin(GL_LINES);
-        glVertex2f((mapRight+mapLeft)/2.0,(mapTop+mapBottom)/2.0);
-        glVertex2f((mapRight+mapLeft)/2.0+(mapRight-mapLeft)*0.1,(mapTop+mapBottom)/2.0);
-        glVertex2f((mapRight+mapLeft)/2.0,(mapTop+mapBottom)/2.0);
-        glVertex2f((mapRight+mapLeft)/2.0,(mapTop+mapBottom)/2.0+(mapTop-mapBottom)*0.1);
-	glEnd();
-
-
 	glPopMatrix();
-
-
-
 
     glMatrixMode (GL_MODELVIEW);
 

@@ -16,18 +16,18 @@ public:
 	virtual const comp_id_type& familyID() const {
 		return mFamilyID;
 	}
-
+/*
 	virtual Component *makeComponent() {
 		CompHealth *comp = new CompHealth(this);
 		comp->reset();
 		return comp;
 	}
-
+*/
 	// CompHealth interface
 public:
 	typedef int healt_value_t;
 	enum bodyPart_e {
-		head = 0, torso, leftArm, rightArm, leftLeg, rightLeg, cNumBodyParts 
+		head = 0, torso, leftArm, rightArm, leftLeg, rightLeg, cNumBodyParts
 	};
 	healt_value_t getInitialHealthAt(const bodyPart_e part) const {
 		return mInitialHPs[part];
@@ -35,7 +35,7 @@ public:
 	void setInitialHealthAt(const bodyPart_e part, const healt_value_t hp) {
 		mInitialHPs[part] = hp;
 	}
-	
+
 private:
 	healt_value_t mInitialHPs[cNumBodyParts];
 

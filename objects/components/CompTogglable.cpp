@@ -27,7 +27,8 @@ rapidxml::xml_node<>* CompTogglable::Serialize(xmlFile& doc)
 
     static char buffer1 [33];
 
-    itoa(state,buffer1,10);
+    sprintf(buffer1, "%d", state);
+    //itoa(state,buffer1,10);
 
     rapidxml::xml_attribute<> *posAttr = doc.allocate_attribute("state", buffer1);
 
