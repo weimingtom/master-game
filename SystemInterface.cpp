@@ -79,7 +79,7 @@ bool SystemInterface::LogMessage(Rocket::Core::Log::Type type, const Rocket::Cor
 		}
 
 		// Print the message and timestamp to file, and force a write in case of a crash.
-		fprintf(fp, "%s (%.2f): %s", prefix, GetElapsedTime(), message.CString());
+		fprintf(fp, "%s (%.2f): %s\n", prefix, GetElapsedTime(), message.CString());
 		fflush(fp);
 
 #ifdef ROCKET_PLATFORM_WIN32

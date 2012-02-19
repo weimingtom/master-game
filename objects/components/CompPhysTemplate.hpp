@@ -32,6 +32,7 @@ public:
 public:
 
     vertex_tuple pos;  // положение в пространстве
+    int passable; // проходимо ли
 
 private:
 	static comp_id_type mComponentID;

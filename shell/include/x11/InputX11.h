@@ -25,25 +25,28 @@
  *
  */
 
-#include "Event.h"
-#include "EventManager.h"
+#ifndef INPUTX11_H
+#define INPUTX11_H
 
-Event::Event(const Rocket::Core::String& value) : value(value)
-{
-}
+#include <X11/Xlib.h>
+#include "Input.h"
 
-Event::~Event()
-{
-}
+/**
+ * Input Wrapper Code
+ *
+ * Feel free to take this class and integrate it with your project.
+ *
+ * @author Lloyd Weehuizen
+ */
 
-// Sends the event value through to Invader's event processing system.
-void Event::ProcessEvent(Rocket::Core::Event& event)
+class InputX11 : public Input
 {
-	EventManager::ProcessEvent(event, value);
-}
+public:
+	static bool Initialise();
+	static void Shutdown();
 
-// Destroys the event.
-void Event::OnDetach(Rocket::Core::Element* ROCKET_UNUSED(element))
-{
-	delete this;
-}
+	/// Process the windows message
+	static void ProcessXEvent(Display* display, const XEvent& event);
+};
+
+#endif

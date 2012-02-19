@@ -63,7 +63,7 @@ chooseAnswer( int cn)
 std:: vector<dialogNode*> dialog_fun()
 {
 
-    std::ifstream in(".\\assets\\dialog2.xml");
+    std::ifstream in("./assets/dialog2.xml");
     if (!in){
         printf("error opening file");
     }
