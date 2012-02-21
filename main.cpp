@@ -145,7 +145,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Input::SetContext(context);
 
 
-    string dir = string(".\\assets\\*");
+
+    string dir = string("./assets/*");
+
     vector<string> files = vector<string>();
 
     getDir(dir,files);
