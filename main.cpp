@@ -149,7 +149,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Input::SetContext(context);
 
 
+
     string dir = string("./assets/");
+
     vector<string> files = vector<string>();
 
     getDir(dir,files);
@@ -162,7 +164,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         if (filename[1].compare("ttf")==0)
         {
             cout << files[i] << endl;
-            files[i].insert(0,dir,0,dir.length());
+            files[i].insert(0,dir,0,dir.length()); //без звездочки
             Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
         };
     };
@@ -187,7 +189,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	EventManager::RegisterEventHandler("game", new EventHandlerMode());
 
 	// Load and show the demo document.
-	Rocket::Core::ElementDocument* document = context->LoadDocument("./assets/dialog.rml");
+    Rocket::Core::ElementDocument* document = context->LoadDocument("./assets/dialog.rml");
 	if (document != NULL)
 	{
 		document->Show();
