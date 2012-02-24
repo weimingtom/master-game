@@ -122,20 +122,6 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 		// Re-appear window
 		XMapRaised(display, window);
 
-			XUnmapWindow(display, window);
-			{ // Wait for window to disapear
-				XEvent event;
-				do {
-					XMaskEvent(display, StructureNotifyMask, &event);
-				} while ( (event.type != UnmapNotify) || (event.xunmap.event != window) );
-			}
-			// Turn off WM control
-			window_attributes.override_redirect = True;
-			XChangeWindowAttributes(display, window, CWBorderPixel | CWColormap | CWOverrideRedirect, &window_attributes);
-
-			// Re-appear window
-			XMapRaised(display, window);
-
  		// Get input focus
 		XSetInputFocus(display, window, RevertToNone, CurrentTime);
     }
