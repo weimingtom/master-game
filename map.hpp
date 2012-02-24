@@ -16,7 +16,24 @@
 #include "events.hpp"
 
 
-
+#define CANALISATION 1
+#define MAP 2
+#define ELECTRICITY 3
+#define TUBE 1
+#define VALVE 2
+#define WALL 1
+#define RES_GEN_START 2
+#define GEN 3
+#define WATER_GEN 4
+#define CONTROL 5
+#define PUMP 6
+#define LIGHT 7
+#define OUTER_LINK 8
+#define PATIENT 9
+#define ALARM_MAGISTRAL 1
+#define RESERVE_MAGISTRAL 2
+#define DIV_CORB 3
+#define CORB 4
 
 class Map : public micropather::Graph{
     public:
@@ -33,7 +50,7 @@ class Map : public micropather::Graph{
         void Update();
 
         /// Render the game
-        void Render();
+        void Render(int mode, int element_type);
 
         /// micropather's
 
@@ -50,6 +67,8 @@ class Map : public micropather::Graph{
         int Passable( short nx, short ny );
 
         ComplexTask* planPath(short x, short y);
+		//void try_insert_element(vertex_tuple &v1,int mode, int mode_element);
+		//void try_delete_element(vertex_tuple &v1, int mode);
 
 
     private:
@@ -64,27 +83,22 @@ class Map : public micropather::Graph{
         int width;
         int height;
 
+        float mapLeft;
+        float mapTop;
+        float mapRight;
+        float mapBottom;
+
         int cursorX;
         int cursorY;
 
         GLint viewport[4];
         GLdouble modelview[16];
         GLdouble projection[16];
+
         std::set<vertex_tuple> walls;
-
-        //objectTable
-
-        std::vector<powerGridNode*> powerGrid;
-
 
         xmlFile doc;
         std::vector<char> xml_copy;
-
-        //Entity guest1;
-
-        PowerSource ps1;
-
-        PowerConsumer pc1;
 
         Slot<Rocket::Core::Time> UpdateTimerSlot;
 

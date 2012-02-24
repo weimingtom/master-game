@@ -1,9 +1,3 @@
-
-//#define SCREEN_WIDTH 800
-
-//#define SCREEN_HEIGHT 600
-
-
 #include <Shell.h>
 #include <Rocket/Core.h>
 #include <win32/InputWin32.h>
@@ -11,9 +5,7 @@
 #include <windows.h>
 #include <stdio.h>
 
-#include "../../../globals.hpp"
-#include "../../../textUtils.hpp"
-
+#include "../../../config.h"
 
 
 static bool AttachOpenGL();
@@ -83,28 +75,6 @@ bool Shell::Initialise(const Rocket::Core::String& path)
 	executable_path = executable_path.Substring(0, executable_path.RFind("\\") + 1);
 	file_interface = new ShellFileInterface(executable_path + path);
 	Rocket::Core::SetFileInterface(file_interface);
-
-	//загрузка параметров из конфигурационного файла
-
-    std::ifstream in("config.ini");
-
-    char* optString;
-
-    optString=new char[256];
-
-    in.getline(optString,256);
-
-    std::vector<std::string> name_value =  split(std::string(optString),'=');
-
-    screen_width=atoi(name_value[1].c_str());
-
-    optString=new char[256];
-
-    in.getline(optString,256);
-
-    name_value =  split(std::string(optString),'=');
-
-    screen_height=atoi(name_value[1].c_str());
 
 	return true;
 }
@@ -178,7 +148,7 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 
 	instance_name = name;
 
-    DWORD style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX; //& ~WS_CAPTION;
+    DWORD style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX & ~WS_CAPTION;
 	DWORD extended_style = WS_EX_APPWINDOW;
 
 	//DWORD style = WS_POPUP& WS_CAPTION;

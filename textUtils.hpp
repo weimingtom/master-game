@@ -2,6 +2,10 @@
 #ifndef __TEXTUTILS_HPP__
 #define __TEXTUTILS_HPP__
 
+#if defined ROCKET_PLATFORM_WIN32
+#include <windows.h>
+#endif
+
 #include <iostream>
 #include <fstream>
 
@@ -70,6 +74,20 @@ inline int getDir (std::string dir, std::vector<std::string> &files)
     closedir(dp);
     return 0;
 }
-
-
+/*
+inline int getDir (std::string dir, std::vector<std::string> &files){
+	WIN32_FIND_DATAA findData;
+	HANDLE h=FindFirstFileA(dir.c_str(), &findData);
+	if(h==INVALID_HANDLE_VALUE){
+		int err=GetLastError();
+		std::cout << "Error(" << err << ") opening " << dir << std::endl;
+		return err;
+	}
+	do{
+		files.push_back(std::string(findData.cFileName));
+	}while(FindNextFileA(h, &findData)!=0);
+	FindClose(h);
+	return 0;
+}
+*/
 #endif

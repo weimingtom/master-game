@@ -1,7 +1,13 @@
+#ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
 #undef ROCKET_PLATFORM_WIN32
 #define ROCKET_PLATFORM_UNIX
+#endif
+
+#if defined ROCKET_PLATFORM_WIN32
+#include <windows.h>
+#endif
 
 #include <Rocket/Core.h>
 #include <Rocket/Debugger.h>
@@ -17,24 +23,22 @@
 
 #include "dialog.hpp"
 
-#include "Listeners.hpp"
+#include "GUIevents/Listeners.hpp"
 
 #include "ElementMap.hpp"
 #include "map.hpp"
 
-#include "EventInstancer.h"
-#include "EventManager.h"
-#include "EventHandlerMode.h"
+#include "GUIevents/EventInstancer.h"
+#include "GUIevents/EventManager.h"
+#include "GUIevents/EventHandlerMode.h"
 
 #include "Rocket/Core/Decorator.h"
 
 #include "globals.hpp"
+#include "config.h"
 
 #include "Rocket/Core/StreamMemory.h"
 #include "Rocket/Core/Factory.h"
-
-
-
 
 
 
@@ -54,14 +58,11 @@ Rocket::Core::Vector2i wallpaperTexture_dimensions;
 void GameLoop()
 {
 
-
 	context->Update();
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-
     //glDisable(GL_TEXTURE_2D);  //без этого не отображается
-
 
 	glViewport(0,0,screen_width,screen_height);
 
@@ -76,7 +77,6 @@ void GameLoop()
     255,255,255,255,
     255,255,255,255,
     255,255,255,255};
-
 
     glPushMatrix();
 
@@ -99,23 +99,20 @@ void GameLoop()
 
     glPopMatrix();
 
-
-
-
-
 	context->Render();
-
-
 
 	Shell::FlipBuffers();
 }
 
-//#if defined ROCKET_PLATFORM_WIN32
-//#include <windows.h>
-//int APIENTRY WinMain(HINSTANCE ROCKET_UNUSED(instance_handle), HINSTANCE ROCKET_UNUSED(previous_instance_handle), char* ROCKET_UNUSED(command_line), int ROCKET_UNUSED(command_show))
-
+/*
+#if defined ROCKET_PLATFORM_WIN32
+int APIENTRY WinMain(HINSTANCE ROCKET_UNUSED(instance_handle), HINSTANCE ROCKET_UNUSED(previous_instance_handle), char* ROCKET_UNUSED(command_line), int ROCKET_UNUSED(command_show))
+*/
 int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 {
+    // Resolution initialisation
+    setResolution();
+
 	// Generic OS initialisation, creates a window and attaches OpenGL.
 	if (!Shell::Initialise("Master") ||
 		!Shell::OpenWindow("Master", true))
@@ -152,7 +149,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	Input::SetContext(context);
 
 
-    string dir = string(".\\assets\\");
+
+    string dir = string("./assets/");
+
     vector<string> files = vector<string>();
 
     getDir(dir,files);
@@ -160,26 +159,28 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
     for (unsigned int i = 0;i < files.size();i++) {
 
     std::vector<std::string> filename = split(files[i],'.');
+	if(filename.size()!=2)
+		continue;
         if (filename[1].compare("ttf")==0)
         {
             cout << files[i] << endl;
-            files[i].insert(0,dir);
+            files[i].insert(0,dir,0,dir.length()); //без звездочки
             Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
         };
     };
 
+	//Rocket::Core::FontDatabase::LoadFontFace("./assets/arial.ttf");
+	//Rocket::Core::FontDatabase::LoadFontFace("./assets/CONSOLA.TTF");
 
-	Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\arial.ttf");
-	//Rocket::Core::FontDatabase::LoadFontFace(".\\assets\\CONSOLA.TTF");
 
-
-	Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, ".\\assets\\wallpaper.tga");
+	Rocket::Core::GetRenderInterface()->LoadTexture(wallpaperTexture, wallpaperTexture_dimensions, "./assets/wallpaper.tga");
     printf("texture width:%i \n",wallpaperTexture_dimensions.x);
     printf("texture height:%i \n",wallpaperTexture_dimensions.y);
 
 	Rocket::Core::ElementInstancer* element_instancer = new Rocket::Core::ElementInstancerGeneric< ElementMap >();
 	Rocket::Core::Factory::RegisterElementInstancer("game", element_instancer);
 	element_instancer->RemoveReference();
+
 
     EventInstancer* event_instancer = new EventInstancer();
 	Rocket::Core::Factory::RegisterEventListenerInstancer(event_instancer);
@@ -188,15 +189,14 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	EventManager::RegisterEventHandler("game", new EventHandlerMode());
 
 	// Load and show the demo document.
-	Rocket::Core::ElementDocument* document = context->LoadDocument(".\\assets\\dialog.rml");
+    Rocket::Core::ElementDocument* document = context->LoadDocument("./assets/dialog.rml");
 	if (document != NULL)
 	{
 		document->Show();
 		document->RemoveReference();
 	}
 
-
-		Rocket::Core::ElementDocument* debugWindow = context->LoadDocument(".\\assets\\debugDialog.rml");
+	/*	Rocket::Core::ElementDocument* debugWindow = context->LoadDocument("./assets/debugDialog.rml");
 	if (debugWindow != NULL)
 	{
 		debugWindow->Show();
@@ -211,7 +211,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	debugText->AppendChild(debugWindow->CreateTextNode("Текущее состояние диалога"),true);
 
 
-	debugWindow->GetElementById("content")->AppendChild(debugText,true);
+	debugWindow->GetElementById("content")->AppendChild(debugText,true);*/
 
     //chooseAnswer(0);
 	Rocket::Core::Element* text = document->CreateElement("div");
@@ -297,7 +297,9 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
     }
 
     */
+
     EventManager::LoadWindow("game");
+
 	Shell::EventLoop(GameLoop);
 
 	// Shutdown Rocket.
@@ -311,3 +313,4 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 
 	return 0;
 }
+

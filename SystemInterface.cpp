@@ -24,12 +24,12 @@
  * THE SOFTWARE.
  *
  */
-
+#ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
 #undef ROCKET_PLATFORM_WIN32
 #define ROCKET_PLATFORM_UNIX
-
+#endif
 
 #include "SystemInterface.h"
 #include <Rocket/Core/Platform.h>
@@ -79,7 +79,7 @@ bool SystemInterface::LogMessage(Rocket::Core::Log::Type type, const Rocket::Cor
 		}
 
 		// Print the message and timestamp to file, and force a write in case of a crash.
-		fprintf(fp, "%s (%.2f): %s", prefix, GetElapsedTime(), message.CString());
+		fprintf(fp, "%s (%.2f): %s\n", prefix, GetElapsedTime(), message.CString());
 		fflush(fp);
 
 #ifdef ROCKET_PLATFORM_WIN32

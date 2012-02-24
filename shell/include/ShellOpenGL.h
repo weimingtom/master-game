@@ -28,11 +28,12 @@
 #ifndef ROCKETSHELLOPENGL_H
 #define ROCKETSHELLOPENGL_H
 
+#ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
 #undef ROCKET_PLATFORM_WIN32
 #define ROCKET_PLATFORM_UNIX
-
+#endif
 
 
 

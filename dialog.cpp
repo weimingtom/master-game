@@ -11,6 +11,7 @@ std::vector<char*> currentAnswers()
 {
     std::vector<char*> ansList;
     ansList.reserve(10);
+	//ansList.resize(10);
     for (int i=0;i<convGraph[curNode]->children.size();i++)
     {
 
@@ -62,7 +63,7 @@ chooseAnswer( int cn)
 std:: vector<dialogNode*> dialog_fun()
 {
 
-    std::ifstream in(".\\assets\\dialog2.xml");
+    std::ifstream in("./assets/dialog2.xml");
     if (!in){
         printf("error opening file");
     }
@@ -96,7 +97,8 @@ std:: vector<dialogNode*> dialog_fun()
 
     std::vector<dialogNode*> conversationGraph;
 
-    conversationGraph.resize(1000);
+    //conversationGraph.reserve(1000);
+	conversationGraph.resize(1000);
 
     n1=doc.first_node("Conversation");
 

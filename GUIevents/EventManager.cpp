@@ -50,8 +50,6 @@ void EventManager::RegisterEventHandler(const Rocket::Core::String& handler_name
 void EventManager::ProcessEvent(Rocket::Core::Event& event, const Rocket::Core::String& value)
 {
 
-
-
     if (event_handler != NULL)
     {
         event_handler->ProcessEvent(event, value);
@@ -70,7 +68,7 @@ bool EventManager::LoadWindow(const Rocket::Core::String& window_name)
 		event_handler = NULL;
 
 	// Attempt to load the referenced RML document.
-	Rocket::Core::String document_path = Rocket::Core::String("assets\\") + window_name + Rocket::Core::String(".rml");
+	Rocket::Core::String document_path = Rocket::Core::String("./assets/") + window_name + Rocket::Core::String(".rml");
 	Rocket::Core::ElementDocument* document = context->LoadDocument(document_path.CString());
 	if (document == NULL)
 	{

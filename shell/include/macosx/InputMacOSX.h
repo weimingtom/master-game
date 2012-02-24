@@ -14,7 +14,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,35 +25,26 @@
  *
  */
 
-#ifndef ROCKETINVADERSEVENT_H
-#define ROCKETINVADERSEVENT_H
+#ifndef INPUTMACOSX_H
+#define INPUTMACOSX_H
 
-#undef __WIN32__
-#undef _WIN32
-#undef ROCKET_PLATFORM_WIN32
-#define ROCKET_PLATFORM_UNIX
-
-
-#include <Rocket/Core/EventListener.h>
+#include "Input.h"
+#include <Carbon/Carbon.h>
 
 /**
-	@author Peter Curry
+	Input Wrapper Code
+	Feel free to take this class and integrate it with your project.
+	@author Lloyd Weehuizen
  */
 
-class Event : public Rocket::Core::EventListener
+class InputMacOSX : public Input
 {
 public:
-	Event(const Rocket::Core::String& value);
-	virtual ~Event();
+	static bool Initialise();
+	static void Shutdown();
 
-	/// Sends the event value through to Invader's event processing system.
-	virtual void ProcessEvent(Rocket::Core::Event& event);
-
-	/// Destroys the event.
-	virtual void OnDetach(Rocket::Core::Element* element);
-
-private:
-	Rocket::Core::String value;
+	/// Process the Carbon event.
+	static OSStatus EventHandler(EventHandlerCallRef next_handler, EventRef event, void* p);
 };
 
 #endif
