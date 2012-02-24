@@ -30,6 +30,7 @@
 #include "ShellFileInterface.h"
 #include <x11/InputX11.h>
 #include <X11/Xlib.h>
+#include <X11/Xatom.h>
 #include <X11/extensions/xf86vmode.h>
 #include <GL/glx.h>
 #include <GL/gl.h>
@@ -51,15 +52,6 @@ static GLXContext gl_context = NULL;
 static timeval start_time;
 
 static ShellFileInterface* file_interface = NULL;
-
-typedef struct
-{
-    unsigned long   flags;
-    unsigned long   functions;
-    unsigned long   decorations;
-    long            inputMode;
-    unsigned long   status;
-} Hints;
 
 bool Shell::Initialise(const Rocket::Core::String& path)
 {
@@ -103,7 +95,6 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 		return false;
   	}
 
-
 	// Build up our window attributes.
 	XSetWindowAttributes window_attributes;
 	window_attributes.colormap = XCreateColormap(display, RootWindow(display, visual_info->screen), visual_info->visual, AllocNone);
@@ -122,7 +113,34 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 						   CWBorderPixel | CWColormap | CWEventMask,
 						   &window_attributes);
 
-	// Handle delete events in windowed mode.
+    if(fullscreen)
+    {
+        // Fullscreen on top without caption
+        window_attributes.override_redirect = True;
+        XChangeWindowAttributes(display, window, CWOverrideRedirect, &window_attributes);
+
+		// Re-appear window
+		XMapRaised(display, window);
+
+			XUnmapWindow(display, window);
+			{ // Wait for window to disapear
+				XEvent event;
+				do {
+					XMaskEvent(display, StructureNotifyMask, &event);
+				} while ( (event.type != UnmapNotify) || (event.xunmap.event != window) );
+			}
+			// Turn off WM control
+			window_attributes.override_redirect = True;
+			XChangeWindowAttributes(display, window, CWBorderPixel | CWColormap | CWOverrideRedirect, &window_attributes);
+
+			// Re-appear window
+			XMapRaised(display, window);
+
+ 		// Get input focus
+		XSetInputFocus(display, window, RevertToNone, CurrentTime);
+    }
+
+    // Handle delete events in windowed mode.
 	Atom delete_atom = XInternAtom(display, "WM_DELETE_WINDOW", True);
 	XSetWMProtocols(display, window, &delete_atom, 1);
 
@@ -137,16 +155,6 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 	// Set the window title and show the window.
 	XSetStandardProperties(display, window, name, "", None, NULL, 0, NULL);
 	XMapRaised(display, window);
-
-    // Fullscreen without caption
-    Hints   hints;
-    Atom    property;
-
-    hints.flags = 2;        // Specify that we're changing the window decorations.
-    hints.decorations = 0;  // 0 (false) means that window decorations should go bye-bye.
-
-    property = XInternAtom(display,"_MOTIF_WM_HINTS",True);
-    XChangeProperty(display,window,property,property,32,PropModeReplace,(unsigned char *)&hints,5);
 
 	gl_context = glXCreateContext(display, visual_info, NULL, GL_TRUE);
 	if (gl_context == NULL)

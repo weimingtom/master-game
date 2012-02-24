@@ -148,7 +148,13 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 
 	instance_name = name;
 
-    DWORD style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX & ~WS_CAPTION;
+    // Fullscreen without caption or windowed mode
+    DWORD style;
+    if(fullscreen)
+        style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX & ~WS_CAPTION;
+    else
+        style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX;
+
 	DWORD extended_style = WS_EX_APPWINDOW;
 
 	//DWORD style = WS_POPUP& WS_CAPTION;

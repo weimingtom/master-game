@@ -104,10 +104,6 @@ void GameLoop()
 	Shell::FlipBuffers();
 }
 
-/*
-#if defined ROCKET_PLATFORM_WIN32
-int APIENTRY WinMain(HINSTANCE ROCKET_UNUSED(instance_handle), HINSTANCE ROCKET_UNUSED(previous_instance_handle), char* ROCKET_UNUSED(command_line), int ROCKET_UNUSED(command_show))
-*/
 int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 {
     // Resolution initialisation
@@ -164,7 +160,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         if (filename[1].compare("ttf")==0)
         {
             cout << files[i] << endl;
-            files[i].insert(0,dir,0,dir.length()); //без звездочки
+            files[i].insert(0,dir,0,dir.length());
             Rocket::Core::FontDatabase::LoadFontFace(files[i].c_str());
         };
     };
@@ -211,9 +207,10 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
 	debugText->AppendChild(debugWindow->CreateTextNode("Текущее состояние диалога"),true);
 
 
-	debugWindow->GetElementById("content")->AppendChild(debugText,true);*/
+	debugWindow->GetElementById("content")->AppendChild(debugText,true);
 
-    //chooseAnswer(0);
+    chooseAnswer(0); */
+
 	Rocket::Core::Element* text = document->CreateElement("div");
 	text->SetId("convText");
 
@@ -297,14 +294,13 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
         i++;
 
     }
-
-    */
+*/
 
     EventManager::LoadWindow("game");
 
 	Shell::EventLoop(GameLoop);
 
-	// Shutdown Rocket.
+	// Shutdown Rocket
 	context->RemoveReference();
 
 	EventManager::Shutdown();

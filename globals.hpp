@@ -10,6 +10,7 @@
 
 extern int screen_width;
 extern int screen_height;
+extern bool fullscreen;
 
 extern Rocket::Core::Context* context;
 

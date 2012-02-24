@@ -5,7 +5,8 @@
 #include <Rocket/Core.h>
 
 #include "../dialog.hpp"
-
+#include "../globals.hpp"
+#include "../shell/include/Shell.h"
 
 static KeyDownListener exitkey_listener;
 
@@ -18,7 +19,14 @@ void KeyDownListener::RegisterContextListener(Rocket::Core::Context* cont)
 
 void KeyDownListener::ProcessEvent(Rocket::Core::Event& event)
 {
-    printf("keydown");
+    int key = event.GetParameter<int>("key_identifier", 0);
+
+    printf("keydown code: %d\n", key);
+
+    if(key == Rocket::Core::Input::KI_ESCAPE)
+    {
+        Shell::RequestExit();
+    }
 }
 
 static ClickListener click_listener;
