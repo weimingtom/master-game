@@ -7,9 +7,6 @@
 #include "../ElementMap.hpp"
 
 
-// The game's element context (declared in main.cpp).
-extern Rocket::Core::Context* context;
-
 EventHandlerMode::EventHandlerMode()
 {
 }
