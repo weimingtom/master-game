@@ -4,6 +4,7 @@
 
 #include <Rocket/Core/EventListener.h>
 #include <Rocket/Core/Types.h>
+#include <Rocket/Core/Context.h>
 
 /**
 	@author Pete
@@ -39,6 +40,15 @@ protected:
 	virtual void ProcessEvent(Rocket::Core::Event& event);
 };
 
+class KeyDownListener : public Rocket::Core::EventListener
+{
+public:
+
+	static void RegisterContextListener(Rocket::Core::Context* cont);
+
+protected:
+	virtual void ProcessEvent(Rocket::Core::Event& event);
+};
 
 
 

@@ -220,7 +220,7 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
     Rocket::Core::Element* answers = document->CreateElement("div");
     answers->SetId("answers");
 
-
+    //context->AddEventListener(EventManager::ProcessEvent);
 
 	Rocket::Core::Element* newText = document->CreateElement("p");
 	newText->SetId("pc");
@@ -232,6 +232,8 @@ int main(int ROCKET_UNUSED(argc), char** ROCKET_UNUSED(argv))
     answers->AppendChild(newText,true);
 
     ClickListener::RegisterClickableContainer(newText);
+
+    KeyDownListener::RegisterContextListener(context);
 
     Rocket::Core::Dictionary parameters;
     parameters.Set("mouse_x", 0);
