@@ -6,6 +6,21 @@
 
 #include "../dialog.hpp"
 
+
+static KeyDownListener exitkey_listener;
+
+
+
+void KeyDownListener::RegisterContextListener(Rocket::Core::Context* cont)
+{
+	cont->AddEventListener("keydown", &exitkey_listener);
+}
+
+void KeyDownListener::ProcessEvent(Rocket::Core::Event& event)
+{
+    printf("keydown");
+}
+
 static ClickListener click_listener;
 
 // Registers an element as being a container of draggable elements.
