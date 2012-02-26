@@ -111,7 +111,7 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 		return false;
 	}
 
-        SysSetDisplayMode(screen_width, screen_height, 32);
+
 
 	    window_handle = CreateWindowEx(WS_EX_TOPMOST,
                   name,
@@ -138,6 +138,7 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
 								   instance_handle,
 								   NULL);
 								   */
+
 	if (!window_handle)
 	{
 		DisplayError("Could not create window.");
@@ -151,7 +152,10 @@ bool Shell::OpenWindow(const char* name, bool attach_opengl)
     // Fullscreen without caption or windowed mode
     DWORD style;
     if(fullscreen)
+    {
         style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX & ~WS_CAPTION;
+        SysSetDisplayMode(screen_width, screen_height, 32);
+    }
     else
         style = WS_OVERLAPPEDWINDOW & ~WS_SIZEBOX & ~WS_MAXIMIZEBOX;
 
