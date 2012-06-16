@@ -8,23 +8,43 @@
 #include "map.hpp"
 #include <Rocket/Core.h>
 #include <cmath>
-#include <Shell.h>
+
 
 #include "globals.hpp"
 
+
+#if defined __MY_UNIX__
+#include <Shell.h>
 #include "Object.hpp"
 #include "ObjectTemplate.hpp"
 #include "ObjTemplateMgr.hpp"
-
 #include "ComponentTemplate.hpp"
 #include "components/CompPhysTemplate.hpp"
 #include "components/CompVisualSqTemplate.hpp"
 #include "components/CompTogglableTemplate.hpp"
 #include "CompTemplateMgr.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "shell/include/Shell.h"
+#include "objects/Object.hpp"
+#include "objects/ObjectTemplate.hpp"
+#include "objects/ObjTemplateMgr.hpp"
+#include "objects/ComponentTemplate.hpp"
+#include "objects/components/CompPhysTemplate.hpp"
+#include "objects/components/CompVisualSqTemplate.hpp"
+#include "objects/components/CompTogglableTemplate.hpp"
+#include "objects/CompTemplateMgr.hpp"
+#endif
+
+
+
+
 
 #include "sprites.hpp"
 
 #include "events/eventManager.hpp"
+#include "events/eventManager.cpp"
+
 
 #ifdef __MY_NOT__
 #define not !
