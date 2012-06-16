@@ -6,6 +6,7 @@
 #include <windows.h>
 #endif
 
+
 #include <iostream>
 #include <fstream>
 
@@ -19,7 +20,11 @@
 #include <sstream>
 
 #include <sys/types.h>
+
+#if defined __MY_UNIX__
 #include <dirent.h>
+#endif
+
 #include <errno.h>
 #include <vector>
 #include <iostream>
@@ -60,7 +65,9 @@ inline std::string replace(std::string text, std::string s, std::string d)
 
 inline int getDir (std::string dir, std::vector<std::string> &files)
 {
-    DIR *dp;
+#if defined	__MY_UNIX__
+
+	DIR *dp;
     struct dirent *dirp;
     if((dp = opendir(dir.c_str())) == NULL) {
         std::cout << "Error(" << errno << ") opening " << dir << std::endl;
@@ -73,6 +80,37 @@ inline int getDir (std::string dir, std::vector<std::string> &files)
     }
     closedir(dp);
     return 0;
+
+#endif
+#if defined __MY_WIN32__
+
+	WIN32_FIND_DATAA findData;
+	//HANDLE h=FindFirstFileA(dir.c_str(), &findData);
+
+	std::string str1=dir;
+
+	str1+="*.*";
+
+	//if(str1.length()-1>=0)
+	//  if(str1[str1.length()-1]=='/' || str1[str1.length()-1]=='\\')
+	//    str1[str1.length()-1]='\0'; 
+
+	HANDLE h=FindFirstFileA(str1.c_str(), &findData);
+	if(h==INVALID_HANDLE_VALUE){
+		int err=GetLastError();
+		std::cout << "Error(" << err << ") opening " << dir << std::endl;
+		return err;
+	}
+	do{
+		//if(findData.dwFileAttributes & FILE_ATTRIBUTE_NORMAL){
+		files.push_back(std::string(findData.cFileName));
+		//}
+	}while(FindNextFileA(h, &findData)!=0);
+	FindClose(h);
+	return 0;
+
+#endif
+
 }
 /*
 inline int getDir (std::string dir, std::vector<std::string> &files){

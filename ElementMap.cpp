@@ -4,14 +4,21 @@
 #endif
 
 
+#if defined __MY_UNIX__
+#include <Shell.h>
+#include <ShellOpenGL.h>
+#endif
+#if defined __MY_WIN32__
+#include "shell/include/Shell.h"
+#include "shell/include/ShellOpenGL.h"
+#endif
+
 #include "ElementMap.hpp"
 #include <Rocket/Core/ElementDocument.h>
 #include <Rocket/Core/Input.h>
 
 #include <sstream>
 #include "map.hpp"
-#include <Shell.h>
-#include <ShellOpenGL.h>
 
 #include <GL/glu.h>
 

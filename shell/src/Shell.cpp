@@ -24,8 +24,13 @@
  * THE SOFTWARE.
  *
  */
-
+#if defined __MY_UNIX__
 #include "Shell.h"
+#endif
+#if defined __MY_WIN32__
+#include "../include/Shell.h"
+#endif
+
 #include <Rocket/Core/FontDatabase.h>
 
 Rocket::Core::String Shell::executable_path;

@@ -2,8 +2,18 @@
 #include "CompVisualSq.hpp"
 #include "CompVisualSqTemplate.hpp"
 #include "CompPhys.hpp"
+
+
+
+#if defined __MY_UNIX__
 #include "../sprites.hpp"
 #include "Object.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "../../sprites.hpp"
+#include "../../objects/Object.hpp"
+#endif
+
 
 /*static*/ comp_id_type CompVisualSq::mFamilyID = "CompVisualSq";
 /*static*/ comp_id_type CompVisualSq::mComponentID = "CompVisualSq";

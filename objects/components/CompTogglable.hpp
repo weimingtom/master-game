@@ -5,8 +5,13 @@
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_print.hpp"
 
-#include "Component.hpp"
 
+#if defined __MY_UNIX__
+#include "Component.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "../Component.hpp"
+#endif
 
 
 class CompTogglableTemplate;

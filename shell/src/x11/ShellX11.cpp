@@ -25,19 +25,21 @@
  *
  */
 
+#if defined __MY_UNIX__
 #include <Shell.h>
-#include <Rocket/Core.h>
 #include "ShellFileInterface.h"
 #include <x11/InputX11.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/xf86vmode.h>
 #include <GL/glx.h>
+#include <sys/time.h>
+#include <unistd.h>
+
+#include <Rocket/Core.h>
 #include <GL/gl.h>
 #include <sys/types.h>
-#include <sys/time.h>
 #include <time.h>
-#include <unistd.h>
 #include <stdio.h>
 
 #include "../../../config.h"
@@ -303,3 +305,5 @@ float Shell::GetElapsedTime()
 
 	return (float)result;
 }
+
+#endif

@@ -2,7 +2,15 @@
 #ifndef __COMPTOGGLTEMPLATE_HPP__
 #define __COMPTOGGLTEMPLATE_HPP__
 
+
+#if defined __MY_UNIX__
 #include "ComponentTemplate.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "../ComponentTemplate.hpp"
+#endif
+
+
 #include "CompTogglable.hpp"
 #include <cstdio>
 

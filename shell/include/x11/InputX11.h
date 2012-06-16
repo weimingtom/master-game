@@ -28,16 +28,10 @@
 #ifndef INPUTX11_H
 #define INPUTX11_H
 
+
+#if defined __MY_UNIX__
 #include <X11/Xlib.h>
 #include "Input.h"
-
-/**
- * Input Wrapper Code
- *
- * Feel free to take this class and integrate it with your project.
- *
- * @author Lloyd Weehuizen
- */
 
 class InputX11 : public Input
 {
@@ -48,5 +42,19 @@ public:
 	/// Process the windows message
 	static void ProcessXEvent(Display* display, const XEvent& event);
 };
+
+#endif
+
+
+
+/**
+ * Input Wrapper Code
+ *
+ * Feel free to take this class and integrate it with your project.
+ *
+ * @author Lloyd Weehuizen
+ */
+
+
 
 #endif

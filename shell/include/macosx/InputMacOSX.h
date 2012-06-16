@@ -28,8 +28,16 @@
 #ifndef INPUTMACOSX_H
 #define INPUTMACOSX_H
 
+#if defined __MY_UNIX__
 #include "Input.h"
+#endif
+#if defined __MY_WIN32__
+#include "../../include/Input.h"
+#endif
+
+#if defined __MAC_OS__
 #include <Carbon/Carbon.h>
+
 
 /**
 	Input Wrapper Code
@@ -46,5 +54,7 @@ public:
 	/// Process the Carbon event.
 	static OSStatus EventHandler(EventHandlerCallRef next_handler, EventRef event, void* p);
 };
+
+#endif
 
 #endif
