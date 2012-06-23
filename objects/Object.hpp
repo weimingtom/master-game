@@ -8,12 +8,6 @@
 
 #include "Component.hpp"
 
-#if defined __MY_WIN32__
-#define not !
-#endif
-
-
-
 typedef std::map<const comp_id_type, Component*> component_table_type;
 
 typedef std::string obj_id_type;

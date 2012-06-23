@@ -25,23 +25,12 @@
  *
  */
 
-
-#if defined __MY_UNIX__
 #include <macosx/InputMacOSX.h>
 #include <Rocket/Core/Context.h>
 #include <Rocket/Core/Input.h>
 #include <Rocket/Debugger.h>
 #include <Shell.h>
-#endif
-#if defined __MY_WIN32__
-#include "../../include/macosx/InputMacOSX.h"
-#include "../../include/Rocket/Core/Context.h"
-#include "../../include/Rocket/Core/Input.h"
-#include "../../include/Rocket/Debugger.h"
-#include "../../include/Shell.h"
-#endif
 
-#if defined __MAC_OS__
 // Defines for Carbon key modifiers.
 #define KEY_ALT 256
 #define KEY_SHIFT 512
@@ -293,5 +282,3 @@ static void InitialiseKeymap()
 	key_identifier_map[0x7D] = Rocket::Core::Input::KI_DOWN;
 	key_identifier_map[0x7E] = Rocket::Core::Input::KI_UP;
 }
-
-#endif

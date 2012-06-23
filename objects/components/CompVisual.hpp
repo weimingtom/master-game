@@ -1,10 +1,5 @@
-#if defined __MY_UNIX__
-#include "Component.hpp"
-#endif
-#if defined __MY_WIN32__
-#include "../Component.hpp"
-#endif
 
+#include "Component.hpp"
 
 class CompVisual : public Component {
 	//Component interface

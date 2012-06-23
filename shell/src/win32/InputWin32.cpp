@@ -1,17 +1,9 @@
 
-#if defined __MY_UNIX__
-#include <Shell.h>
 #include <win32/InputWin32.h>
-#endif
-#if defined __MY_WIN32__
-#include "../../include/win32/InputWin32.h"
-#include "../../include/Shell.h"
-#endif
-
-
 #include <Rocket/Core/Context.h>
 #include <Rocket/Core/Input.h>
 #include <Rocket/Debugger.h>
+#include <Shell.h>
 
 static int GetKeyModifierState();
 static void InitialiseKeymap();

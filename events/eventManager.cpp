@@ -3,17 +3,8 @@
 #include "../objects/components/CompVisualSq.hpp"
 #include "../entity.hpp"
 
+eventManager *eventManager::mInstance = NULL;
 
-//eventManager *eventManager::mInstance = NULL;
-
-/*
-static eventManager * eventManager::getInstance() {
-  if(mInstance == NULL)
-	  mInstance = new eventManager();
-  return mInstance;
-	//return NULL;
-}
-*/
 
 int handleButtonToggle(gameEvent evt)
 {
@@ -38,7 +29,6 @@ int handleMoveFun(gameEvent evt)
     return 0;
 }
 */
-
 
 void registerEvents()
 {

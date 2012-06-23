@@ -25,13 +25,7 @@
  *
  */
 
-#if defined __MY_UNIX__
 #include <Input.h>
-#endif
-#if defined __MY_WIN32__
-#include "../include/Input.h"
-#endif
-
 
 /**
 	This map contains 4 different mappings from key identifiers to character codes. Each entry represents a different

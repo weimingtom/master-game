@@ -25,18 +25,9 @@
  *
  */
 
-#if defined __MY_UNIX__
 #include "Shell.h"
-#include "ShellFileInterface.h"
-#endif
-#if defined __MY_WIN32__
-#include "../../include/Shell.h"
-#include "../../include/ShellFileInterface.h"
-#endif
-
-#if defined __MAC_OS__
-
 #include <Rocket/Core.h>
+#include "ShellFileInterface.h"
 #include "macosx/InputMacOSX.h"
 #include <Carbon/Carbon.h>
 #include <AGL/agl.h>
@@ -330,6 +321,3 @@ static OSStatus EventHandler(EventHandlerCallRef next_handler, EventRef event, v
 //	InputMacOSX::ProcessCarbonEvent(event);
 	return CallNextEventHandler(next_handler, event);
 }
-
-
-#endif//__MAC_OS__

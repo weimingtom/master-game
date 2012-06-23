@@ -33,18 +33,11 @@
 
 #include "SystemInterface.h"
 #include <Rocket/Core/Platform.h>
+#include <Shell.h>
 #include <stdio.h>
 #ifdef ROCKET_PLATFORM_WIN32
 #include <windows.h>
 #endif
-
-#if defined __MY_UNIX__
-#include <Shell.h>
-#endif
-#if defined __MY_WIN32__
-#include "shell/include/Shell.h"
-#endif
-
 
 SystemInterface::SystemInterface()
 {

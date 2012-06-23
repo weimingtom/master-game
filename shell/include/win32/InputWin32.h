@@ -28,13 +28,7 @@
 #ifndef ROCKETINPUTWIN32_H
 #define ROCKETINPUTWIN32_H
 
-#if defined __MY_UNIX__
 #include <Input.h>
-#endif
-#if defined __MY_WIN32__
-#include "../../include/Input.h"
-#endif
-
 #if !defined _WIN32_WINNT || _WIN32_WINNT < 0x0500
 #undef _WIN32_WINNT
 #define _WIN32_WINNT 0x0500
