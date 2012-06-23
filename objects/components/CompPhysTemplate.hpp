@@ -2,7 +2,13 @@
 #ifndef __COMPPHYSTEMPLATE_HPP__
 #define __COMPPHYSTEMPLATE_HPP__
 
+#if defined __MY_UNIX__
 #include "ComponentTemplate.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "../ComponentTemplate.hpp"
+#endif
+
 #include "CompPhys.hpp"
 #include <cstdio>
 

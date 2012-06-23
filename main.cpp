@@ -1,3 +1,4 @@
+
 #ifndef __MY_WIN32__
 #undef __WIN32__
 #undef _WIN32
@@ -16,10 +17,17 @@
 
 //#include <GL/glew.h>
 
-
+#if defined __MY_UNIX__
 #include <Input.h>
 #include <Shell.h>
+#endif
+#if defined __MY_WIN32__
+#include "shell/include/Input.h"
+#include "shell/include/Shell.h"
+#endif
+
 #include "SystemInterface.h"
+
 
 #include "dialog.hpp"
 

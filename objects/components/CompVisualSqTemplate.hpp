@@ -2,9 +2,17 @@
 #ifndef __COMPVISUALSQTEMPLATE_HPP__
 #define __COMPVISUALSQTEMPLATE_HPP__
 
+#if defined __MY_UNIX__
 #include "ComponentTemplate.hpp"
-#include "CompVisualSq.hpp"
 #include "../sprites.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "../ComponentTemplate.hpp"
+#include "../../sprites.hpp"
+#endif
+
+#include "CompVisualSq.hpp"
+
 
 
 class CompVisualSqTemplate : public ComponentTemplate {

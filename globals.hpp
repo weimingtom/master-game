@@ -2,6 +2,8 @@
 #ifndef _GLOBALS_INCLUDED
 #define _GLOBALS_INCLUDED
 
+
+
 #include <Rocket/Core.h>
 #include <Rocket/Debugger.h>
 #include <Rocket/Core/Types.h>

@@ -25,7 +25,13 @@
  *
  */
 
+#if defined __MY_UNIX__
 #include <ShellFileInterface.h>
+#endif
+#if defined __MY_WIN32__
+#include "../include/ShellFileInterface.h"
+#endif
+
 #include <stdio.h>
 
 ShellFileInterface::ShellFileInterface(const Rocket::Core::String& root) : root(root)
