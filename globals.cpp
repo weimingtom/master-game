@@ -33,7 +33,6 @@ AG_Surface *surf1;
 GLint viewport[4];
 GLdouble modelview[16];
 GLdouble projection[16];
-
 float cursorwX,cursorwY;
 
 

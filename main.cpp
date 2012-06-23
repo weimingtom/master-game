@@ -334,7 +334,7 @@ MultiLineExample(const char *title, int wordwrap,char* a)
     //AG_WidgetDisable(textbox);
 
    //win2 = AG_WindowNew(0);
-   //AG_WindowSetCaption(win2, "Варианты ответов");
+   //AG_WindowSetCaption(win2, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 
 
 
