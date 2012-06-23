@@ -7,8 +7,8 @@
 #include <list>
 #include <map>
 
-#include "rapidxml.hpp"
-#include "rapidxml_print.hpp"
+#include "rapidxml/rapidxml.hpp"
+#include "rapidxml/rapidxml_print.hpp"
 
 using namespace std;
 using namespace rapidxml;

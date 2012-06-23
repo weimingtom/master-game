@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="dialog.h" open="0" top="0" tabpos="2">
-		<Cursor position="0" topLine="0" />
+	<File name="dialog.h" open="1" top="0" tabpos="2">
+		<Cursor position="210" topLine="0" />
 	</File>
-	<File name="entity.cpp" open="0" top="0" tabpos="3">
+	<File name="entity.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="1" topLine="0" />
 	</File>
-	<File name="events.cpp" open="1" top="0" tabpos="4">
+	<File name="events.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="195" topLine="0" />
 	</File>
-	<File name="formatext.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="326" topLine="6" />
-	</File>
-	<File name="geomap.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="8336" topLine="301" />
+	<File name="geomap.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="7135" topLine="238" />
 	</File>
 	<File name="globals.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="140" topLine="0" />
+		<Cursor position="588" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="984" topLine="68" />
-	</File>
-	<File name="myButton.h" open="0" top="0" tabpos="3">
-		<Cursor position="262" topLine="0" />
-	</File>
-	<File name="mytextbox.h" open="0" top="0" tabpos="0">
-		<Cursor position="113" topLine="0" />
-	</File>
-	<File name="mywidget.h" open="0" top="0" tabpos="8">
-		<Cursor position="0" topLine="0" />
-	</File>
-	<File name="task.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="666" topLine="31" />
+	<File name="main.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="13523" topLine="540" />
 	</File>
 </CodeBlocks_layout_file>

@@ -26,7 +26,7 @@ class ComplexTask: public Task {
 class goToPoint: public Task {
         public:
         VisiLibity::Point dest;
-        goToPoint::goToPoint();
+        goToPoint();
         goToPoint(float x,float y, Entity* ent);
         int execute(int time);
     };
