@@ -25,13 +25,7 @@
  *
  */
 
-#if defined __MY_UNIX__
 #include <ShellRenderInterfaceOpenGL.h>
-#endif
-#if defined __MY_WIN32__
-#include "../include/ShellRenderInterfaceOpenGL.h"
-#endif
-
 #include <Rocket/Core.h>
 
 #include <Rocket/Core.h>

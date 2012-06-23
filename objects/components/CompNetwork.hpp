@@ -4,14 +4,7 @@
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_print.hpp"
 
-
-#if defined __MY_UNIX__
 #include "Component.hpp"
-#endif
-#if defined __MY_WIN32__
-#include "../Component.hpp"
-#endif
-
 
 typedef std::pair<short,short> vertex_tuple;
 

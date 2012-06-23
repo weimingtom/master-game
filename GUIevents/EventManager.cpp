@@ -3,16 +3,9 @@
 #include <Rocket/Core/Context.h>
 #include <Rocket/Core/ElementDocument.h>
 #include <Rocket/Core/ElementUtilities.h>
+#include <Shell.h>
 #include "EventHandler.h"
 #include <map>
-
-#if defined __MY_UNIX__
-#include <Shell.h>
-#endif
-#if defined __MY_WIN32__
-#include "../shell/include/Shell.h"
-#endif
-
 
 // The game's element context (declared in main.cpp).
 extern Rocket::Core::Context* context;

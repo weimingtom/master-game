@@ -1,16 +1,7 @@
-
-#if defined __MY_UNIX__
 #include <Shell.h>
+#include <Rocket/Core.h>
 #include <win32/InputWin32.h>
 #include "ShellFileInterface.h"
-#endif
-#if defined __MY_WIN32__
-#include "../../include/Shell.h"
-#include "../../include/win32/InputWin32.h"
-#include "../../include/ShellFileInterface.h"
-#endif
-
-#include <Rocket/Core.h>
 #include <windows.h>
 #include <stdio.h>
 

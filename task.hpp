@@ -14,8 +14,8 @@ class Task
     public:
         Object* owner;
         Task(){};
-		virtual int execute(Rocket::Core::Time time){return 0;};
-		virtual int execute(obj_id_type target,obj_id_type sender){return 0;};
+        virtual int execute(Rocket::Core::Time time) {}
+        virtual int execute(obj_id_type target,obj_id_type sender) {}
 };
 
 class ComplexTask: public Task {

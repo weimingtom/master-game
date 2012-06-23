@@ -1,12 +1,7 @@
 #ifndef __EVENTMANAGER_HPP__
 #define __EVENTMANAGER_HPP__
 #include <map>
-#if defined __MY_UNIX__
 #include "Object.hpp"
-#endif
-#if defined __MY_WIN32__
-#include "../objects/Object.hpp"
-#endif
 
 #define SRUTIL_DELEGATE_PREFERRED_SYNTAX
 
@@ -39,7 +34,11 @@ public:
 	std::map<obj_id_type,eventNotifiers> notifiersByObj;
 	std::map<obj_id_type,eventHandlers> handlersByObj;
 
-    static eventManager * eventManager::getInstance();
+	static eventManager *getInstance() {
+		if(mInstance == NULL)
+			mInstance = new eventManager();
+		return mInstance;
+	}
 
 	void registerHandler(eventHandler handler,event_handler_id handler_id, obj_id_type obj) {
 
@@ -99,14 +98,11 @@ public:
 	}
 
 
-public:
+protected:
 	static eventManager *mInstance;
 };
 
-
-
-
-//void testEventManager();
-//void registerEvents();
+void testEventManager();
+void registerEvents();
 
 #endif

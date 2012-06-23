@@ -25,12 +25,7 @@
  *
  */
 
-
-#if defined __MY_UNIX__
 #include <x11/InputX11.h>
-
-
-
 #include <Rocket/Core/Context.h>
 #include <Rocket/Core/Input.h>
 #include <Rocket/Debugger.h>
@@ -316,5 +311,3 @@ static void InitialiseKeymap()
 	key_identifier_map[XK_y & 0xFF] = Rocket::Core::Input::KI_Y;
 	key_identifier_map[XK_z & 0xFF] = Rocket::Core::Input::KI_Z;
 }
-
-#endif
