@@ -93,5 +93,7 @@ int move::execute(obj_id_type target,obj_id_type sender)
 {
     CompPhys* tgtPos =  static_cast<CompPhys*>(gameObjectsTable[target]->getComponent("CompPhys"));
     tgtPos->pos.first++;
+	
+	return 0;
 }
 

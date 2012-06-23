@@ -5,7 +5,12 @@
 #include <Rocket/Core/Types.h>
 #include <Rocket/Core/Texture.h>
 
+#if defined __MY_UNIX__
 #include <ShellOpenGL.h>
+#endif
+#if defined __MY_WIN32__
+#include "shell/include/ShellOpenGL.h"
+#endif
 
 #include <GL/glu.h>
 

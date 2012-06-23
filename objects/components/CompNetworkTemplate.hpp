@@ -2,7 +2,14 @@
 #ifndef __CompNetworkTEMPLATE_HPP__
 #define __CompNetworkTEMPLATE_HPP__
 
+
+#if defined __MY_UNIX__
 #include "ComponentTemplate.hpp"
+#endif
+#if defined __MY_WIN32__
+#include "../ComponentTemplate.hpp"
+#endif
+
 #include "CompNetwork.hpp"
 #include <cstdio>
 
