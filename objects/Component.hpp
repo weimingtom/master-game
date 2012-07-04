@@ -14,6 +14,7 @@ typedef std::string field_id_type;
 typedef std::map<field_id_type, std::string> objTable;
 typedef rapidxml::xml_document<> xmlFile;
 typedef std::pair<short,short> vertex_tuple;
+typedef std::string obj_id_type;
 
 
 

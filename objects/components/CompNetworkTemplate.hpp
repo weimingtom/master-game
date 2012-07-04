@@ -6,10 +6,18 @@
 #include "CompNetwork.hpp"
 #include <cstdio>
 
+#include <iostream>
+#include <map>
+using namespace std;
+
 class CompNetworkTemplate : public ComponentTemplate {
 
 	// ComponentTemplate interface
 public:
+
+    multimap<obj_id_type,obj_id_type> network_map;
+    typedef multimap<obj_id_type,obj_id_type>::iterator net_iterator;
+    typedef pair<multimap<obj_id_type,obj_id_type>::iterator,multimap<obj_id_type,obj_id_type>::iterator> net_element_iterator;
 	//returns the Component ID that this template can create
 	virtual const comp_id_type& componentID() const {
 		return mComponentID;
@@ -20,7 +28,7 @@ public:
 
 	virtual Component *makeComponent() {
 		CompNetwork *comp = new CompNetwork(this);
-		printf("\n creating CompNetwork %i,%i \n",comp->pos.first,comp->pos.second);
+		printf("\n creating CompNetwork \n");
 
 		//comp->reset();
 		return comp;
@@ -31,8 +39,7 @@ public:
 	// CompNetwork interface
 public:
 
-    vertex_tuple pos;  // положение в пространстве
-    int passable; // проходимо ли
+
 
 private:
 	static comp_id_type mComponentID;

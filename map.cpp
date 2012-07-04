@@ -20,6 +20,7 @@
 #include "components/CompPhysTemplate.hpp"
 #include "components/CompVisualSqTemplate.hpp"
 #include "components/CompTogglableTemplate.hpp"
+#include "components/CompNetworkTemplate.hpp"
 #include "CompTemplateMgr.hpp"
 
 #include "sprites.hpp"
@@ -147,6 +148,15 @@ void Map::Initialise()
 
             }
 
+        if (not (strcmp(templ->first_attribute("name")->value(),"CompNetwork")))
+            {
+
+                comp_id_type compName = comp_id_type("CompNetwork");
+                CompTemplateMgr::getInstance()->registerRootTemplateNode(compName,templ);
+
+            }
+
+
 
         templ=templ->next_sibling("goc");
     }
@@ -195,6 +205,18 @@ void Map::Initialise()
                     static_cast<CompTogglableTemplate*>(CompTogglableTemplate2)->Deserialize(templ);
 
                     CompTemplateMgr::getInstance()->registerTemplate(CompTogglableTemplate2);
+
+                }
+
+
+            if (not (strcmp(templ->first_attribute("name")->value(),"CompNetwork")))
+                {
+                    comp_id_type compName = comp_id_type("CompNetwork");
+                    CompNetworkTemplate *CompNetworkTemplate2 = new CompNetworkTemplate();   //переключаемость
+                    static_cast<CompNetworkTemplate*>(CompNetworkTemplate2)->Deserialize(CompTemplateMgr::getInstance()->getRootTemplateNode(compName));
+                    static_cast<CompNetworkTemplate*>(CompNetworkTemplate2)->Deserialize(templ);
+
+                    CompTemplateMgr::getInstance()->registerTemplate(CompNetworkTemplate2);
 
                 }
 
@@ -431,7 +453,10 @@ void Map::Render(int mode, int mode_element)
 
     for (std::map<obj_id_type,Object*>::iterator i = gameObjectsTable.begin();i!=gameObjectsTable.end();i++)
     {
-	static_cast<CompVisualSq*>(i->second->getComponent("CompVisualSq"))->Draw();
+        if (i->second->hasComponent("CompVisualSq"))
+            {
+                static_cast<CompVisualSq*>(i->second->getComponent("CompVisualSq"))->Draw();
+            };
 
 	//static_cast<CompVisualSq*>(gameObjectsTable["Unknown"]->getComponent("CompVisualSq"))->Draw();
 	//static_cast<CompVisualSq*>(gameObjectsTable["Unknown2"]->getComponent("CompVisualSq"))->Draw();

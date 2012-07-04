@@ -1,0 +1,93 @@
+<walls coords="-5,-4 -4,-4 -4,-1 -4,1 -4,3 -3,1 -3,2 -3,3 -2,-4 -2,-2 -2,-1 -2,1 -2,2 -2,3 -1,-2 -1,0 -1,2 -1,3 0,-4 0,0 1,0 2,-2 2,-1 3,-3 3,-1 3,1 3,3 4,-3 "/>
+<sprite id="1" left="130" top="150" right="170" bottom="190"/>
+<sprite id="2" left="390" top="160" right="430" bottom="200"/>
+<sprite id="3" left="130" top="150" right="170" bottom="190"/>
+<sprite id="4" left="390" top="160" right="430" bottom="200"/>
+<goc name="CompPhys">
+	<pos value="5,5"/>
+	<passable value="1"/>
+</goc>
+<goc name="CompVisualSq">
+	<sprite value="1"/>
+</goc>
+<goc name="CompTogglable">
+	<state value="1"/>
+</goc>
+<goc name="CompNetwork">
+	<map value="node1,node2 node2,node1"/>
+</goc>
+
+<goc name="CompNetworkNode">
+	<map value="node1,node2 node2,node1"/>
+</goc>
+
+
+<object_template name="NetworkObjectTemplate">
+	<components>
+		<goc name="CompNetwork"/>
+	</components>
+</object_template>
+<object_template name="NetworkNodeTemplate">
+	<components>
+		<goc name="CompPhys">
+			<pos value="10,0"/>
+		</goc>
+	</components>
+</object_template>
+<object_template name="GuestTemplate">
+	<components>
+		<goc name="CompVisualSq">
+			<sprite value="2"/>
+		</goc>
+		<goc name="CompPhys">
+			<pos value="10,0"/>
+		</goc>
+	</components>
+</object_template>
+<object_template name="wallTemplate">
+	<components>
+		<goc name="CompVisualSq">
+			<sprite value="1"/>
+		</goc>
+		<goc name="CompPhys">
+			<pos value="0,10"/>
+		</goc>
+	</components>
+</object_template>
+<object_template name="ButtonTemplate">
+	<components>
+		<goc name="CompVisualSq">
+			<sprite value="3"/>
+		</goc>
+		<goc name="CompPhys">
+			<pos value="10,10"/>
+		</goc>
+		<goc name="CompTogglable">
+			<state value="1"/>
+		</goc>
+	</components>
+</object_template>
+<object name="guest" template="GuestTemplate">
+	<components>
+		<goc name="CompPhys">
+			<pos value="5,5"/>
+		</goc>
+	</components>
+</object>
+<object name="button" template="ButtonTemplate">
+	<events>
+		<toggleEvent listen="toggleEvent" handler="handleButtonToggle"/>
+	</events>
+	<components>
+		<goc name="CompPhys">
+			<pos value="7,5"/>
+		</goc>
+	</components>
+</object>
+<object name="wall" template="wallTemplate">
+	<components/>
+</object>
+<object name="network" template="NetworkObjectTemplate">
+	<components/>
+</object>
+
