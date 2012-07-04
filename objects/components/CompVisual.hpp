@@ -1,3 +1,6 @@
+#ifndef __COMPVISUALHPP__
+#define __COMPVISUALHPP__
+
 
 #include "Component.hpp"
 
@@ -11,3 +14,4 @@ public:
 private:
 	static comp_id_type mFamilyID;
 };
+#endif

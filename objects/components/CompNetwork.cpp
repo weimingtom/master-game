@@ -14,7 +14,7 @@
 
 CompNetwork::CompNetwork(CompNetworkTemplate *templ) {
 	// Construct
-	pos=templ->pos;
+	network_map=multimap<obj_id_type,obj_id_type>(templ->network_map);
 
 }
 
@@ -24,25 +24,21 @@ rapidxml::xml_node<>* CompNetwork::Serialize(xmlFile& doc)
 
     //запишем новый
 
-    std::string id;
-
-
     rapidxml::xml_node<> *entityNode = doc.allocate_node(rapidxml::node_element,"CompNetwork");
+    std::string netstr;
 
-    static char buffer1 [33];
-    static char buffer2 [33];
+    for (net_iterator i1=network_map.begin();i1!=network_map.end();i1++)
+    {
+        netstr=netstr+i1->first + "," + i1->second+" ";
+        //sprintf(buffer1, "%d", pos.first);
+        //sprintf(buffer2, "%d", pos.second);
+        //itoa(pos.first,buffer1,10);
+        //itoa(pos.second,buffer2,10);
+    }
 
-    sprintf(buffer1, "%d", pos.first);
-    sprintf(buffer2, "%d", pos.second);
-    //itoa(pos.first,buffer1,10);
-    //itoa(pos.second,buffer2,10);
+    rapidxml::xml_attribute<> *mapAttr = doc.allocate_attribute("map", netstr.c_str());
 
-    strcat(buffer1,",");
-    strcat(buffer1,buffer2);
-
-    rapidxml::xml_attribute<> *posAttr = doc.allocate_attribute("pos", buffer1);
-
-    entityNode->append_attribute(posAttr);
+    entityNode->append_attribute(mapAttr);
 
 
     return entityNode;
@@ -51,15 +47,16 @@ rapidxml::xml_node<>* CompNetwork::Serialize(xmlFile& doc)
 
 void CompNetwork::Deserialize(rapidxml::xml_node<>* node)
 {
-
-    if (node->first_node("pos"))
+    if (node->first_node("map"))
     {
-        std::string c2 = node->first_node("pos")->first_attribute("value")->value();
-        std::vector<std::string> pairs = split(c2,',');
-        pos.first=atoi(pairs[0].c_str());
-        pos.second=atoi(pairs[1].c_str());
+        std::string c2 = node->first_node("map")->first_attribute("value")->value();
+        std::vector<std::string> pairs = split(c2,' ');
+        for (std::vector<std::string>::iterator i1 = pairs.begin(); i1!=pairs.end(); i1++)
+        {
+            std::vector<std::string> edge = split(*i1,',');
+            network_map.insert(pair<obj_id_type,obj_id_type>(edge[0],edge[1]));
+        }
     };
-
 
 };
 

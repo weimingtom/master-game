@@ -26,6 +26,11 @@ public:
 	Component* getComponent(const comp_id_type& familyID ) {
 		return mComponents[familyID];
 	}
+
+    bool hasComponent(const comp_id_type& componentID ) {
+		return not (mComponents.find(componentID)==mComponents.end());
+	}
+
 	Component* setComponent(Component *newComp) {
 		comp_id_type family = newComp->familyID();
 		newComp->setOwnerObject(this);
