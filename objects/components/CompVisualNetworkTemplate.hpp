@@ -4,7 +4,6 @@
 
 #include "ComponentTemplate.hpp"
 #include "CompVisualNetwork.hpp"
-#include "../sprites.hpp"
 
 
 class CompVisualNetworkTemplate : public ComponentTemplate {

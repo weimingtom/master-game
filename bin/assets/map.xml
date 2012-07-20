@@ -10,27 +10,29 @@
 <goc name="CompVisualSq">
 	<sprite value="1"/>
 </goc>
+<goc name="CompVisualNetwork"/>
 <goc name="CompTogglable">
 	<state value="1"/>
 </goc>
 <goc name="CompNetwork">
 	<map value="node1,node2 node2,node1"/>
 </goc>
-
 <goc name="CompNetworkNode">
-	<map value="node1,node2 node2,node1"/>
+	<id value="node1"/>
 </goc>
-
-
 <object_template name="NetworkObjectTemplate">
 	<components>
 		<goc name="CompNetwork"/>
+		<goc name="CompVisualNetwork"/>
 	</components>
 </object_template>
-<object_template name="NetworkNodeTemplate">
+<object_template name="NetworkNodeObjectTemplate">
 	<components>
 		<goc name="CompPhys">
 			<pos value="10,0"/>
+		</goc>
+		<goc name="CompNetworkNode">
+			<id value="node1"/>
 		</goc>
 	</components>
 </object_template>
@@ -89,5 +91,25 @@
 </object>
 <object name="network" template="NetworkObjectTemplate">
 	<components/>
+</object>
+<object name="node1" template="NetworkNodeObjectTemplate">
+	<components>
+		<goc name="CompNetworkNode">
+			<id value="node1"/>
+		</goc>
+		<goc name="CompPhys">
+			<pos value="1,10"/>
+		</goc>
+	</components>
+</object>
+<object name="node2" template="NetworkNodeObjectTemplate">
+	<components>
+		<goc name="CompNetworkNode">
+			<id value="node2"/>
+		</goc>
+		<goc name="CompPhys">
+			<pos value="10,1"/>
+		</goc>
+	</components>
 </object>
 

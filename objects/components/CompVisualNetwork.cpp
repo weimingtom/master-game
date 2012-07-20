@@ -2,6 +2,7 @@
 #include "CompVisualNetwork.hpp"
 #include "CompVisualNetworkTemplate.hpp"
 #include "Object.hpp"
+#include "CompNetwork.hpp"
 
 /*static*/ comp_id_type CompVisualNetwork::mFamilyID = "CompVisual";
 /*static*/ comp_id_type CompVisualNetwork::mComponentID = "CompVisualNetwork";
@@ -29,39 +30,10 @@ void CompVisualNetwork::Deserialize(rapidxml::xml_node<>* node)
 
 void CompVisualNetwork::Draw()
 {
-    /*
-    float vertices[8]={-0.5,-0.5,-0.5,0.5,0.5,0.5,0.5,-0.5};
-    //float texcoords[8]={0.2,0.6,0.2,0.2,0.6,0.2,0.6,0.6};
-    float texcoords[8]={0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0};
-    unsigned char colors[32] = {255,255,255,255,
-    255,255,255,255,
-    255,255,255,255,
-    255,255,255,255,
-    255,255,255,255,
-    255,255,255,255,
-    255,255,255,255,
-    255,255,255,255};
-
-
-    Sprite curSprite=*spriteTable[sprite];
-
-    texcoords[0]=(float) curSprite.left/curSprite.texture_dimensions.x;
-    texcoords[1]=(float) curSprite.bottom/curSprite.texture_dimensions.y;
-
-    texcoords[2]=(float)curSprite.left/curSprite.texture_dimensions.x;
-    texcoords[3]=(float) curSprite.top/curSprite.texture_dimensions.y;
-
-    texcoords[4]=(float) curSprite.right/curSprite.texture_dimensions.x;
-    texcoords[5]=(float) curSprite.top/curSprite.texture_dimensions.y;
-
-    texcoords[6]=(float) curSprite.right/curSprite.texture_dimensions.x;
-    texcoords[7]=(float) curSprite.bottom/curSprite.texture_dimensions.y;
-    //printf("%d",texcoords[7]);
-
 
     glPushMatrix();
-
-    vertex_tuple pos = static_cast<CompPhys*>(getOwnerObject()->getComponent("CompNetwork"))->pos;
+    CompNetwork* net1 = static_cast<CompPhys*>(getOwnerObject()->getComponent("CompNetwork");
+    vertex_tuple pos = static_cast<CompPhys*>()->pos;
 
     glTranslatef(pos.first,pos.second,0.0);
 

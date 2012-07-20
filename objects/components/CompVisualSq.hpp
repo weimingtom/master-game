@@ -9,8 +9,8 @@ class CompVisualSqTemplate;
 class CompVisualSq : public CompVisual {
 	//Component interface
 public:
-	virtual const comp_id_type& componentID() const { return mFamilyID; }
-	virtual const comp_id_type& familyID() const { return mComponentID; };
+	virtual const comp_id_type& componentID() const { return mComponentID; }
+	virtual const comp_id_type& familyID() const { return mFamilyID; };
 
 	// CompVisual interface
 
