@@ -23,19 +23,31 @@ public:
 	const obj_id_type& getID() const { return mOID; }
 	void setID( const obj_id_type& id ) { mOID = id; }
 
-	Component* getComponent(const comp_id_type& familyID ) {
-		return mComponents[familyID];
+	Component* getComponent(const comp_id_type& componentID ) {
+		return mComponents[componentID];
 	}
+
+	component_table_type* getComponentOfFamily(const comp_id_type& familyID ) {
+		component_table_type* selected_components = new component_table_type;
+		for (component_table_type::iterator i1 =  mComponents.begin();i1 != mComponents.end(); i1++)
+		{
+		    if (i1->second->familyID()==familyID){
+                selected_components->insert(std::pair<const comp_id_type, Component*>(i1->second->componentID(),i1->second));
+            }
+		}
+		return selected_components;
+	}
+
 
     bool hasComponent(const comp_id_type& componentID ) {
 		return not (mComponents.find(componentID)==mComponents.end());
 	}
 
 	Component* setComponent(Component *newComp) {
-		comp_id_type family = newComp->familyID();
+		comp_id_type compID = newComp->componentID();
 		newComp->setOwnerObject(this);
-		Component *oldComp = mComponents[family];
-		mComponents[family] = newComp;
+		Component *oldComp = mComponents[compID];
+		mComponents[compID] = newComp;
 		return oldComp;
 	}
 	void clearComponents() {

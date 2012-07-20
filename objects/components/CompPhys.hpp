@@ -19,8 +19,8 @@ public:
     virtual rapidxml::xml_node<>* Serialize(xmlFile& doc);
 	virtual void Deserialize(rapidxml::xml_node<>* node);
 
-    virtual const comp_id_type& componentID() const { return mComponentID; }
-	virtual const comp_id_type& familyID() const { return mFamilyID; };
+    virtual const comp_id_type& componentID() const { return mFamilyID; }
+	virtual const comp_id_type& familyID() const { return mComponentID; };
 
 	CompPhys() {};
 
