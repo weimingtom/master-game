@@ -18,7 +18,7 @@
 	<map value="node1,node2 node2,node1"/>
 </goc>
 <goc name="CompNetworkNode">
-	<id value="node1"/>
+	<network value="network"/>
 </goc>
 <object_template name="NetworkObjectTemplate">
 	<components>
@@ -32,7 +32,7 @@
 			<pos value="10,0"/>
 		</goc>
 		<goc name="CompNetworkNode">
-			<id value="node1"/>
+			<network value="network"/>
 		</goc>
 	</components>
 </object_template>
@@ -102,6 +102,7 @@
 		</goc>
 	</components>
 </object>
+
 <object name="node2" template="NetworkNodeObjectTemplate">
 	<components>
 		<goc name="CompNetworkNode">
@@ -109,6 +110,17 @@
 		</goc>
 		<goc name="CompPhys">
 			<pos value="10,1"/>
+		</goc>
+	</components>
+</object>
+
+<object name="node3" template="NetworkNodeObjectTemplate">
+	<components>
+		<goc name="CompNetworkNode">
+			<id value="node3"/>
+		</goc>
+		<goc name="CompPhys">
+			<pos value="1,1"/>
 		</goc>
 	</components>
 </object>

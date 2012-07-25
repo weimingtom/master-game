@@ -20,7 +20,7 @@ void CompNetworkTemplate::Deserialize(rapidxml::xml_node<>* node)
         for (std::vector<std::string>::iterator i1 = pairs.begin(); i1!=pairs.end(); i1++)
         {
             std::vector<std::string> edge = split(*i1,',');
-            network_map.insert(pair<obj_id_type,obj_id_type>(edge[0],edge[1]));
+            network_map.insert(pair<comp_id_type,comp_id_type>(edge[0],edge[1]));
         }
     };
 };

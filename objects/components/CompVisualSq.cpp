@@ -5,7 +5,7 @@
 #include "../sprites.hpp"
 #include "Object.hpp"
 
-/*static*/ comp_id_type CompVisualSq::mFamilyID = "CompVisualSq";
+/*static*/ comp_id_type CompVisualSq::mFamilyID = "CompVisual";
 /*static*/ comp_id_type CompVisualSq::mComponentID = "CompVisualSq";
 
 CompVisualSq::CompVisualSq(CompVisualSqTemplate *templ) {
@@ -35,6 +35,7 @@ rapidxml::xml_node<>* CompVisualSq::Serialize(xmlFile& doc)
 
 void CompVisualSq::Deserialize(rapidxml::xml_node<>* node)
 {
+    Component::Deserialize(node);
 
     if (node->first_node("sprite"))
     {
