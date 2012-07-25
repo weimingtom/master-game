@@ -14,7 +14,7 @@
 
 CompNetworkNode::CompNetworkNode(CompNetworkNodeTemplate *templ) {
 	// Construct
-    id=templ->id;
+    networkId=templ->networkId;
 }
 
 
@@ -25,7 +25,7 @@ rapidxml::xml_node<>* CompNetworkNode::Serialize(xmlFile& doc)
 
     rapidxml::xml_node<> *entityNode = doc.allocate_node(rapidxml::node_element,"CompNetworkNode");
 
-    rapidxml::xml_attribute<> *idAttr = doc.allocate_attribute("id", id.c_str());
+    rapidxml::xml_attribute<> *idAttr = doc.allocate_attribute("network", networkId.c_str());
 
     entityNode->append_attribute(idAttr);
 
@@ -37,10 +37,12 @@ rapidxml::xml_node<>* CompNetworkNode::Serialize(xmlFile& doc)
 
 void CompNetworkNode::Deserialize(rapidxml::xml_node<>* node)
 {
-    if (node->first_node("id"))
-    {
-        id=node->first_node("id")->first_attribute("value")->value();
-    }
-};
+    Component::Deserialize(node);
 
+    if (node->first_node("network"))
+    {
+        networkId=node->first_node("network")->first_attribute("value")->value();
+    }
+
+};
 

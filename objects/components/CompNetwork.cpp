@@ -14,7 +14,7 @@
 
 CompNetwork::CompNetwork(CompNetworkTemplate *templ) {
 	// Construct
-	network_map=multimap<obj_id_type,obj_id_type>(templ->network_map);
+	network_map=multimap<comp_id_type,comp_id_type>(templ->network_map);
 
 }
 
@@ -47,6 +47,8 @@ rapidxml::xml_node<>* CompNetwork::Serialize(xmlFile& doc)
 
 void CompNetwork::Deserialize(rapidxml::xml_node<>* node)
 {
+    Component::Deserialize(node);
+
     if (node->first_node("map"))
     {
         std::string c2 = node->first_node("map")->first_attribute("value")->value();
@@ -54,7 +56,7 @@ void CompNetwork::Deserialize(rapidxml::xml_node<>* node)
         for (std::vector<std::string>::iterator i1 = pairs.begin(); i1!=pairs.end(); i1++)
         {
             std::vector<std::string> edge = split(*i1,',');
-            network_map.insert(pair<obj_id_type,obj_id_type>(edge[0],edge[1]));
+            network_map.insert(pair<comp_id_type,comp_id_type>(edge[0],edge[1]));
         }
     };
 

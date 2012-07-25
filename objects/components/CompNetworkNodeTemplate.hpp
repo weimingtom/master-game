@@ -38,8 +38,10 @@ public:
 
 	// CompNetwork interface
 public:
-    std::string id;
 
+    comp_id_type id;
+
+    comp_id_type networkId;
 private:
 	static comp_id_type mComponentID;
 	static comp_id_type mFamilyID;

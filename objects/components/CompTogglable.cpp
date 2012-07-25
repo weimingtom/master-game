@@ -42,6 +42,8 @@ rapidxml::xml_node<>* CompTogglable::Serialize(xmlFile& doc)
 void CompTogglable::Deserialize(rapidxml::xml_node<>* node)
 {
 
+    Component::Deserialize(node);
+
     if (node->first_node("state"))
     {
         std::string c2 = node->first_node("state")->first_attribute("value")->value();

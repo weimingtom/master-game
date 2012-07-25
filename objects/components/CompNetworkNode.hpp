@@ -31,7 +31,9 @@ public:
 	//special constructor for component-template
 	CompNetworkNode(CompNetworkNodeTemplate *templ);
 
-    std::string id;
+    //comp_id_type id;
+
+    comp_id_type networkId;
 
 
 private:

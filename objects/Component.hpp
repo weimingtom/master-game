@@ -8,6 +8,9 @@
 #include <string>
 #include <map>
 
+
+
+
 class Object;
 typedef std::string comp_id_type;
 typedef std::string field_id_type;
@@ -21,7 +24,7 @@ typedef std::string obj_id_type;
 class Component {
 public:
 
-	Component() : mOwnerObj(0) {}
+	Component();
 	virtual ~Component() = 0;
 
 	virtual const comp_id_type& componentID() const = 0;
@@ -29,8 +32,8 @@ public:
 
 	virtual void update() {};
     virtual rapidxml::xml_node<>* Serialize(xmlFile& doc) =0 ;
-	virtual void Deserialize(rapidxml::xml_node<>* node) =0;
-
+	virtual void Deserialize(rapidxml::xml_node<>* node);
+    virtual void Draw(){};
 
 	void setOwnerObject( Object* obj) { mOwnerObj = obj; }
 	Object* getOwnerObject() const { return mOwnerObj; }
@@ -40,13 +43,13 @@ public:
     std::string removeField (std::string name);
     std::string clearTable();
     */
-
+    comp_id_type id;
 
 private:
 	Object *mOwnerObj;
     objTable table;
 };
 
-
+extern std::map<comp_id_type,Component*> gameComponentsTable;
 
 #endif

@@ -39,20 +39,7 @@ extern Rocket::Core::Context* context;
 
 Map::Map()
 {
-
-
 	Rocket::Core::GetRenderInterface()->LoadTexture(texture, texture_dimensions, "./assets/invader.tga");
-
-	/*
-	if_res_gen_start=false;
-	if_gen=false;
-	if_water_gen=false;
-	if_control=false;
-	if_pump=false;
-	if_light=false;
-	if_outer_link=false;
-	if_patient=false;
-	*/
     Initialise();
 }
 
@@ -483,14 +470,17 @@ void Map::Render(int mode, int mode_element)
     {
 
         component_table_type* visualComponents = i->second->getComponentOfFamily("CompVisual");   // можно ли как-нибудь сделать итерацию, не зная в точности типа?
-        delete visualComponents;
-        /*
+
+
         for (component_table_type::iterator i1=visualComponents->begin();i1!=visualComponents->end();i1++)
             {
-                (i1->second)->Draw();
+                static_cast<CompVisual*>(i1->second)->Draw();
+                /*Component* cv1 = i1->second;
+                cv1->Draw();*/
+                //printf(cv1->componentID().c_str());
             };
-            */
-
+        delete visualComponents;
+/*
         if (i->second->hasComponent("CompVisualSq"))
             {
                 static_cast<CompVisualSq*>(i->second->getComponent("CompVisualSq"))->Draw();
@@ -500,8 +490,8 @@ void Map::Render(int mode, int mode_element)
             {
                 static_cast<CompVisualNetwork*>(i->second->getComponent("CompVisualNetwork"))->Draw();
 
-            };
-
+    };
+*/
 
 
 	//static_cast<CompVisualSq*>(gameObjectsTable["Unknown"]->getComponent("CompVisualSq"))->Draw();

@@ -52,6 +52,8 @@ rapidxml::xml_node<>* CompPhys::Serialize(xmlFile& doc)
 void CompPhys::Deserialize(rapidxml::xml_node<>* node)
 {
 
+    Component::Deserialize(node);
+
     if (node->first_node("pos"))
     {
         std::string c2 = node->first_node("pos")->first_attribute("value")->value();

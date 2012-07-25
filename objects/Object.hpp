@@ -105,4 +105,6 @@ private:
 	component_table_type mComponents;		//map of all components;
 };
 
+extern std::map<obj_id_type,Object*> gameObjectsTable;
+
 #endif

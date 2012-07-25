@@ -15,9 +15,10 @@ class CompNetworkTemplate : public ComponentTemplate {
 	// ComponentTemplate interface
 public:
 
-    multimap<obj_id_type,obj_id_type> network_map;
-    typedef multimap<obj_id_type,obj_id_type>::iterator net_iterator;
-    typedef pair<multimap<obj_id_type,obj_id_type>::iterator,multimap<obj_id_type,obj_id_type>::iterator> net_element_iterator;
+    multimap<comp_id_type,comp_id_type> network_map;
+    typedef multimap<comp_id_type,comp_id_type>::iterator net_iterator;
+    typedef pair<multimap<comp_id_type,comp_id_type>::iterator,multimap<comp_id_type,comp_id_type>::iterator> net_element_iterator;
+
 	//returns the Component ID that this template can create
 	virtual const comp_id_type& componentID() const {
 		return mComponentID;
