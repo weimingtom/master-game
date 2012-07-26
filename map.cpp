@@ -282,7 +282,7 @@ void Map::Initialise()
     while (ob)
     {
 
-        comp_id_type name = comp_id_type (ob->first_attribute("name")->value());
+        comp_id_type name = obj_id_type (ob->first_attribute("name")->value());
         comp_id_type templ = comp_id_type (ob->first_attribute("template")->value());
 
         Object* obj = ObjTemplateMgr::getInstance()->createObject( templ, name);
@@ -306,6 +306,8 @@ void Map::Initialise()
                 eventManager::getInstance()->copyNotifier(listenTo,name);
 
                 eventManager::getInstance()->Subscribe(listenTo,handler,name);
+
+                std::cout<<listenTo <<","<< handler << "," << name;
 
                 ev1=ev1->next_sibling();
             }
@@ -347,8 +349,6 @@ void Map::Initialise()
 
 void Map::Finalise()
 {
-
-
     //ws >> wt;
     std::ofstream mapfile;
 

@@ -106,10 +106,6 @@ class Map : public micropather::Graph{
 
         Rocket::Core::Time update_freq;
 
-
-
-
-
 };
 
 #endif
