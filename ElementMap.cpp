@@ -188,8 +188,8 @@ void ElementMap::ProcessEvent(Rocket::Core::Event& event)
             {
                 gameEvent evt;
                 evt.args.insert(std::pair<std::string,eventArg>("sender","Map"));
-                evt.args.insert(std::pair<std::string,eventArg>("target","button"));
-                eventManager::getInstance()->Notify("toggleEvent","button",evt);
+                evt.args.insert(std::pair<std::string,eventArg>("target",objectsOnSpot[0]->getID()));
+                eventManager::getInstance()->Notify("toggleEvent",objectsOnSpot[0]->getID(),evt);
                 /*
                 rapidxml::xml_node<> *currentParameters = objectsOnSpot[0]->Serialize(map->doc);
                 printf(currentParameters->name());

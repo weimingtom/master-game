@@ -35,13 +35,16 @@ std::vector<Object*> getObjectsWithCoords(int x, int y)
         //std::stringstream st1;
         //st1 << x <<","<<y;
         vertex_tuple p1;
-
-        p1=static_cast<CompPhys*>(go1->second->getComponent("CompPhys"))->pos;
-
-        if ((p1.first==x)&&(p1.second==y))
+        if (go1->second->hasComponent("CompPhys"))
         {
-            result.push_back(go1->second);
-        }
+
+            p1=static_cast<CompPhys*>(go1->second->getComponent("CompPhys"))->pos;
+
+            if ((p1.first==x)&&(p1.second==y))
+            {
+                result.push_back(go1->second);
+            }
+        };
     };
     return result;
 

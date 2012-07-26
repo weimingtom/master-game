@@ -15,7 +15,7 @@
 	<state value="1"/>
 </goc>
 <goc name="CompNetwork">
-	<map value="node1,node2 node2,node1"/>
+	<map value="node1,node3 node3,node1 node2,node1 node1,node2"/>
 </goc>
 <goc name="CompNetworkNode">
 	<network value="network"/>
@@ -102,7 +102,6 @@
 		</goc>
 	</components>
 </object>
-
 <object name="node2" template="NetworkNodeObjectTemplate">
 	<components>
 		<goc name="CompNetworkNode">
@@ -113,7 +112,6 @@
 		</goc>
 	</components>
 </object>
-
 <object name="node3" template="NetworkNodeObjectTemplate">
 	<components>
 		<goc name="CompNetworkNode">
